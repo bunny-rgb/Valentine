@@ -13,28 +13,74 @@ const VALENTINE_WEEK_CONFIG = {
   ]
 };
 
-// Spotify Configuration
-const SPOTIFY_CONFIG = {
-  // OPTION 1: Your original playlist (Visual Mode only - no audio)
-  // playlistId: '2eDZ3I1FP5kWP505YIdACt',
+// Music Configuration
+const MUSIC_CONFIG = {
+  // ⭐ LOCAL PLAYLIST (YOUR SONGS!) - Will play in order
+  useLocalPlaylist: true, // Set to true to use local songs
   
-  // OPTION 2: Popular Love Songs playlist (HAS audio previews!)
-  playlistId: '37i9dQZF1DX50KOxCoe6eO', // Spotify's "Love Pop" playlist
+  localPlaylist: [
+    {
+      name: 'Meri Banogi Kya',
+      artist: 'Rito Riba, Rajat Nagpal',
+      album: 'Meri Banogi Kya',
+      albumArt: 'https://i.scdn.co/image/ab67616d0000b2732ebd3d368294e9c19696299c',
+      previewUrl: '/static/music/meri-banogi-kya.mp3',
+      duration: 215000 // 3:35 in milliseconds
+    },
+    {
+      name: 'Tainu Khabar Nahi',
+      artist: 'Sachin-Jigar, Arijit Singh',
+      album: 'Munjya',
+      albumArt: 'https://i.scdn.co/image/ab67616d0000b27398bc1bc90e3cc5deceeff408',
+      previewUrl: '/static/music/tainu-khabar-nahi.mp3',
+      duration: 188000 // 3:08
+    },
+    {
+      name: 'Zaalima',
+      artist: 'Arijit Singh, Harshdeep Kaur',
+      album: 'Raees',
+      albumArt: 'https://i.scdn.co/image/ab67616d0000b27398bc1bc90e3cc5deceeff408',
+      previewUrl: '/static/music/zaalima.mp3',
+      duration: 299000 // 4:59
+    },
+    {
+      name: 'O Meri Laila',
+      artist: 'Atif Aslam, Jyotica Tangri',
+      album: 'Laila Majnu',
+      albumArt: 'https://i.scdn.co/image/ab67616d0000b273d998c880f085f08c7ddeeafc',
+      previewUrl: '/static/music/o-meri-laila.mp3',
+      duration: 273000 // 4:33
+    },
+    {
+      name: 'Samjhawan',
+      artist: 'Arijit Singh, Shreya Ghoshal',
+      album: 'Humpty Sharma Ki Dulhania',
+      albumArt: 'https://i.scdn.co/image/ab67616d0000b2738a7ae7092464f6685355dc3c',
+      previewUrl: '/static/music/samjhawan.mp3',
+      duration: 269000 // 4:29
+    },
+    {
+      name: 'Tum Ho Toh',
+      artist: 'Vishal Mishra',
+      album: 'Saiyaara',
+      albumArt: 'https://i.scdn.co/image/ab67616d0000b273d998c880f085f08c7ddeeafc',
+      previewUrl: '/static/music/tum-ho-toh.mp3',
+      duration: 318000 // 5:18
+    },
+    {
+      name: 'Darkhaast',
+      artist: 'Arijit Singh, Sunidhi Chauhan',
+      album: 'Shivaay',
+      albumArt: 'https://i.scdn.co/image/ab67616d0000b27350db5756a51048c1fe02dd20',
+      previewUrl: '/static/music/darkhaast.mp3',
+      duration: 312000 // 5:12
+    }
+  ],
   
-  // OPTION 3: Romantic Bollywood (HAS audio previews!)
-  // playlistId: '37i9dQZF1DX9XgYiLi8w4Q',
-  
-  // NO ACCESS TOKEN NEEDED! Using backend API instead
+  // Fallback to Spotify if local files fail
+  playlistId: '37i9dQZF1DX50KOxCoe6eO',
   useBackendAPI: true,
-  
-  // ⭐ LOCAL MUSIC OPTION (RECOMMENDED FOR BEST EXPERIENCE!)
-  // Upload your song to: /home/user/webapp/public/static/music/song.mp3
-  // Then set useLocalMusic to true below
-  localBackgroundMusic: '/static/music/song.mp3',
-  useLocalMusic: true, // ⭐ Set to true to play local audio file
-  
-  // If local file not found, will fallback to Spotify
-  fallbackToSpotify: true
+  fallbackToSpotify: false // Set to true to fallback to Spotify if local fails
 };
 
 // Global State
@@ -392,32 +438,47 @@ function createSpotifyPlayer() {
 // Load Spotify Playlist
 async function loadSpotifyPlaylist() {
   try {
-    // Use backend API to get playlist (no token needed on client!)
-    const response = await fetch(`/api/spotify/playlist/${SPOTIFY_CONFIG.playlistId}`);
-    
-    if (!response.ok) {
-      throw new Error('Failed to load playlist: ' + response.statusText);
+    // Priority 1: Use local playlist if enabled
+    if (MUSIC_CONFIG.useLocalPlaylist && MUSIC_CONFIG.localPlaylist) {
+      spotifyPlaylist = MUSIC_CONFIG.localPlaylist;
+      console.log(`🎵 Loaded ${spotifyPlaylist.length} tracks from LOCAL playlist`);
+      console.log('🎶 Your Valentine Playlist:', spotifyPlaylist.map(t => t.name).join(', '));
+      
+      // Update UI with first track info
+      if (spotifyPlaylist.length > 0) {
+        updateTrackInfo(0);
+      }
+      return;
     }
     
-    const data = await response.json();
-    
-    if (data.error) {
-      throw new Error(data.error);
-    }
-    
-    spotifyPlaylist = data.tracks;
-    
-    console.log(`✅ Loaded ${spotifyPlaylist.length} tracks from Spotify playlist: "${data.name}"`);
-    
-    // Update UI with first track info
-    if (spotifyPlaylist.length > 0) {
-      updateTrackInfo(0);
-    } else {
-      document.getElementById('track-name').textContent = 'Playlist is empty';
-      document.getElementById('artist-name').textContent = 'Add some songs to your playlist';
+    // Priority 2: Fallback to Spotify API
+    if (MUSIC_CONFIG.fallbackToSpotify) {
+      const response = await fetch(`/api/spotify/playlist/${MUSIC_CONFIG.playlistId}`);
+      
+      if (!response.ok) {
+        throw new Error('Failed to load playlist: ' + response.statusText);
+      }
+      
+      const data = await response.json();
+      
+      if (data.error) {
+        throw new Error(data.error);
+      }
+      
+      spotifyPlaylist = data.tracks;
+      
+      console.log(`✅ Loaded ${spotifyPlaylist.length} tracks from Spotify playlist: "${data.name}"`);
+      
+      // Update UI with first track info
+      if (spotifyPlaylist.length > 0) {
+        updateTrackInfo(0);
+      } else {
+        document.getElementById('track-name').textContent = 'Playlist is empty';
+        document.getElementById('artist-name').textContent = 'Add some songs to your playlist';
+      }
     }
   } catch (error) {
-    console.error('Error loading Spotify playlist:', error);
+    console.error('Error loading playlist:', error);
     document.getElementById('track-name').textContent = 'Error loading playlist';
     document.getElementById('artist-name').textContent = error.message || 'Check console for details';
   }
@@ -493,35 +554,13 @@ async function playTrack(index) {
     window.simulatedProgressInterval = null;
   }
   
-  let audioSrc = null;
-  let useRealAudio = false;
-  
-  // Priority 1: Local music file (if enabled)
-  if (SPOTIFY_CONFIG.useLocalMusic && SPOTIFY_CONFIG.localBackgroundMusic) {
-    try {
-      // Check if local file exists
-      const response = await fetch(SPOTIFY_CONFIG.localBackgroundMusic, { method: 'HEAD' });
-      if (response.ok) {
-        audioSrc = SPOTIFY_CONFIG.localBackgroundMusic;
-        useRealAudio = true;
-        console.log('🎵 Playing local audio file:', audioSrc);
-      }
-    } catch (error) {
-      console.warn('⚠️ Local audio file not found:', SPOTIFY_CONFIG.localBackgroundMusic);
-    }
-  }
-  
-  // Priority 2: Spotify preview URL
-  if (!useRealAudio && track.previewUrl) {
-    audioSrc = track.previewUrl;
-    useRealAudio = true;
-    console.log('🎵 Playing Spotify preview:', audioSrc);
-  }
-  
-  if (useRealAudio && audioSrc) {
+  // Check if track has audio URL
+  if (track.previewUrl) {
     // Real audio playback
-    musicPlayer = new Audio(audioSrc);
+    musicPlayer = new Audio(track.previewUrl);
     musicPlayer.volume = 0.7;
+    
+    console.log('🎵 Now playing:', track.name, 'by', track.artist);
     
     musicPlayer.addEventListener('loadedmetadata', () => {
       document.getElementById('duration').textContent = formatTime(Math.floor(musicPlayer.duration));
@@ -536,33 +575,33 @@ async function playTrack(index) {
     musicPlayer.addEventListener('timeupdate', updateProgress);
     
     musicPlayer.addEventListener('ended', () => {
-      if (SPOTIFY_CONFIG.useLocalMusic) {
-        // Loop local music for continuous background
-        musicPlayer.currentTime = 0;
-        musicPlayer.play();
-      } else {
-        nextTrack();
-      }
+      // Auto-advance to next track
+      nextTrack();
     });
     
     musicPlayer.play().catch(error => {
       console.error('❌ Playback error:', error);
-      // Fallback to simulated mode
-      simulatePlayback(track);
+      alert('Could not play audio. Please check the file: ' + track.previewUrl);
+      // Try next track
+      nextTrack();
     });
   } else {
-    // Simulated playback mode (visual only)
+    // No audio URL - show error
+    console.error('❌ No audio URL for track:', track.name);
     simulatePlayback(track);
   }
   
-  // Show proposal after 25 seconds
-  setTimeout(() => {
-    const proposalSection = document.getElementById('proposal-section');
-    if (proposalSection && proposalSection.classList.contains('hidden')) {
-      proposalSection.classList.remove('hidden');
-      proposalSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-  }, 25000);
+  // Show proposal after 25 seconds (only on first play)
+  if (currentTrackIndex === 0 && !window.proposalShown) {
+    window.proposalShown = true;
+    setTimeout(() => {
+      const proposalSection = document.getElementById('proposal-section');
+      if (proposalSection && proposalSection.classList.contains('hidden')) {
+        proposalSection.classList.remove('hidden');
+        proposalSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }, 25000);
+  }
 }
 
 // Simulate playback for songs without preview URLs
