@@ -13,11 +13,23 @@ const VALENTINE_WEEK_CONFIG = {
   ]
 };
 
+// Spotify Configuration
+const SPOTIFY_CONFIG = {
+  playlistId: '2eDZ3I1FP5kWP505YIdACt',
+  // IMPORTANT: Replace this with your actual Spotify Bearer token
+  // Get your token from: https://developer.spotify.com/console/get-playlist/
+  // Note: Tokens expire after 1 hour, you'll need to refresh them
+  accessToken: 'YOUR_SPOTIFY_ACCESS_TOKEN_HERE'
+};
+
 // Global State
 let currentDay = 1;
 let musicPlayer = null;
 let audioContext = null;
 let analyser = null;
+let spotifyPlaylist = null;
+let currentTrackIndex = 0;
+let isPlaying = false;
 
 // Initialize app
 document.addEventListener('DOMContentLoaded', function() {
@@ -231,14 +243,10 @@ function loadProposeDay() {
         <p class="text-2xl">I promise to cherish every moment with you.</p>
       </div>
     </div>
-    
-    <!-- Music Player -->
-    <div class="music-player">
-      <button id="play-button" onclick="toggleMusic()" class="play-button">
-        <i class="fas fa-play"></i>
-      </button>
-    </div>
   `;
+  
+  // Create Spotify music player controls at the bottom
+  createSpotifyPlayer();
   
   // Note: In production, replace with actual photo URLs
   const photos = [
@@ -309,43 +317,261 @@ function randomizePhotoPosition(container) {
   container.style.opacity = '0';
 }
 
-// Initialize music player (placeholder)
-function initializeMusic() {
-  // Note: In production, use actual audio file
-  // For demo, we'll simulate beat detection
-  console.log('Music player initialized. Replace with actual audio file: "Meri Banogi Kya"');
+// ==================== SPOTIFY MUSIC PLAYER ====================
+
+// Create Spotify Player UI
+function createSpotifyPlayer() {
+  // Create music player container at bottom
+  const playerHTML = `
+    <div id="spotify-player" class="spotify-player-container">
+      <div class="spotify-player glass-card">
+        <!-- Now Playing Info -->
+        <div class="now-playing">
+          <div class="album-art" id="album-art">
+            <i class="fas fa-music"></i>
+          </div>
+          <div class="track-info">
+            <div class="track-name" id="track-name">Click play to start</div>
+            <div class="artist-name" id="artist-name">Your Valentine Playlist</div>
+          </div>
+        </div>
+        
+        <!-- Playback Controls -->
+        <div class="playback-controls">
+          <button class="control-btn" onclick="previousTrack()" title="Previous">
+            <i class="fas fa-step-backward"></i>
+          </button>
+          <button class="control-btn play-btn" id="spotify-play-btn" onclick="toggleSpotifyPlayback()" title="Play">
+            <i class="fas fa-play"></i>
+          </button>
+          <button class="control-btn" onclick="nextTrack()" title="Next">
+            <i class="fas fa-step-forward"></i>
+          </button>
+        </div>
+        
+        <!-- Progress Bar -->
+        <div class="progress-container">
+          <div class="progress-bar" id="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+          </div>
+          <div class="time-display">
+            <span id="current-time">0:00</span>
+            <span id="duration">0:00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
   
-  // Simulate beat sync animations
-  startBeatAnimation();
+  document.body.insertAdjacentHTML('beforeend', playerHTML);
   
-  // Show proposal after "song ends" (30 seconds for demo)
-  setTimeout(() => {
-    document.getElementById('proposal-section').classList.remove('hidden');
-    document.getElementById('proposal-section').scrollIntoView({ behavior: 'smooth' });
-  }, 30000);
+  // Load Spotify playlist
+  loadSpotifyPlaylist();
 }
 
-// Toggle music playback
-function toggleMusic() {
-  const button = document.getElementById('play-button');
-  const icon = button.querySelector('i');
+// Load Spotify Playlist
+async function loadSpotifyPlaylist() {
+  // Check if access token is set
+  if (!SPOTIFY_CONFIG.accessToken || SPOTIFY_CONFIG.accessToken === 'YOUR_SPOTIFY_ACCESS_TOKEN_HERE') {
+    console.warn('⚠️ Spotify access token not configured. Please add your token to SPOTIFY_CONFIG.');
+    document.getElementById('track-name').textContent = 'Configure Spotify Token';
+    document.getElementById('artist-name').textContent = 'See CUSTOMIZATION.md';
+    return;
+  }
   
-  if (button.classList.contains('playing')) {
-    button.classList.remove('playing');
+  try {
+    const response = await fetch(`https://api.spotify.com/v1/playlists/${SPOTIFY_CONFIG.playlistId}`, {
+      headers: {
+        'Authorization': `Bearer ${SPOTIFY_CONFIG.accessToken}`
+      }
+    });
+    
+    if (!response.ok) {
+      throw new Error('Failed to load playlist: ' + response.statusText);
+    }
+    
+    const data = await response.json();
+    spotifyPlaylist = data.tracks.items.map(item => ({
+      name: item.track.name,
+      artist: item.track.artists.map(a => a.name).join(', '),
+      album: item.track.album.name,
+      albumArt: item.track.album.images[0]?.url,
+      previewUrl: item.track.preview_url,
+      duration: item.track.duration_ms
+    }));
+    
+    console.log(`✅ Loaded ${spotifyPlaylist.length} tracks from Spotify playlist`);
+    
+    // Update UI with first track info
+    if (spotifyPlaylist.length > 0) {
+      updateTrackInfo(0);
+    }
+  } catch (error) {
+    console.error('Error loading Spotify playlist:', error);
+    document.getElementById('track-name').textContent = 'Error loading playlist';
+    document.getElementById('artist-name').textContent = 'Check your Spotify token';
+  }
+}
+
+// Update track info display
+function updateTrackInfo(index) {
+  if (!spotifyPlaylist || index >= spotifyPlaylist.length) return;
+  
+  const track = spotifyPlaylist[index];
+  document.getElementById('track-name').textContent = track.name;
+  document.getElementById('artist-name').textContent = track.artist;
+  
+  // Update album art
+  const albumArt = document.getElementById('album-art');
+  if (track.albumArt) {
+    albumArt.style.backgroundImage = `url(${track.albumArt})`;
+    albumArt.innerHTML = '';
+  } else {
+    albumArt.style.backgroundImage = 'none';
+    albumArt.innerHTML = '<i class="fas fa-music"></i>';
+  }
+  
+  // Update duration
+  const duration = Math.floor(track.duration / 1000);
+  document.getElementById('duration').textContent = formatTime(duration);
+}
+
+// Toggle Spotify playback
+function toggleSpotifyPlayback() {
+  if (!spotifyPlaylist || spotifyPlaylist.length === 0) {
+    alert('⚠️ Please configure your Spotify access token first.\n\nSee CUSTOMIZATION.md for instructions.');
+    return;
+  }
+  
+  const playBtn = document.getElementById('spotify-play-btn');
+  const icon = playBtn.querySelector('i');
+  
+  if (isPlaying) {
+    // Pause
+    pauseTrack();
     icon.className = 'fas fa-play';
+    isPlaying = false;
     stopBeatAnimation();
   } else {
-    button.classList.add('playing');
+    // Play
+    playTrack(currentTrackIndex);
     icon.className = 'fas fa-pause';
+    isPlaying = true;
     startBeatAnimation();
-    // Show proposal after 30 seconds
-    setTimeout(() => {
-      if (button.classList.contains('playing')) {
-        document.getElementById('proposal-section').classList.remove('hidden');
-        document.getElementById('proposal-section').scrollIntoView({ behavior: 'smooth' });
-      }
-    }, 30000);
   }
+}
+
+// Play track
+function playTrack(index) {
+  if (!spotifyPlaylist || index >= spotifyPlaylist.length) return;
+  
+  const track = spotifyPlaylist[index];
+  currentTrackIndex = index;
+  
+  // Update UI
+  updateTrackInfo(index);
+  
+  // Create audio element for preview
+  if (musicPlayer) {
+    musicPlayer.pause();
+    musicPlayer = null;
+  }
+  
+  if (track.previewUrl) {
+    musicPlayer = new Audio(track.previewUrl);
+    musicPlayer.volume = 0.7;
+    
+    musicPlayer.addEventListener('loadedmetadata', () => {
+      document.getElementById('duration').textContent = formatTime(Math.floor(musicPlayer.duration));
+    });
+    
+    musicPlayer.addEventListener('timeupdate', updateProgress);
+    
+    musicPlayer.addEventListener('ended', () => {
+      nextTrack();
+    });
+    
+    musicPlayer.play().catch(error => {
+      console.error('Playback error:', error);
+      alert('⚠️ Could not play track. Some tracks may not have preview available.');
+    });
+    
+    // Show proposal after first song
+    setTimeout(() => {
+      const proposalSection = document.getElementById('proposal-section');
+      if (proposalSection && !proposalSection.classList.contains('hidden')) {
+        return;
+      }
+      if (proposalSection) {
+        proposalSection.classList.remove('hidden');
+        proposalSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }, 25000); // Show after 25 seconds
+    
+  } else {
+    alert('⚠️ This track does not have a preview available. Trying next track...');
+    nextTrack();
+  }
+}
+
+// Pause track
+function pauseTrack() {
+  if (musicPlayer) {
+    musicPlayer.pause();
+  }
+}
+
+// Next track
+function nextTrack() {
+  if (!spotifyPlaylist) return;
+  
+  currentTrackIndex = (currentTrackIndex + 1) % spotifyPlaylist.length;
+  
+  if (isPlaying) {
+    playTrack(currentTrackIndex);
+  } else {
+    updateTrackInfo(currentTrackIndex);
+  }
+}
+
+// Previous track
+function previousTrack() {
+  if (!spotifyPlaylist) return;
+  
+  currentTrackIndex = (currentTrackIndex - 1 + spotifyPlaylist.length) % spotifyPlaylist.length;
+  
+  if (isPlaying) {
+    playTrack(currentTrackIndex);
+  } else {
+    updateTrackInfo(currentTrackIndex);
+  }
+}
+
+// Update progress bar
+function updateProgress() {
+  if (!musicPlayer) return;
+  
+  const current = musicPlayer.currentTime;
+  const duration = musicPlayer.duration;
+  
+  if (duration) {
+    const percentage = (current / duration) * 100;
+    document.getElementById('progress-fill').style.width = percentage + '%';
+    document.getElementById('current-time').textContent = formatTime(Math.floor(current));
+  }
+}
+
+// Format time (seconds to MM:SS)
+function formatTime(seconds) {
+  const mins = Math.floor(seconds / 60);
+  const secs = seconds % 60;
+  return `${mins}:${secs.toString().padStart(2, '0')}`;
+}
+
+// Initialize music player (placeholder)
+function initializeMusic() {
+  // Spotify player is now created separately
+  console.log('✨ Spotify music player ready. Click play to start your romantic playlist.');
 }
 
 let beatInterval;
