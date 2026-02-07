@@ -4,11 +4,100 @@ import { serveStatic } from 'hono/cloudflare-workers'
 
 const app = new Hono()
 
+// Spotify Credentials (Server-side only)
+const SPOTIFY_CLIENT_ID = 'fb07ea764ff6493cb0a4700a61a7cfc9'
+const SPOTIFY_CLIENT_SECRET = 'ec4eadbc9a5e48c7a749b4e09cf1780d'
+
 // Enable CORS
 app.use('/api/*', cors())
 
 // Serve static files
 app.use('/static/*', serveStatic({ root: './public' }))
+
+// ==================== SPOTIFY API ENDPOINTS ====================
+
+// Get Spotify Access Token
+app.get('/api/spotify/token', async (c) => {
+  try {
+    const response = await fetch('https://accounts.spotify.com/api/token', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization': 'Basic ' + btoa(SPOTIFY_CLIENT_ID + ':' + SPOTIFY_CLIENT_SECRET)
+      },
+      body: 'grant_type=client_credentials'
+    })
+
+    if (!response.ok) {
+      throw new Error('Failed to get Spotify token')
+    }
+
+    const data = await response.json()
+    return c.json({
+      access_token: data.access_token,
+      expires_in: data.expires_in
+    })
+  } catch (error) {
+    console.error('Spotify token error:', error)
+    return c.json({ error: 'Failed to get Spotify token' }, 500)
+  }
+})
+
+// Get Spotify Playlist
+app.get('/api/spotify/playlist/:playlistId', async (c) => {
+  const playlistId = c.req.param('playlistId')
+  
+  try {
+    // Get access token first
+    const tokenResponse = await fetch('https://accounts.spotify.com/api/token', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization': 'Basic ' + btoa(SPOTIFY_CLIENT_ID + ':' + SPOTIFY_CLIENT_SECRET)
+      },
+      body: 'grant_type=client_credentials'
+    })
+
+    if (!tokenResponse.ok) {
+      throw new Error('Failed to get Spotify token')
+    }
+
+    const tokenData = await tokenResponse.json()
+    const accessToken = tokenData.access_token
+
+    // Get playlist with token
+    const playlistResponse = await fetch(`https://api.spotify.com/v1/playlists/${playlistId}`, {
+      headers: {
+        'Authorization': `Bearer ${accessToken}`
+      }
+    })
+
+    if (!playlistResponse.ok) {
+      throw new Error('Failed to get playlist')
+    }
+
+    const playlistData = await playlistResponse.json()
+    
+    // Extract and format track data
+    const tracks = playlistData.tracks.items.map((item: any) => ({
+      name: item.track.name,
+      artist: item.track.artists.map((a: any) => a.name).join(', '),
+      album: item.track.album.name,
+      albumArt: item.track.album.images[0]?.url || null,
+      previewUrl: item.track.preview_url,
+      duration: item.track.duration_ms
+    }))
+
+    return c.json({
+      name: playlistData.name,
+      description: playlistData.description,
+      tracks: tracks
+    })
+  } catch (error) {
+    console.error('Spotify playlist error:', error)
+    return c.json({ error: 'Failed to get playlist' }, 500)
+  }
+})
 
 // Main Valentine Week page
 app.get('/', (c) => {

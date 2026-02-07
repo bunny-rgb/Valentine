@@ -16,10 +16,8 @@ const VALENTINE_WEEK_CONFIG = {
 // Spotify Configuration
 const SPOTIFY_CONFIG = {
   playlistId: '2eDZ3I1FP5kWP505YIdACt',
-  // IMPORTANT: Replace this with your actual Spotify Bearer token
-  // Get your token from: https://developer.spotify.com/console/get-playlist/
-  // Note: Tokens expire after 1 hour, you'll need to refresh them
-  accessToken: 'YOUR_SPOTIFY_ACCESS_TOKEN_HERE'
+  // NO ACCESS TOKEN NEEDED! Using backend API instead
+  useBackendAPI: true
 };
 
 // Global State
@@ -371,45 +369,35 @@ function createSpotifyPlayer() {
 
 // Load Spotify Playlist
 async function loadSpotifyPlaylist() {
-  // Check if access token is set
-  if (!SPOTIFY_CONFIG.accessToken || SPOTIFY_CONFIG.accessToken === 'YOUR_SPOTIFY_ACCESS_TOKEN_HERE') {
-    console.warn('⚠️ Spotify access token not configured. Please add your token to SPOTIFY_CONFIG.');
-    document.getElementById('track-name').textContent = 'Configure Spotify Token';
-    document.getElementById('artist-name').textContent = 'See CUSTOMIZATION.md';
-    return;
-  }
-  
   try {
-    const response = await fetch(`https://api.spotify.com/v1/playlists/${SPOTIFY_CONFIG.playlistId}`, {
-      headers: {
-        'Authorization': `Bearer ${SPOTIFY_CONFIG.accessToken}`
-      }
-    });
+    // Use backend API to get playlist (no token needed on client!)
+    const response = await fetch(`/api/spotify/playlist/${SPOTIFY_CONFIG.playlistId}`);
     
     if (!response.ok) {
       throw new Error('Failed to load playlist: ' + response.statusText);
     }
     
     const data = await response.json();
-    spotifyPlaylist = data.tracks.items.map(item => ({
-      name: item.track.name,
-      artist: item.track.artists.map(a => a.name).join(', '),
-      album: item.track.album.name,
-      albumArt: item.track.album.images[0]?.url,
-      previewUrl: item.track.preview_url,
-      duration: item.track.duration_ms
-    }));
     
-    console.log(`✅ Loaded ${spotifyPlaylist.length} tracks from Spotify playlist`);
+    if (data.error) {
+      throw new Error(data.error);
+    }
+    
+    spotifyPlaylist = data.tracks;
+    
+    console.log(`✅ Loaded ${spotifyPlaylist.length} tracks from Spotify playlist: "${data.name}"`);
     
     // Update UI with first track info
     if (spotifyPlaylist.length > 0) {
       updateTrackInfo(0);
+    } else {
+      document.getElementById('track-name').textContent = 'Playlist is empty';
+      document.getElementById('artist-name').textContent = 'Add some songs to your playlist';
     }
   } catch (error) {
     console.error('Error loading Spotify playlist:', error);
     document.getElementById('track-name').textContent = 'Error loading playlist';
-    document.getElementById('artist-name').textContent = 'Check your Spotify token';
+    document.getElementById('artist-name').textContent = error.message || 'Check console for details';
   }
 }
 
@@ -439,7 +427,7 @@ function updateTrackInfo(index) {
 // Toggle Spotify playback
 function toggleSpotifyPlayback() {
   if (!spotifyPlaylist || spotifyPlaylist.length === 0) {
-    alert('⚠️ Please configure your Spotify access token first.\n\nSee CUSTOMIZATION.md for instructions.');
+    alert('⚠️ Playlist is still loading or empty.\n\nPlease wait a moment or check your playlist ID.');
     return;
   }
   
