@@ -15,9 +15,26 @@ const VALENTINE_WEEK_CONFIG = {
 
 // Spotify Configuration
 const SPOTIFY_CONFIG = {
-  playlistId: '2eDZ3I1FP5kWP505YIdACt',
+  // OPTION 1: Your original playlist (Visual Mode only - no audio)
+  // playlistId: '2eDZ3I1FP5kWP505YIdACt',
+  
+  // OPTION 2: Popular Love Songs playlist (HAS audio previews!)
+  playlistId: '37i9dQZF1DX50KOxCoe6eO', // Spotify's "Love Pop" playlist
+  
+  // OPTION 3: Romantic Bollywood (HAS audio previews!)
+  // playlistId: '37i9dQZF1DX9XgYiLi8w4Q',
+  
   // NO ACCESS TOKEN NEEDED! Using backend API instead
-  useBackendAPI: true
+  useBackendAPI: true,
+  
+  // ⭐ LOCAL MUSIC OPTION (RECOMMENDED FOR BEST EXPERIENCE!)
+  // Upload your song to: /home/user/webapp/public/static/music/song.mp3
+  // Then set useLocalMusic to true below
+  localBackgroundMusic: '/static/music/song.mp3',
+  useLocalMusic: true, // ⭐ Set to true to play local audio file
+  
+  // If local file not found, will fallback to Spotify
+  fallbackToSpotify: true
 };
 
 // Global State
@@ -455,7 +472,7 @@ function toggleSpotifyPlayback() {
 }
 
 // Play track
-function playTrack(index) {
+async function playTrack(index) {
   if (!spotifyPlaylist || index >= spotifyPlaylist.length) return;
   
   const track = spotifyPlaylist[index];
@@ -476,23 +493,60 @@ function playTrack(index) {
     window.simulatedProgressInterval = null;
   }
   
-  if (track.previewUrl) {
+  let audioSrc = null;
+  let useRealAudio = false;
+  
+  // Priority 1: Local music file (if enabled)
+  if (SPOTIFY_CONFIG.useLocalMusic && SPOTIFY_CONFIG.localBackgroundMusic) {
+    try {
+      // Check if local file exists
+      const response = await fetch(SPOTIFY_CONFIG.localBackgroundMusic, { method: 'HEAD' });
+      if (response.ok) {
+        audioSrc = SPOTIFY_CONFIG.localBackgroundMusic;
+        useRealAudio = true;
+        console.log('🎵 Playing local audio file:', audioSrc);
+      }
+    } catch (error) {
+      console.warn('⚠️ Local audio file not found:', SPOTIFY_CONFIG.localBackgroundMusic);
+    }
+  }
+  
+  // Priority 2: Spotify preview URL
+  if (!useRealAudio && track.previewUrl) {
+    audioSrc = track.previewUrl;
+    useRealAudio = true;
+    console.log('🎵 Playing Spotify preview:', audioSrc);
+  }
+  
+  if (useRealAudio && audioSrc) {
     // Real audio playback
-    musicPlayer = new Audio(track.previewUrl);
+    musicPlayer = new Audio(audioSrc);
     musicPlayer.volume = 0.7;
     
     musicPlayer.addEventListener('loadedmetadata', () => {
       document.getElementById('duration').textContent = formatTime(Math.floor(musicPlayer.duration));
+      
+      // Hide visual mode indicator if real audio is playing
+      const modeIndicator = document.getElementById('playback-mode');
+      if (modeIndicator) {
+        modeIndicator.style.display = 'none';
+      }
     });
     
     musicPlayer.addEventListener('timeupdate', updateProgress);
     
     musicPlayer.addEventListener('ended', () => {
-      nextTrack();
+      if (SPOTIFY_CONFIG.useLocalMusic) {
+        // Loop local music for continuous background
+        musicPlayer.currentTime = 0;
+        musicPlayer.play();
+      } else {
+        nextTrack();
+      }
     });
     
     musicPlayer.play().catch(error => {
-      console.error('Playback error:', error);
+      console.error('❌ Playback error:', error);
       // Fallback to simulated mode
       simulatePlayback(track);
     });
@@ -515,11 +569,16 @@ function playTrack(index) {
 function simulatePlayback(track) {
   console.log('🎵 Simulated playback mode:', track.name);
   
-  // Show visual mode indicator
+  // Show visual mode indicator with helpful message
   const modeIndicator = document.getElementById('playback-mode');
   if (modeIndicator) {
     modeIndicator.style.display = 'block';
-    modeIndicator.innerHTML = '<i class="fas fa-eye"></i> Visual Mode (No Audio Preview)';
+    modeIndicator.innerHTML = `
+      <i class="fas fa-info-circle"></i> Visual Mode Only
+      <div style="font-size: 11px; margin-top: 5px;">
+        💡 To enable audio: Upload song to <code>/static/music/song.mp3</code>
+      </div>
+    `;
   }
   
   const duration = Math.floor(track.duration / 1000); // Convert to seconds
