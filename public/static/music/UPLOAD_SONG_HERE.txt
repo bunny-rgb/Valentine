@@ -1,0 +1,23 @@
+📁 UPLOAD YOUR SONG HERE
+========================
+
+To enable audio playback, you need to:
+
+1. Download "Meri Banogi Kya" (or any romantic song)
+2. Convert to MP3 format
+3. Rename to: song.mp3
+4. Upload to this folder
+
+File path should be:
+/home/user/webapp/public/static/music/song.mp3
+
+Quick Download Options:
+- YouTube: Search "Meri Banogi Kya Rito Riba"
+- Use converter: https://ytmp3.cc
+
+After uploading, run:
+cd /home/user/webapp
+npm run build
+pm2 restart valentine-week
+
+Then test at: https://3000-inlk2mmv46jbov1syun1w-b237eb32.sandbox.novita.ai
