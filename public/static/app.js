@@ -323,6 +323,11 @@ function createSpotifyPlayer() {
   const playerHTML = `
     <div id="spotify-player" class="spotify-player-container">
       <div class="spotify-player glass-card">
+        <!-- Mode Indicator -->
+        <div class="playback-mode" id="playback-mode" style="display: none;">
+          <i class="fas fa-eye"></i> Visual Mode
+        </div>
+        
         <!-- Now Playing Info -->
         <div class="now-playing">
           <div class="album-art" id="album-art">
@@ -459,13 +464,20 @@ function playTrack(index) {
   // Update UI
   updateTrackInfo(index);
   
-  // Create audio element for preview
+  // Clean up existing player
   if (musicPlayer) {
     musicPlayer.pause();
     musicPlayer = null;
   }
   
+  // Clear any existing intervals
+  if (window.simulatedProgressInterval) {
+    clearInterval(window.simulatedProgressInterval);
+    window.simulatedProgressInterval = null;
+  }
+  
   if (track.previewUrl) {
+    // Real audio playback
     musicPlayer = new Audio(track.previewUrl);
     musicPlayer.volume = 0.7;
     
@@ -481,31 +493,76 @@ function playTrack(index) {
     
     musicPlayer.play().catch(error => {
       console.error('Playback error:', error);
-      alert('⚠️ Could not play track. Some tracks may not have preview available.');
+      // Fallback to simulated mode
+      simulatePlayback(track);
     });
-    
-    // Show proposal after first song
-    setTimeout(() => {
-      const proposalSection = document.getElementById('proposal-section');
-      if (proposalSection && !proposalSection.classList.contains('hidden')) {
-        return;
-      }
-      if (proposalSection) {
-        proposalSection.classList.remove('hidden');
-        proposalSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-    }, 25000); // Show after 25 seconds
-    
   } else {
-    alert('⚠️ This track does not have a preview available. Trying next track...');
-    nextTrack();
+    // Simulated playback mode (visual only)
+    simulatePlayback(track);
   }
+  
+  // Show proposal after 25 seconds
+  setTimeout(() => {
+    const proposalSection = document.getElementById('proposal-section');
+    if (proposalSection && proposalSection.classList.contains('hidden')) {
+      proposalSection.classList.remove('hidden');
+      proposalSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }, 25000);
+}
+
+// Simulate playback for songs without preview URLs
+function simulatePlayback(track) {
+  console.log('🎵 Simulated playback mode:', track.name);
+  
+  // Show visual mode indicator
+  const modeIndicator = document.getElementById('playback-mode');
+  if (modeIndicator) {
+    modeIndicator.style.display = 'block';
+    modeIndicator.innerHTML = '<i class="fas fa-eye"></i> Visual Mode (No Audio Preview)';
+  }
+  
+  const duration = Math.floor(track.duration / 1000); // Convert to seconds
+  document.getElementById('duration').textContent = formatTime(duration);
+  document.getElementById('current-time').textContent = '0:00';
+  
+  let currentTime = 0;
+  const progressFill = document.getElementById('progress-fill');
+  
+  // Update progress every second
+  window.simulatedProgressInterval = setInterval(() => {
+    if (!isPlaying) {
+      clearInterval(window.simulatedProgressInterval);
+      return;
+    }
+    
+    currentTime++;
+    
+    // Update time display
+    document.getElementById('current-time').textContent = formatTime(currentTime);
+    
+    // Update progress bar
+    const percentage = (currentTime / duration) * 100;
+    progressFill.style.width = percentage + '%';
+    
+    // End of track
+    if (currentTime >= duration) {
+      clearInterval(window.simulatedProgressInterval);
+      nextTrack();
+    }
+  }, 1000);
 }
 
 // Pause track
 function pauseTrack() {
   if (musicPlayer) {
     musicPlayer.pause();
+  }
+  
+  // Stop simulated playback
+  if (window.simulatedProgressInterval) {
+    clearInterval(window.simulatedProgressInterval);
+    window.simulatedProgressInterval = null;
   }
 }
 

@@ -677,3 +677,22 @@ h1, h2, h3 {
 .control-btn.play-btn.playing {
     animation: pulse-glow 2s ease-in-out infinite;
 }
+
+/* Playback Mode Indicator */
+.playback-mode {
+    text-align: center;
+    font-size: 11px;
+    color: #FF8FAB;
+    padding: 4px 8px;
+    background: rgba(255, 143, 171, 0.1);
+    border-radius: 12px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.playback-mode i {
+    font-size: 10px;
+}
