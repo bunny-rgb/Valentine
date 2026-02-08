@@ -911,6 +911,35 @@ footer .fa-heart {
     }
 }
 
+/* Banner Tied to Truck Animation - Moves with truck from right to left */
+@keyframes bannerFloatTied {
+    0% {
+        left: calc(100% + 200px);
+        transform: translateY(-50%) rotate(-3deg);
+    }
+    50% {
+        left: calc(50% - 100px);
+        transform: translateY(-50%) rotate(2deg);
+    }
+    100% {
+        left: -250px;
+        transform: translateY(-50%) rotate(-3deg);
+    }
+}
+
+/* Thread Animation - Moves with banner and truck */
+@keyframes threadMove {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
 /* Teddy Floating Animation */
 @keyframes floatTeddy {
     0%, 100% {

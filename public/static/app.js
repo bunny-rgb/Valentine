@@ -90,7 +90,7 @@ const MUSIC_CONFIG = {
       name: 'Mohabbat Ho Na Jaye',
       artist: 'Sonu Nigam',
       album: 'Kasoor',
-      albumArt: 'https://placehold.co/300x300/FF69B4/FFFFFF?text=Mohabbat+Ho+Na+Jaye',
+      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23FF69B4"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3EM%3C/text%3E%3C/svg%3E',
       previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/mohabbat-ho-na-jaye.mp3',
       duration: 216000 // ~3:36
     },
@@ -98,7 +98,7 @@ const MUSIC_CONFIG = {
       name: 'Tauba Tumhare Ishare',
       artist: 'Kumar Sanu, Alka Yagnik',
       album: 'Chalte Chalte',
-      albumArt: 'https://placehold.co/300x300/DC143C/FFFFFF?text=Tauba+Tumhare+Ishare',
+      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23DC143C"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3ET%3C/text%3E%3C/svg%3E',
       previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/tauba-tumhare-ishare.mp3',
       duration: 207000 // ~3:27
     },
@@ -106,7 +106,7 @@ const MUSIC_CONFIG = {
       name: 'Chori Chori Sapnon Mein',
       artist: 'Alka Yagnik, Udit Narayan',
       album: 'Chal Mere Bhai',
-      albumArt: 'https://placehold.co/300x300/FF1493/FFFFFF?text=Chori+Chori',
+      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23FF1493"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3EC%3C/text%3E%3C/svg%3E',
       previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/chori-chori-sapnon-mein.mp3',
       duration: 373000 // ~6:13
     },
@@ -114,7 +114,7 @@ const MUSIC_CONFIG = {
       name: 'Dil Kaa Jo Haal Hai',
       artist: 'Kumar Sanu',
       album: 'Dil Kaa Jo Haal Hai',
-      albumArt: 'https://placehold.co/300x300/C71585/FFFFFF?text=Dil+Kaa+Haal',
+      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23C71585"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3ED%3C/text%3E%3C/svg%3E',
       previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/dil-kaa-jo-haal-hai.mp3',
       duration: 387000 // ~6:27
     },
@@ -122,7 +122,7 @@ const MUSIC_CONFIG = {
       name: 'Jo Haal Dil Ka',
       artist: 'Kumar Sanu, Alka Yagnik',
       album: 'Sarfarosh',
-      albumArt: 'https://placehold.co/300x300/FF6EB4/FFFFFF?text=Jo+Haal+Dil+Ka',
+      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23FF6EB4"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3EJ%3C/text%3E%3C/svg%3E',
       previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/jo-haal-dil-ka.mp3',
       duration: 400000 // ~6:40
     },
@@ -130,7 +130,7 @@ const MUSIC_CONFIG = {
       name: 'Pyar Ko Ho Jane Do',
       artist: 'Kumar Sanu',
       album: 'Dil Kaa Kya Kasoor',
-      albumArt: 'https://placehold.co/300x300/FF4500/FFFFFF?text=Pyar+Ko+Ho+Jane+Do',
+      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23FF4500"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3EP%3C/text%3E%3C/svg%3E',
       previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/pyar-ko-ho-jane-do.mp3',
       duration: 393000 // ~6:33
     },
@@ -138,7 +138,7 @@ const MUSIC_CONFIG = {
       name: 'Saagar Jaisi Aankhonwali',
       artist: 'S.P. Balasubrahmanyam',
       album: 'Saagar',
-      albumArt: 'https://placehold.co/300x300/FF69B4/FFFFFF?text=Saagar+Jaisi',
+      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%2300CED1"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3ES%3C/text%3E%3C/svg%3E',
       previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/saagar-jaisi-aankhonwali.mp3',
       duration: 367000 // ~6:07
     },
@@ -146,7 +146,7 @@ const MUSIC_CONFIG = {
       name: 'Suno Na Suno Na',
       artist: 'Anuradha Paudwal',
       album: 'Chalte Chalte',
-      albumArt: 'https://placehold.co/300x300/DA70D6/FFFFFF?text=Suno+Na',
+      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23DA70D6"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3ES%3C/text%3E%3C/svg%3E',
       previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/suno-na-suno-na.mp3',
       duration: 438000 // ~7:18
     },
@@ -154,7 +154,7 @@ const MUSIC_CONFIG = {
       name: 'Hum Tumko Nigahon Mein',
       artist: 'Udit Narayan, Alka Yagnik',
       album: 'Garv',
-      albumArt: 'https://placehold.co/300x300/FF1493/FFFFFF?text=Hum+Tumko+Nigahon',
+      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23FF69B4"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3EH%3C/text%3E%3C/svg%3E',
       previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/hum-tumko-nigahon-mein.mp3',
       duration: 452000 // ~7:32
     },
@@ -162,7 +162,7 @@ const MUSIC_CONFIG = {
       name: 'Chand Se Parda',
       artist: 'Mohammad Rafi',
       album: 'Aaya Sawan Jhoom Ke',
-      albumArt: 'https://placehold.co/300x300/DC143C/FFFFFF?text=Chand+Se+Parda',
+      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23DC143C"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3EC%3C/text%3E%3C/svg%3E',
       previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/chand-se-parda.mp3',
       duration: 479000 // ~7:59
     },
@@ -170,7 +170,7 @@ const MUSIC_CONFIG = {
       name: 'Humko Sirf Tumse',
       artist: 'Udit Narayan, Alka Yagnik',
       album: 'Barsaat',
-      albumArt: 'https://placehold.co/300x300/FF69B4/FFFFFF?text=Humko+Sirf+Tumse',
+      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23FF6EB4"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3EH%3C/text%3E%3C/svg%3E',
       previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/humko-sirf-tumse.mp3',
       duration: 518000 // ~8:38
     },
@@ -178,7 +178,7 @@ const MUSIC_CONFIG = {
       name: 'Mere Mehboob Mere Sanam',
       artist: 'Kumar Sanu, Alka Yagnik',
       album: 'Duplicate',
-      albumArt: 'https://placehold.co/300x300/C71585/FFFFFF?text=Mere+Mehboob',
+      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23C71585"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3EM%3C/text%3E%3C/svg%3E',
       previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/mere-mehboob-mere-sanam.mp3',
       duration: 559000 // ~9:19
     }
@@ -1283,30 +1283,47 @@ function loadChocolateDay() {
             </p>
           </div>
           
-          <!-- Delivery Truck Animation -->
-          <div style="margin-top: 2rem; position: relative; height: 120px; overflow: visible;">
-            <!-- Floating Banner Behind Truck -->
+          <!-- Delivery Truck Animation with Banner -->
+          <div style="margin-top: 2rem; position: relative; height: 150px; overflow: visible;">
+            <!-- Thread connecting banner to truck -->
+            <svg id="thread-line" style="
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              pointer-events: none;
+              z-index: 1;
+            " xmlns="http://www.w3.org/2000/svg">
+              <line id="banner-thread" x1="0" y1="60" x2="100" y2="60" 
+                stroke="#FF69B4" 
+                stroke-width="2" 
+                stroke-dasharray="5,5"
+                style="animation: threadMove 4s ease-in-out infinite;"/>
+            </svg>
+            
+            <!-- Banner tied to truck -->
             <div id="chocolate-banner" style="
               position: absolute;
-              right: calc(100% + 30px);
+              left: 0;
               top: 50%;
               transform: translateY(-50%);
               background: linear-gradient(135deg, #FFE5EC 0%, #FFB3C6 100%);
               border: 3px solid #FF69B4;
-              border-radius: 15px;
-              padding: 0.75rem 1rem;
-              font-size: clamp(0.8rem, 2.5vw, 1.2rem);
+              border-radius: 12px;
+              padding: 0.6rem 0.9rem;
+              font-size: clamp(0.75rem, 2vw, 1rem);
               font-weight: bold;
               color: #C71585;
               box-shadow: 0 5px 20px rgba(255, 105, 180, 0.3);
-              animation: bannerFloat 3s ease-in-out infinite;
-              white-space: normal;
-              max-width: 150px;
+              animation: bannerFloatTied 4s ease-in-out infinite;
+              white-space: nowrap;
               text-align: center;
-              line-height: 1.3;
-              z-index: 1;
+              line-height: 1.2;
+              z-index: 2;
             ">Order on its way Honey!!!</div>
             
+            <!-- Delivery Truck -->
             <div id="delivery-truck" style="
               position: absolute;
               right: -150px;
@@ -1314,7 +1331,7 @@ function loadChocolateDay() {
               transform: translateY(-50%);
               font-size: 3.5rem;
               animation: deliveryMoveRTL 4s ease-in-out infinite;
-              z-index: 2;
+              z-index: 3;
             ">🚚</div>
           </div>
           
@@ -1377,30 +1394,47 @@ function loadTeddyDay() {
             </p>
           </div>
           
-          <!-- Delivery Boy Animation -->
-          <div style="margin-top: 2rem; position: relative; height: 120px; overflow: visible;">
-            <!-- Floating Banner Behind Cyclist -->
+          <!-- Delivery Boy Animation with Banner -->
+          <div style="margin-top: 2rem; position: relative; height: 150px; overflow: visible;">
+            <!-- Thread connecting banner to cyclist -->
+            <svg id="thread-line-teddy" style="
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              pointer-events: none;
+              z-index: 1;
+            " xmlns="http://www.w3.org/2000/svg">
+              <line id="teddy-thread" x1="0" y1="60" x2="100" y2="60" 
+                stroke="#F4A460" 
+                stroke-width="2" 
+                stroke-dasharray="5,5"
+                style="animation: threadMove 4s ease-in-out infinite;"/>
+            </svg>
+            
+            <!-- Banner tied to cyclist -->
             <div id="teddy-banner" style="
               position: absolute;
-              right: calc(100% + 30px);
+              left: 0;
               top: 50%;
               transform: translateY(-50%);
               background: linear-gradient(135deg, #FFF5E1 0%, #FFE4B5 100%);
               border: 3px solid #F4A460;
-              border-radius: 15px;
-              padding: 0.75rem 1rem;
-              font-size: clamp(0.8rem, 2.5vw, 1.2rem);
+              border-radius: 12px;
+              padding: 0.6rem 0.9rem;
+              font-size: clamp(0.75rem, 2vw, 1rem);
               font-weight: bold;
               color: #8B4513;
               box-shadow: 0 5px 20px rgba(244, 164, 96, 0.3);
-              animation: bannerFloat 3s ease-in-out infinite;
-              white-space: normal;
-              max-width: 150px;
+              animation: bannerFloatTied 4s ease-in-out infinite;
+              white-space: nowrap;
               text-align: center;
-              line-height: 1.3;
-              z-index: 1;
+              line-height: 1.2;
+              z-index: 2;
             ">Order on its way Honey!!!</div>
             
+            <!-- Delivery Cyclist -->
             <div id="delivery-boy" style="
               position: absolute;
               right: -150px;
@@ -1408,7 +1442,7 @@ function loadTeddyDay() {
               transform: translateY(-50%);
               font-size: 3.5rem;
               animation: deliveryMoveRTL 4s ease-in-out infinite;
-              z-index: 2;
+              z-index: 3;
             ">🚴</div>
           </div>
           
