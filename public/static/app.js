@@ -568,8 +568,18 @@ async function playTrack(index) {
     
     console.log('🎵 Now playing:', track.name, 'by', track.artist);
     
+    // Set duration immediately from track config (before metadata loads)
+    const expectedDuration = Math.floor(track.duration / 1000);
+    document.getElementById('duration').textContent = formatTime(expectedDuration);
+    document.getElementById('current-time').textContent = '0:00';
+    document.getElementById('progress-fill').style.width = '0%';
+    
     musicPlayer.addEventListener('loadedmetadata', () => {
-      document.getElementById('duration').textContent = formatTime(Math.floor(musicPlayer.duration));
+      // Update with actual duration when metadata loads
+      const actualDuration = Math.floor(musicPlayer.duration);
+      if (!isNaN(actualDuration) && isFinite(actualDuration)) {
+        document.getElementById('duration').textContent = formatTime(actualDuration);
+      }
       
       // Hide visual mode indicator if real audio is playing
       const modeIndicator = document.getElementById('playback-mode');
@@ -703,17 +713,30 @@ function updateProgress() {
   const current = musicPlayer.currentTime;
   const duration = musicPlayer.duration;
   
-  if (duration) {
+  // Check if duration is valid
+  if (duration && !isNaN(duration) && isFinite(duration) && duration > 0) {
     const percentage = (current / duration) * 100;
     document.getElementById('progress-fill').style.width = percentage + '%';
     document.getElementById('current-time').textContent = formatTime(Math.floor(current));
+    
+    // Update duration display if it changed
+    const durationText = formatTime(Math.floor(duration));
+    const currentDurationText = document.getElementById('duration').textContent;
+    if (currentDurationText === '0:00' || currentDurationText === 'NaN:NaN' || currentDurationText.includes('Infinity')) {
+      document.getElementById('duration').textContent = durationText;
+    }
   }
 }
 
 // Format time (seconds to MM:SS)
 function formatTime(seconds) {
+  // Handle invalid inputs
+  if (isNaN(seconds) || !isFinite(seconds) || seconds < 0) {
+    return '0:00';
+  }
+  
   const mins = Math.floor(seconds / 60);
-  const secs = seconds % 60;
+  const secs = Math.floor(seconds % 60);
   return `${mins}:${secs.toString().padStart(2, '0')}`;
 }
 
