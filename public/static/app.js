@@ -551,6 +551,9 @@ async function playTrack(index) {
   // Clean up existing player
   if (musicPlayer) {
     musicPlayer.pause();
+    musicPlayer.removeEventListener('timeupdate', updateProgress);
+    musicPlayer.removeEventListener('ended', handleTrackEnd);
+    musicPlayer.removeEventListener('error', handlePlaybackError);
     musicPlayer = null;
   }
   
@@ -563,8 +566,10 @@ async function playTrack(index) {
   // Check if track has audio URL
   if (track.previewUrl) {
     // Real audio playback
-    musicPlayer = new Audio(track.previewUrl);
+    musicPlayer = new Audio();
     musicPlayer.volume = 0.7;
+    musicPlayer.crossOrigin = 'anonymous'; // Enable CORS for music files
+    musicPlayer.preload = 'auto'; // Preload audio for smooth playback
     
     console.log('🎵 Now playing:', track.name, 'by', track.artist);
     
@@ -574,6 +579,7 @@ async function playTrack(index) {
     document.getElementById('current-time').textContent = '0:00';
     document.getElementById('progress-fill').style.width = '0%';
     
+    // Handle metadata loaded
     musicPlayer.addEventListener('loadedmetadata', () => {
       // Update with actual duration when metadata loads
       const actualDuration = Math.floor(musicPlayer.duration);
@@ -588,19 +594,48 @@ async function playTrack(index) {
       }
     });
     
+    // Handle time updates
     musicPlayer.addEventListener('timeupdate', updateProgress);
     
-    musicPlayer.addEventListener('ended', () => {
-      // Auto-advance to next track
+    // Handle track end
+    function handleTrackEnd() {
+      console.log('✅ Track ended, moving to next');
       nextTrack();
-    });
+    }
+    musicPlayer.addEventListener('ended', handleTrackEnd);
     
-    musicPlayer.play().catch(error => {
-      console.error('❌ Playback error:', error);
-      alert('Could not play audio. Please check the file: ' + track.previewUrl);
-      // Try next track
-      nextTrack();
-    });
+    // Handle playback errors
+    function handlePlaybackError(error) {
+      console.error('❌ Playback error for:', track.name, error);
+      console.warn('⚠️ Attempting next track...');
+      
+      // Immediately try next track without delay
+      if (isPlaying) {
+        nextTrack();
+      }
+    }
+    musicPlayer.addEventListener('error', handlePlaybackError);
+    
+    // Set source and play
+    musicPlayer.src = track.previewUrl;
+    
+    // Attempt to play with error handling
+    const playPromise = musicPlayer.play();
+    
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => {
+          console.log('✅ Playback started successfully:', track.name);
+        })
+        .catch(error => {
+          console.error('❌ Play failed:', error.message);
+          // Only skip if still playing (user didn't pause)
+          if (isPlaying) {
+            console.warn('⚠️ Auto-skipping to next track');
+            handlePlaybackError(error);
+          }
+        });
+    }
   } else {
     // No audio URL - show error
     console.error('❌ No audio URL for track:', track.name);
