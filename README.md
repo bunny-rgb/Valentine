@@ -4,7 +4,7 @@ A magical, emotion-first web experience that unfolds across 7 days of Valentine 
 
 ## 🌟 Project Overview
 
-**Valentine Week** is an interactive romantic web application that creates a cinematic journey through 7 days of Valentine's celebrations. Each day unlocks automatically at midnight, revealing new surprises, emotions, and interactive experiences.
+**Valentine Week** is an interactive romantic web application that I creates for my love of life as a cinematic journey through 7 days of Valentine's celebrations. Each day unlocks automatically at midnight, revealing new surprises, emotions, and interactive experiences.
 
 ### ✨ Main Features
 
