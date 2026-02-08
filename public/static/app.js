@@ -1148,62 +1148,75 @@ function createFloatingHeart(element) {
   setTimeout(() => heart.remove(), 2000);
 }
 
-// ==================== DAY 3: CHOCOLATE DAY ====================
+// ==================== DAY 2: CHOCOLATE DAY ====================
 function loadChocolateDay() {
   const content = document.getElementById('main-content');
   
-  const chocolateMessages = [
-    "You're sweeter than any chocolate 🍫",
-    "Life tastes better with you 💕",
-    "Every moment with you is delicious 😋",
-    "You melt my heart like chocolate ❤️",
-    "Sweet memories with you 🌟",
-    "You're my favorite treat 🎁",
-    "Life is sweeter with you in it 🍬"
-  ];
-  
   content.innerHTML = `
-    <div class="container mx-auto max-w-5xl">
-      <div class="text-center mb-12 animate-fade-in">
-        <h2 class="text-5xl font-bold mb-4" style="color: #8B4513;">🍫 Chocolate Day</h2>
-        <p class="text-xl text-gray-600 mb-8">Pick a chocolate to unwrap a sweet message</p>
-      </div>
+    <div class="chocolate-day-container" style="position: relative; min-height: 70vh; overflow: hidden; padding-bottom: 150px;">
+      <!-- Floating Chocolates Background -->
+      <div id="floating-chocolates" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;"></div>
       
-      <!-- Chocolate Box -->
-      <div class="glass-card p-12">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 justify-items-center" id="chocolate-box">
-          ${chocolateMessages.map((msg, i) => `
-            <div class="chocolate-piece glow-on-hover" 
-                 data-message="${msg}" 
-                 onclick="openChocolate(this, ${i})">
-              <span class="text-white text-4xl">🍫</span>
-            </div>
-          `).join('')}
-        </div>
-        
-        <!-- Message Display -->
-        <div id="chocolate-message" class="mt-12 text-center hidden animate-fade-in">
-          <p class="romantic-message text-2xl" style="color: #8B4513;"></p>
+      <!-- Center Message -->
+      <div style="position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 60vh; padding: 2rem;">
+        <div class="glass-card" style="padding: 3rem; text-align: center; max-width: 600px; margin: 2rem auto; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);">
+          <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: #8B4513;">🍫 Chocolate Day 🍫</h2>
+          
+          <div class="animate-pulse" style="margin: 2rem 0;">
+            <p class="text-2xl md:text-3xl font-bold" style="color: #D2691E; margin-bottom: 1.5rem;">
+              Order on its way!!!!
+            </p>
+            <p class="text-xl md:text-2xl" style="color: #FF69B4; font-weight: 600;">
+              Wait Darling 💕
+            </p>
+          </div>
+          
+          <!-- Delivery Truck Animation -->
+          <div style="margin-top: 2rem; position: relative; height: 80px; overflow: hidden;">
+            <div id="delivery-truck" style="
+              position: absolute;
+              left: -100px;
+              top: 50%;
+              transform: translateY(-50%);
+              font-size: 3rem;
+              animation: deliveryMove 3s ease-in-out infinite;
+            ">🚚</div>
+          </div>
+          
+          <p class="text-lg text-gray-600 mt-6" style="font-style: italic;">
+            Sweet surprises are coming your way... 🍬
+          </p>
         </div>
       </div>
     </div>
   `;
+  
+  // Create floating chocolates and candies
+  createFloatingChocolates();
 }
 
-function openChocolate(chocolate, index) {
-  if (chocolate.classList.contains('opened')) return;
+function createFloatingChocolates() {
+  const container = document.getElementById('floating-chocolates');
+  const chocolateEmojis = ['🍫', '🍬', '🍭', '🍩', '🧁', '🍰', '🎂', '🍪', '🍮', '🍯', '🍫', '🍬', '🍭'];
   
-  const message = chocolate.dataset.message;
-  const messageBox = document.getElementById('chocolate-message');
-  const messageText = messageBox.querySelector('p');
-  
-  chocolate.classList.add('opened');
-  chocolate.innerHTML = '<span class="text-white text-2xl">💝</span>';
-  
-  messageBox.classList.remove('hidden');
-  messageText.textContent = message;
-  
-  createFloatingHeart(chocolate);
+  for (let i = 0; i < 20; i++) {
+    const chocolate = document.createElement('div');
+    const emoji = chocolateEmojis[Math.floor(Math.random() * chocolateEmojis.length)];
+    
+    chocolate.innerHTML = emoji;
+    chocolate.style.cssText = `
+      position: absolute;
+      font-size: ${Math.random() * 30 + 30}px;
+      left: ${Math.random() * 100}%;
+      top: ${Math.random() * 100}%;
+      animation: floatChocolate ${Math.random() * 10 + 8}s ease-in-out infinite;
+      animation-delay: ${Math.random() * 5}s;
+      opacity: 0.8;
+      pointer-events: none;
+    `;
+    
+    container.appendChild(chocolate);
+  }
 }
 
 // ==================== DAY 3: TEDDY DAY ====================
@@ -1211,60 +1224,232 @@ function loadTeddyDay() {
   const content = document.getElementById('main-content');
   
   content.innerHTML = `
-    <div class="container mx-auto max-w-4xl">
-      <div class="text-center mb-12 animate-fade-in">
-        <h2 class="text-5xl font-bold mb-4" style="color: #F4A460;">🧸 Teddy Day</h2>
-        <p class="text-xl text-gray-600 mb-8">A cuddly reminder of my love</p>
-      </div>
+    <div class="teddy-day-container" style="position: relative; min-height: 70vh; overflow: hidden; padding-bottom: 150px;">
+      <!-- Floating Teddies Background -->
+      <div id="floating-teddies" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;"></div>
       
-      <div class="glass-card p-12 text-center">
-        <div class="teddy-bear glow-on-hover" onclick="giveTeddyHug()">
-          🧸
-        </div>
-        
-        <button onclick="sendHug()" class="mt-8 px-8 py-4 bg-gradient-to-r from-yellow-200 to-orange-200 text-orange-800 rounded-full text-xl font-bold hover:scale-110 transition-all">
-          Hug the Teddy 🧸
-        </button>
-        
-        <div id="hug-message" class="mt-8 hidden animate-fade-in">
-          <p class="romantic-message text-2xl" style="color: #F4A460;">
-            This teddy represents all the hugs I can't give you in person 💕
+      <!-- Center Message -->
+      <div style="position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 60vh; padding: 2rem;">
+        <div class="glass-card" style="padding: 3rem; text-align: center; max-width: 600px; margin: 2rem auto; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);">
+          <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: #F4A460;">🧸 Teddy Day 🧸</h2>
+          
+          <div class="animate-pulse" style="margin: 2rem 0;">
+            <p class="text-2xl md:text-3xl font-bold" style="color: #8B4513; margin-bottom: 1.5rem;">
+              Order on its way!!!!
+            </p>
+            <p class="text-xl md:text-2xl" style="color: #FF69B4; font-weight: 600;">
+              Wait Darling 💕
+            </p>
+          </div>
+          
+          <!-- Delivery Boy Animation -->
+          <div style="margin-top: 2rem; position: relative; height: 100px; overflow: hidden;">
+            <div id="delivery-boy" style="
+              position: absolute;
+              left: -100px;
+              top: 50%;
+              transform: translateY(-50%);
+              font-size: 3.5rem;
+              animation: deliveryMove 3s ease-in-out infinite;
+            ">🚴</div>
+          </div>
+          
+          <p class="text-lg text-gray-600 mt-6" style="font-style: italic;">
+            A cuddly surprise is heading your way... 🧸💕
           </p>
         </div>
       </div>
     </div>
   `;
+  
+  // Create floating teddies
+  createFloatingTeddies();
+}
+
+function createFloatingTeddies() {
+  const container = document.getElementById('floating-teddies');
+  const teddyEmojis = ['🧸', '🐻', '🐼', '🧸', '🐻', '🐨', '🧸', '🐻', '🧸'];
+  
+  for (let i = 0; i < 15; i++) {
+    const teddy = document.createElement('div');
+    const emoji = teddyEmojis[Math.floor(Math.random() * teddyEmojis.length)];
+    
+    teddy.innerHTML = emoji;
+    teddy.style.cssText = `
+      position: absolute;
+      font-size: ${Math.random() * 40 + 40}px;
+      left: ${Math.random() * 100}%;
+      top: ${Math.random() * 100}%;
+      animation: floatTeddy ${Math.random() * 12 + 10}s ease-in-out infinite;
+      animation-delay: ${Math.random() * 5}s;
+      opacity: 0.7;
+      pointer-events: none;
+      transform: rotate(${Math.random() * 40 - 20}deg);
+    `;
+    
+    container.appendChild(teddy);
+  }
 }
 
 // ==================== DAY 4: PROMISE DAY ====================
+function loadPromiseDay() {
+  const content = document.getElementById('main-content');
+  currentPage = 0;
+  
+  content.innerHTML = `
+    <div class="promise-day-container" style="position: relative; min-height: 70vh; padding-bottom: 150px;">
+      <!-- Romantic Background -->
+      <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(255, 182, 193, 0.1) 0%, rgba(255, 218, 224, 0.1) 100%); pointer-events: none;"></div>
+      
+      <div class="container mx-auto max-w-4xl" style="position: relative; z-index: 2;">
+        <div class="text-center mb-12 animate-fade-in">
+          <h2 class="text-5xl font-bold mb-4" style="color: #DDA0DD;">📖 Promise Day</h2>
+          <p class="text-xl text-gray-600 mb-4">Flip through my promises to you</p>
+          <p class="text-lg" style="color: #FF69B4; font-style: italic;">"Kuch vade aese banaye, jo tod na paaye..." 💕</p>
+        </div>
+        
+        <div class="book-page" style="background: linear-gradient(135deg, #fff5f7 0%, #ffe6ea 100%); border: 3px solid #FFB6C1; box-shadow: 0 10px 40px rgba(255, 105, 180, 0.3);">
+          <div id="promise-content" class="text-center">
+            <!-- Promise content will be inserted here -->
+          </div>
+          
+          <div class="flex justify-between mt-8">
+            <button onclick="prevPage()" id="prev-btn" class="page-flip-btn bg-gradient-to-r from-purple-400 to-pink-400 text-white px-6 py-3 rounded-full font-bold hover:scale-105 transition-all">
+              <i class="fas fa-arrow-left mr-2"></i> Previous
+            </button>
+            <button onclick="nextPage()" id="next-btn" class="page-flip-btn bg-gradient-to-r from-pink-400 to-purple-400 text-white px-6 py-3 rounded-full font-bold hover:scale-105 transition-all">
+              Next <i class="fas fa-arrow-right ml-2"></i>
+            </button>
+          </div>
+        </div>
+        
+        <!-- Cute romantic quote floating -->
+        <div class="mt-8 text-center animate-pulse">
+          <p class="text-lg" style="color: #C71585; font-style: italic;">
+            ✨ "Promise karna easy hai, nibhana mushkil... lekin tumhare saath sab aasaan hai" ✨
+          </p>
+        </div>
+      </div>
+    </div>
+  `;
+  
+  showPromisePage();
+}
+
 // ==================== DAY 5: HUG DAY ====================
 function loadHugDay() {
   const content = document.getElementById('main-content');
   
   content.innerHTML = `
-    <div class="container mx-auto max-w-4xl">
-      <div class="text-center mb-12 animate-fade-in">
-        <h2 class="text-5xl font-bold mb-4" style="color: #FFB6C1;">🤗 Hug Day</h2>
-        <p class="text-xl text-gray-600 mb-8">Sending you warm hugs and love</p>
-      </div>
+    <div class="hug-day-container" style="position: relative; min-height: 70vh; overflow: hidden; padding-bottom: 150px;">
+      <!-- Floating Flowers and Quotes -->
+      <div id="floating-elements" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;"></div>
       
-      <div class="glass-card p-12 text-center">
-        <div class="teddy-bear glow-on-hover" onclick="giveTeddyHug()">
-          🤗
-        </div>
-        
-        <button onclick="sendHug()" class="mt-8 px-8 py-4 bg-gradient-to-r from-pink-200 to-pink-300 text-pink-800 rounded-full text-xl font-bold hover:scale-110 transition-all">
-          Send You a Big Hug 💕
-        </button>
-        
-        <div id="hug-message" class="mt-8 hidden animate-fade-in">
-          <p class="romantic-message text-2xl" style="color: #FFB6C1;">
-            Wrapped in my arms, even from afar 🤗💕
-          </p>
+      <!-- Center Message -->
+      <div style="position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 60vh; padding: 2rem;">
+        <div class="glass-card" style="padding: 3rem; text-align: center; max-width: 700px; margin: 2rem auto; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border: 2px solid rgba(255, 182, 193, 0.5);">
+          <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: #FFB6C1;">🤗 Hug Day 🤗</h2>
+          
+          <div class="animate-pulse" style="margin: 2rem 0;">
+            <p class="text-2xl md:text-3xl font-bold" style="color: #FF1493; margin-bottom: 1.5rem;">
+              It's due until we meet again...
+            </p>
+          </div>
+          
+          <!-- Romantic Bollywood Lines -->
+          <div class="mt-6 space-y-4">
+            <p class="text-lg md:text-xl" style="color: #C71585; font-style: italic; line-height: 1.8;">
+              💕 "Tum paas aaye, yun muskuraye...<br>Tumne na jaane kya sapne dikhaaye" 💕
+            </p>
+            <p class="text-lg md:text-xl mt-4" style="color: #FF69B4; font-style: italic; line-height: 1.8;">
+              🌹 "Pal pal dil ke paas, tum rehti ho...<br>Har dhadkan pe tera naam hai" 🌹
+            </p>
+            <p class="text-lg md:text-xl mt-4" style="color: #DB7093; font-style: italic; line-height: 1.8;">
+              ✨ "Haan main tumhara hoon, tum meri ho...<br>Yeh rishta hai pyaar ka" ✨
+            </p>
+          </div>
+          
+          <div class="mt-8 p-6 rounded-lg" style="background: linear-gradient(135deg, rgba(255, 182, 193, 0.3) 0%, rgba(255, 228, 225, 0.3) 100%);">
+            <p class="text-xl font-semibold" style="color: #8B4789;">
+              🤗 Waiting for that warm hug... 🤗
+            </p>
+            <p class="text-md mt-2" style="color: #666;">
+              Until we meet, you're always in my thoughts 💭💕
+            </p>
+          </div>
         </div>
       </div>
     </div>
   `;
+  
+  // Create floating flowers and romantic quotes
+  createFloatingFlowersAndQuotes();
+}
+
+function createFloatingFlowersAndQuotes() {
+  const container = document.getElementById('floating-elements');
+  const flowers = ['🌹', '🌸', '🌺', '🌻', '🌷', '💐', '🏵️', '🌼'];
+  const hearts = ['💕', '💖', '💗', '💝', '💞', '💓'];
+  const quotes = [
+    '"Pyaar hai"',
+    '"Dil se"',
+    '"Hamesha"',
+    '"Tum hi ho"',
+    '"Meri jaan"',
+    '"Forever"'
+  ];
+  
+  // Create floating flowers
+  for (let i = 0; i < 20; i++) {
+    const element = document.createElement('div');
+    const isFlower = Math.random() > 0.3;
+    
+    if (isFlower) {
+      const emoji = flowers[Math.floor(Math.random() * flowers.length)];
+      element.innerHTML = emoji;
+      element.style.fontSize = `${Math.random() * 25 + 25}px`;
+    } else {
+      const emoji = hearts[Math.floor(Math.random() * hearts.length)];
+      element.innerHTML = emoji;
+      element.style.fontSize = `${Math.random() * 20 + 20}px`;
+    }
+    
+    element.style.cssText += `
+      position: absolute;
+      left: ${Math.random() * 100}%;
+      top: ${Math.random() * 100}%;
+      animation: floatRandom ${Math.random() * 15 + 10}s ease-in-out infinite;
+      animation-delay: ${Math.random() * 5}s;
+      opacity: 0.6;
+      pointer-events: none;
+    `;
+    
+    container.appendChild(element);
+  }
+  
+  // Create floating quotes
+  for (let i = 0; i < 8; i++) {
+    const quote = document.createElement('div');
+    const text = quotes[Math.floor(Math.random() * quotes.length)];
+    
+    quote.innerHTML = text;
+    quote.style.cssText = `
+      position: absolute;
+      left: ${Math.random() * 90 + 5}%;
+      top: ${Math.random() * 90 + 5}%;
+      font-size: ${Math.random() * 8 + 14}px;
+      color: rgba(255, 105, 180, 0.5);
+      font-style: italic;
+      font-weight: 600;
+      animation: floatQuote ${Math.random() * 20 + 15}s linear infinite;
+      animation-delay: ${Math.random() * 5}s;
+      opacity: 0.7;
+      pointer-events: none;
+      white-space: nowrap;
+    `;
+    
+    container.appendChild(quote);
+  }
 }
 
 function giveTeddyHug() {
@@ -1301,34 +1486,6 @@ const promises = [
 ];
 
 function loadPromiseDay() {
-  const content = document.getElementById('main-content');
-  
-  content.innerHTML = `
-    <div class="container mx-auto max-w-4xl">
-      <div class="text-center mb-12 animate-fade-in">
-        <h2 class="text-5xl font-bold mb-4" style="color: #DDA0DD;">📖 Promise Day</h2>
-        <p class="text-xl text-gray-600 mb-8">Flip through my promises to you</p>
-      </div>
-      
-      <div class="book-page">
-        <div id="promise-content" class="text-center">
-          <!-- Promise content will be inserted here -->
-        </div>
-        
-        <div class="flex justify-between">
-          <button onclick="prevPage()" id="prev-btn" class="page-flip-btn" style="left: 20px;">
-            <i class="fas fa-arrow-left mr-2"></i> Previous
-          </button>
-          <button onclick="nextPage()" id="next-btn" class="page-flip-btn" style="right: 20px;">
-            Next <i class="fas fa-arrow-right ml-2"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-  `;
-  
-  showPromisePage();
-}
 
 function showPromisePage() {
   const content = document.getElementById('promise-content');
@@ -1396,67 +1553,293 @@ function loadKissDay() {
   const content = document.getElementById('main-content');
   
   content.innerHTML = `
-    <div class="container mx-auto max-w-4xl">
-      <div class="text-center mb-12 animate-fade-in">
-        <h2 class="text-5xl font-bold text-pink-500 mb-4">💋 Kiss Day</h2>
-        <p class="text-xl text-gray-600 mb-8">A sweet virtual kiss, just for you</p>
-      </div>
+    <div class="kiss-day-container" style="position: relative; min-height: 70vh; padding-bottom: 150px;">
+      <!-- Romantic gradient background -->
+      <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(255, 192, 203, 0.2) 0%, rgba(255, 182, 193, 0.2) 50%, rgba(255, 218, 224, 0.2) 100%); pointer-events: none;"></div>
       
-      <div class="glass-card p-12 text-center">
-        <div id="kiss-zone" class="relative h-96 flex items-center justify-center">
-          <button onclick="stealKiss()" 
-                  class="px-12 py-6 bg-gradient-to-r from-pink-400 to-red-400 text-white rounded-full text-2xl font-bold hover:scale-110 transition-all glow-on-hover">
-            Steal a Kiss 💋
-          </button>
-        </div>
-        
-        <div id="kiss-message" class="mt-8 hidden animate-fade-in">
-          <p class="romantic-message text-2xl text-pink-500">
-            This one's reserved only for you. 😘
+      <!-- Floating hearts background -->
+      <div id="floating-kiss-hearts" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;"></div>
+      
+      <!-- Center Locked Message -->
+      <div style="position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 60vh; padding: 2rem;">
+        <div class="glass-card" style="padding: 4rem 3rem; text-align: center; max-width: 600px; margin: 2rem auto; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border: 3px solid rgba(255, 105, 180, 0.5); box-shadow: 0 15px 50px rgba(255, 105, 180, 0.3);">
+          <!-- Big Lock Icon -->
+          <div class="animate-bounce" style="font-size: 5rem; margin-bottom: 2rem;">
+            🔒
+          </div>
+          
+          <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: #FF1493;">💋 Kiss Day 💋</h2>
+          
+          <!-- Main Message -->
+          <div class="animate-pulse" style="margin: 2rem 0; padding: 2rem; background: linear-gradient(135deg, rgba(255, 105, 180, 0.1) 0%, rgba(255, 182, 193, 0.1) 100%); border-radius: 20px;">
+            <p class="text-3xl md:text-4xl font-bold" style="color: #C71585; margin-bottom: 1rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.1);">
+              ABHI TIME HAI... 😊
+            </p>
+            <p class="text-xl md:text-2xl" style="color: #FF69B4; font-weight: 600;">
+              Thoda aur intezaar karo, darling! 💕
+            </p>
+          </div>
+          
+          <!-- Romantic Quote -->
+          <div class="mt-6" style="padding: 1.5rem; background: rgba(255, 228, 225, 0.5); border-radius: 15px; border-left: 4px solid #FF1493;">
+            <p class="text-lg" style="color: #8B008B; font-style: italic; line-height: 1.6;">
+              ✨ "Kuch khaas lamhe waqt maangte hain...<br>
+              Aur yeh lamha bahut khaas hoga" ✨
+            </p>
+          </div>
+          
+          <!-- Cute Note -->
+          <div class="mt-8 flex items-center justify-center gap-2">
+            <span style="font-size: 2rem;">💝</span>
+            <p class="text-md" style="color: #666; font-weight: 500;">
+              Patience is the key to love's sweetest moments
+            </p>
+            <span style="font-size: 2rem;">💝</span>
+          </div>
+          
+          <!-- Countdown hint -->
+          <p class="text-sm mt-6" style="color: #999; font-style: italic;">
+            💫 Coming soon on the perfect day! 💫
           </p>
         </div>
       </div>
     </div>
   `;
+  
+  // Create floating hearts
+  createFloatingKissHearts();
 }
 
-function stealKiss() {
-  const zone = document.getElementById('kiss-zone');
-  const messageBox = document.getElementById('kiss-message');
+function createFloatingKissHearts() {
+  const container = document.getElementById('floating-kiss-hearts');
+  const hearts = ['💕', '💖', '💗', '💓', '💞', '💝', '❤️', '💋'];
   
-  // Create kiss marks
-  for (let i = 0; i < 15; i++) {
-    setTimeout(() => {
-      const kiss = document.createElement('div');
-      kiss.className = 'kiss-mark';
-      kiss.innerHTML = '💋';
-      kiss.style.left = (Math.random() * 80 + 10) + '%';
-      kiss.style.top = (Math.random() * 80 + 10) + '%';
-      kiss.style.animationDelay = (Math.random() * 0.5) + 's';
-      zone.appendChild(kiss);
-      
-      setTimeout(() => kiss.remove(), 3000);
-    }, i * 100);
+  for (let i = 0; i < 25; i++) {
+    const heart = document.createElement('div');
+    const emoji = hearts[Math.floor(Math.random() * hearts.length)];
+    
+    heart.innerHTML = emoji;
+    heart.style.cssText = `
+      position: absolute;
+      font-size: ${Math.random() * 25 + 20}px;
+      left: ${Math.random() * 100}%;
+      top: ${Math.random() * 100}%;
+      animation: floatHeart ${Math.random() * 12 + 8}s ease-in-out infinite;
+      animation-delay: ${Math.random() * 5}s;
+      opacity: 0.6;
+      pointer-events: none;
+    `;
+    
+    container.appendChild(heart);
   }
-  
-  // Play kiss sound effect (if available)
-  // new Audio('/static/kiss.mp3').play();
-  
-  messageBox.classList.remove('hidden');
-  triggerHeartExplosion();
 }
 
 // ==================== DAY 7: VALENTINE'S DAY ====================
+let yesButtonScale = 1;
+let noButtonMoves = 0;
+
 function loadValentineDay() {
   const content = document.getElementById('main-content');
   
-  const memories = [
-    { date: 'February 7', title: 'The Day I Proposed', description: 'You said yes, and my world changed forever 💍' },
-    { date: 'February 8', title: 'Rose Day', description: 'Each petal represented a reason I love you 🌹' },
-    { date: 'February 9', title: 'Chocolate Day', description: 'Sweet moments, sweeter memories 🍫' },
-    { date: 'February 10', title: 'Teddy Day', description: 'Virtual hugs that felt so real 🧸' },
-    { date: 'February 11', title: 'Promise Day', description: 'Promises we\'ll keep forever 📖' },
-    { date: 'February 12', title: 'Kiss Day', description: 'A kiss that sealed our hearts 💋' },
+  content.innerHTML = `
+    <div class="valentine-day-container" style="position: relative; min-height: 70vh; overflow: hidden; padding-bottom: 150px;">
+      <!-- Romantic background with sparkles -->
+      <div id="sparkle-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;"></div>
+      
+      <!-- Question Page -->
+      <div id="question-page" style="position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-center; min-height: 65vh; padding: 2rem;">
+        <div class="glass-card" style="padding: 4rem 3rem; text-align: center; max-width: 700px; margin: 2rem auto; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border: 3px solid rgba(255, 215, 0, 0.6); box-shadow: 0 20px 60px rgba(255, 105, 180, 0.4);">
+          <!-- Hearts decoration -->
+          <div style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem; font-size: 3rem;">
+            <span class="animate-pulse">💕</span>
+            <span class="animate-bounce">❤️</span>
+            <span class="animate-pulse">💕</span>
+          </div>
+          
+          <h2 class="text-4xl md:text-5xl font-bold mb-8" style="color: #FFD700;">
+            ❤️ Valentine's Day ❤️
+          </h2>
+          
+          <!-- Main Question -->
+          <div style="padding: 2.5rem; background: linear-gradient(135deg, rgba(255, 182, 193, 0.2) 0%, rgba(255, 218, 224, 0.2) 100%); border-radius: 25px; margin-bottom: 3rem; border: 2px solid rgba(255, 105, 180, 0.3);">
+            <p class="text-3xl md:text-4xl font-bold" style="color: #C71585; margin-bottom: 1.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.1);">
+              Will you be my Valentine? 💕
+            </p>
+            <p class="text-lg md:text-xl" style="color: #FF69B4; font-style: italic;">
+              "Meri zindagi ka sabse khoobsurat sawaal..." ✨
+            </p>
+          </div>
+          
+          <!-- Buttons Container -->
+          <div style="position: relative; min-height: 150px; display: flex; align-items: center; justify-center;">
+            <button 
+              id="yes-button" 
+              onclick="valentineYesClicked()"
+              style="
+                position: relative;
+                padding: 1.5rem 3rem;
+                font-size: 1.5rem;
+                font-weight: bold;
+                color: white;
+                background: linear-gradient(135deg, #FF1493 0%, #FF69B4 100%);
+                border: none;
+                border-radius: 50px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                box-shadow: 0 10px 30px rgba(255, 20, 147, 0.4);
+                z-index: 10;
+                margin-right: 2rem;
+              "
+              onmouseover="this.style.transform='scale(1.1)'"
+              onmouseout="this.style.transform='scale(${yesButtonScale})'">
+              YES 💕
+            </button>
+            
+            <button 
+              id="no-button"
+              onmouseover="moveNoButton(event)"
+              onclick="moveNoButton(event)"
+              style="
+                position: absolute;
+                padding: 1rem 2rem;
+                font-size: 1.2rem;
+                font-weight: bold;
+                color: #666;
+                background: linear-gradient(135deg, #E0E0E0 0%, #BDBDBD 100%);
+                border: 2px solid #999;
+                border-radius: 50px;
+                cursor: pointer;
+                transition: all 0.2s ease;
+                z-index: 5;
+              ">
+              NO
+            </button>
+          </div>
+          
+          <p class="text-sm mt-8" style="color: #999; font-style: italic;">
+            💡 Hint: There's only one right answer... 💡
+          </p>
+        </div>
+      </div>
+      
+      <!-- Celebration Page (Hidden Initially) -->
+      <div id="celebration-page" style="display: none; position: relative; z-index: 2; min-height: 65vh; padding: 2rem;">
+        <div class="glass-card" style="padding: 4rem 3rem; text-align: center; max-width: 700px; margin: 2rem auto; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border: 3px solid rgba(255, 215, 0, 0.6);">
+          <div style="font-size: 6rem; margin-bottom: 2rem; animation: heartPulse 1s ease-in-out infinite;">
+            💖
+          </div>
+          
+          <h2 class="text-5xl font-bold mb-6" style="color: #FFD700; text-shadow: 2px 2px 4px rgba(0,0,0,0.1);">
+            🎉 YAYYY! 🎉
+          </h2>
+          
+          <p class="text-3xl font-bold mb-8" style="color: #FF1493;">
+            You said YES! 💕
+          </p>
+          
+          <div style="padding: 2rem; background: rgba(255, 192, 203, 0.2); border-radius: 20px; margin-bottom: 2rem;">
+            <p class="text-2xl" style="color: #C71585; font-style: italic; line-height: 1.8;">
+              "Tum mile toh jeene ka maqsad mil gaya...<br>
+              Dil ko ek naya pyaar mil gaya" ❤️
+            </p>
+          </div>
+          
+          <p class="text-xl mt-6" style="color: #FF69B4;">
+            Happy Valentine's Day, Anku! 🧸💕<br>
+            <span style="font-size: 1.2rem;">Forever and Always! 💍</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  `;
+  
+  // Create continuous sparkles
+  createValentineSparkles();
+  
+  // Reset button states
+  yesButtonScale = 1;
+  noButtonMoves = 0;
+}
+
+function moveNoButton(event) {
+  event.preventDefault();
+  const button = document.getElementById('no-button');
+  const yesButton = document.getElementById('yes-button');
+  const container = button.parentElement;
+  
+  noButtonMoves++;
+  
+  // Random position
+  const containerRect = container.getBoundingClientRect();
+  const buttonRect = button.getBoundingClientRect();
+  
+  const maxX = containerRect.width - buttonRect.width - 40;
+  const maxY = containerRect.height - buttonRect.height - 40;
+  
+  const randomX = Math.random() * maxX;
+  const randomY = Math.random() * maxY;
+  
+  button.style.left = randomX + 'px';
+  button.style.top = randomY + 'px';
+  
+  // Increase YES button size with each NO move
+  yesButtonScale += 0.1;
+  yesButton.style.transform = `scale(${yesButtonScale})`;
+  yesButton.style.fontSize = `${1.5 * yesButtonScale}rem`;
+  
+  // After 5 moves, YES button starts taking over
+  if (noButtonMoves >= 5) {
+    yesButton.style.transform = `scale(${yesButtonScale * 1.5})`;
+    button.style.opacity = Math.max(0.1, 1 - (noButtonMoves - 5) * 0.15);
+  }
+  
+  // After 8 moves, NO button becomes tiny and YES dominates
+  if (noButtonMoves >= 8) {
+    button.style.transform = 'scale(0.5)';
+    button.style.opacity = '0.05';
+    yesButton.style.transform = `scale(${yesButtonScale * 2})`;
+  }
+}
+
+function valentineYesClicked() {
+  // Hide question page
+  document.getElementById('question-page').style.display = 'none';
+  
+  // Show celebration page
+  document.getElementById('celebration-page').style.display = 'block';
+  
+  // Trigger massive celebration
+  triggerMassiveCelebration();
+}
+
+function triggerMassiveCelebration() {
+  // Confetti explosion
+  triggerConfetti();
+  
+  // Heart explosion
+  triggerHeartExplosion();
+  
+  // Continuous sparkles
+  for (let i = 0; i < 50; i++) {
+    setTimeout(() => {
+      createCelebrationSparkle();
+    }, i * 100);
+  }
+}
+
+function createValentineSparkles() {
+  const container = document.getElementById('sparkle-container');
+  const sparkles = ['✨', '💫', '⭐', '🌟', '💖', '💕', '❤️'];
+  
+  setInterval(() => {
+    const sparkle = document.createElement('div');
+    const emoji = sparkles[Math.floor(Math.random() * sparkles.length)];
+    
+    sparkle.innerHTML = emoji;
+    sparkle.style.cssText = `
+      position: absolute;
+      font-size: ${Math.random() * 20 + 15}px;
+      left: ${Math.random() * 100}%;
     { date: 'February 14', title: 'Today', description: 'The beginning of our forever ❤️' }
   ];
   
@@ -1496,6 +1879,40 @@ function loadValentineDay() {
       </div>
     </div>
   `;
+}
+
+      position: absolute;
+      font-size: ${Math.random() * 20 + 15}px;
+      left: ${Math.random() * 100}%;
+      top: -50px;
+      animation: fallSparkle ${Math.random() * 3 + 2}s ease-in forwards;
+      opacity: 0.8;
+      pointer-events: none;
+    `;
+    
+    container.appendChild(sparkle);
+    
+    setTimeout(() => sparkle.remove(), 5000);
+  }, 300);
+}
+
+function createCelebrationSparkle() {
+  const container = document.getElementById('sparkle-container');
+  const sparkle = document.createElement('div');
+  
+  sparkle.innerHTML = ['🎉', '🎊', '✨', '💖', '💕', '❤️', '🌟'][Math.floor(Math.random() * 7)];
+  sparkle.style.cssText = `
+    position: absolute;
+    font-size: ${Math.random() * 30 + 25}px;
+    left: ${Math.random() * 100}%;
+    top: ${Math.random() * 100}%;
+    animation: explodeSparkle 2s ease-out forwards;
+    opacity: 1;
+    pointer-events: none;
+  `;
+  
+  container.appendChild(sparkle);
+  setTimeout(() => sparkle.remove(), 2000);
 }
 
 function finalProposal() {
