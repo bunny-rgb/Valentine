@@ -10,6 +10,15 @@
 body {
     font-family: 'Quicksand', sans-serif;
     overflow-x: hidden;
+    padding-bottom: 180px; /* Space for fixed music player */
+}
+
+/* Main content container */
+#main-content {
+    position: relative;
+    z-index: 1;
+    min-height: calc(100vh - 200px);
+    padding-bottom: 40px; /* Extra space at bottom */
 }
 
 h1, h2, h3 {
@@ -395,6 +404,13 @@ h1, h2, h3 {
 }
 
 /* Success Message */
+/* Proposal Section */
+#proposal-section {
+    position: relative;
+    z-index: 10;
+    margin-bottom: 40px; /* Space from music player */
+}
+
 .success-message {
     background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
     color: white;
@@ -402,6 +418,9 @@ h1, h2, h3 {
     border-radius: 20px;
     box-shadow: 0 10px 40px rgba(255, 215, 0, 0.4);
     animation: fadeIn 1s ease-in forwards;
+    position: relative;
+    z-index: 10;
+    margin-bottom: 40px; /* Space from music player */
 }
 
 /* Romantic Message Box */

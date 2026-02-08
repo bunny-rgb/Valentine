@@ -1,14 +1,14 @@
 // Valentine Week Configuration
 const VALENTINE_WEEK_CONFIG = {
-  // Set your Valentine Week start date (February 7, 2026 - Propose Day)
-  startDate: new Date('2026-02-07T00:00:00'),
+  // Set your Valentine Week start date (February 8, 2026 - Propose Day)
+  startDate: new Date('2026-02-08T00:00:00'),
   days: [
-    { id: 1, name: 'Propose Day', date: '2026-02-07', color: '#FFE5EC' },
-    { id: 2, name: 'Rose Day', date: '2026-02-08', color: '#FF6B9D' },
-    { id: 3, name: 'Chocolate Day', date: '2026-02-09', color: '#8B4513' },
-    { id: 4, name: 'Teddy Day', date: '2026-02-10', color: '#FFF5E1' },
-    { id: 5, name: 'Promise Day', date: '2026-02-11', color: '#E6E6FA' },
-    { id: 6, name: 'Kiss Day', date: '2026-02-12', color: '#FFC0CB' },
+    { id: 1, name: 'Propose Day', date: '2026-02-08', color: '#FFE5EC' },
+    { id: 2, name: 'Chocolate Day', date: '2026-02-09', color: '#8B4513' },
+    { id: 3, name: 'Teddy Day', date: '2026-02-10', color: '#FFF5E1' },
+    { id: 4, name: 'Promise Day', date: '2026-02-11', color: '#E6E6FA' },
+    { id: 5, name: 'Hug Day', date: '2026-02-12', color: '#FFB6C1' },
+    { id: 6, name: 'Kiss Day', date: '2026-02-13', color: '#FFC0CB' },
     { id: 7, name: "Valentine's Day", date: '2026-02-14', color: '#FFD700' }
   ]
 };
@@ -258,10 +258,10 @@ function rotateWaitingMessages(dayNumber) {
 function loadDay(dayNumber) {
   switch(dayNumber) {
     case 1: loadProposeDay(); break;
-    case 2: loadRoseDay(); break;
-    case 3: loadChocolateDay(); break;
-    case 4: loadTeddyDay(); break;
-    case 5: loadPromiseDay(); break;
+    case 2: loadChocolateDay(); break;
+    case 3: loadTeddyDay(); break;
+    case 4: loadPromiseDay(); break;
+    case 5: loadHugDay(); break;
     case 6: loadKissDay(); break;
     case 7: loadValentineDay(); break;
   }
@@ -382,6 +382,12 @@ function randomizePhotoPosition(container) {
 
 // Create Spotify Player UI
 function createSpotifyPlayer() {
+  // Check if player already exists - don't recreate it!
+  if (document.getElementById('spotify-player')) {
+    console.log('🎵 Music player already exists, skipping creation');
+    return;
+  }
+  
   // Create music player container at bottom
   const playerHTML = `
     <div id="spotify-player" class="spotify-player-container">
@@ -431,7 +437,7 @@ function createSpotifyPlayer() {
   
   document.body.insertAdjacentHTML('beforeend', playerHTML);
   
-  // Load Spotify playlist
+  // Load Spotify playlist only once
   loadSpotifyPlaylist();
 }
 
@@ -900,7 +906,7 @@ function openChocolate(chocolate, index) {
   createFloatingHeart(chocolate);
 }
 
-// ==================== DAY 4: TEDDY DAY ====================
+// ==================== DAY 3: TEDDY DAY ====================
 function loadTeddyDay() {
   const content = document.getElementById('main-content');
   
@@ -908,7 +914,7 @@ function loadTeddyDay() {
     <div class="container mx-auto max-w-4xl">
       <div class="text-center mb-12 animate-fade-in">
         <h2 class="text-5xl font-bold mb-4" style="color: #F4A460;">🧸 Teddy Day</h2>
-        <p class="text-xl text-gray-600 mb-8">Click the teddy to give a virtual hug</p>
+        <p class="text-xl text-gray-600 mb-8">A cuddly reminder of my love</p>
       </div>
       
       <div class="glass-card p-12 text-center">
@@ -917,12 +923,43 @@ function loadTeddyDay() {
         </div>
         
         <button onclick="sendHug()" class="mt-8 px-8 py-4 bg-gradient-to-r from-yellow-200 to-orange-200 text-orange-800 rounded-full text-xl font-bold hover:scale-110 transition-all">
-          Send You a Hug 🤗
+          Hug the Teddy 🧸
         </button>
         
         <div id="hug-message" class="mt-8 hidden animate-fade-in">
           <p class="romantic-message text-2xl" style="color: #F4A460;">
-            Whenever you miss me… imagine this. 💕
+            This teddy represents all the hugs I can't give you in person 💕
+          </p>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// ==================== DAY 4: PROMISE DAY ====================
+// ==================== DAY 5: HUG DAY ====================
+function loadHugDay() {
+  const content = document.getElementById('main-content');
+  
+  content.innerHTML = `
+    <div class="container mx-auto max-w-4xl">
+      <div class="text-center mb-12 animate-fade-in">
+        <h2 class="text-5xl font-bold mb-4" style="color: #FFB6C1;">🤗 Hug Day</h2>
+        <p class="text-xl text-gray-600 mb-8">Sending you warm hugs and love</p>
+      </div>
+      
+      <div class="glass-card p-12 text-center">
+        <div class="teddy-bear glow-on-hover" onclick="giveTeddyHug()">
+          🤗
+        </div>
+        
+        <button onclick="sendHug()" class="mt-8 px-8 py-4 bg-gradient-to-r from-pink-200 to-pink-300 text-pink-800 rounded-full text-xl font-bold hover:scale-110 transition-all">
+          Send You a Big Hug 💕
+        </button>
+        
+        <div id="hug-message" class="mt-8 hidden animate-fade-in">
+          <p class="romantic-message text-2xl" style="color: #FFB6C1;">
+            Wrapped in my arms, even from afar 🤗💕
           </p>
         </div>
       </div>
