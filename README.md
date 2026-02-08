@@ -6,6 +6,8 @@ A magical, emotion-first web experience that unfolds across 7 days of Valentine 
 
 **Valentine Week** is an interactive romantic web application that I created for my love of life as a cinematic journey through 7 days of Valentine's celebrations. Each day unlocks automatically at midnight, revealing new surprises, emotions, and interactive experiences.
 
+----- All copyrights are reserved with the owner(Bunny-mohit.dev) of this application.------
+
 ### ✨ Main Features
 
 - **🔓 Date-Based Unlock System** - Days automatically unlock at 12:00 AM local time
