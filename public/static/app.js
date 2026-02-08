@@ -20,7 +20,12 @@ const MUSIC_CONFIG = {
   // ⭐ LOCAL PLAYLIST (YOUR SONGS!) - Will play in order
   useLocalPlaylist: true, // Set to true to use local songs
   
-  localPlaylist: [
+  // 🎵 TIME-BASED PLAYLIST SWITCHING
+  // Day 2 (Chocolate Day) special playlist unlocks on 2026-02-09 00:00:00
+  day2UnlockDate: new Date('2026-02-09T00:00:00'),
+  
+  // Original playlist (until Day 2 unlocks)
+  originalPlaylist: [
     {
       name: 'Meri Banogi Kya',
       artist: 'Rito Riba, Rajat Nagpal',
@@ -78,6 +83,113 @@ const MUSIC_CONFIG = {
       duration: 312000 // 5:12
     }
   ],
+  
+  // 🆕 Day 2 Special Playlist (Chocolate Day songs - unlocks on Feb 9, 2026)
+  day2Playlist: [
+    {
+      name: 'Mohabbat Ho Na Jaye',
+      artist: 'Various Artists',
+      album: 'Dekha Jo Tumko',
+      albumArt: 'https://i.scdn.co/image/ab67616d0000b273d998c880f085f08c7ddeeafc',
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/mohabbat-ho-na-jaye.mp3',
+      duration: 216000 // ~3:36
+    },
+    {
+      name: 'Tauba Tumhare Ishare',
+      artist: 'Various Artists',
+      album: 'Chalte Chalte',
+      albumArt: 'https://i.scdn.co/image/ab67616d0000b273d998c880f085f08c7ddeeafc',
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/tauba-tumhare-ishare.mp3',
+      duration: 207000 // ~3:27
+    },
+    {
+      name: 'Chori Chori Sapnon Mein',
+      artist: 'Various Artists',
+      album: 'Chal Mere Bhai',
+      albumArt: 'https://i.scdn.co/image/ab67616d0000b273d998c880f085f08c7ddeeafc',
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/chori-chori-sapnon-mein.mp3',
+      duration: 373000 // ~6:13
+    },
+    {
+      name: 'Dil Kaa Jo Haal Hai',
+      artist: 'Various Artists',
+      album: 'Dil Kaa Jo Haal Hai',
+      albumArt: 'https://i.scdn.co/image/ab67616d0000b273d998c880f085f08c7ddeeafc',
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/dil-kaa-jo-haal-hai.mp3',
+      duration: 387000 // ~6:27
+    },
+    {
+      name: 'Jo Haal Dil Ka',
+      artist: 'Various Artists',
+      album: 'Jo Haal Dil Ka',
+      albumArt: 'https://i.scdn.co/image/ab67616d0000b273d998c880f085f08c7ddeeafc',
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/jo-haal-dil-ka.mp3',
+      duration: 400000 // ~6:40
+    },
+    {
+      name: 'Pyar Ko Ho Jane Do',
+      artist: 'Various Artists',
+      album: 'Pyar Ko Ho Jane Do',
+      albumArt: 'https://i.scdn.co/image/ab67616d0000b273d998c880f085f08c7ddeeafc',
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/pyar-ko-ho-jane-do.mp3',
+      duration: 393000 // ~6:33
+    },
+    {
+      name: 'Saagar Jaisi Aankhonwali',
+      artist: 'Various Artists',
+      album: 'Saagar',
+      albumArt: 'https://i.scdn.co/image/ab67616d0000b273d998c880f085f08c7ddeeafc',
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/saagar-jaisi-aankhonwali.mp3',
+      duration: 367000 // ~6:07
+    },
+    {
+      name: 'Suno Na Suno Na',
+      artist: 'Various Artists',
+      album: 'Suno Na',
+      albumArt: 'https://i.scdn.co/image/ab67616d0000b273d998c880f085f08c7ddeeafc',
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/suno-na-suno-na.mp3',
+      duration: 438000 // ~7:18
+    },
+    {
+      name: 'Hum Tumko Nigahon Mein',
+      artist: 'Various Artists',
+      album: 'Hum Tumko Nigahon Mein',
+      albumArt: 'https://i.scdn.co/image/ab67616d0000b273d998c880f085f08c7ddeeafc',
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/hum-tumko-nigahon-mein.mp3',
+      duration: 452000 // ~7:32
+    },
+    {
+      name: 'Chand Se Parda',
+      artist: 'Various Artists',
+      album: 'Chand Se Parda',
+      albumArt: 'https://i.scdn.co/image/ab67616d0000b273d998c880f085f08c7ddeeafc',
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/chand-se-parda.mp3',
+      duration: 479000 // ~7:59
+    },
+    {
+      name: 'Humko Sirf Tumse',
+      artist: 'Various Artists',
+      album: 'Humko Sirf Tumse',
+      albumArt: 'https://i.scdn.co/image/ab67616d0000b273d998c880f085f08c7ddeeafc',
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/humko-sirf-tumse.mp3',
+      duration: 518000 // ~8:38
+    },
+    {
+      name: 'Mere Mehboob Mere Sanam',
+      artist: 'Various Artists',
+      album: 'Mere Mehboob Mere Sanam',
+      albumArt: 'https://i.scdn.co/image/ab67616d0000b273d998c880f085f08c7ddeeafc',
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/mere-mehboob-mere-sanam.mp3',
+      duration: 559000 // ~9:19
+    }
+  ],
+  
+  // Dynamic playlist getter - returns appropriate playlist based on date
+  get localPlaylist() {
+    const now = new Date();
+    const isDay2Unlocked = now >= this.day2UnlockDate;
+    return isDay2Unlocked ? this.day2Playlist : this.originalPlaylist;
+  },
   
   // Fallback to Spotify if local files fail
   playlistId: '37i9dQZF1DX50KOxCoe6eO',
@@ -1353,11 +1465,11 @@ function loadPromiseDay() {
             <!-- Promise content will be inserted here -->
           </div>
           
-          <div class="flex justify-between gap-4 mt-8" style="width: 100%;">
-            <button onclick="prevPage()" id="prev-btn" class="page-flip-btn bg-gradient-to-r from-purple-400 to-pink-400 text-white px-6 py-3 rounded-full font-bold hover:scale-105 transition-all" style="z-index: 10;">
+          <div class="flex justify-between items-center gap-4 mt-8" style="width: 100%;">
+            <button onclick="prevPage()" id="prev-btn" class="page-flip-btn bg-gradient-to-r from-purple-400 to-pink-400 text-white px-6 py-3 rounded-full font-bold hover:scale-105 transition-all shadow-lg" style="flex: 1; max-width: 150px; z-index: 20;">
               <i class="fas fa-arrow-left mr-2"></i> Previous
             </button>
-            <button onclick="nextPage()" id="next-btn" class="page-flip-btn bg-gradient-to-r from-pink-400 to-purple-400 text-white px-6 py-3 rounded-full font-bold hover:scale-105 transition-all" style="z-index: 10;">
+            <button onclick="nextPage()" id="next-btn" class="page-flip-btn bg-gradient-to-r from-pink-400 to-purple-400 text-white px-6 py-3 rounded-full font-bold hover:scale-105 transition-all shadow-lg" style="flex: 1; max-width: 150px; z-index: 20;">
               Next <i class="fas fa-arrow-right ml-2"></i>
             </button>
           </div>
@@ -1399,13 +1511,16 @@ function loadHugDay() {
           <!-- Romantic Bollywood Lines -->
           <div class="mt-6 space-y-4">
             <p class="text-lg md:text-xl" style="color: #C71585; font-style: italic; line-height: 1.8;">
-              💕 "Tum paas aaye, yun muskuraye...<br>Tumne na jaane kya sapne dikhaaye" 💕
+              💕 "Suraj hua maddham, chaand jalne laga...<br>Aasmaan yeh haai kyun pighalne laga, main thehra raha, zameen chalne lagi" 💕
             </p>
             <p class="text-lg md:text-xl mt-4" style="color: #FF69B4; font-style: italic; line-height: 1.8;">
-              🌹 "Pal pal dil ke paas, tum rehti ho...<br>Har dhadkan pe tera naam hai" 🌹
+              🌹 "Tum paas aaye, yun muskuraaye...<br>Tumne na jaane kya sapne dikhaaye" 🌹
             </p>
             <p class="text-lg md:text-xl mt-4" style="color: #DB7093; font-style: italic; line-height: 1.8;">
-              ✨ "Haan main tumhara hoon, tum meri ho...<br>Yeh rishta hai pyaar ka" ✨
+              ✨ "Kuch kuch hota hai, tum nahi samjhoge...<br>Yeh humko kab hua pata nahi chala" ✨
+            </p>
+            <p class="text-lg md:text-xl mt-4" style="color: #E75480; font-style: italic; line-height: 1.8;">
+              💖 "Tere liye hum hain jiye, hothon ko siye...<br>Dil mein magar jalte rahe, diye" 💖
             </p>
           </div>
           
@@ -1431,12 +1546,16 @@ function createFloatingFlowersAndQuotes() {
   const flowers = ['🌹', '🌸', '🌺', '🌻', '🌷', '💐', '🏵️', '🌼'];
   const hearts = ['💕', '💖', '💗', '💝', '💞', '💓'];
   const quotes = [
-    '"Pyaar hai"',
-    '"Dil se"',
-    '"Hamesha"',
-    '"Tum hi ho"',
-    '"Meri jaan"',
-    '"Forever"'
+    '"Suraj hua maddham"',
+    '"Tum paas aaye"',
+    '"Kuch kuch hota hai"',
+    '"Tere liye hum hain jiye"',
+    '"Aankhon mein teri"',
+    '"Dil ne yeh kaha"',
+    '"Tumse milke dil ka"',
+    '"Jeena sirf mere liye"',
+    '"Mohabbat dil ka sakoon"',
+    '"Pyaar toh hona hi tha"'
   ];
   
   // Create floating flowers

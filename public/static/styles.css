@@ -312,8 +312,6 @@ h1, h2, h3 {
 }
 
 .page-flip-btn {
-    position: absolute;
-    bottom: 20px;
     padding: 12px 30px;
     background: linear-gradient(135deg, #E6E6FA 0%, #D8BFD8 100%);
     border: none;
@@ -321,11 +319,24 @@ h1, h2, h3 {
     cursor: pointer;
     font-weight: 600;
     transition: all 0.3s ease;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 140px;
 }
 
 .page-flip-btn:hover {
     transform: scale(1.05);
     box-shadow: 0 5px 15px rgba(230, 230, 250, 0.5);
+}
+
+/* Fix button container to prevent overlap */
+.flex.justify-between {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 1rem !important;
 }
 
 /* Kiss Mark */
