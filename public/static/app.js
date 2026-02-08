@@ -24,7 +24,7 @@ const MUSIC_CONFIG = {
       artist: 'Rito Riba, Rajat Nagpal',
       album: 'Meri Banogi Kya',
       albumArt: 'https://i.scdn.co/image/ab67616d0000b2732ebd3d368294e9c19696299c',
-      previewUrl: '/static/music/meri-banogi-kya.mp3',
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/meri-banogi-kya.mp3',
       duration: 215000 // 3:35 in milliseconds
     },
     {
@@ -32,7 +32,7 @@ const MUSIC_CONFIG = {
       artist: 'Sachin-Jigar, Arijit Singh',
       album: 'Munjya',
       albumArt: 'https://i.scdn.co/image/ab67616d0000b27398bc1bc90e3cc5deceeff408',
-      previewUrl: '/static/music/tainu-khabar-nahi.mp3',
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/tainu-khabar-nahi.mp3',
       duration: 188000 // 3:08
     },
     {
@@ -40,7 +40,7 @@ const MUSIC_CONFIG = {
       artist: 'Arijit Singh, Harshdeep Kaur',
       album: 'Raees',
       albumArt: 'https://i.scdn.co/image/ab67616d0000b27398bc1bc90e3cc5deceeff408',
-      previewUrl: '/static/music/zaalima.mp3',
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/zaalima.mp3',
       duration: 299000 // 4:59
     },
     {
@@ -48,7 +48,7 @@ const MUSIC_CONFIG = {
       artist: 'Atif Aslam, Jyotica Tangri',
       album: 'Laila Majnu',
       albumArt: 'https://i.scdn.co/image/ab67616d0000b273d998c880f085f08c7ddeeafc',
-      previewUrl: '/static/music/o-meri-laila.mp3',
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/o-meri-laila.mp3',
       duration: 273000 // 4:33
     },
     {
@@ -56,7 +56,7 @@ const MUSIC_CONFIG = {
       artist: 'Arijit Singh, Shreya Ghoshal',
       album: 'Humpty Sharma Ki Dulhania',
       albumArt: 'https://i.scdn.co/image/ab67616d0000b2738a7ae7092464f6685355dc3c',
-      previewUrl: '/static/music/samjhawan.mp3',
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/samjhawan.mp3',
       duration: 269000 // 4:29
     },
     {
@@ -64,7 +64,7 @@ const MUSIC_CONFIG = {
       artist: 'Vishal Mishra',
       album: 'Saiyaara',
       albumArt: 'https://i.scdn.co/image/ab67616d0000b273d998c880f085f08c7ddeeafc',
-      previewUrl: '/static/music/tum-ho-toh.mp3',
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/tum-ho-toh.mp3',
       duration: 318000 // 5:18
     },
     {
@@ -72,7 +72,7 @@ const MUSIC_CONFIG = {
       artist: 'Arijit Singh, Sunidhi Chauhan',
       album: 'Shivaay',
       albumArt: 'https://i.scdn.co/image/ab67616d0000b27350db5756a51048c1fe02dd20',
-      previewUrl: '/static/music/darkhaast.mp3',
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/darkhaast.mp3',
       duration: 312000 // 5:12
     }
   ],
