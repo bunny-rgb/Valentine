@@ -283,6 +283,9 @@ function loadProposeDay() {
       <!-- Photo Gallery -->
       <div id="photo-gallery" class="relative h-[600px] mb-12" style="perspective: 1000px;">
         <!-- Photos will be dynamically placed here -->
+        <div id="photo-hint" class="text-center text-lg text-rose-red mb-4 animate-pulse" style="position: absolute; top: -40px; left: 0; right: 0; z-index: 1;">
+          💝 Click on photos to reveal the surprise...
+        </div>
       </div>
       
       <!-- Proposal Section (hidden initially) -->
@@ -325,10 +328,13 @@ function loadProposeDay() {
 // Create scattered photo gallery
 function createPhotoGallery(photos) {
   const gallery = document.getElementById('photo-gallery');
+  let removedCount = 0;
+  const totalPhotos = photos.length;
   
   photos.forEach((photoUrl, index) => {
     const container = document.createElement('div');
     container.className = 'photo-container';
+    container.style.cursor = 'pointer';
     
     const frame = document.createElement('div');
     frame.className = 'photo-frame';
@@ -351,13 +357,45 @@ function createPhotoGallery(photos) {
       container.style.opacity = '1';
       container.style.transform = 'translateY(0) rotate(' + (Math.random() * 10 - 5) + 'deg)';
     }, index * 200);
+    
+    // Click handler to remove photo with slide animation
+    container.addEventListener('click', function() {
+      if (container.classList.contains('removing')) return; // Prevent double-click
+      
+      container.classList.add('removing');
+      
+      // Random slide-out direction
+      const directions = [
+        { x: -2000, y: 0 },      // Left
+        { x: 2000, y: 0 },       // Right
+        { x: 0, y: -2000 },      // Up
+        { x: 0, y: 2000 },       // Down
+        { x: -1500, y: -1500 },  // Top-left
+        { x: 1500, y: -1500 },   // Top-right
+        { x: -1500, y: 1500 },   // Bottom-left
+        { x: 1500, y: 1500 }     // Bottom-right
+      ];
+      
+      const direction = directions[Math.floor(Math.random() * directions.length)];
+      const rotation = Math.random() * 720 - 360; // Random spin
+      
+      // Apply slide-out animation
+      container.style.transition = 'all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+      container.style.transform = `translate(${direction.x}px, ${direction.y}px) rotate(${rotation}deg) scale(0.3)`;
+      container.style.opacity = '0';
+      
+      // Remove from DOM after animation
+      setTimeout(() => {
+        container.remove();
+        removedCount++;
+        
+        // Check if all photos removed
+        if (removedCount === totalPhotos) {
+          showProposalSection();
+        }
+      }, 600);
+    });
   });
-  
-  // Reshuffle photos occasionally
-  setInterval(() => {
-    const containers = document.querySelectorAll('.photo-container');
-    containers.forEach(container => randomizePhotoPosition(container));
-  }, 15000);
 }
 
 // Randomize photo positions
@@ -376,6 +414,85 @@ function randomizePhotoPosition(container) {
   container.style.top = y + 'px';
   container.style.transform = `rotate(${rotation}deg)`;
   container.style.opacity = '0';
+}
+
+// Show proposal section after all photos removed
+function showProposalSection() {
+  console.log('✨ All photos removed! Showing proposal...');
+  
+  const proposalSection = document.getElementById('proposal-section');
+  if (proposalSection) {
+    // Remove hidden class and show with animation
+    proposalSection.classList.remove('hidden');
+    proposalSection.classList.add('proposal-section-appear');
+    
+    // Smooth scroll to proposal
+    setTimeout(() => {
+      proposalSection.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'center' 
+      });
+    }, 100);
+    
+    // Add sparkle effect
+    createProposalSparkles();
+    
+    // Add confetti celebration
+    setTimeout(() => {
+      createCelebrationConfetti();
+    }, 500);
+  }
+}
+
+// Create sparkle effects around proposal
+function createProposalSparkles() {
+  const proposalSection = document.getElementById('proposal-section');
+  if (!proposalSection) return;
+  
+  for (let i = 0; i < 30; i++) {
+    setTimeout(() => {
+      const sparkle = document.createElement('div');
+      sparkle.innerHTML = ['✨', '💖', '💕', '💗', '⭐'][Math.floor(Math.random() * 5)];
+      sparkle.style.position = 'fixed';
+      sparkle.style.left = (Math.random() * window.innerWidth) + 'px';
+      sparkle.style.top = (Math.random() * window.innerHeight) + 'px';
+      sparkle.style.fontSize = (Math.random() * 30 + 20) + 'px';
+      sparkle.style.pointerEvents = 'none';
+      sparkle.style.zIndex = '1000';
+      sparkle.style.animation = 'sparkleFloat 2s ease-out forwards';
+      
+      document.body.appendChild(sparkle);
+      
+      setTimeout(() => sparkle.remove(), 2000);
+    }, i * 80);
+  }
+}
+
+// Create celebration confetti
+function createCelebrationConfetti() {
+  const colors = ['#FFE5EC', '#FF6B9D', '#FFD700', '#FF1493', '#FFC0CB'];
+  
+  for (let i = 0; i < 50; i++) {
+    setTimeout(() => {
+      const confetti = document.createElement('div');
+      confetti.style.position = 'fixed';
+      confetti.style.left = (Math.random() * 100) + '%';
+      confetti.style.top = '-10px';
+      confetti.style.width = (Math.random() * 10 + 5) + 'px';
+      confetti.style.height = (Math.random() * 20 + 10) + 'px';
+      confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      confetti.style.opacity = '0.8';
+      confetti.style.borderRadius = '2px';
+      confetti.style.pointerEvents = 'none';
+      confetti.style.zIndex = '999';
+      confetti.style.transform = 'rotate(' + (Math.random() * 360) + 'deg)';
+      confetti.style.animation = `confettiFall ${Math.random() * 3 + 2}s linear forwards`;
+      
+      document.body.appendChild(confetti);
+      
+      setTimeout(() => confetti.remove(), 5000);
+    }, i * 30);
+  }
 }
 
 // ==================== SPOTIFY MUSIC PLAYER ====================

@@ -714,3 +714,67 @@ h1, h2, h3 {
 .playback-mode i {
     font-size: 10px;
 }
+
+/* Photo Gallery Interactive Styles */
+.photo-container {
+    transition: all 0.3s ease;
+}
+
+.photo-container:hover {
+    transform: scale(1.05) !important;
+    z-index: 10;
+    cursor: pointer;
+}
+
+.photo-container:hover .photo-frame {
+    box-shadow: 0 20px 60px rgba(255, 107, 157, 0.5),
+                0 0 0 3px rgba(255, 107, 157, 0.3);
+}
+
+.photo-container.removing {
+    pointer-events: none;
+}
+
+/* Sparkle Float Animation */
+@keyframes sparkleFloat {
+    0% {
+        opacity: 0;
+        transform: translateY(0) scale(0);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(-100px) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-200px) scale(0.5);
+    }
+}
+
+/* Proposal Section Animation */
+.proposal-section-appear {
+    animation: proposalAppear 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes proposalAppear {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Confetti Animation */
+@keyframes confettiFall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
