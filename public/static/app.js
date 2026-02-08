@@ -90,7 +90,7 @@ const MUSIC_CONFIG = {
       name: 'Mohabbat Ho Na Jaye',
       artist: 'Sonu Nigam',
       album: 'Kasoor',
-      albumArt: 'https://i.scdn.co/image/ab67616d0000b273d998c880f085f08c7ddeeafc',
+      albumArt: 'https://placehold.co/300x300/FF69B4/FFFFFF?text=Mohabbat+Ho+Na+Jaye',
       previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/mohabbat-ho-na-jaye.mp3',
       duration: 216000 // ~3:36
     },
@@ -98,7 +98,7 @@ const MUSIC_CONFIG = {
       name: 'Tauba Tumhare Ishare',
       artist: 'Kumar Sanu, Alka Yagnik',
       album: 'Chalte Chalte',
-      albumArt: 'https://i.scdn.co/image/ab67616d0000b273d998c880f085f08c7ddeeafc',
+      albumArt: 'https://placehold.co/300x300/DC143C/FFFFFF?text=Tauba+Tumhare+Ishare',
       previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/tauba-tumhare-ishare.mp3',
       duration: 207000 // ~3:27
     },
@@ -106,7 +106,7 @@ const MUSIC_CONFIG = {
       name: 'Chori Chori Sapnon Mein',
       artist: 'Alka Yagnik, Udit Narayan',
       album: 'Chal Mere Bhai',
-      albumArt: 'https://i.scdn.co/image/ab67616d0000b273d998c880f085f08c7ddeeafc',
+      albumArt: 'https://placehold.co/300x300/FF1493/FFFFFF?text=Chori+Chori',
       previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/chori-chori-sapnon-mein.mp3',
       duration: 373000 // ~6:13
     },
@@ -114,7 +114,7 @@ const MUSIC_CONFIG = {
       name: 'Dil Kaa Jo Haal Hai',
       artist: 'Kumar Sanu',
       album: 'Dil Kaa Jo Haal Hai',
-      albumArt: 'https://i.scdn.co/image/ab67616d0000b273d998c880f085f08c7ddeeafc',
+      albumArt: 'https://placehold.co/300x300/C71585/FFFFFF?text=Dil+Kaa+Haal',
       previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/dil-kaa-jo-haal-hai.mp3',
       duration: 387000 // ~6:27
     },
@@ -122,7 +122,7 @@ const MUSIC_CONFIG = {
       name: 'Jo Haal Dil Ka',
       artist: 'Kumar Sanu, Alka Yagnik',
       album: 'Sarfarosh',
-      albumArt: 'https://i.scdn.co/image/ab67616d0000b273d998c880f085f08c7ddeeafc',
+      albumArt: 'https://placehold.co/300x300/FF6EB4/FFFFFF?text=Jo+Haal+Dil+Ka',
       previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/jo-haal-dil-ka.mp3',
       duration: 400000 // ~6:40
     },
@@ -130,7 +130,7 @@ const MUSIC_CONFIG = {
       name: 'Pyar Ko Ho Jane Do',
       artist: 'Kumar Sanu',
       album: 'Dil Kaa Kya Kasoor',
-      albumArt: 'https://i.scdn.co/image/ab67616d0000b273d998c880f085f08c7ddeeafc',
+      albumArt: 'https://placehold.co/300x300/FF4500/FFFFFF?text=Pyar+Ko+Ho+Jane+Do',
       previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/pyar-ko-ho-jane-do.mp3',
       duration: 393000 // ~6:33
     },
@@ -138,7 +138,7 @@ const MUSIC_CONFIG = {
       name: 'Saagar Jaisi Aankhonwali',
       artist: 'S.P. Balasubrahmanyam',
       album: 'Saagar',
-      albumArt: 'https://i.scdn.co/image/ab67616d0000b273d998c880f085f08c7ddeeafc',
+      albumArt: 'https://placehold.co/300x300/FF69B4/FFFFFF?text=Saagar+Jaisi',
       previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/saagar-jaisi-aankhonwali.mp3',
       duration: 367000 // ~6:07
     },
@@ -146,7 +146,7 @@ const MUSIC_CONFIG = {
       name: 'Suno Na Suno Na',
       artist: 'Anuradha Paudwal',
       album: 'Chalte Chalte',
-      albumArt: 'https://i.scdn.co/image/ab67616d0000b273d998c880f085f08c7ddeeafc',
+      albumArt: 'https://placehold.co/300x300/DA70D6/FFFFFF?text=Suno+Na',
       previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/suno-na-suno-na.mp3',
       duration: 438000 // ~7:18
     },
@@ -154,7 +154,7 @@ const MUSIC_CONFIG = {
       name: 'Hum Tumko Nigahon Mein',
       artist: 'Udit Narayan, Alka Yagnik',
       album: 'Garv',
-      albumArt: 'https://i.scdn.co/image/ab67616d0000b273d998c880f085f08c7ddeeafc',
+      albumArt: 'https://placehold.co/300x300/FF1493/FFFFFF?text=Hum+Tumko+Nigahon',
       previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/hum-tumko-nigahon-mein.mp3',
       duration: 452000 // ~7:32
     },
@@ -162,7 +162,7 @@ const MUSIC_CONFIG = {
       name: 'Chand Se Parda',
       artist: 'Mohammad Rafi',
       album: 'Aaya Sawan Jhoom Ke',
-      albumArt: 'https://i.scdn.co/image/ab67616d0000b273d998c880f085f08c7ddeeafc',
+      albumArt: 'https://placehold.co/300x300/DC143C/FFFFFF?text=Chand+Se+Parda',
       previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/chand-se-parda.mp3',
       duration: 479000 // ~7:59
     },
@@ -170,7 +170,7 @@ const MUSIC_CONFIG = {
       name: 'Humko Sirf Tumse',
       artist: 'Udit Narayan, Alka Yagnik',
       album: 'Barsaat',
-      albumArt: 'https://i.scdn.co/image/ab67616d0000b273d998c880f085f08c7ddeeafc',
+      albumArt: 'https://placehold.co/300x300/FF69B4/FFFFFF?text=Humko+Sirf+Tumse',
       previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/humko-sirf-tumse.mp3',
       duration: 518000 // ~8:38
     },
@@ -178,7 +178,7 @@ const MUSIC_CONFIG = {
       name: 'Mere Mehboob Mere Sanam',
       artist: 'Kumar Sanu, Alka Yagnik',
       album: 'Duplicate',
-      albumArt: 'https://i.scdn.co/image/ab67616d0000b273d998c880f085f08c7ddeeafc',
+      albumArt: 'https://placehold.co/300x300/C71585/FFFFFF?text=Mere+Mehboob',
       previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/mere-mehboob-mere-sanam.mp3',
       duration: 559000 // ~9:19
     }
