@@ -870,6 +870,36 @@ footer .fa-heart {
     }
 }
 
+/* Delivery Animation - Right to Left */
+@keyframes deliveryMoveRTL {
+    0% {
+        right: -150px;
+    }
+    50% {
+        right: 50%;
+        transform: translateY(-50%) translateX(50%);
+    }
+    100% {
+        right: 110%;
+    }
+}
+
+/* Banner Float Animation */
+@keyframes bannerFloat {
+    0%, 100% {
+        transform: translateY(-50%) rotate(-2deg);
+    }
+    25% {
+        transform: translateY(-55%) rotate(2deg);
+    }
+    50% {
+        transform: translateY(-50%) rotate(-1deg);
+    }
+    75% {
+        transform: translateY(-45%) rotate(1deg);
+    }
+}
+
 /* Teddy Floating Animation */
 @keyframes floatTeddy {
     0%, 100% {

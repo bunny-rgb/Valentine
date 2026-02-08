@@ -1172,14 +1172,34 @@ function loadChocolateDay() {
           </div>
           
           <!-- Delivery Truck Animation -->
-          <div style="margin-top: 2rem; position: relative; height: 80px; overflow: hidden;">
-            <div id="delivery-truck" style="
+          <div style="margin-top: 2rem; position: relative; height: 120px; overflow: visible;">
+            <!-- Floating Banner Behind Truck -->
+            <div id="chocolate-banner" style="
               position: absolute;
-              left: -100px;
+              right: calc(100% + 50px);
               top: 50%;
               transform: translateY(-50%);
-              font-size: 3rem;
-              animation: deliveryMove 3s ease-in-out infinite;
+              background: linear-gradient(135deg, #FFE5EC 0%, #FFB3C6 100%);
+              border: 3px solid #FF69B4;
+              border-radius: 15px;
+              padding: 1rem 1.5rem;
+              font-size: 1.2rem;
+              font-weight: bold;
+              color: #C71585;
+              box-shadow: 0 5px 20px rgba(255, 105, 180, 0.3);
+              animation: bannerFloat 3s ease-in-out infinite;
+              white-space: nowrap;
+              z-index: 1;
+            ">Order on its way Honey!!!</div>
+            
+            <div id="delivery-truck" style="
+              position: absolute;
+              right: -150px;
+              top: 50%;
+              transform: translateY(-50%);
+              font-size: 3.5rem;
+              animation: deliveryMoveRTL 4s ease-in-out infinite;
+              z-index: 2;
             ">🚚</div>
           </div>
           
@@ -1243,14 +1263,34 @@ function loadTeddyDay() {
           </div>
           
           <!-- Delivery Boy Animation -->
-          <div style="margin-top: 2rem; position: relative; height: 100px; overflow: hidden;">
+          <div style="margin-top: 2rem; position: relative; height: 120px; overflow: visible;">
+            <!-- Floating Banner Behind Cyclist -->
+            <div id="teddy-banner" style="
+              position: absolute;
+              right: calc(100% + 50px);
+              top: 50%;
+              transform: translateY(-50%);
+              background: linear-gradient(135deg, #FFF5E1 0%, #FFE4B5 100%);
+              border: 3px solid #F4A460;
+              border-radius: 15px;
+              padding: 1rem 1.5rem;
+              font-size: 1.2rem;
+              font-weight: bold;
+              color: #8B4513;
+              box-shadow: 0 5px 20px rgba(244, 164, 96, 0.3);
+              animation: bannerFloat 3s ease-in-out infinite;
+              white-space: nowrap;
+              z-index: 1;
+            ">Order on its way Honey!!!</div>
+            
             <div id="delivery-boy" style="
               position: absolute;
-              left: -100px;
+              right: -150px;
               top: 50%;
               transform: translateY(-50%);
               font-size: 3.5rem;
-              animation: deliveryMove 3s ease-in-out infinite;
+              animation: deliveryMoveRTL 4s ease-in-out infinite;
+              z-index: 2;
             ">🚴</div>
           </div>
           
@@ -1313,11 +1353,11 @@ function loadPromiseDay() {
             <!-- Promise content will be inserted here -->
           </div>
           
-          <div class="flex justify-between mt-8">
-            <button onclick="prevPage()" id="prev-btn" class="page-flip-btn bg-gradient-to-r from-purple-400 to-pink-400 text-white px-6 py-3 rounded-full font-bold hover:scale-105 transition-all">
+          <div class="flex justify-between gap-4 mt-8" style="width: 100%;">
+            <button onclick="prevPage()" id="prev-btn" class="page-flip-btn bg-gradient-to-r from-purple-400 to-pink-400 text-white px-6 py-3 rounded-full font-bold hover:scale-105 transition-all" style="z-index: 10;">
               <i class="fas fa-arrow-left mr-2"></i> Previous
             </button>
-            <button onclick="nextPage()" id="next-btn" class="page-flip-btn bg-gradient-to-r from-pink-400 to-purple-400 text-white px-6 py-3 rounded-full font-bold hover:scale-105 transition-all">
+            <button onclick="nextPage()" id="next-btn" class="page-flip-btn bg-gradient-to-r from-pink-400 to-purple-400 text-white px-6 py-3 rounded-full font-bold hover:scale-105 transition-all" style="z-index: 10;">
               Next <i class="fas fa-arrow-right ml-2"></i>
             </button>
           </div>
@@ -1669,7 +1709,7 @@ function loadValentineDay() {
           </div>
           
           <!-- Buttons Container -->
-          <div style="position: relative; min-height: 150px; display: flex; align-items: center; justify-center;">
+          <div style="position: relative; min-height: 200px; width: 100%; display: flex; align-items: center; justify-content: center;">
             <button 
               id="yes-button" 
               onclick="valentineYesClicked()"
@@ -1686,10 +1726,9 @@ function loadValentineDay() {
                 transition: all 0.3s ease;
                 box-shadow: 0 10px 30px rgba(255, 20, 147, 0.4);
                 z-index: 10;
-                margin-right: 2rem;
               "
               onmouseover="this.style.transform='scale(1.1)'"
-              onmouseout="this.style.transform='scale(${yesButtonScale})'">
+              onmouseout="this.style.transform='scale(1)'">
               YES 💕
             </button>
             
@@ -1699,6 +1738,9 @@ function loadValentineDay() {
               onclick="moveNoButton(event)"
               style="
                 position: absolute;
+                right: 50px;
+                top: 50%;
+                transform: translateY(-50%);
                 padding: 1rem 2rem;
                 font-size: 1.2rem;
                 font-weight: bold;
@@ -1764,30 +1806,52 @@ function moveNoButton(event) {
   const button = document.getElementById('no-button');
   const yesButton = document.getElementById('yes-button');
   const container = button.parentElement;
+  const yesButtonRect = yesButton.getBoundingClientRect();
+  const containerRect = container.getBoundingClientRect();
   
   noButtonMoves++;
   
-  // Random position
-  const containerRect = container.getBoundingClientRect();
+  // Calculate distance to YES button
   const buttonRect = button.getBoundingClientRect();
+  const yesButtonCenterX = yesButtonRect.left + yesButtonRect.width / 2;
+  const yesButtonCenterY = yesButtonRect.top + yesButtonRect.height / 2;
   
-  const maxX = containerRect.width - buttonRect.width - 40;
-  const maxY = containerRect.height - buttonRect.height - 40;
+  // Move NO button away from cursor, but gradually closer to YES button
+  const moveRadius = Math.max(100, 200 - noButtonMoves * 15); // Gets closer each time
   
-  const randomX = Math.random() * maxX;
-  const randomY = Math.random() * maxY;
+  // Random angle, but bias towards YES button location after multiple moves
+  let angle = Math.random() * Math.PI * 2;
+  if (noButtonMoves >= 3) {
+    // Calculate angle towards YES button
+    const toYesAngle = Math.atan2(
+      yesButtonCenterY - (containerRect.top + containerRect.height / 2),
+      yesButtonCenterX - (containerRect.left + containerRect.width / 2)
+    );
+    // Mix random angle with angle towards YES
+    angle = angle * 0.3 + toYesAngle * 0.7;
+  }
   
-  button.style.left = randomX + 'px';
-  button.style.top = randomY + 'px';
+  const newX = containerRect.width / 2 + Math.cos(angle) * moveRadius - buttonRect.width / 2;
+  const newY = containerRect.height / 2 + Math.sin(angle) * moveRadius - buttonRect.height / 2;
+  
+  // Clamp to container bounds
+  const maxX = containerRect.width - buttonRect.width - 10;
+  const maxY = containerRect.height - buttonRect.height - 10;
+  const clampedX = Math.max(10, Math.min(newX, maxX));
+  const clampedY = Math.max(10, Math.min(newY, maxY));
+  
+  button.style.left = clampedX + 'px';
+  button.style.top = clampedY + 'px';
+  button.style.right = 'auto';
+  button.style.transform = 'translateY(0)';
   
   // Increase YES button size with each NO move
-  yesButtonScale += 0.1;
+  yesButtonScale += 0.15;
   yesButton.style.transform = `scale(${yesButtonScale})`;
-  yesButton.style.fontSize = `${1.5 * yesButtonScale}rem`;
   
   // After 5 moves, YES button starts taking over
   if (noButtonMoves >= 5) {
-    yesButton.style.transform = `scale(${yesButtonScale * 1.5})`;
+    yesButton.style.transform = `scale(${yesButtonScale * 1.3})`;
     button.style.opacity = Math.max(0.1, 1 - (noButtonMoves - 5) * 0.15);
   }
   
@@ -1796,6 +1860,7 @@ function moveNoButton(event) {
     button.style.transform = 'scale(0.5)';
     button.style.opacity = '0.05';
     yesButton.style.transform = `scale(${yesButtonScale * 2})`;
+    yesButton.style.padding = '2rem 4rem';
   }
 }
 
