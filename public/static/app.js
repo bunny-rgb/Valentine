@@ -573,6 +573,70 @@ function createSpotifyPlayer() {
   
   document.body.insertAdjacentHTML('beforeend', playerHTML);
   
+  // Add progress bar click/drag handler for seeking
+  const progressBar = document.getElementById('progress-bar');
+  if (progressBar) {
+    // Click to seek
+    progressBar.addEventListener('click', function(e) {
+      if (!musicPlayer || !musicPlayer.duration) return;
+      
+      const rect = progressBar.getBoundingClientRect();
+      const percent = (e.clientX - rect.left) / rect.width;
+      const seekTime = percent * musicPlayer.duration;
+      
+      musicPlayer.currentTime = seekTime;
+      updateProgress();
+      
+      console.log('⏩ Seeked to:', formatTime(Math.floor(seekTime)));
+    });
+    
+    // Drag to seek
+    let isDragging = false;
+    
+    progressBar.addEventListener('mousedown', function(e) {
+      isDragging = true;
+      e.preventDefault();
+    });
+    
+    document.addEventListener('mousemove', function(e) {
+      if (!isDragging || !musicPlayer || !musicPlayer.duration) return;
+      
+      const rect = progressBar.getBoundingClientRect();
+      const percent = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+      const seekTime = percent * musicPlayer.duration;
+      
+      musicPlayer.currentTime = seekTime;
+      updateProgress();
+    });
+    
+    document.addEventListener('mouseup', function() {
+      isDragging = false;
+    });
+    
+    // Touch support for mobile
+    progressBar.addEventListener('touchstart', function(e) {
+      isDragging = true;
+      e.preventDefault();
+    });
+    
+    document.addEventListener('touchmove', function(e) {
+      if (!isDragging || !musicPlayer || !musicPlayer.duration) return;
+      
+      const touch = e.touches[0];
+      const rect = progressBar.getBoundingClientRect();
+      const percent = Math.max(0, Math.min(1, (touch.clientX - rect.left) / rect.width));
+      const seekTime = percent * musicPlayer.duration;
+      
+      musicPlayer.currentTime = seekTime;
+      updateProgress();
+      e.preventDefault();
+    });
+    
+    document.addEventListener('touchend', function() {
+      isDragging = false;
+    });
+  }
+  
   // Load Spotify playlist only once
   loadSpotifyPlaylist();
 }
