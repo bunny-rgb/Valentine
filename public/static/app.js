@@ -1485,8 +1485,6 @@ const promises = [
   "Now... what promise do you want from me? 💭"
 ];
 
-function loadPromiseDay() {
-
 function showPromisePage() {
   const content = document.getElementById('promise-content');
   const prevBtn = document.getElementById('prev-btn');
@@ -1837,50 +1835,6 @@ function createValentineSparkles() {
     
     sparkle.innerHTML = emoji;
     sparkle.style.cssText = `
-      position: absolute;
-      font-size: ${Math.random() * 20 + 15}px;
-      left: ${Math.random() * 100}%;
-    { date: 'February 14', title: 'Today', description: 'The beginning of our forever ❤️' }
-  ];
-  
-  content.innerHTML = `
-    <div class="container mx-auto max-w-4xl">
-      <div class="text-center mb-12 animate-fade-in">
-        <h2 class="text-5xl font-bold mb-4" style="color: #FFD700;">❤️ Valentine's Day</h2>
-        <p class="text-xl text-gray-600 mb-8">Our journey through this magical week</p>
-      </div>
-      
-      <!-- Timeline -->
-      <div class="glass-card p-12">
-        ${memories.map((memory, i) => `
-          <div class="timeline-item animate-slide-up" style="animation-delay: ${i * 0.2}s;">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-              <div class="text-sm text-gray-500 font-semibold mb-1">${memory.date}</div>
-              <h3 class="text-2xl font-bold mb-2" style="color: #FFD700;">${memory.title}</h3>
-              <p class="text-lg text-gray-700">${memory.description}</p>
-            </div>
-          </div>
-        `).join('')}
-      </div>
-      
-      <!-- Final Message -->
-      <div class="mt-12 text-center animate-fade-in" style="animation-delay: 1.5s;">
-        <div class="glass-card p-12">
-          <p class="romantic-message text-3xl mb-8" style="color: #FFD700;">
-            "I didn't want just a Valentine's Day.<br>
-            I wanted every day with you."
-          </p>
-          <button onclick="finalProposal()" 
-                  class="px-12 py-6 bg-gradient-to-r from-yellow-400 to-red-500 text-white rounded-full text-2xl font-bold hover:scale-110 transition-all glow-on-hover">
-            Be my forever? 💍
-          </button>
-        </div>
-      </div>
-    </div>
-  `;
-}
-
       position: absolute;
       font-size: ${Math.random() * 20 + 15}px;
       left: ${Math.random() * 100}%;
