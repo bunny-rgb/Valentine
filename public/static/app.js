@@ -130,8 +130,8 @@ function updateNavigationButtons() {
     
     if (!unlocked) {
       btn.classList.add('locked');
-      btn.disabled = true;
-      btn.title = 'Locked until ' + VALENTINE_WEEK_CONFIG.days[day - 1].date;
+      btn.disabled = false; // Keep clickable to show countdown
+      btn.title = 'Click to see countdown';
     } else {
       btn.classList.remove('locked');
       btn.disabled = false;
@@ -161,6 +161,10 @@ function switchDay(dayNumber) {
 function showLockedMessage(dayNumber) {
   const dayConfig = VALENTINE_WEEK_CONFIG.days[dayNumber - 1];
   const content = document.getElementById('main-content');
+  
+  // Update current day to show active state
+  currentDay = dayNumber;
+  updateNavigationButtons();
   
   content.innerHTML = `
     <div class="container mx-auto max-w-4xl">
@@ -290,13 +294,28 @@ function loadProposeDay() {
       
       <!-- Proposal Section (hidden initially) -->
       <div id="proposal-section" class="glass-card p-12 text-center hidden animate-fade-in">
-        <h3 class="text-4xl font-bold text-rose-red mb-8">Will you be mine?</h3>
+        <div class="mb-8">
+          <h2 class="text-5xl font-bold text-rose-red mb-4">
+            Anku 🧸
+          </h2>
+          <p class="text-2xl text-gray-700 mb-4 italic">
+            "In a world full of temporary things, you are my forever..."
+          </p>
+          <h3 class="text-4xl font-bold text-rose-red mb-6">
+            Will you be mine? 💕
+          </h3>
+          <p class="text-lg text-gray-600 mb-8">
+            Through every sunrise and every moonlit night,<br/>
+            I want to walk this journey by your side, holding your hand,<br/>
+            making memories that last a lifetime... 🌹
+          </p>
+        </div>
         <div class="flex gap-8 justify-center flex-wrap">
           <button onclick="handleProposalResponse(true)" class="proposal-btn proposal-btn-yes glow-on-hover">
-            YES 💗
+            YES, FOREVER 💗
           </button>
           <button onclick="handleProposalResponse(true)" class="proposal-btn proposal-btn-always glow-on-hover">
-            ALWAYS 💍
+            ALWAYS & FOREVER 💍
           </button>
         </div>
       </div>
