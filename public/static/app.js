@@ -30,7 +30,7 @@ const MUSIC_CONFIG = {
       name: 'Meri Banogi Kya',
       artist: 'Rito Riba, Rajat Nagpal',
       album: 'Meri Banogi Kya',
-      albumArt: 'https://i.scdn.co/image/ab67616d0000b2732ebd3d368294e9c19696299c',
+      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23FF1493"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3EM%3C/text%3E%3C/svg%3E',
       previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/meri-banogi-kya.mp3',
       duration: 215000 // 3:35 in milliseconds
     },
@@ -38,7 +38,7 @@ const MUSIC_CONFIG = {
       name: 'Tainu Khabar Nahi',
       artist: 'Sachin-Jigar, Arijit Singh',
       album: 'Munjya',
-      albumArt: 'https://i.scdn.co/image/ab67616d0000b27398bc1bc90e3cc5deceeff408',
+      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23FF6347"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3ET%3C/text%3E%3C/svg%3E',
       previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/tainu-khabar-nahi.mp3',
       duration: 188000 // 3:08
     },
@@ -46,7 +46,7 @@ const MUSIC_CONFIG = {
       name: 'Zaalima',
       artist: 'Arijit Singh, Harshdeep Kaur',
       album: 'Raees',
-      albumArt: 'https://i.scdn.co/image/ab67616d0000b27398bc1bc90e3cc5deceeff408',
+      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23DC143C"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3EZ%3C/text%3E%3C/svg%3E',
       previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/zaalima.mp3',
       duration: 299000 // 4:59
     },
@@ -54,7 +54,7 @@ const MUSIC_CONFIG = {
       name: 'O Meri Laila',
       artist: 'Atif Aslam, Jyotica Tangri',
       album: 'Laila Majnu',
-      albumArt: 'https://i.scdn.co/image/ab67616d0000b273d998c880f085f08c7ddeeafc',
+      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23FF69B4"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3EO%3C/text%3E%3C/svg%3E',
       previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/o-meri-laila.mp3',
       duration: 273000 // 4:33
     },
@@ -62,7 +62,7 @@ const MUSIC_CONFIG = {
       name: 'Samjhawan',
       artist: 'Arijit Singh, Shreya Ghoshal',
       album: 'Humpty Sharma Ki Dulhania',
-      albumArt: 'https://i.scdn.co/image/ab67616d0000b2738a7ae7092464f6685355dc3c',
+      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23C71585"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3ES%3C/text%3E%3C/svg%3E',
       previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/samjhawan.mp3',
       duration: 269000 // 4:29
     },
@@ -70,7 +70,7 @@ const MUSIC_CONFIG = {
       name: 'Tum Ho Toh',
       artist: 'Vishal Mishra',
       album: 'Saiyaara',
-      albumArt: 'https://i.scdn.co/image/ab67616d0000b273d998c880f085f08c7ddeeafc',
+      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23FF4500"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3ET%3C/text%3E%3C/svg%3E',
       previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/tum-ho-toh.mp3',
       duration: 318000 // 5:18
     },
@@ -78,7 +78,7 @@ const MUSIC_CONFIG = {
       name: 'Darkhaast',
       artist: 'Arijit Singh, Sunidhi Chauhan',
       album: 'Shivaay',
-      albumArt: 'https://i.scdn.co/image/ab67616d0000b27350db5756a51048c1fe02dd20',
+      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23DA70D6"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3ED%3C/text%3E%3C/svg%3E',
       previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/darkhaast.mp3',
       duration: 312000 // 5:12
     }
@@ -1285,23 +1285,6 @@ function loadChocolateDay() {
           
           <!-- Delivery Truck Animation with Banner -->
           <div style="margin-top: 2rem; position: relative; height: 150px; overflow: visible;">
-            <!-- Thread connecting banner to truck -->
-            <svg id="thread-line" style="
-              position: absolute;
-              top: 0;
-              left: 0;
-              width: 100%;
-              height: 100%;
-              pointer-events: none;
-              z-index: 1;
-            " xmlns="http://www.w3.org/2000/svg">
-              <line id="banner-thread" x1="0" y1="60" x2="100" y2="60" 
-                stroke="#FF69B4" 
-                stroke-width="2" 
-                stroke-dasharray="5,5"
-                style="animation: threadMove 4s ease-in-out infinite;"/>
-            </svg>
-            
             <!-- Banner tied to truck -->
             <div id="chocolate-banner" style="
               position: absolute;
@@ -1396,23 +1379,6 @@ function loadTeddyDay() {
           
           <!-- Delivery Boy Animation with Banner -->
           <div style="margin-top: 2rem; position: relative; height: 150px; overflow: visible;">
-            <!-- Thread connecting banner to cyclist -->
-            <svg id="thread-line-teddy" style="
-              position: absolute;
-              top: 0;
-              left: 0;
-              width: 100%;
-              height: 100%;
-              pointer-events: none;
-              z-index: 1;
-            " xmlns="http://www.w3.org/2000/svg">
-              <line id="teddy-thread" x1="0" y1="60" x2="100" y2="60" 
-                stroke="#F4A460" 
-                stroke-width="2" 
-                stroke-dasharray="5,5"
-                style="animation: threadMove 4s ease-in-out infinite;"/>
-            </svg>
-            
             <!-- Banner tied to cyclist -->
             <div id="teddy-banner" style="
               position: absolute;
