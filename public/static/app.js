@@ -88,97 +88,97 @@ const MUSIC_CONFIG = {
   day2Playlist: [
     {
       name: 'Mohabbat Ho Na Jaye',
-      artist: 'Various Artists',
-      album: 'Dekha Jo Tumko',
-      albumArt: 'https://i.scdn.co/image/ab67616d0000b273d998c880f085f08c7ddeeafc',
+      artist: 'Sonu Nigam',
+      album: 'Kasoor',
+      albumArt: 'https://i.scdn.co/image/ab67616d0000b27358d63e5f6148db5d7b06a1f5',
       previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/mohabbat-ho-na-jaye.mp3',
       duration: 216000 // ~3:36
     },
     {
       name: 'Tauba Tumhare Ishare',
-      artist: 'Various Artists',
+      artist: 'Kumar Sanu, Alka Yagnik',
       album: 'Chalte Chalte',
-      albumArt: 'https://i.scdn.co/image/ab67616d0000b273d998c880f085f08c7ddeeafc',
+      albumArt: 'https://i.scdn.co/image/ab67616d0000b27350ebcdb5aef8a5f92c0e4937',
       previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/tauba-tumhare-ishare.mp3',
       duration: 207000 // ~3:27
     },
     {
       name: 'Chori Chori Sapnon Mein',
-      artist: 'Various Artists',
+      artist: 'Alka Yagnik, Udit Narayan',
       album: 'Chal Mere Bhai',
-      albumArt: 'https://i.scdn.co/image/ab67616d0000b273d998c880f085f08c7ddeeafc',
+      albumArt: 'https://i.scdn.co/image/ab67616d0000b2737f7b13e5c121f5f8e7de1b2f',
       previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/chori-chori-sapnon-mein.mp3',
       duration: 373000 // ~6:13
     },
     {
       name: 'Dil Kaa Jo Haal Hai',
-      artist: 'Various Artists',
+      artist: 'Kumar Sanu',
       album: 'Dil Kaa Jo Haal Hai',
-      albumArt: 'https://i.scdn.co/image/ab67616d0000b273d998c880f085f08c7ddeeafc',
+      albumArt: 'https://i.scdn.co/image/ab67616d0000b2733d92d2a80de3ca148b77ed89',
       previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/dil-kaa-jo-haal-hai.mp3',
       duration: 387000 // ~6:27
     },
     {
       name: 'Jo Haal Dil Ka',
-      artist: 'Various Artists',
-      album: 'Jo Haal Dil Ka',
-      albumArt: 'https://i.scdn.co/image/ab67616d0000b273d998c880f085f08c7ddeeafc',
+      artist: 'Kumar Sanu, Alka Yagnik',
+      album: 'Sarfarosh',
+      albumArt: 'https://i.scdn.co/image/ab67616d0000b2736ff0cd6b808dbff6722e8a4d',
       previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/jo-haal-dil-ka.mp3',
       duration: 400000 // ~6:40
     },
     {
       name: 'Pyar Ko Ho Jane Do',
-      artist: 'Various Artists',
-      album: 'Pyar Ko Ho Jane Do',
-      albumArt: 'https://i.scdn.co/image/ab67616d0000b273d998c880f085f08c7ddeeafc',
+      artist: 'Kumar Sanu',
+      album: 'Dil Kaa Kya Kasoor',
+      albumArt: 'https://i.scdn.co/image/ab67616d0000b273a8e9f8e0a7c4d5e3c1d2f4a8',
       previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/pyar-ko-ho-jane-do.mp3',
       duration: 393000 // ~6:33
     },
     {
       name: 'Saagar Jaisi Aankhonwali',
-      artist: 'Various Artists',
+      artist: 'S.P. Balasubrahmanyam',
       album: 'Saagar',
-      albumArt: 'https://i.scdn.co/image/ab67616d0000b273d998c880f085f08c7ddeeafc',
+      albumArt: 'https://i.scdn.co/image/ab67616d0000b2738a4e4e0a8b3c5c5e7d9f1a2b',
       previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/saagar-jaisi-aankhonwali.mp3',
       duration: 367000 // ~6:07
     },
     {
       name: 'Suno Na Suno Na',
-      artist: 'Various Artists',
-      album: 'Suno Na',
-      albumArt: 'https://i.scdn.co/image/ab67616d0000b273d998c880f085f08c7ddeeafc',
+      artist: 'Anuradha Paudwal',
+      album: 'Chalte Chalte',
+      albumArt: 'https://i.scdn.co/image/ab67616d0000b27350ebcdb5aef8a5f92c0e4937',
       previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/suno-na-suno-na.mp3',
       duration: 438000 // ~7:18
     },
     {
       name: 'Hum Tumko Nigahon Mein',
-      artist: 'Various Artists',
-      album: 'Hum Tumko Nigahon Mein',
-      albumArt: 'https://i.scdn.co/image/ab67616d0000b273d998c880f085f08c7ddeeafc',
+      artist: 'Udit Narayan, Alka Yagnik',
+      album: 'Garv',
+      albumArt: 'https://i.scdn.co/image/ab67616d0000b273c4e0e8f0f1a2b3c4d5e6f7a8',
       previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/hum-tumko-nigahon-mein.mp3',
       duration: 452000 // ~7:32
     },
     {
       name: 'Chand Se Parda',
-      artist: 'Various Artists',
-      album: 'Chand Se Parda',
-      albumArt: 'https://i.scdn.co/image/ab67616d0000b273d998c880f085f08c7ddeeafc',
+      artist: 'Mohammad Rafi',
+      album: 'Aaya Sawan Jhoom Ke',
+      albumArt: 'https://i.scdn.co/image/ab67616d0000b273f1e2d3c4b5a6e7d8f9a0b1c2',
       previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/chand-se-parda.mp3',
       duration: 479000 // ~7:59
     },
     {
       name: 'Humko Sirf Tumse',
-      artist: 'Various Artists',
-      album: 'Humko Sirf Tumse',
-      albumArt: 'https://i.scdn.co/image/ab67616d0000b273d998c880f085f08c7ddeeafc',
+      artist: 'Udit Narayan, Alka Yagnik',
+      album: 'Barsaat',
+      albumArt: 'https://i.scdn.co/image/ab67616d0000b273e8f9a0b1c2d3e4f5a6b7c8d9',
       previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/humko-sirf-tumse.mp3',
       duration: 518000 // ~8:38
     },
     {
       name: 'Mere Mehboob Mere Sanam',
-      artist: 'Various Artists',
-      album: 'Mere Mehboob Mere Sanam',
-      albumArt: 'https://i.scdn.co/image/ab67616d0000b273d998c880f085f08c7ddeeafc',
+      artist: 'Kumar Sanu, Alka Yagnik',
+      album: 'Duplicate',
+      albumArt: 'https://i.scdn.co/image/ab67616d0000b273a1b2c3d4e5f6a7b8c9d0e1f2',
       previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music/mere-mehboob-mere-sanam.mp3',
       duration: 559000 // ~9:19
     }
@@ -1288,19 +1288,22 @@ function loadChocolateDay() {
             <!-- Floating Banner Behind Truck -->
             <div id="chocolate-banner" style="
               position: absolute;
-              right: calc(100% + 50px);
+              right: calc(100% + 30px);
               top: 50%;
               transform: translateY(-50%);
               background: linear-gradient(135deg, #FFE5EC 0%, #FFB3C6 100%);
               border: 3px solid #FF69B4;
               border-radius: 15px;
-              padding: 1rem 1.5rem;
-              font-size: 1.2rem;
+              padding: 0.75rem 1rem;
+              font-size: clamp(0.8rem, 2.5vw, 1.2rem);
               font-weight: bold;
               color: #C71585;
               box-shadow: 0 5px 20px rgba(255, 105, 180, 0.3);
               animation: bannerFloat 3s ease-in-out infinite;
-              white-space: nowrap;
+              white-space: normal;
+              max-width: 150px;
+              text-align: center;
+              line-height: 1.3;
               z-index: 1;
             ">Order on its way Honey!!!</div>
             
@@ -1379,19 +1382,22 @@ function loadTeddyDay() {
             <!-- Floating Banner Behind Cyclist -->
             <div id="teddy-banner" style="
               position: absolute;
-              right: calc(100% + 50px);
+              right: calc(100% + 30px);
               top: 50%;
               transform: translateY(-50%);
               background: linear-gradient(135deg, #FFF5E1 0%, #FFE4B5 100%);
               border: 3px solid #F4A460;
               border-radius: 15px;
-              padding: 1rem 1.5rem;
-              font-size: 1.2rem;
+              padding: 0.75rem 1rem;
+              font-size: clamp(0.8rem, 2.5vw, 1.2rem);
               font-weight: bold;
               color: #8B4513;
               box-shadow: 0 5px 20px rgba(244, 164, 96, 0.3);
               animation: bannerFloat 3s ease-in-out infinite;
-              white-space: nowrap;
+              white-space: normal;
+              max-width: 150px;
+              text-align: center;
+              line-height: 1.3;
               z-index: 1;
             ">Order on its way Honey!!!</div>
             
