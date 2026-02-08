@@ -3,7 +3,7 @@ const VALENTINE_WEEK_CONFIG = {
   // Set your Valentine Week start date (February 8, 2026 - Propose Day)
   startDate: new Date('2026-02-08T00:00:00'),
   // PREVIEW MODE: Set to true to unlock all days for preview
-  previewMode: true, // Change to false for production
+  previewMode: false, // Change to false for production
   days: [
     { id: 1, name: 'Propose Day', date: '2026-02-08', color: '#FFE5EC' },
     { id: 2, name: 'Chocolate Day', date: '2026-02-09', color: '#8B4513' },
