@@ -224,6 +224,20 @@ app.get('/', (c) => {
             <!-- Days content will be injected here -->
         </main>
 
+        <!-- Footer -->
+        <footer class="fixed left-0 right-0 bg-gradient-to-r from-romantic-pink via-white to-deep-pink border-t border-rose-red/20 py-2 z-30" style="bottom: 120px; pointer-events: none;">
+            <div class="container mx-auto text-center">
+                <p class="text-xs text-gray-600">
+                    © 2026 <span class="font-semibold text-rose-red">Bunny</span> 
+                    <span class="text-gray-400">(</span><span class="font-medium text-deep-pink">mohitdev</span><span class="text-gray-400">)</span>
+                    <span class="mx-1">•</span>
+                    <span class="text-gray-500">Made with</span> 
+                    <i class="fas fa-heart text-rose-red animate-pulse-heart mx-1"></i>
+                    <span class="text-gray-500">for Anku</span> 🧸
+                </p>
+            </div>
+        </footer>
+
         <!-- Confetti Container -->
         <div id="confetti-container" class="fixed inset-0 pointer-events-none z-50"></div>
 
