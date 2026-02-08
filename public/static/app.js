@@ -2,6 +2,8 @@
 const VALENTINE_WEEK_CONFIG = {
   // Set your Valentine Week start date (February 8, 2026 - Propose Day)
   startDate: new Date('2026-02-08T00:00:00'),
+  // PREVIEW MODE: Set to true to unlock all days for preview
+  previewMode: true, // Change to false for production
   days: [
     { id: 1, name: 'Propose Day', date: '2026-02-08', color: '#FFE5EC' },
     { id: 2, name: 'Chocolate Day', date: '2026-02-09', color: '#8B4513' },
@@ -97,7 +99,42 @@ document.addEventListener('DOMContentLoaded', function() {
   createFloatingHearts();
   updateNavigationButtons();
   loadDay(1); // Start with Day 1
+  
+  // Show preview mode banner
+  if (VALENTINE_WEEK_CONFIG.previewMode) {
+    showPreviewBanner();
+  }
 });
+
+// Show preview mode banner
+function showPreviewBanner() {
+  const banner = document.createElement('div');
+  banner.id = 'preview-banner';
+  banner.style.cssText = `
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    z-index: 9999;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  `;
+  banner.innerHTML = `
+    ✨ PREVIEW MODE - All Days Unlocked ✨
+    <span style="margin-left: 10px; font-size: 12px; opacity: 0.9;">
+      Set previewMode: false in config for production
+    </span>
+  `;
+  document.body.appendChild(banner);
+  
+  // Adjust body padding to account for banner
+  document.body.style.paddingTop = '40px';
+}
 
 // Create floating hearts background
 function createFloatingHearts() {
@@ -115,6 +152,11 @@ function createFloatingHearts() {
 
 // Check if day is unlocked
 function isDayUnlocked(dayNumber) {
+  // Preview mode unlocks all days
+  if (VALENTINE_WEEK_CONFIG.previewMode) {
+    return true;
+  }
+  
   const today = new Date();
   const dayConfig = VALENTINE_WEEK_CONFIG.days[dayNumber - 1];
   const dayDate = new Date(dayConfig.date + 'T00:00:00');
