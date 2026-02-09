@@ -5,7 +5,7 @@ const VALENTINE_WEEK_CONFIG = {
   // PREVIEW MODE: Set to true to unlock all days for preview
   previewMode: false, // Change to false for production
   // PREVIEW SPECIFIC DAYS: Array of day IDs to unlock for preview (e.g., [3] for Day 3 only)
-  previewDays: [3], // Unlock Day 3 (Teddy Day) for preview
+  previewDays: [], // All days locked - unlock based on date only
   days: [
     { id: 1, name: 'Propose Day', date: '2026-02-08', color: '#FFE5EC' },
     { id: 2, name: 'Chocolate Day', date: '2026-02-09', color: '#8B4513' },
