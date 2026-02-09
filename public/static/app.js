@@ -4,6 +4,8 @@ const VALENTINE_WEEK_CONFIG = {
   startDate: new Date('2026-02-08T00:00:00'),
   // PREVIEW MODE: Set to true to unlock all days for preview
   previewMode: false, // Change to false for production
+  // PREVIEW SPECIFIC DAYS: Array of day IDs to unlock for preview (e.g., [3] for Day 3 only)
+  previewDays: [3], // Unlock Day 3 (Teddy Day) for preview
   days: [
     { id: 1, name: 'Propose Day', date: '2026-02-08', color: '#FFE5EC' },
     { id: 2, name: 'Chocolate Day', date: '2026-02-09', color: '#8B4513' },
@@ -266,6 +268,11 @@ function createFloatingHearts() {
 function isDayUnlocked(dayNumber) {
   // Preview mode unlocks all days
   if (VALENTINE_WEEK_CONFIG.previewMode) {
+    return true;
+  }
+  
+  // Check if this day is in previewDays array
+  if (VALENTINE_WEEK_CONFIG.previewDays && VALENTINE_WEEK_CONFIG.previewDays.includes(dayNumber)) {
     return true;
   }
   
@@ -1363,65 +1370,705 @@ function loadTeddyDay() {
       <!-- Floating Teddies Background -->
       <div id="floating-teddies" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;"></div>
       
-      <!-- Center Message -->
-      <div style="position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 60vh; padding: 2rem;">
-        <div class="glass-card" style="padding: 3rem; text-align: center; max-width: 600px; margin: 2rem auto; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);">
-          <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: #F4A460;">🧸 Teddy Day 🧸</h2>
-          
-          <div class="animate-pulse" style="margin: 2rem 0;">
-            <p class="text-2xl md:text-3xl font-bold" style="color: #8B4513; margin-bottom: 1.5rem;">
-              Order on its way!!!!
+      <!-- Main Content -->
+      <div style="position: relative; z-index: 2; padding: 2rem; max-width: 1200px; margin: 0 auto;">
+        
+        <!-- Title Section -->
+        <div class="text-center mb-8">
+          <h2 class="text-4xl md:text-5xl font-bold mb-4" style="color: #F4A460;">🧸 Teddy Day Special 🧸</h2>
+        </div>
+
+        <!-- Ted Bear Character with Speech Bubble -->
+        <div style="margin: 3rem auto; max-width: 600px; position: relative;">
+          <!-- Speech Bubble -->
+          <div style="
+            background: white;
+            border: 4px solid #F4A460;
+            border-radius: 25px;
+            padding: 2rem 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            position: relative;
+            animation: bubbleBounce 2s ease-in-out infinite;
+          ">
+            <p style="font-size: 1.8rem; font-weight: bold; color: #8B4513; text-align: center; line-height: 1.6; margin: 0;">
+              Let's watch a movie together! 🎬
             </p>
-            <p class="text-xl md:text-2xl" style="color: #FF69B4; font-weight: 600;">
-              Wait Darling 💕
+            <!-- Arrow pointing down -->
+            <div style="
+              position: absolute;
+              bottom: -30px;
+              left: 50%;
+              transform: translateX(-50%);
+              width: 0;
+              height: 0;
+              border-left: 30px solid transparent;
+              border-right: 30px solid transparent;
+              border-top: 30px solid #F4A460;
+            "></div>
+            <div style="
+              position: absolute;
+              bottom: -23px;
+              left: 50%;
+              transform: translateX(-50%);
+              width: 0;
+              height: 0;
+              border-left: 26px solid transparent;
+              border-right: 26px solid transparent;
+              border-top: 26px solid white;
+            "></div>
+          </div>
+
+          <!-- Ted Bear Character -->
+          <div id="ted-character" style="
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 2rem auto;
+            animation: tedBounce 2s ease-in-out infinite;
+          ">
+            <!-- Ted's Head -->
+            <div style="position: relative; margin-bottom: -20px;">
+              <!-- Head -->
+              <div style="
+                width: 140px;
+                height: 140px;
+                background: linear-gradient(135deg, #D2691E 0%, #8B4513 100%);
+                border-radius: 50%;
+                position: relative;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                animation: headTilt 3s ease-in-out infinite;
+              ">
+                <!-- Left Ear -->
+                <div style="
+                  position: absolute;
+                  width: 50px;
+                  height: 50px;
+                  background: linear-gradient(135deg, #D2691E 0%, #8B4513 100%);
+                  border-radius: 50%;
+                  top: -15px;
+                  left: 10px;
+                  box-shadow: inset -3px -3px 10px rgba(0,0,0,0.2);
+                ">
+                  <div style="
+                    width: 30px;
+                    height: 30px;
+                    background: #CD853F;
+                    border-radius: 50%;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                  "></div>
+                </div>
+                
+                <!-- Right Ear -->
+                <div style="
+                  position: absolute;
+                  width: 50px;
+                  height: 50px;
+                  background: linear-gradient(135deg, #D2691E 0%, #8B4513 100%);
+                  border-radius: 50%;
+                  top: -15px;
+                  right: 10px;
+                  box-shadow: inset -3px -3px 10px rgba(0,0,0,0.2);
+                ">
+                  <div style="
+                    width: 30px;
+                    height: 30px;
+                    background: #CD853F;
+                    border-radius: 50%;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                  "></div>
+                </div>
+
+                <!-- Face -->
+                <div style="
+                  position: absolute;
+                  width: 90px;
+                  height: 80px;
+                  background: #DEB887;
+                  border-radius: 50%;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -40%);
+                  box-shadow: inset 0 -5px 10px rgba(0,0,0,0.1);
+                ">
+                  <!-- Left Eye -->
+                  <div style="
+                    position: absolute;
+                    width: 18px;
+                    height: 18px;
+                    background: #000;
+                    border-radius: 50%;
+                    top: 25px;
+                    left: 20px;
+                    animation: eyeBlink 4s ease-in-out infinite;
+                  ">
+                    <div style="
+                      width: 6px;
+                      height: 6px;
+                      background: white;
+                      border-radius: 50%;
+                      position: absolute;
+                      top: 4px;
+                      left: 4px;
+                    "></div>
+                  </div>
+
+                  <!-- Right Eye -->
+                  <div style="
+                    position: absolute;
+                    width: 18px;
+                    height: 18px;
+                    background: #000;
+                    border-radius: 50%;
+                    top: 25px;
+                    right: 20px;
+                    animation: eyeBlink 4s ease-in-out infinite;
+                  ">
+                    <div style="
+                      width: 6px;
+                      height: 6px;
+                      background: white;
+                      border-radius: 50%;
+                      position: absolute;
+                      top: 4px;
+                      left: 4px;
+                    "></div>
+                  </div>
+
+                  <!-- Nose -->
+                  <div style="
+                    position: absolute;
+                    width: 20px;
+                    height: 16px;
+                    background: #8B4513;
+                    border-radius: 50%;
+                    bottom: 20px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                  "></div>
+
+                  <!-- Smile -->
+                  <div style="
+                    position: absolute;
+                    width: 40px;
+                    height: 20px;
+                    border: 3px solid #8B4513;
+                    border-top: none;
+                    border-radius: 0 0 40px 40px;
+                    bottom: 10px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                  "></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Ted's Body -->
+            <div style="position: relative;">
+              <!-- Body -->
+              <div style="
+                width: 120px;
+                height: 140px;
+                background: linear-gradient(135deg, #D2691E 0%, #8B4513 100%);
+                border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+                position: relative;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+              ">
+                <!-- Belly -->
+                <div style="
+                  position: absolute;
+                  width: 80px;
+                  height: 90px;
+                  background: #DEB887;
+                  border-radius: 50%;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -45%);
+                  box-shadow: inset 0 -5px 15px rgba(0,0,0,0.1);
+                "></div>
+
+                <!-- RED OVERALL OUTFIT -->
+                <div style="
+                  position: absolute;
+                  width: 95px;
+                  height: 110px;
+                  background: linear-gradient(135deg, #E53935 0%, #C62828 100%);
+                  border-radius: 15px 15px 30px 30px;
+                  top: 15px;
+                  left: 50%;
+                  transform: translateX(-50%);
+                  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+                  z-index: 5;
+                ">
+                  <!-- Left Strap -->
+                  <div style="
+                    position: absolute;
+                    width: 12px;
+                    height: 50px;
+                    background: linear-gradient(135deg, #E53935 0%, #C62828 100%);
+                    border-radius: 8px;
+                    top: -15px;
+                    left: 15px;
+                    transform: rotate(-10deg);
+                    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+                  ">
+                    <!-- Button -->
+                    <div style="
+                      position: absolute;
+                      width: 8px;
+                      height: 8px;
+                      background: #FFD700;
+                      border-radius: 50%;
+                      top: 5px;
+                      left: 50%;
+                      transform: translateX(-50%);
+                      border: 2px solid #FFA000;
+                      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+                    "></div>
+                  </div>
+                  
+                  <!-- Right Strap -->
+                  <div style="
+                    position: absolute;
+                    width: 12px;
+                    height: 50px;
+                    background: linear-gradient(135deg, #E53935 0%, #C62828 100%);
+                    border-radius: 8px;
+                    top: -15px;
+                    right: 15px;
+                    transform: rotate(10deg);
+                    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+                  ">
+                    <!-- Button -->
+                    <div style="
+                      position: absolute;
+                      width: 8px;
+                      height: 8px;
+                      background: #FFD700;
+                      border-radius: 50%;
+                      top: 5px;
+                      left: 50%;
+                      transform: translateX(-50%);
+                      border: 2px solid #FFA000;
+                      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+                    "></div>
+                  </div>
+
+                  <!-- Chest Pocket with Name Tag -->
+                  <div style="
+                    position: absolute;
+                    width: 55px;
+                    height: 35px;
+                    background: white;
+                    border: 3px solid #C62828;
+                    border-radius: 8px;
+                    top: 25px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  ">
+                    <!-- Name "TED" -->
+                    <span style="
+                      font-family: Arial, sans-serif;
+                      font-size: 13px;
+                      font-weight: bold;
+                      color: #C62828;
+                      letter-spacing: 1px;
+                    ">TED</span>
+                  </div>
+
+                  <!-- Bottom Badge (circular pin) -->
+                  <div style="
+                    position: absolute;
+                    width: 28px;
+                    height: 28px;
+                    background: white;
+                    border: 3px solid #FFD700;
+                    border-radius: 50%;
+                    bottom: 20px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  ">
+                    <!-- Heart emoji or cute icon -->
+                    <span style="font-size: 14px;">❤️</span>
+                  </div>
+                </div>
+
+                <!-- Left Arm -->
+                <div style="
+                  position: absolute;
+                  width: 40px;
+                  height: 80px;
+                  background: linear-gradient(135deg, #D2691E 0%, #8B4513 100%);
+                  border-radius: 20px;
+                  top: 20px;
+                  left: -25px;
+                  transform: rotate(-30deg);
+                  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                  animation: armWave 2s ease-in-out infinite;
+                ">
+                  <!-- Paw -->
+                  <div style="
+                    position: absolute;
+                    width: 35px;
+                    height: 35px;
+                    background: #CD853F;
+                    border-radius: 50%;
+                    bottom: -10px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                  "></div>
+                </div>
+
+                <!-- Right Arm -->
+                <div style="
+                  position: absolute;
+                  width: 40px;
+                  height: 80px;
+                  background: linear-gradient(135deg, #D2691E 0%, #8B4513 100%);
+                  border-radius: 20px;
+                  top: 20px;
+                  right: -25px;
+                  transform: rotate(30deg);
+                  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                  animation: armWave 2s ease-in-out infinite;
+                  animation-delay: 1s;
+                ">
+                  <!-- Paw -->
+                  <div style="
+                    position: absolute;
+                    width: 35px;
+                    height: 35px;
+                    background: #CD853F;
+                    border-radius: 50%;
+                    bottom: -10px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                  "></div>
+                </div>
+
+                <!-- Left Leg -->
+                <div style="
+                  position: absolute;
+                  width: 35px;
+                  height: 60px;
+                  background: linear-gradient(135deg, #D2691E 0%, #8B4513 100%);
+                  border-radius: 20px;
+                  bottom: -45px;
+                  left: 20px;
+                  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                ">
+                  <!-- Foot -->
+                  <div style="
+                    position: absolute;
+                    width: 40px;
+                    height: 25px;
+                    background: #CD853F;
+                    border-radius: 50%;
+                    bottom: -5px;
+                    left: -5px;
+                  "></div>
+                </div>
+
+                <!-- Right Leg -->
+                <div style="
+                  position: absolute;
+                  width: 35px;
+                  height: 60px;
+                  background: linear-gradient(135deg, #D2691E 0%, #8B4513 100%);
+                  border-radius: 20px;
+                  bottom: -45px;
+                  right: 20px;
+                  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                ">
+                  <!-- Foot -->
+                  <div style="
+                    position: absolute;
+                    width: 40px;
+                    height: 25px;
+                    background: #CD853F;
+                    border-radius: 50%;
+                    bottom: -5px;
+                    right: -5px;
+                  "></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Movie Invitation Card -->
+        <div class="glass-card" style="padding: 2.5rem; margin: 2rem auto; max-width: 800px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border: 3px solid #F4A460;">
+          
+          <!-- Movie Poster -->
+          <div style="text-align: center; margin-bottom: 2rem;">
+            <div style="
+              display: inline-block;
+              background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);
+              padding: 1rem;
+              border-radius: 15px;
+              box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+              transform: rotate(-2deg);
+            ">
+              <div style="background: white; padding: 1.5rem; border-radius: 10px;">
+                <div style="font-size: 4rem; margin-bottom: 0.5rem;">🧸</div>
+                <h3 style="font-size: 2rem; font-weight: bold; color: #8B4513; margin-bottom: 0.5rem;">TED</h3>
+                <p style="font-size: 0.9rem; color: #666; font-style: italic;">A Comedy Classic</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Movie Details -->
+          <div style="text-align: center; margin-bottom: 2rem;">
+            <p style="font-size: 1.3rem; color: #8B4513; margin-bottom: 1rem; line-height: 1.6;">
+              🎬 <strong>Movie Night Invitation</strong> 🎬
+            </p>
+            <p style="font-size: 1.1rem; color: #666; margin-bottom: 0.5rem;">
+              Join me for a cozy movie night! 🍿
+            </p>
+            <p style="font-size: 1rem; color: #FF69B4; font-weight: 600;">
+              Let's laugh together watching Ted! 😄💕
             </p>
           </div>
-          
-          <!-- Delivery Boy Animation with Banner -->
-          <div style="margin-top: 2rem; position: relative; height: 150px; overflow: visible;">
-            <!-- Banner tied to cyclist -->
-            <div id="teddy-banner" style="
-              position: absolute;
-              left: 0;
-              top: 50%;
-              transform: translateY(-50%);
-              background: linear-gradient(135deg, #FFF5E1 0%, #FFE4B5 100%);
-              border: 3px solid #F4A460;
-              border-radius: 12px;
-              padding: 0.6rem 0.9rem;
-              font-size: clamp(0.75rem, 2vw, 1rem);
-              font-weight: bold;
-              color: #8B4513;
-              box-shadow: 0 5px 20px rgba(244, 164, 96, 0.3);
-              animation: bannerFloatTied 4s ease-in-out infinite;
-              white-space: nowrap;
-              text-align: center;
-              line-height: 1.2;
-              z-index: 2;
-            ">Order on its way Honey!!!</div>
+
+          <!-- Time Slot Selection -->
+          <div style="margin-bottom: 2rem;">
+            <h4 style="text-align: center; font-size: 1.4rem; color: #8B4513; margin-bottom: 1.5rem; font-weight: bold;">
+              📅 Pick Your Preferred Time Slot
+            </h4>
             
-            <!-- Delivery Cyclist -->
-            <div id="delivery-boy" style="
-              position: absolute;
-              right: -150px;
-              top: 50%;
-              transform: translateY(-50%);
-              font-size: 3.5rem;
-              animation: deliveryMoveRTL 4s ease-in-out infinite;
-              z-index: 3;
-            ">🚴</div>
+            <div id="time-slots" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+              <!-- Time slots will be generated by JS -->
+            </div>
+
+            <p style="text-align: center; font-size: 0.9rem; color: #999; font-style: italic;">
+              All slots are IST (Indian Standard Time) ⏰
+            </p>
           </div>
-          
-          <p class="text-lg text-gray-600 mt-6" style="font-style: italic;">
-            A cuddly surprise is heading your way... 🧸💕
+
+          <!-- Selected Slot Display -->
+          <div id="selected-slot-display" style="
+            background: linear-gradient(135deg, #FFE5EC 0%, #FFB3C6 100%);
+            border: 3px solid #FF69B4;
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            display: none;
+            margin-bottom: 1.5rem;
+          ">
+            <p style="font-size: 1.2rem; color: #C71585; font-weight: bold; margin-bottom: 0.5rem;">
+              🎉 Awesome Choice! 🎉
+            </p>
+            <p style="font-size: 1.1rem; color: #8B4513;" id="selected-time-text"></p>
+            <p style="font-size: 0.95rem; color: #666; margin-top: 0.5rem;">
+              I'll send you the movie link on the selected date! 💕
+            </p>
+          </div>
+
+          <!-- Fun Facts Section -->
+          <div style="background: linear-gradient(135deg, #FFF5E1 0%, #FFE4B5 100%); border-radius: 12px; padding: 1.5rem; margin-top: 2rem;">
+            <h4 style="text-align: center; font-size: 1.2rem; color: #8B4513; margin-bottom: 1rem; font-weight: bold;">
+              🎭 Fun Ted Movie Facts
+            </h4>
+            <div id="fun-facts" style="font-size: 1rem; color: #666; line-height: 1.8;">
+              <!-- Facts will rotate -->
+            </div>
+          </div>
+
+          <!-- Snacks Section -->
+          <div style="margin-top: 2rem; text-align: center;">
+            <p style="font-size: 1.2rem; color: #8B4513; margin-bottom: 1rem; font-weight: bold;">
+              🍿 Movie Snacks Ready! 🍿
+            </p>
+            <div style="font-size: 3rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+              <span class="snack-bounce" style="animation: snackBounce 1s ease-in-out infinite; animation-delay: 0s;">🍿</span>
+              <span class="snack-bounce" style="animation: snackBounce 1s ease-in-out infinite; animation-delay: 0.2s;">🥤</span>
+              <span class="snack-bounce" style="animation: snackBounce 1s ease-in-out infinite; animation-delay: 0.4s;">🍫</span>
+              <span class="snack-bounce" style="animation: snackBounce 1s ease-in-out infinite; animation-delay: 0.6s;">🍕</span>
+              <span class="snack-bounce" style="animation: snackBounce 1s ease-in-out infinite; animation-delay: 0.8s;">🍪</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Cute Message -->
+        <div style="text-align: center; margin-top: 2rem;">
+          <p style="font-size: 1.3rem; color: #FF69B4; font-weight: 600; text-shadow: 2px 2px 4px rgba(0,0,0,0.1);">
+            Can't wait to watch and laugh together! 🧸💕
           </p>
         </div>
+
       </div>
     </div>
   `;
   
   // Create floating teddies
   createFloatingTeddies();
+  
+  // Generate time slots
+  generateTimeSlots();
+  
+  // Start rotating fun facts
+  rotateFunFacts();
+}
+
+function generateTimeSlots() {
+  const timeSlotsContainer = document.getElementById('time-slots');
+  
+  const slots = [
+    { day: 'Tonight', time: '9:00 PM', date: 'Feb 10', emoji: '🌙' },
+    { day: 'Tomorrow', time: '8:00 PM', date: 'Feb 11', emoji: '🌆' },
+    { day: 'This Weekend', time: '7:00 PM', date: 'Feb 14', emoji: '💝' },
+    { day: 'Next Saturday', time: '8:30 PM', date: 'Feb 15', emoji: '🎬' },
+    { day: 'Sunday Evening', time: '6:00 PM', date: 'Feb 16', emoji: '🍿' },
+    { day: 'Your Choice', time: 'Pick Any Time!', date: 'Flexible', emoji: '⭐' }
+  ];
+  
+  slots.forEach((slot, index) => {
+    const slotCard = document.createElement('div');
+    slotCard.className = 'time-slot-card';
+    slotCard.style.cssText = `
+      background: white;
+      border: 3px solid #F4A460;
+      border-radius: 12px;
+      padding: 1.2rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    `;
+    
+    slotCard.innerHTML = `
+      <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">${slot.emoji}</div>
+      <div style="font-size: 1.1rem; font-weight: bold; color: #8B4513; margin-bottom: 0.3rem;">${slot.day}</div>
+      <div style="font-size: 1rem; color: #FF69B4; font-weight: 600; margin-bottom: 0.3rem;">${slot.time}</div>
+      <div style="font-size: 0.85rem; color: #999;">${slot.date}</div>
+    `;
+    
+    // Hover effects
+    slotCard.addEventListener('mouseenter', () => {
+      slotCard.style.transform = 'translateY(-5px) scale(1.05)';
+      slotCard.style.boxShadow = '0 10px 30px rgba(244, 164, 96, 0.4)';
+      slotCard.style.borderColor = '#FF69B4';
+    });
+    
+    slotCard.addEventListener('mouseleave', () => {
+      if (!slotCard.classList.contains('selected')) {
+        slotCard.style.transform = 'translateY(0) scale(1)';
+        slotCard.style.boxShadow = 'none';
+        slotCard.style.borderColor = '#F4A460';
+      }
+    });
+    
+    // Click to select
+    slotCard.addEventListener('click', () => {
+      // Remove selection from all cards
+      document.querySelectorAll('.time-slot-card').forEach(card => {
+        card.classList.remove('selected');
+        card.style.background = 'white';
+        card.style.borderColor = '#F4A460';
+        card.style.transform = 'translateY(0) scale(1)';
+      });
+      
+      // Select this card
+      slotCard.classList.add('selected');
+      slotCard.style.background = 'linear-gradient(135deg, #FFE5EC 0%, #FFB3C6 100%)';
+      slotCard.style.borderColor = '#FF69B4';
+      slotCard.style.transform = 'translateY(-5px) scale(1.05)';
+      slotCard.style.boxShadow = '0 10px 30px rgba(255, 105, 180, 0.5)';
+      
+      // Show selected slot display
+      const display = document.getElementById('selected-slot-display');
+      const timeText = document.getElementById('selected-time-text');
+      display.style.display = 'block';
+      timeText.textContent = `${slot.day} at ${slot.time} (${slot.date})`;
+      
+      // Scroll to display
+      setTimeout(() => {
+        display.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 100);
+      
+      // Confetti effect
+      createHeartConfetti(slotCard);
+    });
+    
+    timeSlotsContainer.appendChild(slotCard);
+  });
+}
+
+function rotateFunFacts() {
+  const facts = [
+    "🎬 Seth MacFarlane voiced Ted in the movie!",
+    "🧸 Ted became the highest-grossing original R-rated comedy!",
+    "😄 The movie was filmed in Boston, Massachusetts!",
+    "🎭 Mark Wahlberg had to act with a tennis ball on a stick!",
+    "🎵 The soundtrack features the iconic 'Thunder Buddies' song!",
+    "🌟 Ted was nominated for an Oscar for Best Original Song!",
+    "🎬 A sequel 'Ted 2' was released in 2015!",
+    "🧸 Ted's personality was inspired by Peter Griffin!"
+  ];
+  
+  const factsContainer = document.getElementById('fun-facts');
+  let currentIndex = 0;
+  
+  function showFact() {
+    factsContainer.style.opacity = '0';
+    setTimeout(() => {
+      factsContainer.innerHTML = `<p style="text-align: center;">${facts[currentIndex]}</p>`;
+      factsContainer.style.opacity = '1';
+      currentIndex = (currentIndex + 1) % facts.length;
+    }, 300);
+  }
+  
+  factsContainer.style.transition = 'opacity 0.3s ease';
+  showFact();
+  setInterval(showFact, 4000);
+}
+
+function createHeartConfetti(element) {
+  const hearts = ['💕', '💖', '💗', '💝', '💓', '💞'];
+  const rect = element.getBoundingClientRect();
+  
+  for (let i = 0; i < 10; i++) {
+    const heart = document.createElement('div');
+    heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+    heart.style.cssText = `
+      position: fixed;
+      left: ${rect.left + rect.width / 2}px;
+      top: ${rect.top + rect.height / 2}px;
+      font-size: 1.5rem;
+      pointer-events: none;
+      z-index: 10000;
+      animation: confettiPop 1s ease-out forwards;
+      opacity: 1;
+    `;
+    
+    const angle = (Math.PI * 2 * i) / 10;
+    const distance = 100 + Math.random() * 50;
+    const tx = Math.cos(angle) * distance;
+    const ty = Math.sin(angle) * distance;
+    
+    heart.style.setProperty('--tx', `${tx}px`);
+    heart.style.setProperty('--ty', `${ty}px`);
+    
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 1000);
+  }
 }
 
 function createFloatingTeddies() {
