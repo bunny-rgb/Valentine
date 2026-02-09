@@ -1914,11 +1914,12 @@ function loadTeddyDay() {
               box-shadow: 0 10px 30px rgba(0,0,0,0.3);
               transform: rotate(-2deg);
             ">
-              <div style="background: white; padding: 1.5rem; border-radius: 10px;">
-                <div style="font-size: 4rem; margin-bottom: 0.5rem;">🧸</div>
-                <h3 style="font-size: 2rem; font-weight: bold; color: #8B4513; margin-bottom: 0.5rem;">TED</h3>
-                <p style="font-size: 0.9rem; color: #666; font-style: italic;">A Comedy Classic</p>
-              </div>
+              <img src="/static/ted-movie-poster.jpg" alt="Ted Movie Poster" style="
+                max-width: 300px;
+                width: 100%;
+                border-radius: 10px;
+                display: block;
+              ">
             </div>
           </div>
 
