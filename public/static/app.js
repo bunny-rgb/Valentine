@@ -24,7 +24,7 @@ const MUSIC_CONFIG = {
   
   // 🎵 TIME-BASED PLAYLIST SWITCHING
   // Day 2 (Chocolate Day) special playlist unlocks on 2026-02-09 00:00:00
-  day2UnlockDate: new Date('2026-02-09T00:00:00'),
+  // Day 3 (Teddy Day) special playlist unlocks on 2026-02-10 00:00:00
   
   // Original playlist (until Day 2 unlocks)
   originalPlaylist: [
@@ -186,11 +186,101 @@ const MUSIC_CONFIG = {
     }
   ],
   
+  // Day 3 Playlist - Teddy Day Songs
+  day3Playlist: [
+    {
+      name: '12 to 12',
+      artist: 'Unknown Artist',
+      album: '12 to 12',
+      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23FF6B9D"/%3E%3Ctext x="50%25" y="50%25" font-size="100" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3E1%3C/text%3E%3C/svg%3E',
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day3/12-to-12.mp3',
+      duration: 415000 // ~6:55
+    },
+    {
+      name: 'Co2',
+      artist: 'Unknown Artist',
+      album: 'Co2',
+      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23E91E63"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3EC%3C/text%3E%3C/svg%3E',
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day3/co2.mp3',
+      duration: 276000 // ~4:36
+    },
+    {
+      name: 'Daddy Cool',
+      artist: 'Boney M',
+      album: 'Daddy Cool',
+      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23FF4081"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3ED%3C/text%3E%3C/svg%3E',
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day3/daddy-cool.mp3',
+      duration: 387000 // ~6:27
+    },
+    {
+      name: 'I Think They Call This Love',
+      artist: 'Elliot James Reay',
+      album: 'I Think They Call This Love',
+      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23F06292"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3EI%3C/text%3E%3C/svg%3E',
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day3/i-think-they-call-this-love.mp3',
+      duration: 339000 // ~5:39
+    },
+    {
+      name: 'Show Me Love (with Tyla)',
+      artist: 'Sam Feldt & Tyla',
+      album: 'Show Me Love',
+      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23EC407A"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3ES%3C/text%3E%3C/svg%3E',
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day3/show-me-love-tyla.mp3',
+      duration: 319000 // ~5:19
+    },
+    {
+      name: 'Show Me Love',
+      artist: 'Robin S.',
+      album: 'Show Me Love',
+      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23D81B60"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3ES%3C/text%3E%3C/svg%3E',
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day3/show-me-love.mp3',
+      duration: 294000 // ~4:54
+    },
+    {
+      name: 'Back to Friends',
+      artist: 'Unknown Artist',
+      album: 'Back to Friends',
+      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23C2185B"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3EB%3C/text%3E%3C/svg%3E',
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day3/back-to-friends.mp3',
+      duration: 354000 // ~5:54
+    },
+    {
+      name: 'Cold Mess',
+      artist: 'Prateek Kuhad',
+      album: 'Cold Mess',
+      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23AD1457"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3EC%3C/text%3E%3C/svg%3E',
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day3/cold-mess.mp3',
+      duration: 460000 // ~7:40
+    },
+    {
+      name: 'Her',
+      artist: 'Unknown Artist',
+      album: 'Her',
+      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23880E4F"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3EH%3C/text%3E%3C/svg%3E',
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day3/her.mp3',
+      duration: 282000 // ~4:42
+    }
+  ],
+  
+  // Day 2 unlock date
+  day2UnlockDate: new Date('2026-02-09T00:00:00'),
+  
+  // Day 3 unlock date  
+  day3UnlockDate: new Date('2026-02-10T00:00:00'),
+  
   // Dynamic playlist getter - returns appropriate playlist based on date
   get localPlaylist() {
     const now = new Date();
+    const isDay3Unlocked = now >= this.day3UnlockDate;
     const isDay2Unlocked = now >= this.day2UnlockDate;
-    return isDay2Unlocked ? this.day2Playlist : this.originalPlaylist;
+    
+    if (isDay3Unlocked) {
+      return this.day3Playlist;
+    } else if (isDay2Unlocked) {
+      return this.day2Playlist;
+    } else {
+      return this.originalPlaylist;
+    }
   },
   
   // Fallback to Spotify if local files fail
@@ -2005,6 +2095,9 @@ function generateTimeSlots() {
       
       // Confetti effect
       createHeartConfetti(slotCard);
+      
+      // Send email notification via Web3Forms
+      sendMovieTimeSlotEmail(slot);
     });
     
     timeSlotsContainer.appendChild(slotCard);
@@ -2069,6 +2162,235 @@ function createHeartConfetti(element) {
     document.body.appendChild(heart);
     setTimeout(() => heart.remove(), 1000);
   }
+}
+
+// Send movie time slot selection via Web3Forms
+async function sendMovieTimeSlotEmail(slot) {
+  try {
+    const formData = new FormData();
+    formData.append('access_key', 'c9a985fe-237d-4fef-84a5-b1f4ab2dcabf');
+    formData.append('subject', '💕 Movie Night Time Slot Selection - Valentine Week');
+    formData.append('from_name', 'Valentine Week App');
+    formData.append('to', 'pachourimohit1@gmail.com');
+    formData.append('message', `
+      🎬 Movie Night Time Slot Selected!
+      
+      Day: ${slot.day}
+      Time: ${slot.time}
+      Date: ${slot.date}
+      Emoji: ${slot.emoji}
+      
+      Selected at: ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}
+      
+      Love from,
+      Your Valentine Week App 💕
+    `);
+    
+    // Add redirect to false to handle response ourselves
+    formData.append('redirect', 'false');
+    
+    const response = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: formData
+    });
+    
+    const data = await response.json();
+    
+    if (data.success) {
+      // Show custom thank you modal
+      showThankYouModal(slot);
+    } else {
+      console.error('Form submission failed:', data);
+      alert('Oops! Something went wrong. Please try again.');
+    }
+  } catch (error) {
+    console.error('Error sending email:', error);
+    alert('Oops! Something went wrong. Please try again.');
+  }
+}
+
+// Show custom thank you modal
+function showThankYouModal(slot) {
+  // Create modal overlay
+  const modal = document.createElement('div');
+  modal.id = 'thank-you-modal';
+  modal.style.cssText = `
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    animation: fadeIn 0.3s ease-in-out;
+  `;
+  
+  // Create modal content
+  const modalContent = document.createElement('div');
+  modalContent.style.cssText = `
+    background: linear-gradient(135deg, #FFE5EC 0%, #FFB3C6 50%, #FF69B4 100%);
+    border: 5px solid #FF69B4;
+    border-radius: 25px;
+    padding: 3rem 2.5rem;
+    max-width: 550px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(255, 105, 180, 0.6);
+    animation: scaleIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    position: relative;
+  `;
+  
+  modalContent.innerHTML = `
+    <!-- Close Button -->
+    <button id="close-modal" style="
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: white;
+      border: 3px solid #FF69B4;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    " onmouseover="this.style.transform='rotate(90deg) scale(1.1)'" onmouseout="this.style.transform='rotate(0) scale(1)'">
+      ✕
+    </button>
+    
+    <!-- Celebration Emoji -->
+    <div style="font-size: 5rem; margin-bottom: 1rem; animation: bounce 1s ease-in-out infinite;">
+      🎉
+    </div>
+    
+    <!-- Thank You Message -->
+    <h2 style="
+      font-size: 2.2rem;
+      font-weight: bold;
+      color: #8B4513;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    ">
+      Thank You, Love! 💕
+    </h2>
+    
+    <p style="
+      font-size: 1.3rem;
+      color: #C71585;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+      line-height: 1.6;
+    ">
+      Can't wait for our movie night! 🎬
+    </p>
+    
+    <p style="
+      font-size: 1.1rem;
+      color: #8B4513;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    ">
+      Your chosen slot:<br>
+      <strong>${slot.day} at ${slot.time}</strong> (${slot.date})
+    </p>
+    
+    <div style="
+      background: white;
+      border: 3px solid #FF69B4;
+      border-radius: 15px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    ">
+      <p style="
+        font-size: 1.2rem;
+        color: #FF69B4;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+      ">
+        📌 Quick Reminder
+      </p>
+      <p style="
+        font-size: 1rem;
+        color: #666;
+        line-height: 1.6;
+      ">
+        Grab your snacks now! 🍿🥤<br>
+        I'll send you the movie link soon! 💌
+      </p>
+    </div>
+    
+    <!-- Snack Emojis -->
+    <div style="
+      font-size: 2.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    ">
+      <span style="animation: bounce 1s ease-in-out infinite; animation-delay: 0s;">🍿</span>
+      <span style="animation: bounce 1s ease-in-out infinite; animation-delay: 0.2s;">🥤</span>
+      <span style="animation: bounce 1s ease-in-out infinite; animation-delay: 0.4s;">🍫</span>
+      <span style="animation: bounce 1s ease-in-out infinite; animation-delay: 0.6s;">🧸</span>
+    </div>
+    
+    <p style="
+      font-size: 1.1rem;
+      color: #8B4513;
+      font-weight: 600;
+      margin-top: 1rem;
+    ">
+      See you soon! 😘💕
+    </p>
+  `;
+  
+  modal.appendChild(modalContent);
+  document.body.appendChild(modal);
+  
+  // Close button handler
+  document.getElementById('close-modal').addEventListener('click', () => {
+    modal.style.animation = 'fadeOut 0.3s ease-in-out';
+    setTimeout(() => modal.remove(), 300);
+  });
+  
+  // Click outside to close
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.style.animation = 'fadeOut 0.3s ease-in-out';
+      setTimeout(() => modal.remove(), 300);
+    }
+  });
+  
+  // Create floating hearts animation
+  for (let i = 0; i < 20; i++) {
+    setTimeout(() => {
+      createFloatingHeart(modalContent);
+    }, i * 100);
+  }
+}
+
+// Create floating hearts for modal
+function createFloatingHeart(container) {
+  const heart = document.createElement('div');
+  heart.textContent = '💕';
+  heart.style.cssText = `
+    position: absolute;
+    font-size: ${Math.random() * 20 + 15}px;
+    left: ${Math.random() * 100}%;
+    bottom: -30px;
+    animation: floatUp 3s ease-out forwards;
+    pointer-events: none;
+    opacity: ${Math.random() * 0.5 + 0.5};
+  `;
+  container.appendChild(heart);
+  setTimeout(() => heart.remove(), 3000);
 }
 
 function createFloatingTeddies() {
