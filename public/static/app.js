@@ -262,24 +262,114 @@ const MUSIC_CONFIG = {
     }
   ],
   
+  // Day 4 (Promise Day) Playlist - 10 romantic promise songs
+  day4Playlist: [
+    {
+      name: 'Maine Socha Ke Chura Loon',
+      artist: 'Unknown Artist',
+      album: 'Maine Socha Ke Chura Loon',
+      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23DDA0DD"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3EM%3C/text%3E%3C/svg%3E',
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day4/maine-socha-ke-chura-loon.mp3',
+      duration: 167000 // ~2:47
+    },
+    {
+      name: 'Kuch To Hai',
+      artist: 'Armaan Malik',
+      album: 'Do Lafzon Ki Kahani',
+      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23DA70D6"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3EK%3C/text%3E%3C/svg%3E',
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day4/kuch-to-hai.mp3',
+      duration: 245000 // ~4:05
+    },
+    {
+      name: 'Love Me Thoda Aur',
+      artist: 'Arijit Singh',
+      album: 'Yaariyan',
+      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23D8BFD8"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3EL%3C/text%3E%3C/svg%3E',
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day4/love-me-thoda-aur.mp3',
+      duration: 523000 // ~8:43
+    },
+    {
+      name: 'Samjhawan',
+      artist: 'Arijit Singh & Shreya Ghoshal',
+      album: 'Humpty Sharma Ki Dulhania',
+      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23E6B8E6"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3ES%3C/text%3E%3C/svg%3E',
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day4/samjhawan.mp3',
+      duration: 520000 // ~8:40
+    },
+    {
+      name: 'Qubool',
+      artist: 'Unknown Artist',
+      album: 'Haq',
+      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23DDA0DD"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3EQ%3C/text%3E%3C/svg%3E',
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day4/qubool.mp3',
+      duration: 552000 // ~9:12
+    },
+    {
+      name: 'Ishq Mubarak',
+      artist: 'Tum Bin 2',
+      album: 'Tum Bin 2',
+      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23DA70D6"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3EI%3C/text%3E%3C/svg%3E',
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day4/ishq-mubarak.mp3',
+      duration: 584000 // ~9:44
+    },
+    {
+      name: 'Tumhe Kitna Pyaar Karte',
+      artist: 'Arijit Singh',
+      album: 'Bawaal',
+      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23D8BFD8"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3ET%3C/text%3E%3C/svg%3E',
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day4/tumhe-kitna-pyaar-karte.mp3',
+      duration: 563000 // ~9:23
+    },
+    {
+      name: 'Aaj Se Teri',
+      artist: 'Unknown Artist',
+      album: 'Aaj Se Teri',
+      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23E6B8E6"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3EA%3C/text%3E%3C/svg%3E',
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day4/aaj-se-teri.mp3',
+      duration: 623000 // ~10:23
+    },
+    {
+      name: 'Tera Fitoor',
+      artist: 'Arijit Singh',
+      album: 'Genius',
+      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23DDA0DD"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3ET%3C/text%3E%3C/svg%3E',
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day4/tera-fitoor.mp3',
+      duration: 626000 // ~10:26
+    },
+    {
+      name: 'Raat Bhar',
+      artist: 'Arijit Singh & Shreya Ghoshal',
+      album: 'Heropanti',
+      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23DA70D6"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3ER%3C/text%3E%3C/svg%3E',
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day4/raat-bhar.mp3',
+      duration: 651000 // ~10:51
+    }
+  ],
+  
   // Day 2 unlock date
   day2UnlockDate: new Date('2026-02-09T00:00:00'),
   
   // Day 3 unlock date  
   day3UnlockDate: new Date('2026-02-10T00:00:00'),
   
+  // Day 4 unlock date
+  day4UnlockDate: new Date('2026-02-11T00:00:00'),
+  
   // Dynamic playlist getter - returns appropriate playlist based on date
   get localPlaylist() {
     const now = new Date();
+    const isDay4Unlocked = now >= this.day4UnlockDate;
     const isDay3Unlocked = now >= this.day3UnlockDate;
     const isDay2Unlocked = now >= this.day2UnlockDate;
     
-    if (isDay3Unlocked) {
-      return this.day3Playlist;
+    if (isDay4Unlocked) {
+      return this.day4Playlist;  // Returns ONLY 10 Day 4 songs
+    } else if (isDay3Unlocked) {
+      return this.day3Playlist;  // Returns ONLY 9 Day 3 songs
     } else if (isDay2Unlocked) {
-      return this.day2Playlist;
+      return this.day2Playlist;  // Returns ONLY 12 Day 2 songs
     } else {
-      return this.originalPlaylist;
+      return this.originalPlaylist;  // Returns 7 original songs
     }
   },
   
