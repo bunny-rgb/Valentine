@@ -1656,7 +1656,7 @@ function handleProposalResponse(accepted) {
 // ==================== MAGICAL MOMENT CAMERA ====================
 
 // Global variable to store selected filter
-let selectedFilter = 'romantic'; // default
+// selectedFilter moved to camera section
 
 // Show filter selection modal
 function showFilterSelectionModal() {
@@ -1856,15 +1856,18 @@ window.switchCameraFilter = function(filter) {
   console.log('📷 Camera filter switched to:', filterNames[filter] || filter);
 };
 
-// ==================== REAL-TIME FILTER PREVIEW FIX ====================
+// ==================== COMPLETE CAMERA FIX ====================
 
 // Global variables for filter preview
 let filterPreviewCanvas = null;
 let filterPreviewCtx = null;
 let filterAnimationId = null;
+let selectedFilter = 'dream'; // Default filter
 
 // Modified openRomanticMomentCamera with REAL-TIME filter preview
-function openRomanticMomentCamera() {
+async function openRomanticMomentCamera() {
+  console.log('🎥 Opening camera with real-time preview...');
+  
   // Remove filter selection modal
   const filterModal = document.getElementById('filter-selection-modal');
   if (filterModal) filterModal.remove();
@@ -1890,14 +1893,14 @@ function openRomanticMomentCamera() {
   
   cameraModal.innerHTML = `
     <div style="text-align: center; width: 100%; max-width: 600px;">
-      <h2 style="color: #ff69b4; font-size: 32px; margin-bottom: 10px; text-shadow: 0 0 20px rgba(255, 105, 180, 0.6);">
+      <h2 style="color: #ff69b4; font-size: 28px; margin-bottom: 10px; text-shadow: 0 0 20px rgba(255, 105, 180, 0.6);">
         📸 Capture Your Magical Moment
       </h2>
-      <p style="color: #fff; margin-bottom: 20px; font-size: 16px;">
-        Your selected filter will be applied in real-time ✨
+      <p style="color: #fff; margin-bottom: 15px; font-size: 14px;">
+        Switch filters and see live preview ✨
       </p>
       
-      <div style="position: relative; display: inline-block; margin-bottom: 20px;">
+      <div style="position: relative; display: inline-block; margin-bottom: 15px;">
         <!-- Hidden video element for camera input -->
         <video id="romantic-video" autoplay playsinline muted style="display: none;"></video>
         
@@ -1909,18 +1912,16 @@ function openRomanticMomentCamera() {
           display: block;
           border-radius: 20px;
           box-shadow: 0 10px 50px rgba(255, 105, 180, 0.3);
+          border: 3px solid rgba(255, 105, 180, 0.4);
         "></canvas>
         
-        <!-- Romantic frame overlay -->
-        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; border: 3px solid rgba(255, 105, 180, 0.6); border-radius: 20px; pointer-events: none; box-shadow: inset 0 0 30px rgba(255, 105, 180, 0.4);"></div>
-        
         <!-- Top decorative text -->
-        <div style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%); font-size: 24px; font-weight: bold; color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.8), 0 0 20px rgba(255, 105, 180, 0.8);">
+        <div style="position: absolute; top: 15px; left: 50%; transform: translateX(-50%); font-size: 20px; font-weight: bold; color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.8), 0 0 20px rgba(255, 105, 180, 0.8); pointer-events: none;">
           ✨ Bunny & Anku ✨
         </div>
         
         <!-- Bottom decorative text -->
-        <div style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); font-size: 18px; color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.8);">
+        <div style="position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); font-size: 16px; color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.8); pointer-events: none;">
           💕 Valentine's Day 2026 💕
         </div>
       </div>
@@ -1929,81 +1930,81 @@ function openRomanticMomentCamera() {
       <canvas id="romantic-canvas" style="display: none;"></canvas>
       
       <!-- Filter Switcher -->
-      <div style="margin: 20px 0; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-        <button onclick="switchCameraFilter('dream')" id="filter-btn-dream" style="
-          padding: 12px 20px;
+      <div style="margin: 15px 0; display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
+        <button onclick="window.switchCameraFilter('dream')" id="filter-btn-dream" style="
+          padding: 10px 16px;
           background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
           color: white;
           border: 2px solid transparent;
-          border-radius: 12px;
+          border-radius: 10px;
           cursor: pointer;
-          font-size: 14px;
+          font-size: 13px;
           font-weight: bold;
           transition: all 0.3s ease;
           box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
         ">✨ Dream</button>
         
-        <button onclick="switchCameraFilter('golden')" id="filter-btn-golden" style="
-          padding: 12px 20px;
+        <button onclick="window.switchCameraFilter('golden')" id="filter-btn-golden" style="
+          padding: 10px 16px;
           background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
           color: white;
           border: 2px solid transparent;
-          border-radius: 12px;
+          border-radius: 10px;
           cursor: pointer;
-          font-size: 14px;
+          font-size: 13px;
           font-weight: bold;
           transition: all 0.3s ease;
           box-shadow: 0 4px 15px rgba(240, 147, 251, 0.3);
         ">💛 Golden</button>
         
-        <button onclick="switchCameraFilter('polaroid')" id="filter-btn-polaroid" style="
-          padding: 12px 20px;
+        <button onclick="window.switchCameraFilter('polaroid')" id="filter-btn-polaroid" style="
+          padding: 10px 16px;
           background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
           color: white;
           border: 2px solid transparent;
-          border-radius: 12px;
+          border-radius: 10px;
           cursor: pointer;
-          font-size: 14px;
+          font-size: 13px;
           font-weight: bold;
           transition: all 0.3s ease;
           box-shadow: 0 4px 15px rgba(250, 112, 154, 0.3);
         ">📷 Polaroid</button>
         
-        <button onclick="switchCameraFilter('movie')" id="filter-btn-movie" style="
-          padding: 12px 20px;
+        <button onclick="window.switchCameraFilter('movie')" id="filter-btn-movie" style="
+          padding: 10px 16px;
           background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
           color: white;
           border: 2px solid transparent;
-          border-radius: 12px;
+          border-radius: 10px;
           cursor: pointer;
-          font-size: 14px;
+          font-size: 13px;
           font-weight: bold;
           transition: all 0.3s ease;
           box-shadow: 0 4px 15px rgba(48, 207, 208, 0.3);
         ">🎬 Movie</button>
         
-        <button onclick="switchCameraFilter('kodak')" id="filter-btn-kodak" style="
-          padding: 12px 20px;
+        <button onclick="window.switchCameraFilter('kodak')" id="filter-btn-kodak" style="
+          padding: 10px 16px;
           background: linear-gradient(135deg, #ff6b6b 0%, #ffd93d 100%);
           color: white;
           border: 2px solid transparent;
-          border-radius: 12px;
+          border-radius: 10px;
           cursor: pointer;
-          font-size: 14px;
+          font-size: 13px;
           font-weight: bold;
           transition: all 0.3s ease;
           box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
         ">📸 Kodak</button>
       </div>
       
-      <p id="current-filter-name" style="color: #ff69b4; font-size: 18px; font-weight: bold; margin-bottom: 20px;">
+      <p id="current-filter-name" style="color: #ff69b4; font-size: 16px; font-weight: bold; margin-bottom: 15px;">
         Current Filter: ${getFilterName(selectedFilter)}
       </p>
       
       <!-- Capture Button -->
       <button id="capture-btn" style="
-        padding: 18px 50px;
-        font-size: 20px;
+        padding: 16px 45px;
+        font-size: 18px;
         font-weight: bold;
         background: linear-gradient(135deg, #ff6b6b 0%, #ff8e53 100%);
         color: white;
@@ -2012,7 +2013,7 @@ function openRomanticMomentCamera() {
         cursor: pointer;
         box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
         transition: all 0.3s ease;
-        margin-bottom: 20px;
+        margin-bottom: 15px;
         touch-action: manipulation;
         -webkit-tap-highlight-color: transparent;
       ">
@@ -2021,19 +2022,19 @@ function openRomanticMomentCamera() {
       
       <!-- Close Button -->
       <button id="camera-close-btn" style="
-        padding: 12px 30px;
-        font-size: 16px;
+        padding: 10px 25px;
+        font-size: 14px;
         background: rgba(255, 255, 255, 0.1);
         color: white;
         border: 2px solid rgba(255, 255, 255, 0.3);
-        border-radius: 30px;
+        border-radius: 25px;
         cursor: pointer;
         transition: all 0.3s ease;
       ">
         ❌ Close Camera
       </button>
       
-      <p id="camera-status" style="color: #fff; margin-top: 20px; font-size: 14px;"></p>
+      <p id="camera-status" style="color: #fff; margin-top: 15px; font-size: 13px;"></p>
     </div>
   `;
   
@@ -2048,18 +2049,21 @@ function openRomanticMomentCamera() {
   filterPreviewCtx = filterPreviewCanvas.getContext('2d');
   
   // Access camera
-  navigator.mediaDevices.getUserMedia({ 
-    video: { 
-      facingMode: 'user',
-      width: { ideal: 1280 },
-      height: { ideal: 720 }
-    } 
-  })
-  .then(stream => {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ 
+      video: { 
+        facingMode: 'user',
+        width: { ideal: 1280 },
+        height: { ideal: 720 }
+      } 
+    });
+    
     video.srcObject = stream;
     
     // Wait for video metadata to load
     video.addEventListener('loadedmetadata', () => {
+      console.log('✅ Video loaded:', video.videoWidth, 'x', video.videoHeight);
+      
       // Set canvas size to match video
       filterPreviewCanvas.width = video.videoWidth;
       filterPreviewCanvas.height = video.videoHeight;
@@ -2070,31 +2074,23 @@ function openRomanticMomentCamera() {
       document.getElementById('camera-status').innerHTML = '✅ Camera ready! Switch filters and capture! 😊';
     });
     
-    // Capture button
+    // Capture button - ONE handler only
     const captureBtn = document.getElementById('capture-btn');
-    
-    // Remove any existing listeners
-    const newCaptureBtn = captureBtn.cloneNode(true);
-    captureBtn.parentNode.replaceChild(newCaptureBtn, captureBtn);
-    
-    // Add touch and click handlers
-    newCaptureBtn.addEventListener('touchstart', (e) => {
+    captureBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      console.log('👆 Capture button TOUCHED');
-      captureRomanticMoment(video, stream);
-    });
-    
-    newCaptureBtn.addEventListener('click', (e) => {
-      e.preventDefault();
+      e.stopPropagation();
       console.log('🖱️ Capture button CLICKED');
       captureRomanticMoment(video, stream);
-    });
+    }, { once: false }); // Allow multiple captures
     
     // Close button
     document.getElementById('camera-close-btn').addEventListener('click', () => {
+      console.log('❌ Closing camera...');
+      
       // Stop filter preview
       stopFilterPreview();
       
+      // Stop camera stream
       stream.getTracks().forEach(track => track.stop());
       cameraModal.remove();
       
@@ -2105,8 +2101,8 @@ function openRomanticMomentCamera() {
         celebrationPage.scrollIntoView({ behavior: 'smooth' });
       }
     });
-  })
-  .catch(error => {
+    
+  } catch (error) {
     console.error('Camera error:', error);
     alert('❌ Could not access camera. Please allow camera permissions and try again.');
     
@@ -2118,13 +2114,18 @@ function openRomanticMomentCamera() {
     }
     
     sendValentineResponseEmail('YES');
-  });
+  }
 }
 
 // Start real-time filter preview
 function startFilterPreview(video) {
+  console.log('🎬 Starting filter preview...');
+  
   function updatePreview() {
-    if (!video || !filterPreviewCanvas) return;
+    if (!video || !filterPreviewCanvas || !video.videoWidth) {
+      filterAnimationId = requestAnimationFrame(updatePreview);
+      return;
+    }
     
     // Draw video frame to canvas
     filterPreviewCtx.drawImage(video, 0, 0, filterPreviewCanvas.width, filterPreviewCanvas.height);
@@ -2145,9 +2146,10 @@ function stopFilterPreview() {
     cancelAnimationFrame(filterAnimationId);
     filterAnimationId = null;
   }
+  console.log('⏹️ Filter preview stopped');
 }
 
-// Apply filter to canvas
+// Apply filter to canvas (used for both preview and capture)
 function applyFilterToCanvas(ctx, canvas, filterType) {
   switch(filterType) {
     case 'dream':
@@ -2178,7 +2180,10 @@ function switchCameraFilter(filter) {
   updateFilterButtonStyles();
   
   const filterName = getFilterName(filter);
-  document.getElementById('current-filter-name').textContent = `Current Filter: ${filterName}`;
+  const filterNameEl = document.getElementById('current-filter-name');
+  if (filterNameEl) {
+    filterNameEl.textContent = `Current Filter: ${filterName}`;
+  }
   
   console.log(`🎨 Switched to filter: ${filterName}`);
 }
@@ -2215,61 +2220,21 @@ function getFilterName(filter) {
   return names[filter] || 'Soft Dream Glow ✨';
 }
 
-// Add Kodak Vintage Filter (previous filter)
-function applyKodakVintageEffect(ctx, canvas) {
-  const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-  const data = imageData.data;
-  
-  // Kodak film look - warm tones, lifted blacks, vintage feel
-  for (let i = 0; i < data.length; i += 4) {
-    const r = data[i];
-    const g = data[i + 1];
-    const b = data[i + 2];
-    
-    // Warm vintage tones
-    data[i] = Math.min(255, r * 1.15 + 25);       // Warm reds
-    data[i + 1] = Math.min(255, g * 1.05 + 15);   // Slight green boost
-    data[i + 2] = Math.min(255, b * 0.90 + 20);   // Reduced blues, lifted blacks
-    
-    // Vintage softness
-    const brightness = (data[i] + data[i + 1] + data[i + 2]) / 3;
-    data[i] = Math.min(255, data[i] * 0.85 + brightness * 0.15);
-    data[i + 1] = Math.min(255, data[i + 1] * 0.88 + brightness * 0.12);
-    data[i + 2] = Math.min(255, data[i + 2] * 0.90 + brightness * 0.10);
-  }
-  
-  ctx.putImageData(imageData, 0, 0);
-  
-  // Add vintage vignette
-  const centerX = canvas.width / 2;
-  const centerY = canvas.height / 2;
-  const maxRadius = Math.max(canvas.width, canvas.height) * 0.7;
-  
-  const vignette = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, maxRadius);
-  vignette.addColorStop(0, 'rgba(255, 240, 220, 0)');
-  vignette.addColorStop(0.6, 'rgba(139, 69, 19, 0.08)');
-  vignette.addColorStop(1, 'rgba(101, 67, 33, 0.20)');
-  
-  ctx.fillStyle = vignette;
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-}
-
-// Expose functions globally
-window.openRomanticMomentCamera = openRomanticMomentCamera;
-window.switchCameraFilter = switchCameraFilter;
+// FIXED captureRomanticMoment - include ALL filters including Kodak
 function captureRomanticMoment(video, stream) {
   console.log('🎬 captureRomanticMoment called!');
   console.log('📹 Video element:', video);
   console.log('🎥 Stream:', stream);
+  console.log('🎨 Selected filter:', selectedFilter);
   
   const canvas = document.getElementById('romantic-canvas');
-  const ctx = canvas.getContext('2d');
-  
   if (!canvas) {
     console.error('❌ Canvas not found!');
     alert('Error: Canvas not found. Please try again.');
     return;
   }
+  
+  const ctx = canvas.getContext('2d');
   
   if (!video || !video.videoWidth) {
     console.error('❌ Video not ready!');
@@ -2293,32 +2258,41 @@ function captureRomanticMoment(video, stream) {
   
   console.log('✅ Video frame drawn to canvas');
   
-  // Apply Magical moment effects based on selected filter
+  // Apply filter based on selectedFilter
   try {
     console.log('🎨 Applying filter:', selectedFilter);
-    if (selectedFilter === 'dream') {
-      applySoftDreamGlowEffect(ctx, canvas);
-    } else if (selectedFilter === 'golden') {
-      applyGoldenHourEffect(ctx, canvas);
-    } else if (selectedFilter === 'polaroid') {
-      applyPolaroidEffect(ctx, canvas);
-    } else if (selectedFilter === 'movie') {
-      applyMoviePosterEffect(ctx, canvas);
-    } else {
-      // Default fallback
-      console.log('⚠️ No filter selected, using dream as default');
-      applySoftDreamGlowEffect(ctx, canvas);
+    
+    switch(selectedFilter) {
+      case 'dream':
+        applySoftDreamGlowEffect(ctx, canvas);
+        break;
+      case 'golden':
+        applyGoldenHourEffect(ctx, canvas);
+        break;
+      case 'polaroid':
+        applyPolaroidEffect(ctx, canvas);
+        break;
+      case 'movie':
+        applyMoviePosterEffect(ctx, canvas);
+        break;
+      case 'kodak':
+        applyKodakVintageEffect(ctx, canvas);
+        break;
+      default:
+        console.log('⚠️ Unknown filter, using dream');
+        applySoftDreamGlowEffect(ctx, canvas);
     }
-    console.log('✅ Filter applied');
+    
+    console.log('✅ Filter applied successfully');
   } catch (error) {
     console.error('❌ Error applying filter:', error);
   }
   
-  // Add romantic frame and text with captions
+  // Add romantic frame and caption
   try {
-    console.log('🖼️ Adding frame with caption...');
-    addRomanticFrameWithCaption(ctx, canvas, selectedFilter || 'dream');
-    console.log('✅ Frame added');
+    console.log('🖼️ Adding frame with caption for filter:', selectedFilter);
+    addRomanticFrameWithCaption(ctx, canvas, selectedFilter);
+    console.log('✅ Frame and caption added');
   } catch (error) {
     console.error('❌ Error adding frame:', error);
   }
@@ -2339,17 +2313,17 @@ function captureRomanticMoment(video, stream) {
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     const date = new Date().toISOString().split('T')[0];
-    link.download = `Our_Love_Forever_Valentine_${date}.jpg`;
+    link.download = `Bunny_Anku_Love_${getFilterName(selectedFilter).replace(/[^a-zA-Z0-9]/g, '_')}_${date}.jpg`;
     link.href = url;
     link.click();
     
-    console.log('✅ Download triggered');
+    console.log('✅ Download triggered:', link.download);
     
     // Show success message
     const statusElement = document.getElementById('camera-status');
     if (statusElement) {
       statusElement.innerHTML = `
-        ✅ Magical moment captured! 💕<br>
+        ✅ Magical moment captured with ${getFilterName(selectedFilter)}! 💕<br>
         📥 Downloading... and sending to your love! 💌
       `;
     }
@@ -2357,23 +2331,28 @@ function captureRomanticMoment(video, stream) {
     // Send email with photo
     try {
       console.log('📧 Sending email...');
-      await sendRomanticMomentEmail(blob);
-      console.log('✅ Email sent');
+      await sendRomanticMomentEmail(blob, selectedFilter);
+      console.log('✅ Email sent successfully');
     } catch (error) {
-      console.error('❌ Error sending email:', error);
+      console.error('❌ Email send failed:', error);
     }
     
-    // Stop camera
+    // Show celebration after a moment
     setTimeout(() => {
-      stream.getTracks().forEach(track => track.stop());
-      const modal = document.getElementById('romantic-camera-modal');
-      if (modal) modal.remove();
-      
-      // Show celebration page after successful photo capture
       const celebrationPage = document.getElementById('celebration-page');
       if (celebrationPage) {
         celebrationPage.style.display = 'block';
-// ==================== NEW FILTER EFFECTS ====================
+        celebrationPage.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 2000);
+    
+  }, 'image/jpeg', 0.95);
+}
+
+// Expose functions globally
+window.openRomanticMomentCamera = openRomanticMomentCamera;
+window.switchCameraFilter = switchCameraFilter;
+window.selectedFilter = selectedFilter;
 
 // Filter 1: Soft Dream Glow - Magical, dreamy, romantic
 function applySoftDreamGlowEffect(ctx, canvas) {
@@ -2684,12 +2663,6 @@ function addRomanticFrameWithCaption(ctx, canvas, filter) {
     ctx.fillText("💖 Valentine's Day 2026 💖", width / 2, height - 20);
   }
   ctx.shadowBlur = 0;
-}
-        celebrationPage.scrollIntoView({ behavior: 'smooth' });
-      }
-    }, 3000);
-    
-  }, 'image/jpeg', 0.95);
 }
 
 // Filter 1: Romantic Vibe - Dreamy rose gold with soft pink tones
