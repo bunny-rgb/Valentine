@@ -1444,15 +1444,8 @@ async function playTrack(index) {
         })
         .catch(error => {
           console.error('❌ Play failed:', error.message);
-          // Wait before skipping to give audio time to load
-          setTimeout(() => {
-            if (isPlaying && musicPlayer && musicPlayer.paused) {
-              console.warn('⚠️ Auto-skipping to next track after delay');
-              nextTrack();
-            } else {
-              console.log('✅ Audio recovered, continuing playback');
-            }
-          }, 2000);
+          console.log('💡 User interaction may be required to start playback');
+          // Don't auto-skip on play promise rejection - wait for actual errors
         });
     }
   } else {
