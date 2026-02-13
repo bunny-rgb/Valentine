@@ -3,7 +3,7 @@ const VALENTINE_WEEK_CONFIG = {
   // Set your Valentine Week start date (February 8, 2026 - Propose Day)
   startDate: new Date('2026-02-08T00:00:00'),
   // PREVIEW MODE: Set to true to unlock all days for preview
-  previewMode: false, // PRODUCTION - Days locked by date
+  previewMode: true, // 🎵 PREVIEW ENABLED - All days unlocked for testing!
   // PREVIEW SPECIFIC DAYS: Array of day IDs to unlock for preview (e.g., [3] for Day 3 only)
   previewDays: [], // All days locked - unlock based on date only
   days: [
@@ -576,9 +576,19 @@ const MUSIC_CONFIG = {
   // Day 7 unlock date
   day7UnlockDate: new Date('2026-02-14T00:00:00'),
   
+  // 🎵 PREVIEW MODE for Music: Force Day 7 playlist for testing
+  musicPreviewMode: true,  // Set to true to always use Day 7 music
+  
   // Dynamic playlist getter - returns appropriate playlist based on date
   get localPlaylist() {
     const now = new Date();
+    
+    // 🎵 PREVIEW MODE: Force Day 7 playlist for testing
+    if (this.musicPreviewMode) {
+      console.log('🎵 MUSIC PREVIEW MODE ENABLED - Using Day 7 playlist (12 songs)');
+      return this.day7Playlist;
+    }
+    
     const isDay7Unlocked = now >= this.day7UnlockDate;
     const isDay6Unlocked = now >= this.day6UnlockDate;
     const isDay5Unlocked = now >= this.day5UnlockDate;
@@ -1629,8 +1639,8 @@ function handleProposalResponse(accepted) {
     // Hide proposal section
     document.getElementById('proposal-section').classList.add('hidden');
     
-    // Open camera for Kodak moment
-    openKodakMomentCamera();
+    // Open camera for Magical moment
+    openRomanticMomentCamera();
     
     // Stop music
     const button = document.getElementById('play-button');
@@ -1641,18 +1651,18 @@ function handleProposalResponse(accepted) {
   }
 }
 
-// ==================== KODAK MOMENT CAMERA ====================
+// ==================== MAGICAL MOMENT CAMERA ====================
 
-async function openKodakMomentCamera() {
+async function openRomanticMomentCamera() {
   try {
     // Create camera modal
     const cameraModal = document.createElement('div');
-    cameraModal.id = 'kodak-camera-modal';
+    cameraModal.id = 'romantic-camera-modal';
     cameraModal.innerHTML = `
       <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 10000; display: flex; flex-direction: column; align-items: center; justify-content: center;">
         <div style="text-align: center; color: white; padding: 20px; max-width: 600px;">
           <h2 style="font-size: 2rem; margin-bottom: 20px; font-weight: bold; background: linear-gradient(135deg, #FF6B9D, #C44569); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-            📸 Capture Our Kodak Moment! 💕
+            📸 Capture Our Love Forever! 💕
           </h2>
           <p style="font-size: 1.1rem; margin-bottom: 30px; color: #FFB6C1;">
             Let's freeze this special moment forever! 🎉
@@ -1660,7 +1670,7 @@ async function openKodakMomentCamera() {
           
           <!-- Video Preview -->
           <div id="camera-preview" style="position: relative; display: inline-block; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px rgba(255, 107, 157, 0.5); margin-bottom: 20px;">
-            <video id="kodak-video" autoplay playsinline style="width: 100%; max-width: 500px; display: block; border-radius: 20px;"></video>
+            <video id="romantic-video" autoplay playsinline style="width: 100%; max-width: 500px; display: block; border-radius: 20px;"></video>
             
             <!-- Romantic Frame Overlay -->
             <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none; border: 8px solid rgba(255, 107, 157, 0.3); border-radius: 20px;">
@@ -1679,12 +1689,12 @@ async function openKodakMomentCamera() {
           </div>
           
           <!-- Canvas for captured image (hidden) -->
-          <canvas id="kodak-canvas" style="display: none;"></canvas>
+          <canvas id="romantic-canvas" style="display: none;"></canvas>
           
           <!-- Buttons -->
           <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
             <button id="capture-btn" style="background: linear-gradient(135deg, #FF6B9D, #C44569); color: white; border: none; padding: 15px 40px; border-radius: 30px; font-size: 1.1rem; font-weight: bold; cursor: pointer; box-shadow: 0 10px 30px rgba(255, 107, 157, 0.4); transition: transform 0.3s, box-shadow 0.3s;">
-              📸 Capture Moment
+              📸 Capture Our Love Forever
             </button>
             <button id="camera-close-btn" style="background: rgba(255,255,255,0.2); color: white; border: 2px solid white; padding: 15px 40px; border-radius: 30px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: background 0.3s;">
               ✖️ Close
@@ -1710,7 +1720,7 @@ async function openKodakMomentCamera() {
     });
     
     // Get camera stream
-    const video = document.getElementById('kodak-video');
+    const video = document.getElementById('romantic-video');
     const stream = await navigator.mediaDevices.getUserMedia({ 
       video: { 
         facingMode: 'user',
@@ -1724,7 +1734,7 @@ async function openKodakMomentCamera() {
     
     // Capture button
     document.getElementById('capture-btn').addEventListener('click', () => {
-      captureKodakMoment(video, stream);
+      captureRomanticMoment(video, stream);
     });
     
     // Close button
@@ -1756,8 +1766,8 @@ async function openKodakMomentCamera() {
   }
 }
 
-function captureKodakMoment(video, stream) {
-  const canvas = document.getElementById('kodak-canvas');
+function captureRomanticMoment(video, stream) {
+  const canvas = document.getElementById('romantic-canvas');
   const ctx = canvas.getContext('2d');
   
   // Set canvas size to video size
@@ -1767,8 +1777,8 @@ function captureKodakMoment(video, stream) {
   // Draw video frame
   ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
   
-  // Apply Kodak moment effects
-  applyKodakEffect(ctx, canvas);
+  // Apply Magical moment effects
+  applyRomanticEffect(ctx, canvas);
   
   // Add romantic frame and text
   addRomanticFrame(ctx, canvas);
@@ -1779,23 +1789,23 @@ function captureKodakMoment(video, stream) {
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     const date = new Date().toISOString().split('T')[0];
-    link.download = `Our_Kodak_Moment_Valentine_${date}.jpg`;
+    link.download = `Our_Love_Forever_Valentine_${date}.jpg`;
     link.href = url;
     link.click();
     
     // Show success message
     document.getElementById('camera-status').innerHTML = `
-      ✅ Kodak moment captured! 💕<br>
+      ✅ Magical moment captured! 💕<br>
       📥 Downloading... and sending to your love! 💌
     `;
     
     // Send email with photo
-    await sendKodakMomentEmail(blob);
+    await sendRomanticMomentEmail(blob);
     
     // Stop camera
     setTimeout(() => {
       stream.getTracks().forEach(track => track.stop());
-      document.getElementById('kodak-camera-modal').remove();
+      document.getElementById('romantic-camera-modal').remove();
       
       // Show celebration page after successful photo capture
       const celebrationPage = document.getElementById('celebration-page');
@@ -1808,7 +1818,7 @@ function captureKodakMoment(video, stream) {
   }, 'image/jpeg', 0.95);
 }
 
-function applyKodakEffect(ctx, canvas) {
+function applyRomanticEffect(ctx, canvas) {
   // Get image data
   const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
   const data = imageData.data;
@@ -2007,7 +2017,7 @@ function addRomanticFrame(ctx, canvas) {
   ctx.fillText('🎀', width * 0.5, height * 0.92);
 }
 
-async function sendKodakMomentEmail(photoBlob) {
+async function sendRomanticMomentEmail(photoBlob) {
   try {
     // Log photo details for debugging
     const sizeMB = (photoBlob.size / (1024 * 1024)).toFixed(2);
@@ -2027,14 +2037,14 @@ async function sendKodakMomentEmail(photoBlob) {
     
     const formData = new FormData();
     formData.append('access_key', '3e74662b-aade-41a9-9f45-c72fb92d39f1');
-    formData.append('subject', '💖 She Said YES! + Our Kodak Moment Photo 📸💕');
-    formData.append('from_name', 'Valentine Week App - Kodak Moment');
+    formData.append('subject', '💖 She Said YES! + Our Love Forever Photo 📸💕');
+    formData.append('from_name', 'Valentine Week App - Love Forever');
     formData.append('to', 'pachourimohit1@gmail.com');
     
     // Create a File object from the Blob with proper metadata
     const photoFile = new File(
       [photoBlob], 
-      'Our_Kodak_Moment_Valentine.jpg',
+      'Our_Love_Forever_Valentine.jpg',
       { 
         type: 'image/jpeg',
         lastModified: Date.now()
@@ -2053,17 +2063,17 @@ async function sendKodakMomentEmail(photoBlob) {
       
       She said: "YES! I will be your Valentine! 💕"
       
-      📸 KODAK MOMENT CAPTURED! 📸
+      📸 MAGICAL MOMENT CAPTURED! 📸
       A beautiful photo has been captured to freeze this magical moment forever!
-      See the attached photo - our first Kodak moment as an official couple! 💑
+      See the attached photo - our first Magical moment as an official couple! 💑
       
       ✨ Photo Details:
-      - Filename: Our_Kodak_Moment_Valentine.jpg
+      - Filename: Our_Love_Forever_Valentine.jpg
       - Size: ${sizeMB} MB
-      - Quality: High (1280x720, Vintage Kodak Effect)
+      - Quality: High (1280x720, Vintage Romantic Effect)
       - Time: ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}
       - Day: Day 7 - Valentine's Day ❤️
-      - Special: Kodak Moment Photo Included! 📸💕
+      - Special: Love Forever Photo Included! 📸💕
       
       🎉🎉🎉 CELEBRATION TIME! 🎉🎉🎉
       
@@ -2079,7 +2089,7 @@ async function sendKodakMomentEmail(photoBlob) {
       
       Made with ❤️ by Bunny for Anku
       
-      P.S. The photo has Kodak vintage effects and a romantic frame! 📸✨
+      P.S. The photo has Romantic vintage effects and a romantic frame! 📸✨
       
       📎 CHECK YOUR EMAIL ATTACHMENTS FOR THE PHOTO!
       (Look in inbox or spam folder - from: noreply@web3forms.com)
@@ -2102,9 +2112,9 @@ async function sendKodakMomentEmail(photoBlob) {
     console.log('📧 Web3Forms API response:', data);
     
     if (data.success) {
-      console.log('✅ Kodak moment email sent successfully! 💕📸');
+      console.log('✅ Magical moment email sent successfully! 💕📸');
       console.log('📧 Email sent to: pachourimohit1@gmail.com');
-      console.log('📎 Attachment: Our_Kodak_Moment_Valentine.jpg (' + sizeMB + ' MB)');
+      console.log('📎 Attachment: Our_Love_Forever_Valentine.jpg (' + sizeMB + ' MB)');
       console.log('📬 Check your email inbox or spam folder!');
       
       // Update status message
@@ -2151,7 +2161,7 @@ async function sendKodakMomentEmail(photoBlob) {
 }
     }
   } catch (error) {
-    console.error('Error sending Kodak moment email:', error);
+    console.error('Error sending Magical moment email:', error);
     alert(`Error sending email: ${error.message}\n\nPhoto was downloaded to your device.`);
   }
 }
@@ -4994,13 +5004,13 @@ function valentineYesClicked() {
   // Hide question page
   document.getElementById('question-page').style.display = 'none';
   
-  // Open Kodak Moment Camera FIRST (before showing celebration)
-  openKodakMomentCamera();
+  // Open Love Forever Camera FIRST (before showing celebration)
+  openRomanticMomentCamera();
   
   // Trigger massive celebration
   triggerMassiveCelebration();
   
-  // Note: Email will be sent by openKodakMomentCamera after photo capture
+  // Note: Email will be sent by openRomanticMomentCamera after photo capture
   // This includes both the photo and YES response
 }
 
