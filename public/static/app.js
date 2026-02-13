@@ -1842,18 +1842,18 @@ async function openRomanticMomentCamera() {
     const cameraModal = document.createElement('div');
     cameraModal.id = 'romantic-camera-modal';
     cameraModal.innerHTML = `
-      <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 10000; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-        <div style="text-align: center; color: white; padding: 20px; max-width: 600px;">
-          <h2 style="font-size: 2rem; margin-bottom: 20px; font-weight: bold; background: linear-gradient(135deg, #FF6B9D, #C44569); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+      <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 10000; overflow-y: auto; padding: 20px 10px;">
+        <div style="text-align: center; color: white; max-width: 600px; margin: 0 auto;">
+          <h2 style="font-size: 1.8rem; margin-bottom: 15px; font-weight: bold; background: linear-gradient(135deg, #FF6B9D, #C44569); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
             📸 Capture Our Love Forever! 💕
           </h2>
-          <p style="font-size: 1.1rem; margin-bottom: 30px; color: #FFB6C1;">
+          <p style="font-size: 1rem; margin-bottom: 20px; color: #FFB6C1;">
             Let's freeze this special moment forever! 🎉
           </p>
           
           <!-- Video Preview -->
-          <div id="camera-preview" style="position: relative; display: inline-block; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px rgba(255, 107, 157, 0.5); margin-bottom: 20px;">
-            <video id="romantic-video" autoplay playsinline style="width: 100%; max-width: 500px; display: block; border-radius: 20px;"></video>
+          <div id="camera-preview" style="position: relative; display: inline-block; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px rgba(255, 107, 157, 0.5); margin-bottom: 20px; max-width: 100%;">
+            <video id="romantic-video" autoplay playsinline style="width: 100%; max-width: 400px; height: auto; max-height: 50vh; display: block; border-radius: 20px;"></video>
             
             <!-- Romantic Frame Overlay -->
             <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none; border: 8px solid rgba(255, 107, 157, 0.3); border-radius: 20px;">
@@ -1861,12 +1861,12 @@ async function openRomanticMomentCamera() {
             </div>
             
             <!-- Top text -->
-            <div style="position: absolute; top: 20px; left: 0; right: 0; text-align: center; font-family: 'Brush Script MT', cursive; font-size: 1.5rem; color: white; text-shadow: 2px 2px 8px rgba(0,0,0,0.8); pointer-events: none;">
+            <div style="position: absolute; top: 15px; left: 0; right: 0; text-align: center; font-family: 'Brush Script MT', cursive; font-size: 1.2rem; color: white; text-shadow: 2px 2px 8px rgba(0,0,0,0.8); pointer-events: none;">
               💖 Our Love Story 💖
             </div>
             
             <!-- Bottom text -->
-            <div style="position: absolute; bottom: 20px; left: 0; right: 0; text-align: center; font-size: 0.9rem; color: white; text-shadow: 2px 2px 8px rgba(0,0,0,0.8); pointer-events: none;">
+            <div style="position: absolute; bottom: 15px; left: 0; right: 0; text-align: center; font-size: 0.8rem; color: white; text-shadow: 2px 2px 8px rgba(0,0,0,0.8); pointer-events: none;">
               Valentine's Day 2026 ❤️
             </div>
           </div>
@@ -1875,23 +1875,23 @@ async function openRomanticMomentCamera() {
           <canvas id="romantic-canvas" style="display: none;"></canvas>
           
           <!-- Buttons -->
-          <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-            <button id="capture-btn" style="background: linear-gradient(135deg, #FF6B9D, #C44569); color: white; border: none; padding: 15px 40px; border-radius: 30px; font-size: 1.1rem; font-weight: bold; cursor: pointer; box-shadow: 0 10px 30px rgba(255, 107, 157, 0.4); transition: transform 0.3s, box-shadow 0.3s;">
+          <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px;">
+            <button id="capture-btn" style="background: linear-gradient(135deg, #FF6B9D, #C44569); color: white; border: none; padding: 15px 30px; border-radius: 30px; font-size: 1rem; font-weight: bold; cursor: pointer; box-shadow: 0 10px 30px rgba(255, 107, 157, 0.4); transition: transform 0.3s, box-shadow 0.3s; touch-action: manipulation;">
               📸 Capture Our Love Forever
             </button>
-            <button id="camera-close-btn" style="background: rgba(255,255,255,0.2); color: white; border: 2px solid white; padding: 15px 40px; border-radius: 30px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: background 0.3s;">
+            <button id="camera-close-btn" style="background: rgba(255,255,255,0.2); color: white; border: 2px solid white; padding: 15px 30px; border-radius: 30px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: background 0.3s; touch-action: manipulation;">
               ✖️ Close
             </button>
           </div>
           
-          <p id="camera-status" style="margin-top: 20px; font-size: 0.9rem; color: #FFB6C1;"></p>
+          <p id="camera-status" style="margin-top: 10px; font-size: 0.9rem; color: #FFB6C1; padding-bottom: 20px;"></p>
         </div>
       </div>
     `;
     
     document.body.appendChild(cameraModal);
     
-    // Add hover effects
+    // Add hover effects for desktop
     const captureBtn = document.getElementById('capture-btn');
     captureBtn.addEventListener('mouseenter', () => {
       captureBtn.style.transform = 'scale(1.05)';
@@ -1900,6 +1900,20 @@ async function openRomanticMomentCamera() {
     captureBtn.addEventListener('mouseleave', () => {
       captureBtn.style.transform = 'scale(1)';
       captureBtn.style.boxShadow = '0 10px 30px rgba(255, 107, 157, 0.4)';
+    });
+    
+    // Add touch feedback for mobile
+    captureBtn.addEventListener('touchstart', (e) => {
+      e.preventDefault();
+      captureBtn.style.transform = 'scale(0.95)';
+      captureBtn.style.opacity = '0.8';
+    });
+    captureBtn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      captureBtn.style.transform = 'scale(1)';
+      captureBtn.style.opacity = '1';
+      // Trigger capture
+      captureRomanticMoment(video, stream);
     });
     
     // Get camera stream
@@ -1915,8 +1929,10 @@ async function openRomanticMomentCamera() {
     video.srcObject = stream;
     document.getElementById('camera-status').textContent = '✅ Camera ready! Smile! 😊';
     
-    // Capture button
-    document.getElementById('capture-btn').addEventListener('click', () => {
+    // Capture button - click event for desktop
+    document.getElementById('capture-btn').addEventListener('click', (e) => {
+      e.preventDefault();
+      console.log('📸 Capture button clicked!');
       captureRomanticMoment(video, stream);
     });
     
@@ -1950,12 +1966,32 @@ async function openRomanticMomentCamera() {
 }
 
 function captureRomanticMoment(video, stream) {
+  console.log('🎬 captureRomanticMoment called!');
+  console.log('📹 Video element:', video);
+  console.log('🎥 Stream:', stream);
+  
   const canvas = document.getElementById('romantic-canvas');
   const ctx = canvas.getContext('2d');
+  
+  if (!canvas) {
+    console.error('❌ Canvas not found!');
+    alert('Error: Canvas not found. Please try again.');
+    return;
+  }
+  
+  if (!video || !video.videoWidth) {
+    console.error('❌ Video not ready!');
+    alert('Please wait for camera to fully load and try again.');
+    return;
+  }
+  
+  console.log('✅ Video dimensions:', video.videoWidth, 'x', video.videoHeight);
   
   // Set canvas size to video size
   canvas.width = video.videoWidth || 1280;
   canvas.height = video.videoHeight || 720;
+  
+  console.log('✅ Canvas size set:', canvas.width, 'x', canvas.height);
   
   // Draw video frame
   ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
@@ -5363,8 +5399,8 @@ function loadValentineDay() {
           
           <div style="padding: 2rem; background: rgba(255, 192, 203, 0.2); border-radius: 20px; margin-bottom: 2rem;">
             <p class="text-2xl" style="color: #C71585; font-style: italic; line-height: 1.8;">
-              "Tum mile toh jeene ka maqsad mil gaya...<br>
-              Dil ko ek naya pyaar mil gaya" ❤️
+              "Bunny found his forever home in Anku's heart...<br>
+              Where two souls became one, and every moment feels like magic" ❤️
             </p>
           </div>
           
