@@ -2720,58 +2720,49 @@ function addCreativeRomanticFrame(ctx, canvas, filter) {
 
 // ==================== FILTER EFFECTS ====================
 
-// ==================== PROFESSIONAL ENHANCED FILTERS ====================
+// ==================== OPTIMIZED PROFESSIONAL FILTERS ====================
 
-// Filter 1: DREAM - Vibrant Pink-Purple Dream (Modern, glowing, fantasy-like)
+// Filter 1: DREAM - Vibrant Pink-Purple Dream
 function applySoftDreamGlowEffect(ctx, canvas) {
   const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
   const data = imageData.data;
   
-  // Apply soft highlight glow with pink-magenta + lavender shift
+  // Apply pink-purple dreamy tones
   for (let i = 0; i < data.length; i += 4) {
     const r = data[i];
     const g = data[i + 1];
     const b = data[i + 2];
     
-    // Pink-magenta + subtle lavender shift (controlled saturation)
     const brightness = (r + g + b) / 3;
     
-    // Soft highlight glow on bright areas
+    // Pink-magenta + lavender shift
     if (brightness > 100) {
-      data[i] = Math.min(255, r * 1.15 + 30);       // Pink boost
-      data[i + 1] = Math.min(255, g * 1.08 + 20);   // Balanced
-      data[i + 2] = Math.min(255, b * 1.12 + 25);   // Lavender undertone
+      data[i] = Math.min(255, r * 1.15 + 30);
+      data[i + 1] = Math.min(255, g * 1.08 + 20);
+      data[i + 2] = Math.min(255, b * 1.12 + 25);
     } else {
       data[i] = Math.min(255, r * 1.10 + 15);
       data[i + 1] = Math.min(255, g * 1.05 + 10);
       data[i + 2] = Math.min(255, b * 1.08 + 12);
     }
     
-    // Slight brightness lift with reduced harsh contrast
+    // Gentle contrast
     const newBrightness = (data[i] + data[i + 1] + data[i + 2]) / 3;
-    const softContrast = 1.08; // Gentle, not harsh
-    data[i] = Math.min(255, (data[i] - newBrightness) * softContrast + newBrightness + 10);
-    data[i + 1] = Math.min(255, (data[i + 1] - newBrightness) * softContrast + newBrightness + 8);
-    data[i + 2] = Math.min(255, (data[i + 2] - newBrightness) * softContrast + newBrightness + 10);
-    
-    // Very gentle blur effect (soften)
-    if (i > 4 && i < data.length - 4) {
-      const blur = 0.08;
-      data[i] = data[i] * (1 - blur) + (data[i - 4] + data[i + 4]) * blur / 2;
-      data[i + 1] = data[i + 1] * (1 - blur) + (data[i - 3] + data[i + 5]) * blur / 2;
-      data[i + 2] = data[i + 2] * (1 - blur) + (data[i - 2] + data[i + 6]) * blur / 2;
-    }
+    const contrast = 1.08;
+    data[i] = Math.min(255, (data[i] - newBrightness) * contrast + newBrightness + 10);
+    data[i + 1] = Math.min(255, (data[i + 1] - newBrightness) * contrast + newBrightness + 8);
+    data[i + 2] = Math.min(255, (data[i + 2] - newBrightness) * contrast + newBrightness + 10);
   }
   
   ctx.putImageData(imageData, 0, 0);
   
-  // Soft bloom/glow overlay on bright areas
+  // Bloom overlay
   ctx.globalCompositeOperation = 'screen';
   ctx.fillStyle = 'rgba(255, 192, 255, 0.12)';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
   ctx.globalCompositeOperation = 'source-over';
   
-  // Subtle pink-purple vignette (soft edges)
+  // Pink vignette
   const centerX = canvas.width / 2;
   const centerY = canvas.height / 2;
   const maxRadius = Math.max(canvas.width, canvas.height) * 0.78;
@@ -2784,7 +2775,7 @@ function applySoftDreamGlowEffect(ctx, canvas) {
   ctx.fillStyle = vignette;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
   
-  // Add tiny sparkle particles
+  // Add sparkles
   ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
   for (let i = 0; i < 25; i++) {
     const x = Math.random() * canvas.width;
@@ -2796,29 +2787,29 @@ function applySoftDreamGlowEffect(ctx, canvas) {
   }
 }
 
-// Filter 2: POLAROID - Warm Retro With Personality (Cute, nostalgic, playful)
+// Filter 2: POLAROID - Warm Retro
 function applyPolaroidEffect(ctx, canvas) {
   const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
   const data = imageData.data;
   
-  // Warm tone (slight yellow/red bias) + faded blacks
+  // Warm retro tones
   for (let i = 0; i < data.length; i += 4) {
     const r = data[i];
     const g = data[i + 1];
     const b = data[i + 2];
     
-    // Warm tone with yellow/red bias
-    data[i] = Math.min(255, r * 1.12 + 25);       // Red boost
-    data[i + 1] = Math.min(255, g * 1.08 + 18);   // Yellow warmth
-    data[i + 2] = Math.min(255, b * 0.88 + 8);    // Reduced blue
+    // Warm tone
+    data[i] = Math.min(255, r * 1.12 + 25);
+    data[i + 1] = Math.min(255, g * 1.08 + 18);
+    data[i + 2] = Math.min(255, b * 0.88 + 8);
     
-    // Slight desaturation for vintage feel
+    // Slight desaturation
     const avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
     data[i] = data[i] * 0.85 + avg * 0.15;
     data[i + 1] = data[i + 1] * 0.85 + avg * 0.15;
     data[i + 2] = data[i + 2] * 0.85 + avg * 0.15;
     
-    // Faded blacks (lift shadows)
+    // Faded blacks
     data[i] = Math.max(20, data[i]);
     data[i + 1] = Math.max(20, data[i + 1]);
     data[i + 2] = Math.max(20, data[i + 2]);
@@ -2826,23 +2817,7 @@ function applyPolaroidEffect(ctx, canvas) {
   
   ctx.putImageData(imageData, 0, 0);
   
-  // Soft grain texture
-  const grain = ctx.createImageData(canvas.width, canvas.height);
-  const grainData = grain.data;
-  
-  for (let i = 0; i < grainData.length; i += 4) {
-    const noise = (Math.random() - 0.5) * 12;
-    grainData[i] = 128 + noise;
-    grainData[i + 1] = 128 + noise;
-    grainData[i + 2] = 128 + noise;
-    grainData[i + 3] = 18; // Low opacity
-  }
-  
-  ctx.globalCompositeOperation = 'overlay';
-  ctx.putImageData(grain, 0, 0);
-  ctx.globalCompositeOperation = 'source-over';
-  
-  // Warm vintage glow
+  // Warm glow
   const centerX = canvas.width / 2;
   const centerY = canvas.height / 2;
   const maxRadius = Math.max(canvas.width, canvas.height) * 0.72;
@@ -2856,12 +2831,12 @@ function applyPolaroidEffect(ctx, canvas) {
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
-// Filter 3: MOVIE - Hollywood Teal & Orange (Cinematic, dramatic, reel-worthy)
+// Filter 3: MOVIE - Hollywood Teal & Orange
 function applyMoviePosterEffect(ctx, canvas) {
   const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
   const data = imageData.data;
   
-  // Hollywood teal & orange color grading
+  // Teal & orange grading
   for (let i = 0; i < data.length; i += 4) {
     const r = data[i];
     const g = data[i + 1];
@@ -2870,18 +2845,18 @@ function applyMoviePosterEffect(ctx, canvas) {
     const brightness = (r + g + b) / 3;
     
     if (brightness > 128) {
-      // Warm orange highlights
-      data[i] = Math.min(255, r * 1.22 + 28);       // Strong orange
-      data[i + 1] = Math.min(255, g * 1.14 + 18);   // Golden warmth
-      data[i + 2] = Math.min(255, b * 0.82);        // Reduced blue
+      // Orange highlights
+      data[i] = Math.min(255, r * 1.22 + 28);
+      data[i + 1] = Math.min(255, g * 1.14 + 18);
+      data[i + 2] = Math.min(255, b * 0.82);
     } else {
       // Teal shadows
-      data[i] = Math.min(255, r * 0.98);            // Slight red
-      data[i + 1] = Math.min(255, g * 1.10 + 12);   // Teal/cyan
-      data[i + 2] = Math.min(255, b * 1.18 + 18);   // Strong blue
+      data[i] = Math.min(255, r * 0.98);
+      data[i + 1] = Math.min(255, g * 1.10 + 12);
+      data[i + 2] = Math.min(255, b * 1.18 + 18);
     }
     
-    // Boosted contrast + slight clarity/sharpen
+    // High contrast
     const contrast = 1.28;
     const newBrightness = (data[i] + data[i + 1] + data[i + 2]) / 3;
     data[i] = Math.min(255, Math.max(0, (data[i] - newBrightness) * contrast + newBrightness));
@@ -2891,23 +2866,7 @@ function applyMoviePosterEffect(ctx, canvas) {
   
   ctx.putImageData(imageData, 0, 0);
   
-  // Subtle film grain
-  const grain = ctx.createImageData(canvas.width, canvas.height);
-  const grainData = grain.data;
-  
-  for (let i = 0; i < grainData.length; i += 4) {
-    const noise = (Math.random() - 0.5) * 10;
-    grainData[i] = 128 + noise;
-    grainData[i + 1] = 128 + noise;
-    grainData[i + 2] = 128 + noise;
-    grainData[i + 3] = 12;
-  }
-  
-  ctx.globalCompositeOperation = 'overlay';
-  ctx.putImageData(grain, 0, 0);
-  ctx.globalCompositeOperation = 'source-over';
-  
-  // Soft cinematic vignette
+  // Cinematic vignette
   const centerX = canvas.width / 2;
   const centerY = canvas.height / 2;
   const maxRadius = Math.max(canvas.width, canvas.height) * 0.68;
@@ -2921,28 +2880,28 @@ function applyMoviePosterEffect(ctx, canvas) {
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
-// Filter 4: KODAK - Pure Black & White (Timeless, elegant, emotionally strong)
+// Filter 4: KODAK - Pure Black & White
 function applyKodakVintageEffect(ctx, canvas) {
   const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
   const data = imageData.data;
   
-  // True monochrome (no warm tint) - Keep it crisp, not grey-washed
+  // Pure B&W conversion
   for (let i = 0; i < data.length; i += 4) {
     const r = data[i];
     const g = data[i + 1];
     const b = data[i + 2];
     
-    // Classic B&W conversion with emphasis on contrast
+    // Classic B&W
     let gray = r * 0.299 + g * 0.587 + b * 0.114;
     
-    // Boosted contrast for crisp look (not grey-washed)
+    // Contrast
     const contrast = 1.20;
     gray = ((gray - 128) * contrast + 128);
     
-    // Deep but soft blacks (not pure black) + clean highlights
+    // Soft blacks
     gray = Math.min(255, Math.max(12, gray));
     
-    // Apply to all channels
+    // Apply
     data[i] = gray;
     data[i + 1] = gray;
     data[i + 2] = gray;
@@ -2950,23 +2909,7 @@ function applyKodakVintageEffect(ctx, canvas) {
   
   ctx.putImageData(imageData, 0, 0);
   
-  // Slight film grain (subtle, not overdone)
-  const grain = ctx.createImageData(canvas.width, canvas.height);
-  const grainData = grain.data;
-  
-  for (let i = 0; i < grainData.length; i += 4) {
-    const noise = (Math.random() - 0.5) * 14;
-    grainData[i] = 128 + noise;
-    grainData[i + 1] = 128 + noise;
-    grainData[i + 2] = 128 + noise;
-    grainData[i + 3] = 16;
-  }
-  
-  ctx.globalCompositeOperation = 'overlay';
-  ctx.putImageData(grain, 0, 0);
-  ctx.globalCompositeOperation = 'source-over';
-  
-  // Minimal vignette (very subtle)
+  // Minimal vignette
   const centerX = canvas.width / 2;
   const centerY = canvas.height / 2;
   const maxRadius = Math.max(canvas.width, canvas.height) * 0.75;
