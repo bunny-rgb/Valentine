@@ -2384,12 +2384,6 @@ async function sendRomanticMomentEmail(photoBlob) {
     }
   }
 }
-    }
-  } catch (error) {
-    console.error('Error sending Magical moment email:', error);
-    alert(`Error sending email: ${error.message}\n\nPhoto was downloaded to your device.`);
-  }
-}
 
 // ==================== DAY 2: ROSE DAY ====================
 function loadRoseDay() {
@@ -3498,7 +3492,7 @@ function showThankYouModal(slot) {
 }
 
 // Create floating hearts for modal
-function createFloatingHeart(container) {
+function createModalFloatingHeart(container) {
   const heart = document.createElement('div');
   heart.textContent = '💕';
   heart.style.cssText = `
