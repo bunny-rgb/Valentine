@@ -1420,12 +1420,14 @@ async function playTrack(index) {
       console.error('❌ Network State:', musicPlayer?.networkState);
       console.error('❌ Ready State:', musicPlayer?.readyState);
       console.error('❌ ====================================');
-      console.warn('⚠️ Attempting next track...');
       
-      // Immediately try next track without delay
-      if (isPlaying) {
-        nextTrack();
-      }
+      // Wait 2 seconds before trying next track (give time to load)
+      setTimeout(() => {
+        if (isPlaying) {
+          console.warn('⚠️ Attempting next track after delay...');
+          nextTrack();
+        }
+      }, 2000);
     };
     musicPlayer.addEventListener('error', window._handlePlaybackError);
     
@@ -1442,11 +1444,15 @@ async function playTrack(index) {
         })
         .catch(error => {
           console.error('❌ Play failed:', error.message);
-          // Only skip if still playing (user didn't pause)
-          if (isPlaying) {
-            console.warn('⚠️ Auto-skipping to next track');
-            handlePlaybackError(error);
-          }
+          // Wait before skipping to give audio time to load
+          setTimeout(() => {
+            if (isPlaying && musicPlayer && musicPlayer.paused) {
+              console.warn('⚠️ Auto-skipping to next track after delay');
+              nextTrack();
+            } else {
+              console.log('✅ Audio recovered, continuing playback');
+            }
+          }, 2000);
         });
     }
   } else {
@@ -1640,7 +1646,7 @@ function handleProposalResponse(accepted) {
     document.getElementById('proposal-section').classList.add('hidden');
     
     // Open camera for Magical moment
-    openRomanticMomentCamera();
+    showFilterSelectionModal();
     
     // Stop music
     const button = document.getElementById('play-button');
@@ -1653,7 +1659,119 @@ function handleProposalResponse(accepted) {
 
 // ==================== MAGICAL MOMENT CAMERA ====================
 
+// Global variable to store selected filter
+let selectedFilter = 'romantic'; // default
+
+// Show filter selection modal
+function showFilterSelectionModal() {
+  const filterModal = document.createElement('div');
+  filterModal.id = 'filter-selection-modal';
+  filterModal.innerHTML = `
+    <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 10000; display: flex; align-items: center; justify-content: center; padding: 20px;">
+      <div style="background: linear-gradient(135deg, #FFF5F7 0%, #FFE4E9 100%); border-radius: 30px; padding: 40px; max-width: 600px; width: 100%; box-shadow: 0 30px 80px rgba(255, 105, 180, 0.5); text-align: center;">
+        <h2 style="font-size: 2.5rem; margin-bottom: 20px; font-weight: bold; background: linear-gradient(135deg, #FF6B9D, #C44569); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+          ✨ Choose Your Love Filter ✨
+        </h2>
+        <p style="font-size: 1.1rem; margin-bottom: 40px; color: #FF69B4;">
+          Select a magical filter to make your photo extra special! 💕
+        </p>
+        
+        <!-- Filter Options -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px;">
+          <!-- Romantic Vibe Filter -->
+          <div id="filter-romantic" onclick="selectFilter('romantic')" style="
+            cursor: pointer;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, #FFB6C1 0%, #FF69B4 100%);
+            border-radius: 20px;
+            border: 4px solid #FF1493;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.4);
+          ">
+            <div style="font-size: 3rem; margin-bottom: 10px;">💕</div>
+            <div style="font-size: 1.3rem; font-weight: bold; color: white; margin-bottom: 10px;">Romantic Vibe</div>
+            <div style="font-size: 0.9rem; color: rgba(255,255,255,0.9); line-height: 1.4;">
+              Dreamy rose gold glow with floating hearts & soft pink tones
+            </div>
+          </div>
+          
+          <!-- Love Mood Filter -->
+          <div id="filter-love" onclick="selectFilter('love')" style="
+            cursor: pointer;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, #FFC0CB 0%, #FF1493 100%);
+            border-radius: 20px;
+            border: 4px solid transparent;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 20, 147, 0.3);
+          ">
+            <div style="font-size: 3rem; margin-bottom: 10px;">💖</div>
+            <div style="font-size: 1.3rem; font-weight: bold; color: white; margin-bottom: 10px;">Love Mood</div>
+            <div style="font-size: 0.9rem; color: rgba(255,255,255,0.9); line-height: 1.4;">
+              Passionate deep pink vibes with golden sparkles & warm glow
+            </div>
+          </div>
+        </div>
+        
+        <!-- Continue Button -->
+        <button onclick="openRomanticMomentCamera()" style="
+          background: linear-gradient(135deg, #FF6B9D, #C44569);
+          color: white;
+          border: none;
+          padding: 18px 50px;
+          border-radius: 30px;
+          font-size: 1.2rem;
+          font-weight: bold;
+          cursor: pointer;
+          box-shadow: 0 10px 30px rgba(255, 107, 157, 0.4);
+          transition: all 0.3s ease;
+          width: 100%;
+        " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+          📸 Continue with Selected Filter
+        </button>
+        
+        <p style="margin-top: 20px; font-size: 0.9rem; color: #FF69B4;">
+          ✨ You can change the filter anytime later! ✨
+        </p>
+      </div>
+    </div>
+  `;
+  
+  document.body.appendChild(filterModal);
+}
+
+// Select filter function
+window.selectFilter = function(filter) {
+  selectedFilter = filter;
+  
+  // Update UI to show selection
+  document.getElementById('filter-romantic').style.border = '4px solid transparent';
+  document.getElementById('filter-romantic').style.transform = 'scale(1)';
+  document.getElementById('filter-love').style.border = '4px solid transparent';
+  document.getElementById('filter-love').style.transform = 'scale(1)';
+  
+  if (filter === 'romantic') {
+    document.getElementById('filter-romantic').style.border = '4px solid #FF1493';
+    document.getElementById('filter-romantic').style.transform = 'scale(1.05)';
+    document.getElementById('filter-romantic').style.boxShadow = '0 15px 40px rgba(255, 105, 180, 0.6)';
+  } else {
+    document.getElementById('filter-love').style.border = '4px solid #FF1493';
+    document.getElementById('filter-love').style.transform = 'scale(1.05)';
+    document.getElementById('filter-love').style.boxShadow = '0 15px 40px rgba(255, 20, 147, 0.6)';
+  }
+  
+  console.log('✨ Filter selected:', filter === 'romantic' ? 'Romantic Vibe 💕' : 'Love Mood 💖');
+};
+
 async function openRomanticMomentCamera() {
+  // Remove filter selection modal
+  const filterModal = document.getElementById('filter-selection-modal');
+  if (filterModal) {
+    filterModal.remove();
+  }
+  
+  console.log('📸 Opening camera with filter:', selectedFilter === 'romantic' ? 'Romantic Vibe 💕' : 'Love Mood 💖');
+  
   try {
     // Create camera modal
     const cameraModal = document.createElement('div');
@@ -1777,8 +1895,12 @@ function captureRomanticMoment(video, stream) {
   // Draw video frame
   ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
   
-  // Apply Magical moment effects
-  applyRomanticEffect(ctx, canvas);
+  // Apply Magical moment effects based on selected filter
+  if (selectedFilter === 'romantic') {
+    applyRomanticVibeEffect(ctx, canvas);
+  } else {
+    applyLoveMoodEffect(ctx, canvas);
+  }
   
   // Add romantic frame and text
   addRomanticFrame(ctx, canvas);
@@ -1818,7 +1940,8 @@ function captureRomanticMoment(video, stream) {
   }, 'image/jpeg', 0.95);
 }
 
-function applyRomanticEffect(ctx, canvas) {
+// Filter 1: Romantic Vibe - Dreamy rose gold with soft pink tones
+function applyRomanticVibeEffect(ctx, canvas) {
   // Get image data
   const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
   const data = imageData.data;
@@ -1876,6 +1999,88 @@ function applyRomanticEffect(ctx, canvas) {
     ctx.fillStyle = bokeh;
     ctx.fillRect(x - size, y - size, size * 2, size * 2);
   }
+  ctx.globalAlpha = 1.0;
+}
+
+// Filter 2: Love Mood - Passionate deep pink with golden sparkles
+function applyLoveMoodEffect(ctx, canvas) {
+  // Get image data
+  const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  const data = imageData.data;
+  
+  // Apply passionate love mood color effect
+  for (let i = 0; i < data.length; i += 4) {
+    const r = data[i];
+    const g = data[i + 1];
+    const b = data[i + 2];
+    
+    // Add passionate deep pink and warm golden tones
+    data[i] = Math.min(255, r * 1.25 + 35);       // Strong red boost for passion
+    data[i + 1] = Math.min(255, g * 1.12 + 20);   // Golden undertones
+    data[i + 2] = Math.min(255, b * 0.85 + 5);    // Reduced blue for warmth
+    
+    // Add deep romantic saturation
+    const brightness = (data[i] + data[i + 1] + data[i + 2]) / 3;
+    data[i] = Math.min(255, data[i] * 0.88 + brightness * 0.12 + 40);     // Deep pink
+    data[i + 1] = Math.min(255, data[i + 1] * 0.90 + brightness * 0.10 + 25);  // Golden glow
+    data[i + 2] = Math.min(255, data[i + 2] * 0.95 + brightness * 0.05 + 10);  // Warm base
+  }
+  
+  ctx.putImageData(imageData, 0, 0);
+  
+  // Add deep passionate vignette with magenta/gold glow
+  const centerX = canvas.width / 2;
+  const centerY = canvas.height / 2;
+  const maxRadius = Math.max(canvas.width, canvas.height) * 0.75;
+  
+  const vignette = ctx.createRadialGradient(
+    centerX, centerY, 0,
+    centerX, centerY, maxRadius
+  );
+  vignette.addColorStop(0, 'rgba(255, 215, 0, 0)');           // Golden center
+  vignette.addColorStop(0.4, 'rgba(255, 20, 147, 0.08)');     // Deep pink
+  vignette.addColorStop(0.7, 'rgba(199, 21, 133, 0.18)');     // Magenta
+  vignette.addColorStop(1, 'rgba(139, 0, 139, 0.35)');        // Deep purple edge
+  
+  ctx.fillStyle = vignette;
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  
+  // Add golden sparkle effect
+  ctx.globalAlpha = 0.2;
+  for (let i = 0; i < 30; i++) {
+    const x = Math.random() * canvas.width;
+    const y = Math.random() * canvas.height;
+    const size = Math.random() * 100 + 50;
+    
+    const sparkle = ctx.createRadialGradient(x, y, 0, x, y, size);
+    sparkle.addColorStop(0, 'rgba(255, 215, 0, 0.8)');         // Golden center
+    sparkle.addColorStop(0.3, 'rgba(255, 182, 193, 0.4)');     // Pink mid
+    sparkle.addColorStop(1, 'rgba(255, 20, 147, 0)');          // Deep pink fade
+    
+    ctx.fillStyle = sparkle;
+    ctx.fillRect(x - size, y - size, size * 2, size * 2);
+  }
+  ctx.globalAlpha = 1.0;
+  
+  // Add passionate heart sparkles in corners
+  const heartPositions = [
+    { x: canvas.width * 0.1, y: canvas.height * 0.1 },
+    { x: canvas.width * 0.9, y: canvas.height * 0.1 },
+    { x: canvas.width * 0.1, y: canvas.height * 0.9 },
+    { x: canvas.width * 0.9, y: canvas.height * 0.9 }
+  ];
+  
+  ctx.globalAlpha = 0.3;
+  heartPositions.forEach(pos => {
+    const size = 120;
+    const gradient = ctx.createRadialGradient(pos.x, pos.y, 0, pos.x, pos.y, size);
+    gradient.addColorStop(0, 'rgba(255, 215, 0, 0.9)');
+    gradient.addColorStop(0.5, 'rgba(255, 20, 147, 0.5)');
+    gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+    
+    ctx.fillStyle = gradient;
+    ctx.fillRect(pos.x - size, pos.y - size, size * 2, size * 2);
+  });
   ctx.globalAlpha = 1.0;
 }
 
