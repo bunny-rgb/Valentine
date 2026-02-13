@@ -1,0 +1,12 @@
+# Ignore node_modules
+node_modules/
+.git/
+.gitignore
+
+# Ignore backup files
+*.backup
+*.backup-*
+*.md
+*.txt
+
+# Ignore large music files temporarily for faster deploy
