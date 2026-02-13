@@ -1367,8 +1367,23 @@ async function playTrack(index) {
     // Real audio playback
     musicPlayer = new Audio();
     musicPlayer.volume = 0.7;
-    musicPlayer.crossOrigin = 'anonymous'; // Enable CORS for music files
-    musicPlayer.preload = 'auto'; // Preload audio for smooth playback
+    
+    // Only set crossOrigin for external URLs, not local files
+    if (track.previewUrl.startsWith('http://') || track.previewUrl.startsWith('https://')) {
+      musicPlayer.crossOrigin = 'anonymous';
+    }
+    
+    musicPlayer.preload = 'metadata'; // Load metadata first, then buffer on play
+    
+    // Check if browser can play MP3
+    const canPlayMP3 = musicPlayer.canPlayType('audio/mpeg');
+    console.log('🔊 Browser MP3 support:', canPlayMP3);
+    
+    if (!canPlayMP3 || canPlayMP3 === 'no') {
+      console.error('❌ Browser does not support MP3 playback');
+      setTimeout(() => nextTrack(), 500);
+      return;
+    }
     
     console.log('🎵 ========== NOW PLAYING ==========');
     console.log('🎵 Track:', track.name);
@@ -1384,8 +1399,20 @@ async function playTrack(index) {
     document.getElementById('current-time').textContent = '0:00';
     document.getElementById('progress-fill').style.width = '0%';
     
+    // Handle load start
+    musicPlayer.addEventListener('loadstart', () => {
+      console.log('🔄 Audio loading started:', track.previewUrl);
+    });
+    
+    // Handle can play through
+    musicPlayer.addEventListener('canplaythrough', () => {
+      console.log('✅ Audio can play through (buffered enough)');
+    });
+    
     // Handle metadata loaded
     musicPlayer.addEventListener('loadedmetadata', () => {
+      console.log('📊 Metadata loaded, duration:', Math.floor(musicPlayer.duration), 'seconds');
+      
       // Update with actual duration when metadata loads
       const actualDuration = Math.floor(musicPlayer.duration);
       if (!isNaN(actualDuration) && isFinite(actualDuration)) {
