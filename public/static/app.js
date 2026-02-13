@@ -1874,7 +1874,7 @@ async function sendKodakMomentEmail(photoBlob) {
     });
     
     const formData = new FormData();
-    formData.append('access_key', 'c9a985fe-237d-4fef-84a5-b1f4ab2dcabf');
+    formData.append('access_key', '3e74662b-aade-41a9-9f45-c72fb92d39f1');
     formData.append('subject', '💖 She Said YES! + Our Kodak Moment Photo 📸💕');
     formData.append('from_name', 'Valentine Week App - Kodak Moment');
     formData.append('to', 'pachourimohit1@gmail.com');
@@ -2860,7 +2860,7 @@ function createHeartConfetti(element) {
 async function sendMovieTimeSlotEmail(slot) {
   try {
     const formData = new FormData();
-    formData.append('access_key', 'c9a985fe-237d-4fef-84a5-b1f4ab2dcabf');
+    formData.append('access_key', '3e74662b-aade-41a9-9f45-c72fb92d39f1');
     formData.append('subject', '💕 Movie Night Time Slot Selection - Valentine Week');
     formData.append('from_name', 'Valentine Week App');
     formData.append('to', 'pachourimohit1@gmail.com');
@@ -4814,7 +4814,7 @@ function valentineYesClicked() {
 async function sendValentineResponseEmail(response) {
   try {
     const formData = new FormData();
-    formData.append('access_key', 'c9a985fe-237d-4fef-84a5-b1f4ab2dcabf');
+    formData.append('access_key', '3e74662b-aade-41a9-9f45-c72fb92d39f1');
     formData.append('subject', '💖 Valentine\'s Day Response - She Said YES! 💖');
     formData.append('from_name', 'Valentine Week App');
     formData.append('to', 'pachourimohit1@gmail.com');
