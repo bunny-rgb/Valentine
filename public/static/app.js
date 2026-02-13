@@ -3,7 +3,7 @@ const VALENTINE_WEEK_CONFIG = {
   // Set your Valentine Week start date (February 8, 2026 - Propose Day)
   startDate: new Date('2026-02-08T00:00:00'),
   // PREVIEW MODE: Set to true to unlock all days for preview
-  previewMode: true, // 🎵 PREVIEW ENABLED - All days unlocked for testing!
+  previewMode: false, // Production mode - days unlock by date
   // PREVIEW SPECIFIC DAYS: Array of day IDs to unlock for preview (e.g., [3] for Day 3 only)
   previewDays: [], // All days locked - unlock based on date only
   days: [
@@ -577,7 +577,7 @@ const MUSIC_CONFIG = {
   day7UnlockDate: new Date('2026-02-14T00:00:00'),
   
   // 🎵 PREVIEW MODE for Music: Force Day 7 playlist for testing
-  musicPreviewMode: true,  // Set to true to always use Day 7 music
+  musicPreviewMode: false,  // Production mode - music unlocks by date
   
   // Dynamic playlist getter - returns appropriate playlist based on date
   get localPlaylist() {
@@ -1687,8 +1687,8 @@ function showFilterSelectionModal() {
   const filterModal = document.createElement('div');
   filterModal.id = 'filter-selection-modal';
   filterModal.innerHTML = `
-    <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 10000; display: flex; align-items: center; justify-content: center; padding: 20px;">
-      <div style="background: linear-gradient(135deg, #FFF5F7 0%, #FFE4E9 100%); border-radius: 30px; padding: 40px; max-width: 600px; width: 100%; box-shadow: 0 30px 80px rgba(255, 105, 180, 0.5); text-align: center;">
+    <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 10000; display: flex; align-items: center; justify-content: center; padding: 20px; overflow-y: auto;">
+      <div style="background: linear-gradient(135deg, #FFF5F7 0%, #FFE4E9 100%); border-radius: 30px; padding: 40px; max-width: 900px; width: 100%; box-shadow: 0 30px 80px rgba(255, 105, 180, 0.5); text-align: center;">
         <h2 style="font-size: 2.5rem; margin-bottom: 20px; font-weight: bold; background: linear-gradient(135deg, #FF6B9D, #C44569); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
           ✨ Choose Your Love Filter ✨
         </h2>
@@ -1696,41 +1696,77 @@ function showFilterSelectionModal() {
           Select a magical filter to make your photo extra special! 💕
         </p>
         
-        <!-- Filter Options -->
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px;">
-          <!-- Romantic Vibe Filter -->
-          <div id="filter-romantic" onclick="selectFilter('romantic')" style="
+        <!-- Filter Options Grid -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px;">
+          
+          <!-- 1. Soft Dream Glow -->
+          <div id="filter-dream" onclick="selectFilter('dream')" style="
             cursor: pointer;
-            padding: 30px 20px;
-            background: linear-gradient(135deg, #FFB6C1 0%, #FF69B4 100%);
+            padding: 25px 15px;
+            background: linear-gradient(135deg, #FFE4E9 0%, #FFD1DC 100%);
             border-radius: 20px;
             border: 4px solid #FF1493;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.4);
+            box-shadow: 0 10px 30px rgba(255, 182, 193, 0.4);
           ">
-            <div style="font-size: 3rem; margin-bottom: 10px;">💕</div>
-            <div style="font-size: 1.3rem; font-weight: bold; color: white; margin-bottom: 10px;">Romantic Vibe</div>
-            <div style="font-size: 0.9rem; color: rgba(255,255,255,0.9); line-height: 1.4;">
-              Dreamy rose gold glow with floating hearts & soft pink tones
+            <div style="font-size: 2.5rem; margin-bottom: 10px;">✨</div>
+            <div style="font-size: 1.2rem; font-weight: bold; color: #FF6B9D; margin-bottom: 8px;">Soft Dream Glow</div>
+            <div style="font-size: 0.85rem; color: #666; line-height: 1.4;">
+              Magical & dreamy with warm highlights & subtle glow
             </div>
           </div>
           
-          <!-- Love Mood Filter -->
-          <div id="filter-love" onclick="selectFilter('love')" style="
+          <!-- 2. Golden Hour Romance -->
+          <div id="filter-golden" onclick="selectFilter('golden')" style="
             cursor: pointer;
-            padding: 30px 20px;
-            background: linear-gradient(135deg, #FFC0CB 0%, #FF1493 100%);
+            padding: 25px 15px;
+            background: linear-gradient(135deg, #FFE5B4 0%, #FFDAB9 100%);
             border-radius: 20px;
             border: 4px solid transparent;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(255, 20, 147, 0.3);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
           ">
-            <div style="font-size: 3rem; margin-bottom: 10px;">💖</div>
-            <div style="font-size: 1.3rem; font-weight: bold; color: white; margin-bottom: 10px;">Love Mood</div>
-            <div style="font-size: 0.9rem; color: rgba(255,255,255,0.9); line-height: 1.4;">
-              Passionate deep pink vibes with golden sparkles & warm glow
+            <div style="font-size: 2.5rem; margin-bottom: 10px;">💛</div>
+            <div style="font-size: 1.2rem; font-weight: bold; color: #DAA520; margin-bottom: 8px;">Golden Hour Romance</div>
+            <div style="font-size: 0.85rem; color: #666; line-height: 1.4;">
+              Warm, radiant & intimate with golden warmth
             </div>
           </div>
+          
+          <!-- 3. Polaroid Love Note -->
+          <div id="filter-polaroid" onclick="selectFilter('polaroid')" style="
+            cursor: pointer;
+            padding: 25px 15px;
+            background: linear-gradient(135deg, #FFFFFF 0%, #F5F5F5 100%);
+            border-radius: 20px;
+            border: 4px solid transparent;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+          ">
+            <div style="font-size: 2.5rem; margin-bottom: 10px;">📷</div>
+            <div style="font-size: 1.2rem; font-weight: bold; color: #FF69B4; margin-bottom: 8px;">Polaroid Love Note</div>
+            <div style="font-size: 0.85rem; color: #666; line-height: 1.4;">
+              Cute & nostalgic with white frame & soft tones
+            </div>
+          </div>
+          
+          <!-- 4. Romantic Movie Poster -->
+          <div id="filter-movie" onclick="selectFilter('movie')" style="
+            cursor: pointer;
+            padding: 25px 15px;
+            background: linear-gradient(135deg, #2C2C54 0%, #40407A 100%);
+            border-radius: 20px;
+            border: 4px solid transparent;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(44, 44, 84, 0.5);
+          ">
+            <div style="font-size: 2.5rem; margin-bottom: 10px;">🎬</div>
+            <div style="font-size: 1.2rem; font-weight: bold; color: #FFD700; margin-bottom: 8px;">Movie Poster</div>
+            <div style="font-size: 0.85rem; color: #CCC; line-height: 1.4;">
+              Cinematic & unforgettable with film-style grading
+            </div>
+          </div>
+          
         </div>
         
         <!-- Continue Button -->
@@ -1764,23 +1800,32 @@ function showFilterSelectionModal() {
 window.selectFilter = function(filter) {
   selectedFilter = filter;
   
-  // Update UI to show selection
-  document.getElementById('filter-romantic').style.border = '4px solid transparent';
-  document.getElementById('filter-romantic').style.transform = 'scale(1)';
-  document.getElementById('filter-love').style.border = '4px solid transparent';
-  document.getElementById('filter-love').style.transform = 'scale(1)';
+  // Reset all filters
+  const filters = ['dream', 'golden', 'polaroid', 'movie'];
+  filters.forEach(f => {
+    const elem = document.getElementById(`filter-${f}`);
+    if (elem) {
+      elem.style.border = '4px solid transparent';
+      elem.style.transform = 'scale(1)';
+    }
+  });
   
-  if (filter === 'romantic') {
-    document.getElementById('filter-romantic').style.border = '4px solid #FF1493';
-    document.getElementById('filter-romantic').style.transform = 'scale(1.05)';
-    document.getElementById('filter-romantic').style.boxShadow = '0 15px 40px rgba(255, 105, 180, 0.6)';
-  } else {
-    document.getElementById('filter-love').style.border = '4px solid #FF1493';
-    document.getElementById('filter-love').style.transform = 'scale(1.05)';
-    document.getElementById('filter-love').style.boxShadow = '0 15px 40px rgba(255, 20, 147, 0.6)';
+  // Highlight selected filter
+  const selectedElem = document.getElementById(`filter-${filter}`);
+  if (selectedElem) {
+    selectedElem.style.border = '4px solid #FF1493';
+    selectedElem.style.transform = 'scale(1.05)';
+    selectedElem.style.boxShadow = '0 15px 40px rgba(255, 105, 180, 0.6)';
   }
   
-  console.log('✨ Filter selected:', filter === 'romantic' ? 'Romantic Vibe 💕' : 'Love Mood 💖');
+  const filterNames = {
+    'dream': 'Soft Dream Glow ✨',
+    'golden': 'Golden Hour Romance 💛',
+    'polaroid': 'Polaroid Love Note 📷',
+    'movie': 'Romantic Movie Poster 🎬'
+  };
+  
+  console.log('✨ Filter selected:', filterNames[filter] || filter);
 };
 
 async function openRomanticMomentCamera() {
@@ -1916,14 +1961,21 @@ function captureRomanticMoment(video, stream) {
   ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
   
   // Apply Magical moment effects based on selected filter
-  if (selectedFilter === 'romantic') {
-    applyRomanticVibeEffect(ctx, canvas);
+  if (selectedFilter === 'dream') {
+    applySoftDreamGlowEffect(ctx, canvas);
+  } else if (selectedFilter === 'golden') {
+    applyGoldenHourEffect(ctx, canvas);
+  } else if (selectedFilter === 'polaroid') {
+    applyPolaroidEffect(ctx, canvas);
+  } else if (selectedFilter === 'movie') {
+    applyMoviePosterEffect(ctx, canvas);
   } else {
-    applyLoveMoodEffect(ctx, canvas);
+    // Default fallback
+    applySoftDreamGlowEffect(ctx, canvas);
   }
   
-  // Add romantic frame and text
-  addRomanticFrame(ctx, canvas);
+  // Add romantic frame and text with captions
+  addRomanticFrameWithCaption(ctx, canvas, selectedFilter);
   
   // Convert to image
   canvas.toBlob(async (blob) => {
@@ -1953,6 +2005,280 @@ function captureRomanticMoment(video, stream) {
       const celebrationPage = document.getElementById('celebration-page');
       if (celebrationPage) {
         celebrationPage.style.display = 'block';
+// ==================== NEW FILTER EFFECTS ====================
+
+// Filter 1: Soft Dream Glow - Magical, dreamy, romantic
+function applySoftDreamGlowEffect(ctx, canvas) {
+  const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  const data = imageData.data;
+  
+  // Apply warm highlights and subtle glow
+  for (let i = 0; i < data.length; i += 4) {
+    const r = data[i];
+    const g = data[i + 1];
+    const b = data[i + 2];
+    
+    // Warm highlights with subtle glow
+    data[i] = Math.min(255, r * 1.12 + 20);       // Soft red boost
+    data[i + 1] = Math.min(255, g * 1.08 + 15);   // Gentle green
+    data[i + 2] = Math.min(255, b * 0.98 + 10);   // Slight blue reduction
+    
+    // Dreamy soft effect
+    const brightness = (data[i] + data[i + 1] + data[i + 2]) / 3;
+    data[i] = Math.min(255, data[i] * 0.90 + brightness * 0.10 + 15);
+    data[i + 1] = Math.min(255, data[i + 1] * 0.92 + brightness * 0.08 + 10);
+    data[i + 2] = Math.min(255, data[i + 2] * 0.94 + brightness * 0.06 + 8);
+  }
+  
+  ctx.putImageData(imageData, 0, 0);
+  
+  // Add slight vignette
+  const centerX = canvas.width / 2;
+  const centerY = canvas.height / 2;
+  const maxRadius = Math.max(canvas.width, canvas.height) * 0.8;
+  
+  const vignette = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, maxRadius);
+  vignette.addColorStop(0, 'rgba(255, 245, 250, 0)');
+  vignette.addColorStop(0.7, 'rgba(255, 220, 235, 0.08)');
+  vignette.addColorStop(1, 'rgba(255, 192, 203, 0.15)');
+  
+  ctx.fillStyle = vignette;
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
+
+// Filter 2: Golden Hour Romance - Warm, radiant, intimate
+function applyGoldenHourEffect(ctx, canvas) {
+  const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  const data = imageData.data;
+  
+  // Apply golden warmth
+  for (let i = 0; i < data.length; i += 4) {
+    const r = data[i];
+    const g = data[i + 1];
+    const b = data[i + 2];
+    
+    // Golden warmth and brightness
+    data[i] = Math.min(255, r * 1.20 + 30);       // Strong warm red
+    data[i + 1] = Math.min(255, g * 1.15 + 25);   // Golden yellow
+    data[i + 2] = Math.min(255, b * 0.85 + 5);    // Reduce blue for warmth
+    
+    // Gentle contrast boost
+    const brightness = (data[i] + data[i + 1] + data[i + 2]) / 3;
+    const contrast = 1.1;
+    data[i] = Math.min(255, (data[i] - brightness) * contrast + brightness);
+    data[i + 1] = Math.min(255, (data[i + 1] - brightness) * contrast + brightness);
+    data[i + 2] = Math.min(255, (data[i + 2] - brightness) * contrast + brightness);
+  }
+  
+  ctx.putImageData(imageData, 0, 0);
+  
+  // Add golden glow overlay
+  const centerX = canvas.width / 2;
+  const centerY = canvas.height / 2;
+  const maxRadius = Math.max(canvas.width, canvas.height) * 0.75;
+  
+  const glow = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, maxRadius);
+  glow.addColorStop(0, 'rgba(255, 215, 0, 0.05)');
+  glow.addColorStop(0.5, 'rgba(255, 200, 100, 0.08)');
+  glow.addColorStop(1, 'rgba(255, 150, 50, 0.12)');
+  
+  ctx.fillStyle = glow;
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
+
+// Filter 3: Polaroid Love Note - Cute, personal, nostalgic
+function applyPolaroidEffect(ctx, canvas) {
+  const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  const data = imageData.data;
+  
+  // Apply slight softness and vintage feel
+  for (let i = 0; i < data.length; i += 4) {
+    const r = data[i];
+    const g = data[i + 1];
+    const b = data[i + 2];
+    
+    // Slight desaturation and soft tones
+    const avg = (r + g + b) / 3;
+    data[i] = Math.min(255, r * 0.85 + avg * 0.15 + 10);
+    data[i + 1] = Math.min(255, g * 0.85 + avg * 0.15 + 10);
+    data[i + 2] = Math.min(255, b * 0.85 + avg * 0.15 + 10);
+  }
+  
+  ctx.putImageData(imageData, 0, 0);
+}
+
+// Filter 4: Romantic Movie Poster - Cinematic & unforgettable
+function applyMoviePosterEffect(ctx, canvas) {
+  const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  const data = imageData.data;
+  
+  // Film-style color grading with enhanced contrast
+  for (let i = 0; i < data.length; i += 4) {
+    const r = data[i];
+    const g = data[i + 1];
+    const b = data[i + 2];
+    
+    // Cinematic color grading
+    data[i] = Math.min(255, r * 1.15 + 10);       // Boost reds
+    data[i + 1] = Math.min(255, g * 1.08);        // Slightly boost greens
+    data[i + 2] = Math.min(255, b * 1.12 + 15);   // Boost blues for depth
+    
+    // Increased contrast
+    const brightness = (data[i] + data[i + 1] + data[i + 2]) / 3;
+    const contrast = 1.25;
+    data[i] = Math.min(255, Math.max(0, (data[i] - brightness) * contrast + brightness));
+    data[i + 1] = Math.min(255, Math.max(0, (data[i + 1] - brightness) * contrast + brightness));
+    data[i + 2] = Math.min(255, Math.max(0, (data[i + 2] - brightness) * contrast + brightness));
+  }
+  
+  ctx.putImageData(imageData, 0, 0);
+  
+  // Add cinematic vignette
+  const centerX = canvas.width / 2;
+  const centerY = canvas.height / 2;
+  const maxRadius = Math.max(canvas.width, canvas.height) * 0.7;
+  
+  const vignette = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, maxRadius);
+  vignette.addColorStop(0, 'rgba(0, 0, 0, 0)');
+  vignette.addColorStop(0.6, 'rgba(0, 0, 0, 0.15)');
+  vignette.addColorStop(1, 'rgba(0, 0, 0, 0.4)');
+  
+  ctx.fillStyle = vignette;
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
+
+// Add romantic frame with caption based on filter
+function addRomanticFrameWithCaption(ctx, canvas, filter) {
+  const width = canvas.width;
+  const height = canvas.height;
+  
+  // Caption options for each filter
+  const captions = {
+    'dream': [
+      "This moment feels like destiny ✨",
+      "Where you are is where my heart belongs ❤️",
+      "A memory wrapped in love."
+    ],
+    'golden': [
+      "You are my favorite kind of forever 💛",
+      "With you, everything feels golden.",
+      "Every love story is beautiful, but ours is my favorite."
+    ],
+    'polaroid': [
+      "Proof of a very special 'Yes' 💖",
+      "Captured with love.",
+      "Our little forever moment."
+    ],
+    'movie': [
+      "A Love Story - Starring Us ❤️",
+      "Two hearts. One beautiful story.",
+      "And so, our story begins…"
+    ]
+  };
+  
+  // Select random caption for the filter
+  const filterCaptions = captions[filter] || captions['dream'];
+  const selectedCaption = filterCaptions[Math.floor(Math.random() * filterCaptions.length)];
+  
+  // Draw frame based on filter style
+  if (filter === 'polaroid') {
+    // Polaroid-style white frame
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
+    const frameWidth = 40;
+    const bottomHeight = 100;
+    
+    // Top frame
+    ctx.fillRect(0, 0, width, frameWidth);
+    // Left frame
+    ctx.fillRect(0, 0, frameWidth, height);
+    // Right frame
+    ctx.fillRect(width - frameWidth, 0, frameWidth, height);
+    // Bottom frame (larger for Polaroid style)
+    ctx.fillRect(0, height - bottomHeight, width, bottomHeight);
+    
+    // Handwritten style caption
+    ctx.font = 'italic 28px "Comic Sans MS", cursive';
+    ctx.textAlign = 'center';
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.8)';
+    ctx.fillText(selectedCaption, width / 2, height - 50);
+    
+  } else if (filter === 'movie') {
+    // Movie poster style
+    // Top black bar
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.85)';
+    ctx.fillRect(0, 0, width, 120);
+    
+    // Bottom black bar
+    ctx.fillRect(0, height - 120, width, 120);
+    
+    // Title text (top)
+    ctx.font = 'bold 48px "Helvetica Neue", Arial';
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#FFD700';
+    ctx.fillText("A Love Story", width / 2, 70);
+    
+    // Caption text (bottom)
+    ctx.font = 'italic 32px Georgia, serif';
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
+    ctx.fillText(selectedCaption, width / 2, height - 65);
+    
+  } else {
+    // Dream and Golden filters - elegant gradient frame
+    const borderGradient = ctx.createLinearGradient(0, 0, width, height);
+    if (filter === 'golden') {
+      borderGradient.addColorStop(0, 'rgba(255, 215, 0, 0.8)');
+      borderGradient.addColorStop(0.5, 'rgba(255, 200, 100, 0.8)');
+      borderGradient.addColorStop(1, 'rgba(255, 215, 0, 0.8)');
+    } else {
+      borderGradient.addColorStop(0, 'rgba(255, 192, 203, 0.8)');
+      borderGradient.addColorStop(0.5, 'rgba(255, 182, 193, 0.8)');
+      borderGradient.addColorStop(1, 'rgba(255, 192, 203, 0.8)');
+    }
+    
+    // Outer frame
+    ctx.strokeStyle = borderGradient;
+    ctx.lineWidth = 20;
+    ctx.strokeRect(10, 10, width - 20, height - 20);
+    
+    // Inner frame
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.6)';
+    ctx.lineWidth = 8;
+    ctx.strokeRect(35, 35, width - 70, height - 70);
+    
+    // Top title
+    ctx.font = 'bold 55px "Brush Script MT", cursive';
+    ctx.textAlign = 'center';
+    ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
+    ctx.shadowBlur = 10;
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
+    ctx.fillText("💕 Our Love Forever 💕", width / 2, 80);
+    ctx.shadowBlur = 0;
+    
+    // Caption at bottom
+    ctx.font = 'italic bold 30px Georgia, serif';
+    ctx.shadowColor = 'rgba(0, 0, 0, 0.6)';
+    ctx.shadowBlur = 8;
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
+    ctx.fillText(selectedCaption, width / 2, height - 60);
+    ctx.shadowBlur = 0;
+  }
+  
+  // Add date (always included)
+  ctx.font = 'bold 28px Arial';
+  ctx.textAlign = 'center';
+  ctx.shadowColor = 'rgba(0, 0, 0, 0.6)';
+  ctx.shadowBlur = 8;
+  ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
+  
+  if (filter === 'polaroid') {
+    ctx.fillText("Valentine's Day 2026", width / 2, height - 20);
+  } else if (filter === 'movie') {
+    ctx.fillText("FEBRUARY 14, 2026", width / 2, height - 25);
+  } else {
+    ctx.fillText("💖 Valentine's Day 2026 💖", width / 2, height - 20);
+  }
+  ctx.shadowBlur = 0;
+}
         celebrationPage.scrollIntoView({ behavior: 'smooth' });
       }
     }, 3000);
