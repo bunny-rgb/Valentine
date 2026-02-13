@@ -1218,13 +1218,25 @@ async function loadSpotifyPlaylist() {
     // Priority 1: Use local playlist if enabled
     if (MUSIC_CONFIG.useLocalPlaylist && MUSIC_CONFIG.localPlaylist) {
       spotifyPlaylist = MUSIC_CONFIG.localPlaylist;
-      console.log(`🎵 Loaded ${spotifyPlaylist.length} tracks from LOCAL playlist`);
-      console.log('🎶 Your Valentine Playlist:', spotifyPlaylist.map(t => t.name).join(', '));
+      console.log(`🎵 ========== MUSIC PLAYER DEBUG ==========`);
+      console.log(`✅ Loaded ${spotifyPlaylist.length} tracks from LOCAL playlist`);
+      console.log(`📁 Playlist type:`, spotifyPlaylist.constructor.name);
+      console.log('🎶 Track list:', spotifyPlaylist.map((t, i) => `${i+1}. ${t.name} by ${t.artist}`).join('\n'));
       
-      // Update UI with first track info
+      // Debug first track details
       if (spotifyPlaylist.length > 0) {
+        const firstTrack = spotifyPlaylist[0];
+        console.log('🎵 First track details:', {
+          name: firstTrack.name,
+          artist: firstTrack.artist,
+          previewUrl: firstTrack.previewUrl,
+          duration: firstTrack.duration,
+          hasAudio: !!firstTrack.previewUrl
+        });
+        
         updateTrackInfo(0);
       }
+      console.log(`🎵 ====================================`);
       return;
     }
     
@@ -1348,7 +1360,13 @@ async function playTrack(index) {
     musicPlayer.crossOrigin = 'anonymous'; // Enable CORS for music files
     musicPlayer.preload = 'auto'; // Preload audio for smooth playback
     
-    console.log('🎵 Now playing:', track.name, 'by', track.artist);
+    console.log('🎵 ========== NOW PLAYING ==========');
+    console.log('🎵 Track:', track.name);
+    console.log('🎤 Artist:', track.artist);
+    console.log('📀 Album:', track.album);
+    console.log('🔗 Audio URL:', track.previewUrl);
+    console.log('⏱️ Duration:', Math.floor(track.duration / 1000), 'seconds');
+    console.log('🎵 ================================');
     
     // Set duration immediately from track config (before metadata loads)
     const expectedDuration = Math.floor(track.duration / 1000);
@@ -1383,7 +1401,15 @@ async function playTrack(index) {
     
     // Handle playback errors
     window._handlePlaybackError = function(error) {
-      console.error('❌ Playback error for:', track.name, error);
+      console.error('❌ ========== PLAYBACK ERROR ==========');
+      console.error('❌ Track:', track.name);
+      console.error('❌ URL:', track.previewUrl);
+      console.error('❌ Error:', error);
+      console.error('❌ Media Error Code:', musicPlayer?.error?.code);
+      console.error('❌ Media Error Message:', musicPlayer?.error?.message);
+      console.error('❌ Network State:', musicPlayer?.networkState);
+      console.error('❌ Ready State:', musicPlayer?.readyState);
+      console.error('❌ ====================================');
       console.warn('⚠️ Attempting next track...');
       
       // Immediately try next track without delay
@@ -1787,80 +1813,198 @@ function applyKodakEffect(ctx, canvas) {
   const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
   const data = imageData.data;
   
-  // Apply vintage Kodak color effect
+  // Apply dreamy romantic color effect with soft glow
   for (let i = 0; i < data.length; i += 4) {
-    // Warm vintage tones
-    data[i] = Math.min(255, data[i] * 1.1 + 20);       // Red boost
-    data[i + 1] = Math.min(255, data[i + 1] * 1.05);   // Green slight boost
-    data[i + 2] = Math.min(255, data[i + 2] * 0.9);    // Blue reduction
+    // Soft romantic pink/rose gold tones
+    const r = data[i];
+    const g = data[i + 1];
+    const b = data[i + 2];
     
-    // Slight sepia effect
-    const avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
-    data[i] = Math.min(255, avg + 40);       // Red warm
-    data[i + 1] = Math.min(255, avg + 20);   // Green warm
-    data[i + 2] = Math.min(255, avg);        // Blue normal
+    // Add warm romantic glow
+    data[i] = Math.min(255, r * 1.15 + 25);       // Red boost for warmth
+    data[i + 1] = Math.min(255, g * 1.08 + 15);   // Slight green
+    data[i + 2] = Math.min(255, b * 0.95 + 10);   // Reduced blue for warmth
+    
+    // Add dreamy pastel effect
+    const brightness = (data[i] + data[i + 1] + data[i + 2]) / 3;
+    data[i] = Math.min(255, data[i] * 0.85 + brightness * 0.15 + 30);     // Rose gold
+    data[i + 1] = Math.min(255, data[i + 1] * 0.88 + brightness * 0.12 + 20);  // Soft pink
+    data[i + 2] = Math.min(255, data[i + 2] * 0.92 + brightness * 0.08 + 15);  // Warm undertone
   }
   
   ctx.putImageData(imageData, 0, 0);
   
-  // Add vintage vignette
-  const gradient = ctx.createRadialGradient(
-    canvas.width / 2, canvas.height / 2, 0,
-    canvas.width / 2, canvas.height / 2, Math.max(canvas.width, canvas.height) * 0.7
-  );
-  gradient.addColorStop(0, 'rgba(0,0,0,0)');
-  gradient.addColorStop(0.7, 'rgba(0,0,0,0.1)');
-  gradient.addColorStop(1, 'rgba(0,0,0,0.4)');
+  // Add soft romantic vignette with pink glow
+  const centerX = canvas.width / 2;
+  const centerY = canvas.height / 2;
+  const maxRadius = Math.max(canvas.width, canvas.height) * 0.75;
   
-  ctx.fillStyle = gradient;
+  const vignette = ctx.createRadialGradient(
+    centerX, centerY, 0,
+    centerX, centerY, maxRadius
+  );
+  vignette.addColorStop(0, 'rgba(255, 192, 203, 0)');
+  vignette.addColorStop(0.5, 'rgba(255, 182, 193, 0.05)');
+  vignette.addColorStop(0.8, 'rgba(255, 105, 180, 0.15)');
+  vignette.addColorStop(1, 'rgba(199, 21, 133, 0.3)');
+  
+  ctx.fillStyle = vignette;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
+  
+  // Add dreamy bokeh light effect
+  ctx.globalAlpha = 0.15;
+  for (let i = 0; i < 20; i++) {
+    const x = Math.random() * canvas.width;
+    const y = Math.random() * canvas.height;
+    const size = Math.random() * 80 + 40;
+    
+    const bokeh = ctx.createRadialGradient(x, y, 0, x, y, size);
+    bokeh.addColorStop(0, 'rgba(255, 255, 255, 0.6)');
+    bokeh.addColorStop(0.4, 'rgba(255, 192, 203, 0.3)');
+    bokeh.addColorStop(1, 'rgba(255, 182, 193, 0)');
+    
+    ctx.fillStyle = bokeh;
+    ctx.fillRect(x - size, y - size, size * 2, size * 2);
+  }
+  ctx.globalAlpha = 1.0;
 }
 
 function addRomanticFrame(ctx, canvas) {
   const width = canvas.width;
   const height = canvas.height;
   
-  // Outer frame (thick romantic border)
-  ctx.strokeStyle = 'rgba(255, 107, 157, 0.8)';
-  ctx.lineWidth = 20;
-  ctx.strokeRect(10, 10, width - 20, height - 20);
+  // Gradient border with romantic colors
+  const borderGradient = ctx.createLinearGradient(0, 0, width, height);
+  borderGradient.addColorStop(0, 'rgba(255, 105, 180, 0.9)');
+  borderGradient.addColorStop(0.33, 'rgba(255, 182, 193, 0.9)');
+  borderGradient.addColorStop(0.66, 'rgba(255, 192, 203, 0.9)');
+  borderGradient.addColorStop(1, 'rgba(255, 105, 180, 0.9)');
   
-  // Inner frame (delicate border)
-  ctx.strokeStyle = 'rgba(255, 182, 193, 0.9)';
-  ctx.lineWidth = 8;
-  ctx.strokeRect(35, 35, width - 70, height - 70);
+  // Outer decorative frame
+  ctx.strokeStyle = borderGradient;
+  ctx.lineWidth = 25;
+  ctx.strokeRect(12, 12, width - 24, height - 24);
   
-  // Top text: "Our Love Story"
-  ctx.font = 'bold 60px "Brush Script MT", cursive';
-  ctx.fillStyle = 'white';
-  ctx.strokeStyle = 'rgba(196, 69, 105, 0.8)';
+  // Inner delicate frame
+  ctx.strokeStyle = 'rgba(255, 255, 255, 0.8)';
+  ctx.lineWidth = 10;
+  ctx.strokeRect(40, 40, width - 80, height - 80);
+  
+  // Thin gold accent frame
+  ctx.strokeStyle = 'rgba(255, 215, 0, 0.6)';
   ctx.lineWidth = 3;
+  ctx.strokeRect(50, 50, width - 100, height - 100);
+  
+  // Add floating hearts animation positions
+  const hearts = [
+    { emoji: '💕', x: 70, y: 70, size: 50 },
+    { emoji: '💖', x: width - 70, y: 70, size: 50 },
+    { emoji: '💗', x: 70, y: height - 70, size: 50 },
+    { emoji: '💝', x: width - 70, y: height - 70, size: 50 },
+    { emoji: '💓', x: width / 2, y: 55, size: 40 },
+    { emoji: '💞', x: width / 2, y: height - 55, size: 40 }
+  ];
+  
+  // Draw hearts with glow effect
+  hearts.forEach(heart => {
+    // Glow effect
+    ctx.shadowColor = 'rgba(255, 105, 180, 0.8)';
+    ctx.shadowBlur = 20;
+    ctx.font = `${heart.size}px Arial`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(heart.emoji, heart.x, heart.y);
+  });
+  ctx.shadowBlur = 0;
+  
+  // Top romantic title with gradient
+  const titleGradient = ctx.createLinearGradient(width / 2 - 200, 0, width / 2 + 200, 0);
+  titleGradient.addColorStop(0, 'rgba(255, 255, 255, 0.95)');
+  titleGradient.addColorStop(0.5, 'rgba(255, 192, 203, 1)');
+  titleGradient.addColorStop(1, 'rgba(255, 255, 255, 0.95)');
+  
+  ctx.font = 'bold 65px "Brush Script MT", cursive, "Comic Sans MS"';
   ctx.textAlign = 'center';
   ctx.textBaseline = 'top';
   
-  const topText = '💖 Our Love Story 💖';
-  ctx.strokeText(topText, width / 2, 60);
-  ctx.fillText(topText, width / 2, 60);
+  // Title shadow for depth
+  ctx.shadowColor = 'rgba(199, 21, 133, 0.6)';
+  ctx.shadowBlur = 15;
+  ctx.shadowOffsetX = 2;
+  ctx.shadowOffsetY = 2;
   
-  // Bottom text: Date and hearts
-  ctx.font = 'bold 40px Arial';
-  const dateText = `Valentine's Day 2026 ❤️`;
-  const bottomY = height - 80;
+  const topText = '✨ Our Love Story ✨';
+  ctx.fillStyle = titleGradient;
+  ctx.fillText(topText, width / 2, 75);
   
-  ctx.strokeText(dateText, width / 2, bottomY);
-  ctx.fillText(dateText, width / 2, bottomY);
+  // Outline for better visibility
+  ctx.strokeStyle = 'rgba(199, 21, 133, 0.7)';
+  ctx.lineWidth = 4;
+  ctx.strokeText(topText, width / 2, 75);
+  ctx.shadowBlur = 0;
+  ctx.shadowOffsetX = 0;
+  ctx.shadowOffsetY = 0;
   
-  // Decorative hearts in corners
-  ctx.font = '50px Arial';
-  ctx.fillText('💕', 60, 60);
-  ctx.fillText('💕', width - 60, 60);
-  ctx.fillText('💕', 60, height - 60);
-  ctx.fillText('💕', width - 60, height - 60);
+  // Bottom romantic quote
+  ctx.font = 'italic bold 32px Georgia, serif';
+  const quoteY = height - 140;
+  const quote = '"She Said YES! Forever Starts Now" 💕';
   
-  // Add subtle romantic message at bottom
-  ctx.font = 'italic 30px Georgia';
+  ctx.shadowColor = 'rgba(255, 105, 180, 0.5)';
+  ctx.shadowBlur = 10;
+  ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
+  ctx.fillText(quote, width / 2, quoteY);
+  ctx.shadowBlur = 0;
+  
+  // Date with elegant styling
+  ctx.font = 'bold 38px Arial';
+  const dateText = `💖 Valentine's Day 2026 💖`;
+  const dateY = height - 85;
+  
+  ctx.shadowColor = 'rgba(255, 105, 180, 0.6)';
+  ctx.shadowBlur = 12;
+  ctx.fillStyle = 'rgba(255, 255, 255, 1)';
+  ctx.fillText(dateText, width / 2, dateY);
+  
+  ctx.strokeStyle = 'rgba(199, 21, 133, 0.8)';
+  ctx.lineWidth = 3;
+  ctx.strokeText(dateText, width / 2, dateY);
+  ctx.shadowBlur = 0;
+  
+  // Add sparkle effects
+  const sparkles = [
+    { x: width * 0.15, y: height * 0.15 },
+    { x: width * 0.85, y: height * 0.15 },
+    { x: width * 0.15, y: height * 0.85 },
+    { x: width * 0.85, y: height * 0.85 },
+    { x: width * 0.5, y: height * 0.12 },
+    { x: width * 0.5, y: height * 0.88 }
+  ];
+  
   ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
-  ctx.fillText('"Forever starts today"', width / 2, bottomY - 50);
+  sparkles.forEach(sparkle => {
+    ctx.beginPath();
+    for (let i = 0; i < 8; i++) {
+      const angle = (Math.PI * 2 * i) / 8;
+      const radius = i % 2 === 0 ? 8 : 3;
+      const x = sparkle.x + Math.cos(angle) * radius;
+      const y = sparkle.y + Math.sin(angle) * radius;
+      if (i === 0) {
+        ctx.moveTo(x, y);
+      } else {
+        ctx.lineTo(x, y);
+      }
+    }
+    ctx.closePath();
+    ctx.fill();
+  });
+  
+  // Add cute romantic stickers
+  ctx.font = '35px Arial';
+  ctx.fillText('🌹', width * 0.1, height * 0.5);
+  ctx.fillText('🌹', width * 0.9, height * 0.5);
+  ctx.fillText('💐', width * 0.5, height * 0.08);
+  ctx.fillText('🎀', width * 0.5, height * 0.92);
 }
 
 async function sendKodakMomentEmail(photoBlob) {
