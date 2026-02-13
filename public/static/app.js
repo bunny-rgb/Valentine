@@ -555,14 +555,6 @@ const MUSIC_CONFIG = {
       albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23FF1493"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3ER%3C/text%3E%3C/svg%3E',
       previewUrl: '/static/music-day7/Raat Bhar (From "Heropanti")_spotdown.org.mp3',
       duration: 588000
-    },
-    {
-      name: 'Raat Bhar',
-      artist: 'Arijit Singh & Shreya Ghoshal',
-      album: 'Heropanti',
-      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23FF1493"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3ER%3C/text%3E%3C/svg%3E',
-      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day7/Raat Bhar (From "Heropanti")_spotdown.org.mp3',
-      duration: 587000
     }
   ],
   
