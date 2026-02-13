@@ -3,7 +3,7 @@ const VALENTINE_WEEK_CONFIG = {
   // Set your Valentine Week start date (February 8, 2026 - Propose Day)
   startDate: new Date('2026-02-08T00:00:00'),
   // PREVIEW MODE: Set to true to unlock all days for preview
-  previewMode: false, // Change to false for production
+  previewMode: false, // PRODUCTION - Days locked by date
   // PREVIEW SPECIFIC DAYS: Array of day IDs to unlock for preview (e.g., [3] for Day 3 only)
   previewDays: [], // All days locked - unlock based on date only
   days: [
@@ -346,6 +346,218 @@ const MUSIC_CONFIG = {
     }
   ],
   
+  // Day 5 (Hug Day) Playlist - 3 romantic hug songs
+  day5Playlist: [
+    {
+      name: 'Jiya Laage Na',
+      artist: 'Shreya Ghoshal & Sanjay Leela Bhansali',
+      album: 'Talaash',
+      albumArt: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cdefs%3E%3ClinearGradient id='g1' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23FF6B9D'/%3E%3Cstop offset='100%25' style='stop-color:%23C44569'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='300' height='300' fill='url(%23g1)'/%3E%3Ctext x='50%25' y='50%25' font-size='120' fill='white' text-anchor='middle' dy='.35em' font-family='Arial' font-weight='bold'%3EJ%3C/text%3E%3C/svg%3E",
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day5/jiya-laage-na.mp3',
+      duration: 403000 // ~6:43
+    },
+    {
+      name: 'Ishq Hai',
+      artist: 'Unknown Artist',
+      album: 'Ishq Hai',
+      albumArt: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cdefs%3E%3ClinearGradient id='g2' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23FFA07A'/%3E%3Cstop offset='100%25' style='stop-color:%23FF69B4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='300' height='300' fill='url(%23g2)'/%3E%3Ctext x='50%25' y='50%25' font-size='120' fill='white' text-anchor='middle' dy='.35em' font-family='Arial' font-weight='bold'%3EI%3C/text%3E%3C/svg%3E",
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day5/ishq-hai.mp3',
+      duration: 264000 // ~4:24
+    },
+    {
+      name: 'Pal Pal Dil Ke Paas',
+      artist: 'Arijit Singh & Parampara Thakur',
+      album: 'Pal Pal Dil Ke Paas',
+      albumArt: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cdefs%3E%3ClinearGradient id='g3' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23FFB6C1'/%3E%3Cstop offset='100%25' style='stop-color:%23FF1493'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='300' height='300' fill='url(%23g3)'/%3E%3Ctext x='50%25' y='50%25' font-size='120' fill='white' text-anchor='middle' dy='.35em' font-family='Arial' font-weight='bold'%3EP%3C/text%3E%3C/svg%3E",
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day5/pal-pal-dil-ke-paas.mp3',
+      duration: 499000 // ~8:19
+    }
+  ],
+  
+  // Day 6 (Kiss Day) Playlist - 10 romantic kiss songs
+  day6Playlist: [
+    {
+      name: 'Ishq Hai',
+      artist: 'Arijit Singh',
+      album: 'Ishq Hai',
+      albumArt: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cdefs%3E%3ClinearGradient id='g4' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23DDA0DD'/%3E%3Cstop offset='100%25' style='stop-color:%23BA55D3'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='300' height='300' fill='url(%23g4)'/%3E%3Ctext x='50%25' y='50%25' font-size='120' fill='white' text-anchor='middle' dy='.35em' font-family='Arial' font-weight='bold'%3EI%3C/text%3E%3C/svg%3E",
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day6/Ishq%20Hai_spotdown.org.mp3',
+      duration: 227000 // 3:47
+    },
+    {
+      name: 'Sharmeeli',
+      artist: 'Unknown Artist',
+      album: 'Sharmeeli',
+      albumArt: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cdefs%3E%3ClinearGradient id='g5' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23F08080'/%3E%3Cstop offset='100%25' style='stop-color:%23CD5C5C'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='300' height='300' fill='url(%23g5)'/%3E%3Ctext x='50%25' y='50%25' font-size='120' fill='white' text-anchor='middle' dy='.35em' font-family='Arial' font-weight='bold'%3ES%3C/text%3E%3C/svg%3E",
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day6/Sharmeeli_spotdown.org.mp3',
+      duration: 222000 // 3:42
+    },
+    {
+      name: 'Akhiyaan Gulaab',
+      artist: 'Mitraz',
+      album: 'Teri Baaton Mein Aisa Uljha Jiya',
+      albumArt: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cdefs%3E%3ClinearGradient id='g6' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23FF69B4'/%3E%3Cstop offset='100%25' style='stop-color:%23C71585'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='300' height='300' fill='url(%23g6)'/%3E%3Ctext x='50%25' y='50%25' font-size='120' fill='white' text-anchor='middle' dy='.35em' font-family='Arial' font-weight='bold'%3EA%3C/text%3E%3C/svg%3E",
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day6/Akhiyaan%20Gulaab%20(From%20%22Teri%20Baaton%20Mein%20Aisa%20Uljha%20Jiya%22)_spotdown.org.mp3',
+      duration: 293000 // 4:53
+    },
+    {
+      name: 'Woh',
+      artist: 'Ritviz',
+      album: 'Woh',
+      albumArt: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cdefs%3E%3ClinearGradient id='g7' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23FFB3BA'/%3E%3Cstop offset='100%25' style='stop-color:%23FF677D'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='300' height='300' fill='url(%23g7)'/%3E%3Ctext x='50%25' y='50%25' font-size='120' fill='white' text-anchor='middle' dy='.35em' font-family='Arial' font-weight='bold'%3EW%3C/text%3E%3C/svg%3E",
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day6/Woh-(SambalpuriStar.In).mp3',
+      duration: 287000 // 4:47
+    },
+    {
+      name: 'Humdum',
+      artist: 'Jubin Nautiyal',
+      album: 'Humdum',
+      albumArt: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cdefs%3E%3ClinearGradient id='g8' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23FFC0CB'/%3E%3Cstop offset='100%25' style='stop-color:%23FF85A1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='300' height='300' fill='url(%23g8)'/%3E%3Ctext x='50%25' y='50%25' font-size='120' fill='white' text-anchor='middle' dy='.35em' font-family='Arial' font-weight='bold'%3EH%3C/text%3E%3C/svg%3E",
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day6/Humdum_spotdown.org.mp3',
+      duration: 306000 // 5:06
+    },
+    {
+      name: 'Suroor',
+      artist: 'Bilal Saeed',
+      album: 'Suroor',
+      albumArt: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cdefs%3E%3ClinearGradient id='g9' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23E6B0AA'/%3E%3Cstop offset='100%25' style='stop-color:%23C39BD3'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='300' height='300' fill='url(%23g9)'/%3E%3Ctext x='50%25' y='50%25' font-size='120' fill='white' text-anchor='middle' dy='.35em' font-family='Arial' font-weight='bold'%3ES%3C/text%3E%3C/svg%3E",
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day6/Suroor_spotdown.org.mp3',
+      duration: 312000 // 5:12
+    },
+    {
+      name: 'Rakhlo Tum Chupaake',
+      artist: 'Darshan Raval',
+      album: 'Rakhlo Tum Chupaake',
+      albumArt: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cdefs%3E%3ClinearGradient id='g10' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23F5B7B1'/%3E%3Cstop offset='100%25' style='stop-color:%23EC7063'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='300' height='300' fill='url(%23g10)'/%3E%3Ctext x='50%25' y='50%25' font-size='120' fill='white' text-anchor='middle' dy='.35em' font-family='Arial' font-weight='bold'%3ER%3C/text%3E%3C/svg%3E",
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day6/Rakhlo%20Tum%20Chupaake_spotdown.org.mp3',
+      duration: 342000 // 5:42
+    },
+    {
+      name: 'Iraaday',
+      artist: 'Shubh',
+      album: 'Iraaday',
+      albumArt: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cdefs%3E%3ClinearGradient id='g11' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23FF6B9D'/%3E%3Cstop offset='100%25' style='stop-color:%23C44569'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='300' height='300' fill='url(%23g11)'/%3E%3Ctext x='50%25' y='50%25' font-size='120' fill='white' text-anchor='middle' dy='.35em' font-family='Arial' font-weight='bold'%3EI%3C/text%3E%3C/svg%3E",
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day6/Iraaday%20(PenduJatt.Com.Se).mp3',
+      duration: 371000 // 6:11
+    },
+    {
+      name: 'Sawaal',
+      artist: 'Aditya Rikhari',
+      album: 'Sawaal',
+      albumArt: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cdefs%3E%3ClinearGradient id='g12' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23FFA07A'/%3E%3Cstop offset='100%25' style='stop-color:%23FF69B4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='300' height='300' fill='url(%23g12)'/%3E%3Ctext x='50%25' y='50%25' font-size='120' fill='white' text-anchor='middle' dy='.35em' font-family='Arial' font-weight='bold'%3ES%3C/text%3E%3C/svg%3E",
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day6/Sawaal_spotdown.org.mp3',
+      duration: 366000 // 6:06
+    },
+    {
+      name: 'Hai Dil Ye Mera',
+      artist: 'Armaan Malik',
+      album: 'Hate Story 2',
+      albumArt: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cdefs%3E%3ClinearGradient id='g13' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23FFB6C1'/%3E%3Cstop offset='100%25' style='stop-color:%23FF1493'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='300' height='300' fill='url(%23g13)'/%3E%3Ctext x='50%25' y='50%25' font-size='120' fill='white' text-anchor='middle' dy='.35em' font-family='Arial' font-weight='bold'%3EH%3C/text%3E%3C/svg%3E",
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day6/Hai%20Dil%20Ye%20Mera_spotdown.org.mp3',
+      duration: 491000 // 8:11
+    }
+  ],
+  
+  // Day 7 (Valentine's Day) Playlist - 12 ultimate romantic songs
+  day7Playlist: [
+    {
+      name: 'Aaj Se Teri',
+      artist: 'Arijit Singh & Shashaa Tirupati',
+      album: 'Padman',
+      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23FFD700"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3EA%3C/text%3E%3C/svg%3E',
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day7/Aaj Se Teri_spotdown.org.mp3',
+      duration: 560000
+    },
+    {
+      name: 'Sajni',
+      artist: 'Arijit Singh & Ram Sampath',
+      album: 'Laapataa Ladies',
+      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23FF1493"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3ES%3C/text%3E%3C/svg%3E',
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day7/Sajni_spotdown.org.mp3',
+      duration: 298000
+    },
+    {
+      name: 'Woh',
+      artist: 'Ritviz',
+      album: 'Woh',
+      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23FF69B4"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3EW%3C/text%3E%3C/svg%3E',
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day7/Woh-(SambalpuriStar.In).mp3',
+      duration: 297000
+    },
+    {
+      name: 'Kehdoon Tumhen',
+      artist: 'Kishore Kumar',
+      album: 'Deewaar',
+      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23FFB6C1"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3EK%3C/text%3E%3C/svg%3E',
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day7/Kehdoon Tumhen - From "Deewaar"_spotdown.org.mp3',
+      duration: 372000
+    },
+    {
+      name: 'Rakhlo Tum Chupaake',
+      artist: 'Darshan Raval',
+      album: 'Rakhlo Tum Chupaake',
+      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23FFC0CB"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3ER%3C/text%3E%3C/svg%3E',
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day7/Rakhlo Tum Chupaake_spotdown.org.mp3',
+      duration: 355000
+    },
+    {
+      name: 'Iraaday',
+      artist: 'Shubh',
+      album: 'Iraaday',
+      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23FFD700"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3EI%3C/text%3E%3C/svg%3E',
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day7/Iraaday (PenduJatt.Com.Se).mp3',
+      duration: 389000
+    },
+    {
+      name: 'Tera Ban Jaunga',
+      artist: 'Akhil Sachdeva & Tulsi Kumar',
+      album: 'Kabir Singh',
+      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23FF1493"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3ET%3C/text%3E%3C/svg%3E',
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day7/Tera Ban Jaunga_spotdown.org.mp3',
+      duration: 417000
+    },
+    {
+      name: 'Pal Pal Dil Ke Paas',
+      artist: 'Arijit Singh & Parampara Thakur',
+      album: 'Pal Pal Dil Ke Paas',
+      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23FF69B4"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3EP%3C/text%3E%3C/svg%3E',
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day7/Pal Pal Dil Ke Paas - Title Track - From "Pal Pal Dil Ke Paas"_spotdown.org.mp3',
+      duration: 450000
+    },
+    {
+      name: 'Ek Din Aap',
+      artist: 'Arijit Singh',
+      album: 'Yes Boss',
+      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23FFB6C1"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3EE%3C/text%3E%3C/svg%3E',
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day7/Ek Din Aap_spotdown.org.mp3',
+      duration: 493000
+    },
+    {
+      name: 'Tose Naina',
+      artist: 'Arijit Singh',
+      album: 'Mickey Virus',
+      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23FFC0CB"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3ET%3C/text%3E%3C/svg%3E',
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day7/Tose Naina (From "Mickey Virus)_spotdown.org.mp3',
+      duration: 483000
+    },
+    {
+      name: 'Tum Ho Toh',
+      artist: 'Jubin Nautiyal',
+      album: 'Saiyaara',
+      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23FFD700"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3ET%3C/text%3E%3C/svg%3E',
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day7/Tum Ho Toh (From "Saiyaara")_spotdown.org.mp3',
+      duration: 544000
+    },
+    {
+      name: 'Raat Bhar',
+      artist: 'Arijit Singh & Shreya Ghoshal',
+      album: 'Heropanti',
+      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23FF1493"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3ER%3C/text%3E%3C/svg%3E',
+      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day7/Raat Bhar (From "Heropanti")_spotdown.org.mp3',
+      duration: 587000
+    }
+  ],
+  
   // Day 2 unlock date
   day2UnlockDate: new Date('2026-02-09T00:00:00'),
   
@@ -355,19 +567,37 @@ const MUSIC_CONFIG = {
   // Day 4 unlock date
   day4UnlockDate: new Date('2026-02-11T00:00:00'),
   
+  // Day 5 unlock date
+  day5UnlockDate: new Date('2026-02-12T00:00:00'),
+  
+  // Day 6 unlock date
+  day6UnlockDate: new Date('2026-02-13T00:00:00'),
+  
+  // Day 7 unlock date
+  day7UnlockDate: new Date('2026-02-14T00:00:00'),
+  
   // Dynamic playlist getter - returns appropriate playlist based on date
   get localPlaylist() {
     const now = new Date();
+    const isDay7Unlocked = now >= this.day7UnlockDate;
+    const isDay6Unlocked = now >= this.day6UnlockDate;
+    const isDay5Unlocked = now >= this.day5UnlockDate;
     const isDay4Unlocked = now >= this.day4UnlockDate;
     const isDay3Unlocked = now >= this.day3UnlockDate;
     const isDay2Unlocked = now >= this.day2UnlockDate;
     
-    if (isDay4Unlocked) {
-      return this.day4Playlist;  // Returns ONLY 10 Day 4 songs
+    if (isDay7Unlocked) {
+      return this.day7Playlist;      // Returns ONLY 12 Day 7 songs
+    } else if (isDay6Unlocked) {
+      return this.day6Playlist;      // Returns ONLY 10 Day 6 songs
+    } else if (isDay5Unlocked) {
+      return this.day5Playlist;      // Returns ONLY 3 Day 5 songs
+    } else if (isDay4Unlocked) {
+      return this.day4Playlist;      // Returns ONLY 10 Day 4 songs
     } else if (isDay3Unlocked) {
-      return this.day3Playlist;  // Returns ONLY 9 Day 3 songs
+      return this.day3Playlist;      // Returns ONLY 9 Day 3 songs
     } else if (isDay2Unlocked) {
-      return this.day2Playlist;  // Returns ONLY 12 Day 2 songs
+      return this.day2Playlist;      // Returns ONLY 12 Day 2 songs
     } else {
       return this.originalPlaylist;  // Returns 7 original songs
     }
@@ -1071,8 +1301,14 @@ function toggleSpotifyPlayback() {
     isPlaying = false;
     stopBeatAnimation();
   } else {
-    // Play
-    playTrack(currentTrackIndex);
+    // Play/Resume
+    if (musicPlayer && !musicPlayer.paused && musicPlayer.currentTime > 0) {
+      // Resume existing track
+      resumeTrack();
+    } else {
+      // Start new track
+      playTrack(currentTrackIndex);
+    }
     icon.className = 'fas fa-pause';
     isPlaying = true;
     startBeatAnimation();
@@ -1089,12 +1325,12 @@ async function playTrack(index) {
   // Update UI
   updateTrackInfo(index);
   
-  // Clean up existing player
-  if (musicPlayer) {
+  // Clean up existing player ONLY if changing tracks
+  if (musicPlayer && musicPlayer.src !== track.previewUrl) {
     musicPlayer.pause();
     musicPlayer.removeEventListener('timeupdate', updateProgress);
-    musicPlayer.removeEventListener('ended', handleTrackEnd);
-    musicPlayer.removeEventListener('error', handlePlaybackError);
+    musicPlayer.removeEventListener('ended', window._handleTrackEnd);
+    musicPlayer.removeEventListener('error', window._handlePlaybackError);
     musicPlayer = null;
   }
   
@@ -1135,18 +1371,18 @@ async function playTrack(index) {
       }
     });
     
-    // Handle time updates
+    // Handle time updates - continuous progress updates
     musicPlayer.addEventListener('timeupdate', updateProgress);
     
     // Handle track end
-    function handleTrackEnd() {
+    window._handleTrackEnd = function() {
       console.log('✅ Track ended, moving to next');
       nextTrack();
-    }
-    musicPlayer.addEventListener('ended', handleTrackEnd);
+    };
+    musicPlayer.addEventListener('ended', window._handleTrackEnd);
     
     // Handle playback errors
-    function handlePlaybackError(error) {
+    window._handlePlaybackError = function(error) {
       console.error('❌ Playback error for:', track.name, error);
       console.warn('⚠️ Attempting next track...');
       
@@ -1154,8 +1390,8 @@ async function playTrack(index) {
       if (isPlaying) {
         nextTrack();
       }
-    }
-    musicPlayer.addEventListener('error', handlePlaybackError);
+    };
+    musicPlayer.addEventListener('error', window._handlePlaybackError);
     
     // Set source and play
     musicPlayer.src = track.previewUrl;
@@ -1247,12 +1483,28 @@ function simulatePlayback(track) {
 function pauseTrack() {
   if (musicPlayer) {
     musicPlayer.pause();
+    console.log('⏸️ Paused at:', formatTime(Math.floor(musicPlayer.currentTime)));
   }
   
   // Stop simulated playback
   if (window.simulatedProgressInterval) {
     clearInterval(window.simulatedProgressInterval);
     window.simulatedProgressInterval = null;
+  }
+}
+
+// Resume track
+function resumeTrack() {
+  if (musicPlayer && musicPlayer.paused) {
+    musicPlayer.play()
+      .then(() => {
+        console.log('▶️ Resumed from:', formatTime(Math.floor(musicPlayer.currentTime)));
+      })
+      .catch(error => {
+        console.error('❌ Resume failed:', error);
+        // Fallback: restart the track
+        playTrack(currentTrackIndex);
+      });
   }
 }
 
@@ -1348,16 +1600,365 @@ function handleProposalResponse(accepted) {
     // Trigger confetti
     triggerConfetti();
     
-    // Show success message
+    // Hide proposal section
     document.getElementById('proposal-section').classList.add('hidden');
-    const successMsg = document.getElementById('success-message');
-    successMsg.classList.remove('hidden');
-    successMsg.scrollIntoView({ behavior: 'smooth' });
+    
+    // Open camera for Kodak moment
+    openKodakMomentCamera();
     
     // Stop music
     const button = document.getElementById('play-button');
-    button.classList.remove('playing');
+    if (button) {
+      button.classList.remove('playing');
+    }
     stopBeatAnimation();
+  }
+}
+
+// ==================== KODAK MOMENT CAMERA ====================
+
+async function openKodakMomentCamera() {
+  try {
+    // Create camera modal
+    const cameraModal = document.createElement('div');
+    cameraModal.id = 'kodak-camera-modal';
+    cameraModal.innerHTML = `
+      <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 10000; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+        <div style="text-align: center; color: white; padding: 20px; max-width: 600px;">
+          <h2 style="font-size: 2rem; margin-bottom: 20px; font-weight: bold; background: linear-gradient(135deg, #FF6B9D, #C44569); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+            📸 Capture Our Kodak Moment! 💕
+          </h2>
+          <p style="font-size: 1.1rem; margin-bottom: 30px; color: #FFB6C1;">
+            Let's freeze this special moment forever! 🎉
+          </p>
+          
+          <!-- Video Preview -->
+          <div id="camera-preview" style="position: relative; display: inline-block; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px rgba(255, 107, 157, 0.5); margin-bottom: 20px;">
+            <video id="kodak-video" autoplay playsinline style="width: 100%; max-width: 500px; display: block; border-radius: 20px;"></video>
+            
+            <!-- Romantic Frame Overlay -->
+            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none; border: 8px solid rgba(255, 107, 157, 0.3); border-radius: 20px;">
+              <div style="position: absolute; top: 10px; left: 10px; right: 10px; bottom: 10px; border: 4px solid rgba(255, 182, 193, 0.5); border-radius: 15px;"></div>
+            </div>
+            
+            <!-- Top text -->
+            <div style="position: absolute; top: 20px; left: 0; right: 0; text-align: center; font-family: 'Brush Script MT', cursive; font-size: 1.5rem; color: white; text-shadow: 2px 2px 8px rgba(0,0,0,0.8); pointer-events: none;">
+              💖 Our Love Story 💖
+            </div>
+            
+            <!-- Bottom text -->
+            <div style="position: absolute; bottom: 20px; left: 0; right: 0; text-align: center; font-size: 0.9rem; color: white; text-shadow: 2px 2px 8px rgba(0,0,0,0.8); pointer-events: none;">
+              Valentine's Day 2026 ❤️
+            </div>
+          </div>
+          
+          <!-- Canvas for captured image (hidden) -->
+          <canvas id="kodak-canvas" style="display: none;"></canvas>
+          
+          <!-- Buttons -->
+          <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+            <button id="capture-btn" style="background: linear-gradient(135deg, #FF6B9D, #C44569); color: white; border: none; padding: 15px 40px; border-radius: 30px; font-size: 1.1rem; font-weight: bold; cursor: pointer; box-shadow: 0 10px 30px rgba(255, 107, 157, 0.4); transition: transform 0.3s, box-shadow 0.3s;">
+              📸 Capture Moment
+            </button>
+            <button id="camera-close-btn" style="background: rgba(255,255,255,0.2); color: white; border: 2px solid white; padding: 15px 40px; border-radius: 30px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: background 0.3s;">
+              ✖️ Close
+            </button>
+          </div>
+          
+          <p id="camera-status" style="margin-top: 20px; font-size: 0.9rem; color: #FFB6C1;"></p>
+        </div>
+      </div>
+    `;
+    
+    document.body.appendChild(cameraModal);
+    
+    // Add hover effects
+    const captureBtn = document.getElementById('capture-btn');
+    captureBtn.addEventListener('mouseenter', () => {
+      captureBtn.style.transform = 'scale(1.05)';
+      captureBtn.style.boxShadow = '0 15px 40px rgba(255, 107, 157, 0.6)';
+    });
+    captureBtn.addEventListener('mouseleave', () => {
+      captureBtn.style.transform = 'scale(1)';
+      captureBtn.style.boxShadow = '0 10px 30px rgba(255, 107, 157, 0.4)';
+    });
+    
+    // Get camera stream
+    const video = document.getElementById('kodak-video');
+    const stream = await navigator.mediaDevices.getUserMedia({ 
+      video: { 
+        facingMode: 'user',
+        width: { ideal: 1280 },
+        height: { ideal: 720 }
+      } 
+    });
+    
+    video.srcObject = stream;
+    document.getElementById('camera-status').textContent = '✅ Camera ready! Smile! 😊';
+    
+    // Capture button
+    document.getElementById('capture-btn').addEventListener('click', () => {
+      captureKodakMoment(video, stream);
+    });
+    
+    // Close button
+    document.getElementById('camera-close-btn').addEventListener('click', () => {
+      stream.getTracks().forEach(track => track.stop());
+      cameraModal.remove();
+      
+      // Show celebration page after closing camera
+      const celebrationPage = document.getElementById('celebration-page');
+      if (celebrationPage) {
+        celebrationPage.style.display = 'block';
+        celebrationPage.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+    
+  } catch (error) {
+    console.error('Camera error:', error);
+    alert('❌ Could not access camera. Please allow camera permissions and try again.');
+    
+    // Show celebration page anyway even if camera fails
+    const celebrationPage = document.getElementById('celebration-page');
+    if (celebrationPage) {
+      celebrationPage.style.display = 'block';
+      celebrationPage.scrollIntoView({ behavior: 'smooth' });
+    }
+    
+    // Send email without photo
+    sendValentineResponseEmail('YES');
+  }
+}
+
+function captureKodakMoment(video, stream) {
+  const canvas = document.getElementById('kodak-canvas');
+  const ctx = canvas.getContext('2d');
+  
+  // Set canvas size to video size
+  canvas.width = video.videoWidth || 1280;
+  canvas.height = video.videoHeight || 720;
+  
+  // Draw video frame
+  ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+  
+  // Apply Kodak moment effects
+  applyKodakEffect(ctx, canvas);
+  
+  // Add romantic frame and text
+  addRomanticFrame(ctx, canvas);
+  
+  // Convert to image
+  canvas.toBlob(async (blob) => {
+    // Create download link
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    const date = new Date().toISOString().split('T')[0];
+    link.download = `Our_Kodak_Moment_Valentine_${date}.jpg`;
+    link.href = url;
+    link.click();
+    
+    // Show success message
+    document.getElementById('camera-status').innerHTML = `
+      ✅ Kodak moment captured! 💕<br>
+      📥 Downloading... and sending to your love! 💌
+    `;
+    
+    // Send email with photo
+    await sendKodakMomentEmail(blob);
+    
+    // Stop camera
+    setTimeout(() => {
+      stream.getTracks().forEach(track => track.stop());
+      document.getElementById('kodak-camera-modal').remove();
+      
+      // Show celebration page after successful photo capture
+      const celebrationPage = document.getElementById('celebration-page');
+      if (celebrationPage) {
+        celebrationPage.style.display = 'block';
+        celebrationPage.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 3000);
+    
+  }, 'image/jpeg', 0.95);
+}
+
+function applyKodakEffect(ctx, canvas) {
+  // Get image data
+  const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  const data = imageData.data;
+  
+  // Apply vintage Kodak color effect
+  for (let i = 0; i < data.length; i += 4) {
+    // Warm vintage tones
+    data[i] = Math.min(255, data[i] * 1.1 + 20);       // Red boost
+    data[i + 1] = Math.min(255, data[i + 1] * 1.05);   // Green slight boost
+    data[i + 2] = Math.min(255, data[i + 2] * 0.9);    // Blue reduction
+    
+    // Slight sepia effect
+    const avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
+    data[i] = Math.min(255, avg + 40);       // Red warm
+    data[i + 1] = Math.min(255, avg + 20);   // Green warm
+    data[i + 2] = Math.min(255, avg);        // Blue normal
+  }
+  
+  ctx.putImageData(imageData, 0, 0);
+  
+  // Add vintage vignette
+  const gradient = ctx.createRadialGradient(
+    canvas.width / 2, canvas.height / 2, 0,
+    canvas.width / 2, canvas.height / 2, Math.max(canvas.width, canvas.height) * 0.7
+  );
+  gradient.addColorStop(0, 'rgba(0,0,0,0)');
+  gradient.addColorStop(0.7, 'rgba(0,0,0,0.1)');
+  gradient.addColorStop(1, 'rgba(0,0,0,0.4)');
+  
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
+
+function addRomanticFrame(ctx, canvas) {
+  const width = canvas.width;
+  const height = canvas.height;
+  
+  // Outer frame (thick romantic border)
+  ctx.strokeStyle = 'rgba(255, 107, 157, 0.8)';
+  ctx.lineWidth = 20;
+  ctx.strokeRect(10, 10, width - 20, height - 20);
+  
+  // Inner frame (delicate border)
+  ctx.strokeStyle = 'rgba(255, 182, 193, 0.9)';
+  ctx.lineWidth = 8;
+  ctx.strokeRect(35, 35, width - 70, height - 70);
+  
+  // Top text: "Our Love Story"
+  ctx.font = 'bold 60px "Brush Script MT", cursive';
+  ctx.fillStyle = 'white';
+  ctx.strokeStyle = 'rgba(196, 69, 105, 0.8)';
+  ctx.lineWidth = 3;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'top';
+  
+  const topText = '💖 Our Love Story 💖';
+  ctx.strokeText(topText, width / 2, 60);
+  ctx.fillText(topText, width / 2, 60);
+  
+  // Bottom text: Date and hearts
+  ctx.font = 'bold 40px Arial';
+  const dateText = `Valentine's Day 2026 ❤️`;
+  const bottomY = height - 80;
+  
+  ctx.strokeText(dateText, width / 2, bottomY);
+  ctx.fillText(dateText, width / 2, bottomY);
+  
+  // Decorative hearts in corners
+  ctx.font = '50px Arial';
+  ctx.fillText('💕', 60, 60);
+  ctx.fillText('💕', width - 60, 60);
+  ctx.fillText('💕', 60, height - 60);
+  ctx.fillText('💕', width - 60, height - 60);
+  
+  // Add subtle romantic message at bottom
+  ctx.font = 'italic 30px Georgia';
+  ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+  ctx.fillText('"Forever starts today"', width / 2, bottomY - 50);
+}
+
+async function sendKodakMomentEmail(photoBlob) {
+  try {
+    // Log photo details for debugging
+    const sizeMB = (photoBlob.size / (1024 * 1024)).toFixed(2);
+    console.log(`📸 Photo blob details:`, {
+      size: `${sizeMB} MB`,
+      type: photoBlob.type,
+      sizeBytes: photoBlob.size
+    });
+    
+    const formData = new FormData();
+    formData.append('access_key', 'c9a985fe-237d-4fef-84a5-b1f4ab2dcabf');
+    formData.append('subject', '💖 She Said YES! + Our Kodak Moment Photo 📸💕');
+    formData.append('from_name', 'Valentine Week App - Kodak Moment');
+    formData.append('to', 'pachourimohit1@gmail.com');
+    formData.append('replyto', 'noreply@valentineweek.app');
+    
+    // Add photo as attachment with explicit type
+    // Web3Forms supports attachments up to 10MB on free plan
+    formData.append('attachment', photoBlob, 'Our_Kodak_Moment_Valentine.jpg');
+    
+    formData.append('message', `
+      💖💖💖 VALENTINE'S DAY - SHE SAID YES! 💖💖💖
+      
+      🎉 AMAZING NEWS! 🎉
+      
+      Response: YES! ✅
+      
+      She said: "YES! I will be your Valentine! 💕"
+      
+      📸 KODAK MOMENT CAPTURED! 📸
+      A beautiful photo has been captured to freeze this magical moment forever!
+      See the attached photo - our first Kodak moment as an official couple! 💑
+      
+      ✨ Photo Details:
+      - Filename: Our_Kodak_Moment_Valentine.jpg
+      - Size: ${sizeMB} MB
+      - Quality: High (1280x720, Vintage Kodak Effect)
+      - Time: ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}
+      - Day: Day 7 - Valentine's Day ❤️
+      - Special: Kodak Moment Photo Included! 📸💕
+      
+      🎉🎉🎉 CELEBRATION TIME! 🎉🎉🎉
+      
+      "Aaj se teri, baahon mein hai jeena
+      Aaj se teri, raahon mein hai chalna  
+      Aaj se teri, yaadein hai dil mein
+      Aaj se meri, zindagi hai tere sang"
+      
+      This photo captures the beginning of forever! 💞
+      
+      With all my love,
+      Your Valentine Week App 💕
+      
+      Made with ❤️ by Bunny for Anku
+      
+      P.S. The photo has Kodak vintage effects and a romantic frame! 📸✨
+      
+      📎 Check your email attachments for the photo!
+    `);
+    
+    formData.append('redirect', 'false');
+    
+    console.log('📤 Sending email with photo to Web3Forms...');
+    
+    const response = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: formData
+    });
+    
+    const data = await response.json();
+    
+    console.log('📧 Web3Forms response:', data);
+    
+    if (data.success) {
+      console.log('✅ Kodak moment sent to your email! 💕📸');
+      console.log('📧 Email sent to: pachourimohit1@gmail.com');
+      console.log('📎 Attachment: Our_Kodak_Moment_Valentine.jpg (' + sizeMB + ' MB)');
+      
+      // Update status message
+      const statusElement = document.getElementById('camera-status');
+      if (statusElement) {
+        statusElement.innerHTML = `
+          ✅ Photo sent to email! 💌<br>
+          📧 Check: pachourimohit1@gmail.com<br>
+          📎 Attachment: ${sizeMB} MB<br>
+          <small>Look in your inbox or spam folder</small>
+        `;
+      }
+    } else {
+      console.error('❌ Failed to send Kodak moment:', data);
+      alert(`Email sending failed: ${data.message || 'Unknown error'}\n\nPhoto was downloaded to your device.\nPlease check your browser console for details.`);
+    }
+  } catch (error) {
+    console.error('Error sending Kodak moment email:', error);
+    alert(`Error sending email: ${error.message}\n\nPhoto was downloaded to your device.`);
   }
 }
 
@@ -2511,6 +3112,359 @@ function createFloatingTeddies() {
 
 // ==================== DAY 4: PROMISE DAY ====================
 function loadPromiseDay() {
+  // Always use photo deck (photo deck is now the default for production)
+  loadPromiseDayPhotoDeck();
+}
+
+// Interactive Photo Deck for Promise Day (PREVIEW MODE ONLY)
+function loadPromiseDayPhotoDeck() {
+  const content = document.getElementById('main-content');
+  
+  const photos = [
+    { src: '/static/promise-photos/hands-pink.jpg', promise: 'I promise to hold your hand through all of life\'s journeys 💕' },
+    { src: '/static/promise-photos/hands-heart.jpg', promise: 'I promise my heart will always beat for you ❤️' },
+    { src: '/static/promise-photos/hands-forever.jpg', promise: 'I promise forever isn\'t long enough with you ♾️' },
+    { src: '/static/promise-photos/fingerprints-love.jpg', promise: 'I promise you\'re my perfect match 👫' },
+    { src: '/static/promise-photos/hands-holding.jpg', promise: 'I promise to never let you go 🤝' },
+    { src: '/static/promise-photos/pinky-promise.jpg', promise: 'I promise this is a forever kind of thing 🤙' },
+    { src: '/static/promise-photos/hands-interlock.jpg', promise: 'I promise our souls are meant to be intertwined 🔗' }
+  ];
+  
+  content.innerHTML = `
+    <div class="promise-day-container" style="
+      position: relative;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #FFF5F7 0%, #FFE6EA 50%, #FFF0F5 100%);
+      padding: 2rem 1rem 200px;
+      overflow-x: hidden;
+    ">
+      <!-- Title Section -->
+      <div class="text-center mb-6 animate-fade-in" style="padding: 1rem; position: relative; z-index: 1;">
+        <h2 class="text-4xl md:text-5xl font-bold mb-3" style="
+          background: linear-gradient(135deg, #DDA0DD, #BA55D3, #9370DB);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        ">📖 Promise Day 📖</h2>
+        <p class="text-lg md:text-xl font-semibold" style="color: #BA55D3; margin-top: 0.5rem;">
+          "My promises to you" 💕
+        </p>
+        <p class="text-sm md:text-base mt-2" style="color: #DDA0DD; font-style: italic;">
+          ← Swipe to see ${photos.length} promises →
+        </p>
+      </div>
+
+      <!-- Photo Deck Container (Above music player z-index) -->
+      <div class="photo-deck-wrapper" style="
+        max-width: 450px;
+        margin: 0 auto;
+        padding: 0 1rem;
+        position: relative;
+        height: 550px;
+        z-index: 15;
+      ">
+        <div id="promise-photo-deck" class="photo-deck" style="
+          position: relative;
+          width: 100%;
+          height: 100%;
+        ">
+          ${photos.map((photo, index) => `
+            <div class="promise-card" data-index="${index}" style="
+              position: absolute;
+              width: 100%;
+              height: 100%;
+              border-radius: 25px;
+              overflow: hidden;
+              box-shadow: 0 25px 70px rgba(186, 85, 211, 0.4);
+              cursor: grab;
+              user-select: none;
+              background: white;
+            ">
+              <img src="${photo.src}" alt="Promise ${index + 1}" draggable="false" style="
+                width: 100%;
+                height: 70%;
+                object-fit: cover;
+                pointer-events: none;
+              ">
+              <div style="
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                height: 30%;
+                background: linear-gradient(to top, rgba(186, 85, 211, 0.95), rgba(221, 160, 221, 0.9));
+                padding: 1.5rem;
+                color: white;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+              ">
+                <p style="
+                  font-size: 1.2rem;
+                  font-weight: 600;
+                  line-height: 1.6;
+                  text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+                ">
+                  ${photo.promise}
+                </p>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+
+        <!-- Progress Indicators -->
+        <div class="promise-progress-dots" style="
+          position: absolute;
+          bottom: -50px;
+          left: 50%;
+          transform: translateX(-50%);
+          display: flex;
+          gap: 10px;
+          z-index: 100;
+        ">
+          ${photos.map((_, index) => `
+            <div class="promise-dot" data-dot-index="${index}" style="
+              width: ${index === 0 ? '14px' : '10px'};
+              height: ${index === 0 ? '14px' : '10px'};
+              border-radius: 50%;
+              background: ${index === 0 ? '#BA55D3' : 'rgba(186, 85, 211, 0.3)'};
+              transition: all 0.3s ease;
+              cursor: pointer;
+            "></div>
+          `).join('')}
+        </div>
+      </div>
+
+      <!-- Swipe Hint -->
+      <div id="promise-swipe-hint" style="
+        position: fixed;
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 2.5rem;
+        animation: swipeHintAnim 2s ease-in-out infinite;
+        pointer-events: none;
+        z-index: 10;
+        opacity: 0.6;
+      ">👆</div>
+
+      <!-- Romantic Message -->
+      <div class="promise-message" style="
+        margin: 5rem auto 2rem;
+        padding: 2rem;
+        text-align: center;
+        max-width: 600px;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(10px);
+        border: 3px solid #DDA0DD;
+        border-radius: 25px;
+        box-shadow: 0 15px 50px rgba(186, 85, 211, 0.3);
+      ">
+        <h3 class="text-2xl md:text-3xl font-bold mb-4" style="color: #BA55D3;">
+          ✨ My Promise to You ✨
+        </h3>
+        <p class="text-lg" style="color: #9370DB; font-style: italic; line-height: 1.8;">
+          "Kuch vade aese banaye, jo tod na paaye..."<br>
+          Every promise I make to you is sealed with love 💜
+        </p>
+      </div>
+    </div>
+  `;
+  
+  // Initialize promise photo deck
+  initPromisePhotoDeck(photos.length);
+}
+
+// Promise Photo Deck Interaction Logic
+function initPromisePhotoDeck(totalPhotos) {
+  const deck = document.getElementById('promise-photo-deck');
+  const cards = deck.querySelectorAll('.promise-card');
+  const dots = document.querySelectorAll('.promise-dot');
+  const hint = document.getElementById('promise-swipe-hint');
+  
+  let currentIndex = 0;
+  let startX = 0;
+  let startY = 0;
+  let currentX = 0;
+  let isDragging = false;
+  let idleAnimationFrame = null;
+  
+  // Position cards in stack
+  function updateCardStack(animate = true) {
+    cards.forEach((card, index) => {
+      const isCurrent = index === currentIndex;
+      const isPast = index < currentIndex;
+      const isFuture = index > currentIndex;
+      const distanceFromCurrent = Math.abs(index - currentIndex);
+      
+      if (animate) {
+        card.style.transition = 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
+      } else {
+        card.style.transition = 'none';
+      }
+      
+      if (isPast) {
+        // Past cards - slide off left
+        card.style.transform = 'translateX(-120%) rotate(-15deg) scale(0.8)';
+        card.style.opacity = '0';
+        card.style.pointerEvents = 'none';
+        card.style.zIndex = '1';
+      } else if (isCurrent) {
+        // Current card
+        card.style.transform = 'translateX(0) translateY(0) rotate(0deg) scale(1)';
+        card.style.opacity = '1';
+        card.style.pointerEvents = 'auto';
+        card.style.zIndex = String(totalPhotos + 10);
+      } else if (isFuture) {
+        // Future cards stacked behind
+        const offset = distanceFromCurrent * 12;
+        const scale = 1 - (distanceFromCurrent * 0.04);
+        const rotate = (distanceFromCurrent % 2 === 0 ? 1.5 : -1.5);
+        card.style.transform = `translateX(0) translateY(${offset}px) rotate(${rotate}deg) scale(${scale})`;
+        card.style.opacity = String(0.75 - (distanceFromCurrent * 0.1));
+        card.style.pointerEvents = 'none';
+        card.style.zIndex = String(totalPhotos + 10 - distanceFromCurrent);
+      }
+    });
+    
+    // Update dots
+    dots.forEach((dot, index) => {
+      if (index === currentIndex) {
+        dot.style.width = '14px';
+        dot.style.height = '14px';
+        dot.style.background = '#BA55D3';
+      } else {
+        dot.style.width = '10px';
+        dot.style.height = '10px';
+        dot.style.background = 'rgba(186, 85, 211, 0.3)';
+      }
+    });
+  }
+  
+  // Idle animation
+  function startIdleAnimation() {
+    let angle = 0;
+    
+    function animate() {
+      if (!isDragging && currentIndex < totalPhotos) {
+        const currentCard = cards[currentIndex];
+        if (currentCard) {
+          angle += 0.025;
+          const tilt = Math.sin(angle) * 2.5;
+          const sway = Math.cos(angle) * 10;
+          currentCard.style.transform = `translateX(${sway}px) translateY(0) rotate(${tilt}deg) scale(1)`;
+        }
+      }
+      idleAnimationFrame = requestAnimationFrame(animate);
+    }
+    
+    animate();
+  }
+  
+  // Event handlers
+  function handleStart(e) {
+    const touch = e.touches ? e.touches[0] : e;
+    startX = touch.clientX;
+    startY = touch.clientY;
+    isDragging = true;
+    
+    const currentCard = cards[currentIndex];
+    if (currentCard) {
+      currentCard.style.cursor = 'grabbing';
+      currentCard.style.transition = 'none';
+    }
+    
+    if (hint) {
+      hint.style.transition = 'opacity 0.3s';
+      hint.style.opacity = '0';
+      setTimeout(() => hint && hint.remove(), 300);
+    }
+  }
+  
+  function handleMove(e) {
+    if (!isDragging) return;
+    
+    const touch = e.touches ? e.touches[0] : e;
+    currentX = touch.clientX;
+    const deltaX = currentX - startX;
+    const deltaY = touch.clientY - startY;
+    
+    if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 10) {
+      e.preventDefault();
+      
+      const currentCard = cards[currentIndex];
+      if (currentCard) {
+        const rotate = deltaX * 0.08;
+        const opacity = 1 - Math.abs(deltaX) / 400;
+        currentCard.style.transform = `translateX(${deltaX}px) rotate(${rotate}deg) scale(1)`;
+        currentCard.style.opacity = String(Math.max(opacity, 0.3));
+      }
+    }
+  }
+  
+  function handleEnd(e) {
+    if (!isDragging) return;
+    isDragging = false;
+    
+    const deltaX = currentX - startX;
+    const threshold = 80;
+    const currentCard = cards[currentIndex];
+    
+    if (currentCard) {
+      currentCard.style.cursor = 'grab';
+    }
+    
+    if (Math.abs(deltaX) > threshold) {
+      if (deltaX < 0 && currentIndex < totalPhotos - 1) {
+        currentIndex++;
+      } else if (deltaX > 0 && currentIndex > 0) {
+        currentIndex--;
+      }
+    }
+    
+    updateCardStack(true);
+    startX = 0;
+    currentX = 0;
+  }
+  
+  // Attach listeners
+  cards.forEach((card) => {
+    card.addEventListener('mousedown', handleStart);
+    card.addEventListener('touchstart', handleStart, { passive: false });
+  });
+  
+  document.addEventListener('mousemove', handleMove);
+  document.addEventListener('touchmove', handleMove, { passive: false });
+  document.addEventListener('mouseup', handleEnd);
+  document.addEventListener('touchend', handleEnd);
+  
+  // Dot navigation
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      currentIndex = index;
+      updateCardStack(true);
+    });
+  });
+  
+  // Keyboard
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft' && currentIndex > 0) {
+      currentIndex--;
+      updateCardStack(true);
+    } else if (e.key === 'ArrowRight' && currentIndex < totalPhotos - 1) {
+      currentIndex++;
+      updateCardStack(true);
+    }
+  });
+  
+  // Initialize
+  updateCardStack(false);
+  setTimeout(startIdleAnimation, 500);
+}
+
+// Original Promise Day (PRODUCTION VERSION)
+function loadPromiseDayOriginal() {
   const content = document.getElementById('main-content');
   currentPage = 0;
   
@@ -2559,52 +3513,351 @@ function loadHugDay() {
   const content = document.getElementById('main-content');
   
   content.innerHTML = `
-    <div class="hug-day-container" style="position: relative; min-height: 70vh; overflow: hidden; padding-bottom: 150px;">
-      <!-- Floating Flowers and Quotes -->
-      <div id="floating-elements" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;"></div>
+    <div class="hug-day-container" style="position: relative; min-height: 100vh; background: linear-gradient(135deg, #FFF5F7 0%, #FFE4E9 50%, #FFF0F5 100%); padding: 2rem 1rem; overflow: hidden;">
       
-      <!-- Center Message -->
-      <div style="position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 60vh; padding: 2rem;">
-        <div class="glass-card" style="padding: 3rem; text-align: center; max-width: 700px; margin: 2rem auto; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border: 2px solid rgba(255, 182, 193, 0.5);">
-          <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: #FFB6C1;">🤗 Hug Day 🤗</h2>
+      <!-- Romantic Couple Gallery -->
+      <div style="max-width: 1400px; margin: 0 auto; position: relative; z-index: 2;">
+        
+        <!-- Title Section -->
+        <div class="text-center mb-12 animate-fade-in" style="padding: 2rem;">
+          <h2 class="text-5xl md:text-6xl font-bold mb-4" style="
+            background: linear-gradient(135deg, #FF69B4, #FF1493, #C71585);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+          ">🤗 Hug Day 🤗</h2>
+          <p class="text-2xl md:text-3xl font-bold animate-pulse" style="color: #FF1493; margin-top: 1rem;">
+            "In your arms, I find my home" 💕
+          </p>
+        </div>
+        
+        <!-- Romantic Couple Images Gallery -->
+        <div class="romantic-gallery" style="
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 2rem;
+          padding: 2rem;
+          margin-bottom: 3rem;
+        ">
+          <!-- Image 1: Roses & Hearts -->
+          <div class="gallery-item" style="
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(255, 105, 180, 0.4);
+            transform: rotate(-2deg);
+            transition: all 0.3s ease;
+            animation: floatGallery 6s ease-in-out infinite;
+          ">
+            <img src="/static/romantic-couple/couple-1.jpg" alt="Romantic Couple" style="
+              width: 100%;
+              height: 400px;
+              object-fit: cover;
+              display: block;
+            ">
+            <div style="
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              right: 0;
+              background: linear-gradient(to top, rgba(255, 105, 180, 0.9), transparent);
+              padding: 1.5rem;
+              color: white;
+              text-align: center;
+            ">
+              <p style="font-size: 1.2rem; font-weight: 600;">💕 Love Blooms 💕</p>
+            </div>
+          </div>
           
-          <div class="animate-pulse" style="margin: 2rem 0;">
-            <p class="text-2xl md:text-3xl font-bold" style="color: #FF1493; margin-bottom: 1.5rem;">
-              It's due until we meet again...
+          <!-- Image 2: Autumn Romance -->
+          <div class="gallery-item" style="
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(255, 105, 180, 0.4);
+            transform: rotate(2deg);
+            transition: all 0.3s ease;
+            animation: floatGallery 7s ease-in-out infinite;
+            animation-delay: 1s;
+          ">
+            <img src="/static/romantic-couple/couple-2.jpg" alt="Autumn Romance" style="
+              width: 100%;
+              height: 400px;
+              object-fit: cover;
+              display: block;
+            ">
+            <div style="
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              right: 0;
+              background: linear-gradient(to top, rgba(255, 140, 0, 0.9), transparent);
+              padding: 1.5rem;
+              color: white;
+              text-align: center;
+            ">
+              <p style="font-size: 1.2rem; font-weight: 600;">🍂 Forever Together 🍂</p>
+            </div>
+          </div>
+          
+          <!-- Image 3: Home Sweet Home -->
+          <div class="gallery-item" style="
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(255, 105, 180, 0.4);
+            transform: rotate(-1deg);
+            transition: all 0.3s ease;
+            animation: floatGallery 6.5s ease-in-out infinite;
+            animation-delay: 2s;
+          ">
+            <img src="/static/romantic-couple/couple-3.jpg" alt="Home Together" style="
+              width: 100%;
+              height: 400px;
+              object-fit: cover;
+              display: block;
+            ">
+            <div style="
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              right: 0;
+              background: linear-gradient(to top, rgba(255, 99, 71, 0.9), transparent);
+              padding: 1.5rem;
+              color: white;
+              text-align: center;
+            ">
+              <p style="font-size: 1.2rem; font-weight: 600;">🏡 Our Dream Home 🏡</p>
+            </div>
+          </div>
+          
+          <!-- Image 4: Warm Embrace -->
+          <div class="gallery-item" style="
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(255, 105, 180, 0.4);
+            transform: rotate(1.5deg);
+            transition: all 0.3s ease;
+            animation: floatGallery 7.5s ease-in-out infinite;
+            animation-delay: 0.5s;
+          ">
+            <img src="/static/romantic-couple/couple-4.jpg" alt="Warm Embrace" style="
+              width: 100%;
+              height: 400px;
+              object-fit: cover;
+              display: block;
+            ">
+            <div style="
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              right: 0;
+              background: linear-gradient(to top, rgba(186, 85, 211, 0.9), transparent);
+              padding: 1.5rem;
+              color: white;
+              text-align: center;
+            ">
+              <p style="font-size: 1.2rem; font-weight: 600;">🤗 Safe in Your Arms 🤗</p>
+            </div>
+          </div>
+          
+          <!-- Image 5: Sunset Love -->
+          <div class="gallery-item" style="
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(255, 105, 180, 0.4);
+            transform: rotate(-1.5deg);
+            transition: all 0.3s ease;
+            animation: floatGallery 6.8s ease-in-out infinite;
+            animation-delay: 1.5s;
+          ">
+            <img src="/static/romantic-couple/couple-5.jpg" alt="Sunset Love" style="
+              width: 100%;
+              height: 400px;
+              object-fit: cover;
+              display: block;
+            ">
+            <div style="
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              right: 0;
+              background: linear-gradient(to top, rgba(255, 69, 0, 0.9), transparent);
+              padding: 1.5rem;
+              color: white;
+              text-align: center;
+            ">
+              <p style="font-size: 1.2rem; font-weight: 600;">🌅 Endless Love 🌅</p>
+            </div>
+          </div>
+          
+          <!-- Image 6: Cozy Together -->
+          <div class="gallery-item" style="
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(255, 105, 180, 0.4);
+            transform: rotate(2.5deg);
+            transition: all 0.3s ease;
+            animation: floatGallery 7.2s ease-in-out infinite;
+            animation-delay: 2.5s;
+          ">
+            <img src="/static/romantic-couple/couple-6.jpg" alt="Cozy Together" style="
+              width: 100%;
+              height: 400px;
+              object-fit: cover;
+              display: block;
+            ">
+            <div style="
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              right: 0;
+              background: linear-gradient(to top, rgba(220, 20, 60, 0.9), transparent);
+              padding: 1.5rem;
+              color: white;
+              text-align: center;
+            ">
+              <p style="font-size: 1.2rem; font-weight: 600;">❄️ Winter Warmth ❄️</p>
+            </div>
+          </div>
+          
+          <!-- Image 7: Joyful Hug -->
+          <div class="gallery-item" style="
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(255, 105, 180, 0.4);
+            transform: rotate(-2.5deg);
+            transition: all 0.3s ease;
+            animation: floatGallery 6.3s ease-in-out infinite;
+            animation-delay: 3s;
+          ">
+            <img src="/static/romantic-couple/couple-7.jpg" alt="Joyful Hug" style="
+              width: 100%;
+              height: 400px;
+              object-fit: cover;
+              display: block;
+            ">
+            <div style="
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              right: 0;
+              background: linear-gradient(to top, rgba(255, 20, 147, 0.9), transparent);
+              padding: 1.5rem;
+              color: white;
+              text-align: center;
+            ">
+              <p style="font-size: 1.2rem; font-weight: 600;">😊 Pure Happiness 😊</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Romantic Message Card -->
+        <div class="glass-card" style="
+          padding: 3rem;
+          text-align: center;
+          max-width: 800px;
+          margin: 3rem auto;
+          background: rgba(255, 255, 255, 0.95);
+          backdrop-filter: blur(10px);
+          border: 3px solid #FFB6C1;
+          border-radius: 25px;
+          box-shadow: 0 15px 50px rgba(255, 105, 180, 0.3);
+        ">
+          <h3 class="text-3xl font-bold mb-6" style="color: #FF1493;">
+            💕 Waiting for That Warm Hug 💕
+          </h3>
+          
+          <div class="space-y-4 mb-6">
+            <p class="text-xl" style="color: #C71585; font-style: italic; line-height: 1.8;">
+              "Suraj hua maddham, chaand jalne laga...<br>
+              Aasmaan yeh haai kyun pighalne laga" 🌙
+            </p>
+            <p class="text-xl" style="color: #FF69B4; font-style: italic; line-height: 1.8;">
+              "Tum paas aaye, yun muskuraaye...<br>
+              Tumne na jaane kya sapne dikhaaye" ✨
             </p>
           </div>
           
-          <!-- Romantic Bollywood Lines -->
-          <div class="mt-6 space-y-4">
-            <p class="text-lg md:text-xl" style="color: #C71585; font-style: italic; line-height: 1.8;">
-              💕 "Suraj hua maddham, chaand jalne laga...<br>Aasmaan yeh haai kyun pighalne laga, main thehra raha, zameen chalne lagi" 💕
+          <div style="
+            background: linear-gradient(135deg, rgba(255, 182, 193, 0.4), rgba(255, 228, 225, 0.4));
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+          ">
+            <p class="text-2xl font-bold" style="color: #8B4789;">
+              Until we meet, you're always in my heart 💭💖
             </p>
-            <p class="text-lg md:text-xl mt-4" style="color: #FF69B4; font-style: italic; line-height: 1.8;">
-              🌹 "Tum paas aaye, yun muskuraaye...<br>Tumne na jaane kya sapne dikhaaye" 🌹
-            </p>
-            <p class="text-lg md:text-xl mt-4" style="color: #DB7093; font-style: italic; line-height: 1.8;">
-              ✨ "Kuch kuch hota hai, tum nahi samjhoge...<br>Yeh humko kab hua pata nahi chala" ✨
-            </p>
-            <p class="text-lg md:text-xl mt-4" style="color: #E75480; font-style: italic; line-height: 1.8;">
-              💖 "Tere liye hum hain jiye, hothon ko siye...<br>Dil mein magar jalte rahe, diye" 💖
-            </p>
-          </div>
-          
-          <div class="mt-8 p-6 rounded-lg" style="background: linear-gradient(135deg, rgba(255, 182, 193, 0.3) 0%, rgba(255, 228, 225, 0.3) 100%);">
-            <p class="text-xl font-semibold" style="color: #8B4789;">
-              🤗 Waiting for that warm hug... 🤗
-            </p>
-            <p class="text-md mt-2" style="color: #666;">
-              Until we meet, you're always in my thoughts 💭💕
+            <p class="text-lg mt-3" style="color: #666;">
+              Every moment thinking of you... 🤗
             </p>
           </div>
         </div>
+        
+        <!-- Floating Hearts -->
+        <div id="floating-hearts-hug" style="
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          pointer-events: none;
+          z-index: 1;
+        "></div>
       </div>
     </div>
   `;
   
-  // Create floating flowers and romantic quotes
-  createFloatingFlowersAndQuotes();
+  // Add gallery hover effects and floating hearts
+  addGalleryEffects();
+  createFloatingHugHearts();
+}
+
+// Gallery hover effects
+function addGalleryEffects() {
+  const items = document.querySelectorAll('.gallery-item');
+  items.forEach(item => {
+    item.addEventListener('mouseenter', function() {
+      this.style.transform = 'scale(1.05) rotate(0deg)';
+      this.style.boxShadow = '0 20px 60px rgba(255, 105, 180, 0.6)';
+      this.style.zIndex = '10';
+    });
+    
+    item.addEventListener('mouseleave', function() {
+      const rotation = Math.random() * 4 - 2; // -2 to 2 degrees
+      this.style.transform = `scale(1) rotate(${rotation}deg)`;
+      this.style.boxShadow = '0 10px 40px rgba(255, 105, 180, 0.4)';
+      this.style.zIndex = '1';
+    });
+  });
+}
+
+// Create floating hearts for Hug Day
+function createFloatingHugHearts() {
+  const container = document.getElementById('floating-hearts-hug');
+  if (!container) return;
+  
+  const hearts = ['💕', '💖', '💗', '💝', '💞', '💓', '🤗', '🫂'];
+  
+  for (let i = 0; i < 25; i++) {
+    const heart = document.createElement('div');
+    heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+    heart.style.cssText = `
+      position: absolute;
+      left: ${Math.random() * 100}%;
+      top: ${Math.random() * 100}%;
+      font-size: ${Math.random() * 30 + 20}px;
+      animation: floatHeart ${Math.random() * 10 + 8}s ease-in-out infinite;
+      animation-delay: ${Math.random() * 5}s;
+      opacity: 0.5;
+      pointer-events: none;
+    `;
+    container.appendChild(heart);
+  }
 }
 
 function createFloatingFlowersAndQuotes() {
@@ -2776,61 +4029,421 @@ function loadKissDay() {
   const content = document.getElementById('main-content');
   
   content.innerHTML = `
-    <div class="kiss-day-container" style="position: relative; min-height: 70vh; padding-bottom: 150px;">
+    <div class="kiss-day-container" style="position: relative; min-height: 100vh; padding-bottom: 150px; overflow: hidden;">
       <!-- Romantic gradient background -->
-      <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(255, 192, 203, 0.2) 0%, rgba(255, 182, 193, 0.2) 50%, rgba(255, 218, 224, 0.2) 100%); pointer-events: none;"></div>
+      <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(255, 20, 147, 0.15) 0%, rgba(255, 105, 180, 0.15) 50%, rgba(255, 182, 193, 0.15) 100%); pointer-events: none;"></div>
       
       <!-- Floating hearts background -->
       <div id="floating-kiss-hearts" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;"></div>
       
-      <!-- Center Locked Message -->
-      <div style="position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 60vh; padding: 2rem;">
-        <div class="glass-card" style="padding: 4rem 3rem; text-align: center; max-width: 600px; margin: 2rem auto; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border: 3px solid rgba(255, 105, 180, 0.5); box-shadow: 0 15px 50px rgba(255, 105, 180, 0.3);">
-          <!-- Big Lock Icon -->
-          <div class="animate-bounce" style="font-size: 5rem; margin-bottom: 2rem;">
-            🔒
+      <!-- Header -->
+      <div style="position: relative; z-index: 2; text-align: center; padding: 2rem 1rem 1rem;">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4" style="color: #FF1493; text-shadow: 2px 2px 4px rgba(0,0,0,0.1);">
+          💋 Kiss Day 💋
+        </h2>
+        <p class="text-xl md:text-2xl mb-2" style="color: #FF69B4; font-weight: 600;">
+          "A kiss is a secret told to the mouth instead of the ear" 💕
+        </p>
+        <p class="text-sm md:text-base" style="color: #C71585; font-style: italic;">
+          Swipe through our sweetest moments ✨
+        </p>
+      </div>
+      
+      <!-- 3D Interactive Photo Carousel Container -->
+      <div id="kiss-carousel-wrapper" style="position: relative; z-index: 10; margin: 2rem auto; max-width: 1200px; padding: 0 1rem;">
+        <!-- 3D Carousel Stage -->
+        <div id="kiss-carousel-stage" style="
+          position: relative;
+          width: 100%;
+          height: 500px;
+          perspective: 1200px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          touch-action: pan-y pinch-zoom;
+        ">
+          <!-- Photo Cards Container -->
+          <div id="kiss-cards-container" style="
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
+          ">
+            <!-- Cards will be dynamically inserted here -->
           </div>
+        </div>
+        
+        <!-- Navigation Controls -->
+        <div style="display: flex; justify-content: center; align-items: center; gap: 2rem; margin-top: 2rem;">
+          <button id="kiss-prev-btn" class="kiss-nav-btn" style="
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #FF1493, #FF69B4);
+            color: white;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 20, 147, 0.4);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          ">❮</button>
           
-          <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: #FF1493;">💋 Kiss Day 💋</h2>
+          <!-- Progress Indicators -->
+          <div id="kiss-progress-dots" style="display: flex; gap: 12px;"></div>
           
-          <!-- Main Message -->
-          <div class="animate-pulse" style="margin: 2rem 0; padding: 2rem; background: linear-gradient(135deg, rgba(255, 105, 180, 0.1) 0%, rgba(255, 182, 193, 0.1) 100%); border-radius: 20px;">
-            <p class="text-3xl md:text-4xl font-bold" style="color: #C71585; margin-bottom: 1rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.1);">
-              ABHI TIME HAI... 😊
-            </p>
-            <p class="text-xl md:text-2xl" style="color: #FF69B4; font-weight: 600;">
-              Thoda aur intezaar karo, darling! 💕
-            </p>
-          </div>
-          
-          <!-- Romantic Quote -->
-          <div class="mt-6" style="padding: 1.5rem; background: rgba(255, 228, 225, 0.5); border-radius: 15px; border-left: 4px solid #FF1493;">
-            <p class="text-lg" style="color: #8B008B; font-style: italic; line-height: 1.6;">
-              ✨ "Kuch khaas lamhe waqt maangte hain...<br>
-              Aur yeh lamha bahut khaas hoga" ✨
-            </p>
-          </div>
-          
-          <!-- Cute Note -->
-          <div class="mt-8 flex items-center justify-center gap-2">
-            <span style="font-size: 2rem;">💝</span>
-            <p class="text-md" style="color: #666; font-weight: 500;">
-              Patience is the key to love's sweetest moments
-            </p>
-            <span style="font-size: 2rem;">💝</span>
-          </div>
-          
-          <!-- Countdown hint -->
-          <p class="text-sm mt-6" style="color: #999; font-style: italic;">
-            💫 Coming soon on the perfect day! 💫
+          <button id="kiss-next-btn" class="kiss-nav-btn" style="
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #FF1493, #FF69B4);
+            color: white;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 20, 147, 0.4);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          ">❯</button>
+        </div>
+        
+        <!-- Photo Caption -->
+        <div id="kiss-photo-caption" style="
+          text-align: center;
+          margin-top: 2rem;
+          padding: 1.5rem;
+          background: rgba(255, 255, 255, 0.9);
+          border-radius: 20px;
+          box-shadow: 0 4px 20px rgba(255, 20, 147, 0.2);
+          backdrop-filter: blur(10px);
+        ">
+          <p class="text-lg md:text-xl font-semibold" style="color: #FF1493;"></p>
+        </div>
+        
+        <!-- Gesture Hint (fades out after first interaction) -->
+        <div id="kiss-gesture-hint" style="
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          text-align: center;
+          pointer-events: none;
+          z-index: 5;
+          animation: fadeHint 3s ease-in-out infinite;
+        ">
+          <p style="font-size: 3rem; margin-bottom: 0.5rem;">👆</p>
+          <p style="color: #FF1493; font-weight: 600; font-size: 1.2rem; text-shadow: 0 2px 8px white;">
+            Swipe or Drag
+          </p>
+        </div>
+      </div>
+      
+      <!-- Romantic Message -->
+      <div style="position: relative; z-index: 2; text-align: center; margin: 3rem auto; max-width: 800px; padding: 2rem;">
+        <div style="
+          padding: 2rem;
+          background: rgba(255, 255, 255, 0.95);
+          border-radius: 25px;
+          box-shadow: 0 10px 40px rgba(255, 20, 147, 0.3);
+          border: 2px solid rgba(255, 105, 180, 0.3);
+        ">
+          <p class="text-lg md:text-xl" style="color: #C71585; line-height: 1.8; font-style: italic;">
+            💕 Every kiss tells a story...<br>
+            Every moment with you is magical 💖<br>
+            <span style="font-size: 2rem; display: inline-block; margin-top: 1rem;">💋✨💕</span>
           </p>
         </div>
       </div>
     </div>
   `;
   
+  // Initialize the 3D carousel
+  initializeKissCarousel();
+  
   // Create floating hearts
   createFloatingKissHearts();
+}
+
+// ==================== DAY 6: KISS DAY - 3D CAROUSEL ====================
+
+function initializeKissCarousel() {
+  // Photo data with captions
+  const photos = [
+    {
+      src: '/static/kiss-photos/kiss-1.jpg',
+      caption: '💋 Our First Kiss - Where it all began'
+    },
+    {
+      src: '/static/kiss-photos/kiss-2.jpg',
+      caption: '💕 Stolen Moments - Pure magic'
+    },
+    {
+      src: '/static/kiss-photos/kiss-3.jpg',
+      caption: '✨ Forever Together - You & Me'
+    }
+  ];
+  
+  let currentIndex = 0;
+  let isDragging = false;
+  let startX = 0;
+  let currentTranslate = 0;
+  let prevTranslate = 0;
+  let animationID;
+  let velocityX = 0;
+  let lastX = 0;
+  let lastTime = Date.now();
+  
+  const container = document.getElementById('kiss-cards-container');
+  const progressDots = document.getElementById('kiss-progress-dots');
+  const captionElement = document.querySelector('#kiss-photo-caption p');
+  const gestureHint = document.getElementById('kiss-gesture-hint');
+  const prevBtn = document.getElementById('kiss-prev-btn');
+  const nextBtn = document.getElementById('kiss-next-btn');
+  
+  // Create photo cards
+  photos.forEach((photo, index) => {
+    const card = document.createElement('div');
+    card.className = 'kiss-photo-card';
+    card.innerHTML = `
+      <div class="kiss-card-inner" style="
+        width: 100%;
+        height: 100%;
+        position: relative;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      ">
+        <img src="${photo.src}" alt="Kiss photo ${index + 1}" style="
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        " draggable="false">
+        <div class="kiss-photo-overlay" style="
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          background: linear-gradient(to top, rgba(255, 20, 147, 0.8), transparent);
+          padding: 1.5rem;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+        ">
+          <p style="color: white; font-weight: 600; font-size: 1.1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">
+            ${photo.caption}
+          </p>
+        </div>
+      </div>
+    `;
+    container.appendChild(card);
+    
+    // Progress dot
+    const dot = document.createElement('button');
+    dot.className = 'kiss-progress-dot';
+    dot.style.cssText = `
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 2px solid #FF1493;
+      background: ${index === 0 ? '#FF1493' : 'transparent'};
+      cursor: pointer;
+      transition: all 0.3s ease;
+    `;
+    dot.addEventListener('click', () => goToSlide(index));
+    progressDots.appendChild(dot);
+  });
+  
+  const cards = document.querySelectorAll('.kiss-photo-card');
+  
+  // Position cards in 3D space
+  function updateCardPositions() {
+    const angleStep = 360 / photos.length;
+    const radius = window.innerWidth < 768 ? 300 : 450;
+    
+    cards.forEach((card, index) => {
+      const angle = ((index - currentIndex) * angleStep) * (Math.PI / 180);
+      const x = Math.sin(angle) * radius;
+      const z = Math.cos(angle) * radius - radius;
+      const scale = z > -radius / 2 ? 1 : 0.7;
+      const opacity = z > -radius ? 1 : 0.3;
+      const rotateY = -((index - currentIndex) * angleStep);
+      
+      card.style.cssText = `
+        position: absolute;
+        width: ${window.innerWidth < 768 ? '280px' : '400px'};
+        height: ${window.innerWidth < 768 ? '380px' : '500px'};
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%) translateX(${x}px) translateZ(${z}px) rotateY(${rotateY}deg) scale(${scale});
+        transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1), opacity 0.6s ease;
+        opacity: ${opacity};
+        z-index: ${Math.round(z)};
+        pointer-events: ${index === currentIndex ? 'auto' : 'none'};
+      `;
+      
+      // Show overlay on center card
+      const overlay = card.querySelector('.kiss-photo-overlay');
+      if (index === currentIndex && overlay) {
+        overlay.style.opacity = '1';
+      } else if (overlay) {
+        overlay.style.opacity = '0';
+      }
+    });
+    
+    // Update progress dots
+    document.querySelectorAll('.kiss-progress-dot').forEach((dot, index) => {
+      dot.style.background = index === currentIndex ? '#FF1493' : 'transparent';
+      dot.style.transform = index === currentIndex ? 'scale(1.3)' : 'scale(1)';
+    });
+    
+    // Update caption
+    if (captionElement) {
+      captionElement.textContent = photos[currentIndex].caption;
+    }
+  }
+  
+  function goToSlide(index) {
+    currentIndex = (index + photos.length) % photos.length;
+    updateCardPositions();
+    hideGestureHint();
+  }
+  
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % photos.length;
+    updateCardPositions();
+    hideGestureHint();
+  }
+  
+  function prevSlide() {
+    currentIndex = (currentIndex - 1 + photos.length) % photos.length;
+    updateCardPositions();
+    hideGestureHint();
+  }
+  
+  function hideGestureHint() {
+    if (gestureHint) {
+      gestureHint.style.animation = 'none';
+      gestureHint.style.opacity = '0';
+      setTimeout(() => {
+        gestureHint.style.display = 'none';
+      }, 300);
+    }
+  }
+  
+  // Touch/Mouse Events for Swipe
+  function getPositionX(event) {
+    return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+  }
+  
+  function touchStart(event) {
+    if (event.target.closest('.kiss-nav-btn') || event.target.closest('.kiss-progress-dot')) {
+      return;
+    }
+    
+    isDragging = true;
+    startX = getPositionX(event);
+    lastX = startX;
+    lastTime = Date.now();
+    velocityX = 0;
+    container.style.cursor = 'grabbing';
+    animationID = requestAnimationFrame(animation);
+    hideGestureHint();
+  }
+  
+  function touchMove(event) {
+    if (!isDragging) return;
+    
+    const currentPosition = getPositionX(event);
+    const now = Date.now();
+    const timeDiff = now - lastTime;
+    
+    if (timeDiff > 0) {
+      velocityX = (currentPosition - lastX) / timeDiff;
+    }
+    
+    currentTranslate = prevTranslate + currentPosition - startX;
+    lastX = currentPosition;
+    lastTime = now;
+  }
+  
+  function touchEnd() {
+    isDragging = false;
+    cancelAnimationFrame(animationID);
+    container.style.cursor = 'grab';
+    
+    const movedBy = currentTranslate - prevTranslate;
+    const threshold = window.innerWidth < 768 ? 60 : 100;
+    
+    // Check swipe with velocity
+    if (Math.abs(velocityX) > 0.3 || Math.abs(movedBy) > threshold) {
+      if (movedBy < -threshold || velocityX < -0.3) {
+        nextSlide();
+      } else if (movedBy > threshold || velocityX > 0.3) {
+        prevSlide();
+      }
+    }
+    
+    currentTranslate = 0;
+    prevTranslate = 0;
+    velocityX = 0;
+  }
+  
+  function animation() {
+    if (isDragging) {
+      const dragInfluence = currentTranslate * 0.001;
+      container.style.transform = `rotateY(${dragInfluence * 20}deg)`;
+      requestAnimationFrame(animation);
+    } else {
+      container.style.transform = 'rotateY(0deg)';
+    }
+  }
+  
+  // Event Listeners
+  container.addEventListener('mousedown', touchStart);
+  container.addEventListener('mousemove', touchMove);
+  container.addEventListener('mouseup', touchEnd);
+  container.addEventListener('mouseleave', touchEnd);
+  
+  container.addEventListener('touchstart', touchStart, { passive: true });
+  container.addEventListener('touchmove', touchMove, { passive: true });
+  container.addEventListener('touchend', touchEnd);
+  
+  // Navigation buttons
+  prevBtn.addEventListener('click', prevSlide);
+  nextBtn.addEventListener('click', nextSlide);
+  
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') prevSlide();
+    if (e.key === 'ArrowRight') nextSlide();
+  });
+  
+  // Hover effects on nav buttons
+  [prevBtn, nextBtn].forEach(btn => {
+    btn.addEventListener('mouseenter', () => {
+      btn.style.transform = 'scale(1.1)';
+      btn.style.boxShadow = '0 6px 20px rgba(255, 20, 147, 0.6)';
+    });
+    btn.addEventListener('mouseleave', () => {
+      btn.style.transform = 'scale(1)';
+      btn.style.boxShadow = '0 4px 15px rgba(255, 20, 147, 0.4)';
+    });
+  });
+  
+  // Initialize
+  updateCardPositions();
+  container.style.cursor = 'grab';
+  
+  // Handle window resize
+  window.addEventListener('resize', updateCardPositions);
+  
+  // Auto-hide gesture hint after 5 seconds
+  setTimeout(hideGestureHint, 5000);
 }
 
 function createFloatingKissHearts() {
@@ -2869,6 +4482,19 @@ function loadValentineDay() {
       <!-- Romantic background with sparkles -->
       <div id="sparkle-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;"></div>
       
+      <!-- Romantic Photo Gallery -->
+      <div id="valentine-photo-gallery" style="position: relative; z-index: 2; padding: 2rem 1rem; max-width: 1200px; margin: 0 auto;">
+        <h3 class="text-3xl md:text-4xl font-bold text-center mb-8" style="color: #FFD700; text-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
+          💕 Our Beautiful Journey 💕
+        </h3>
+        <div id="valentine-gallery-grid" style="
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          gap: 1.5rem;
+          perspective: 1000px;
+        "></div>
+      </div>
+      
       <!-- Question Page -->
       <div id="question-page" style="position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-center; min-height: 65vh; padding: 2rem;">
         <div class="glass-card" style="padding: 4rem 3rem; text-align: center; max-width: 700px; margin: 2rem auto; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border: 3px solid rgba(255, 215, 0, 0.6); box-shadow: 0 20px 60px rgba(255, 105, 180, 0.4);">
@@ -2894,12 +4520,15 @@ function loadValentineDay() {
           </div>
           
           <!-- Buttons Container -->
-          <div style="position: relative; min-height: 200px; width: 100%; display: flex; align-items: center; justify-content: center;">
+          <div id="valentine-buttons-container" style="position: relative; min-height: 250px; width: 100%; padding: 2rem 1rem;">
             <button 
               id="yes-button" 
               onclick="valentineYesClicked()"
               style="
-                position: relative;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
                 padding: 1.5rem 3rem;
                 font-size: 1.5rem;
                 font-weight: bold;
@@ -2912,20 +4541,21 @@ function loadValentineDay() {
                 box-shadow: 0 10px 30px rgba(255, 20, 147, 0.4);
                 z-index: 10;
               "
-              onmouseover="this.style.transform='scale(1.1)'"
-              onmouseout="this.style.transform='scale(1)'">
+              onmouseover="this.style.transform='translate(-50%, -50%) scale(1.1)'"
+              onmouseout="this.style.transform='translate(-50%, -50%) scale(1)'">
               YES 💕
             </button>
             
             <button 
               id="no-button"
               onmouseover="moveNoButton(event)"
+              ontouchstart="moveNoButton(event)"
               onclick="moveNoButton(event)"
               style="
                 position: absolute;
-                right: 50px;
-                top: 50%;
-                transform: translateY(-50%);
+                left: 75%;
+                top: 30%;
+                transform: translate(-50%, -50%);
                 padding: 1rem 2rem;
                 font-size: 1.2rem;
                 font-weight: bold;
@@ -2936,10 +4566,30 @@ function loadValentineDay() {
                 cursor: pointer;
                 transition: all 0.2s ease;
                 z-index: 5;
+                min-width: 100px;
               ">
               NO
             </button>
           </div>
+          
+          <style>
+            @media (max-width: 768px) {
+              #valentine-buttons-container {
+                min-height: 300px !important;
+              }
+              #yes-button {
+                padding: 1.2rem 2.5rem !important;
+                font-size: 1.3rem !important;
+              }
+              #no-button {
+                left: 70% !important;
+                top: 25% !important;
+                padding: 0.9rem 1.8rem !important;
+                font-size: 1.1rem !important;
+                min-width: 90px !important;
+              }
+            }
+          </style>
           
           <p class="text-sm mt-8" style="color: #999; font-style: italic;">
             💡 Hint: There's only one right answer... 💡
@@ -2981,9 +4631,107 @@ function loadValentineDay() {
   // Create continuous sparkles
   createValentineSparkles();
   
+  // Create romantic photo gallery
+  createValentineGallery();
+  
   // Reset button states
   yesButtonScale = 1;
   noButtonMoves = 0;
+}
+
+function createValentineGallery() {
+  const photos = [
+    { src: '/static/valentine-photos/couple-1.jpg', caption: 'Love Blooms' },
+    { src: '/static/valentine-photos/couple-2.jpg', caption: 'Forever Together' },
+    { src: '/static/valentine-photos/couple-3.jpg', caption: 'Our Dream Home' },
+    { src: '/static/valentine-photos/kiss-1.jpg', caption: 'First Kiss' },
+    { src: '/static/valentine-photos/couple-4.jpg', caption: 'Safe in Your Arms' },
+    { src: '/static/valentine-photos/kiss-2.jpg', caption: 'Stolen Moments' },
+    { src: '/static/valentine-photos/couple-5.jpg', caption: 'Endless Love' },
+    { src: '/static/valentine-photos/kiss-3.jpg', caption: 'Cherry Blossoms' },
+    { src: '/static/valentine-photos/couple-6.jpg', caption: 'Cozy Together' },
+    { src: '/static/valentine-photos/couple-7.jpg', caption: 'Pure Happiness' }
+  ];
+  
+  const gallery = document.getElementById('valentine-gallery-grid');
+  
+  photos.forEach((photo, index) => {
+    const photoCard = document.createElement('div');
+    photoCard.className = 'valentine-photo-card';
+    photoCard.style.cssText = `
+      position: relative;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(255, 20, 147, 0.3);
+      transition: all 0.5s cubic-bezier(0.4, 0.0, 0.2, 1);
+      cursor: pointer;
+      animation: fadeInUp 0.6s ease-out forwards;
+      animation-delay: ${index * 0.1}s;
+      opacity: 0;
+      transform-style: preserve-3d;
+    `;
+    
+    photoCard.innerHTML = `
+      <div style="
+        position: relative;
+        padding-bottom: 100%;
+        background: linear-gradient(135deg, rgba(255, 192, 203, 0.2), rgba(255, 105, 180, 0.2));
+      ">
+        <img 
+          src="${photo.src}" 
+          alt="${photo.caption}"
+          loading="lazy"
+          style="
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+          "
+        >
+        <div class="photo-overlay" style="
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          padding: 1.5rem 1rem;
+          background: linear-gradient(to top, rgba(255, 20, 147, 0.9), transparent);
+          color: white;
+          font-weight: bold;
+          font-size: 1.1rem;
+          text-align: center;
+          text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+          opacity: 0;
+          transition: opacity 0.3s ease;
+        ">
+          ${photo.caption} 💕
+        </div>
+      </div>
+    `;
+    
+    // Hover effects
+    photoCard.addEventListener('mouseenter', () => {
+      photoCard.style.transform = 'translateY(-10px) scale(1.05) rotateX(5deg)';
+      photoCard.style.boxShadow = '0 20px 50px rgba(255, 20, 147, 0.5)';
+      const overlay = photoCard.querySelector('.photo-overlay');
+      if (overlay) overlay.style.opacity = '1';
+      const img = photoCard.querySelector('img');
+      if (img) img.style.transform = 'scale(1.1)';
+    });
+    
+    photoCard.addEventListener('mouseleave', () => {
+      photoCard.style.transform = 'translateY(0) scale(1) rotateX(0deg)';
+      photoCard.style.boxShadow = '0 10px 30px rgba(255, 20, 147, 0.3)';
+      const overlay = photoCard.querySelector('.photo-overlay');
+      if (overlay) overlay.style.opacity = '0';
+      const img = photoCard.querySelector('img');
+      if (img) img.style.transform = 'scale(1)';
+    });
+    
+    gallery.appendChild(photoCard);
+  });
 }
 
 function moveNoButton(event) {
@@ -3027,24 +4775,23 @@ function moveNoButton(event) {
   
   button.style.left = clampedX + 'px';
   button.style.top = clampedY + 'px';
-  button.style.right = 'auto';
-  button.style.transform = 'translateY(0)';
+  button.style.transform = 'translate(0, 0)';
   
   // Increase YES button size with each NO move
   yesButtonScale += 0.15;
-  yesButton.style.transform = `scale(${yesButtonScale})`;
+  yesButton.style.transform = `translate(-50%, -50%) scale(${yesButtonScale})`;
   
   // After 5 moves, YES button starts taking over
   if (noButtonMoves >= 5) {
-    yesButton.style.transform = `scale(${yesButtonScale * 1.3})`;
+    yesButton.style.transform = `translate(-50%, -50%) scale(${yesButtonScale * 1.3})`;
     button.style.opacity = Math.max(0.1, 1 - (noButtonMoves - 5) * 0.15);
   }
   
   // After 8 moves, NO button becomes tiny and YES dominates
   if (noButtonMoves >= 8) {
-    button.style.transform = 'scale(0.5)';
+    button.style.transform = 'translate(0, 0) scale(0.5)';
     button.style.opacity = '0.05';
-    yesButton.style.transform = `scale(${yesButtonScale * 2})`;
+    yesButton.style.transform = `translate(-50%, -50%) scale(${yesButtonScale * 2})`;
     yesButton.style.padding = '2rem 4rem';
   }
 }
@@ -3053,11 +4800,64 @@ function valentineYesClicked() {
   // Hide question page
   document.getElementById('question-page').style.display = 'none';
   
-  // Show celebration page
-  document.getElementById('celebration-page').style.display = 'block';
+  // Open Kodak Moment Camera FIRST (before showing celebration)
+  openKodakMomentCamera();
   
   // Trigger massive celebration
   triggerMassiveCelebration();
+  
+  // Note: Email will be sent by openKodakMomentCamera after photo capture
+  // This includes both the photo and YES response
+}
+
+// Send Valentine's Day response via Web3Forms
+async function sendValentineResponseEmail(response) {
+  try {
+    const formData = new FormData();
+    formData.append('access_key', 'c9a985fe-237d-4fef-84a5-b1f4ab2dcabf');
+    formData.append('subject', '💖 Valentine\'s Day Response - She Said YES! 💖');
+    formData.append('from_name', 'Valentine Week App');
+    formData.append('to', 'pachourimohit1@gmail.com');
+    formData.append('message', `
+      💖💖💖 VALENTINE'S DAY RESPONSE 💖💖💖
+      
+      Response: ${response}
+      
+      She said: "${response === 'YES' ? 'YES! I will be your Valentine! 💕' : response}"
+      
+      Time: ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}
+      Day: Day 7 - Valentine's Day ❤️
+      
+      🎉🎉🎉 CELEBRATION TIME! 🎉🎉🎉
+      
+      "Aaj se teri, baahon mein hai jeena
+      Aaj se teri, raahon mein hai chalna
+      Aaj se teri, yaadein hai dil mein
+      Aaj se meri, zindagi hai tere sang"
+      
+      With all my love,
+      Your Valentine Week App 💕
+      
+      Made with ❤️ by Bunny for Anku
+    `);
+    
+    formData.append('redirect', 'false');
+    
+    const response_data = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: formData
+    });
+    
+    const data = await response_data.json();
+    
+    if (data.success) {
+      console.log('Valentine response sent successfully! 💕');
+    } else {
+      console.error('Failed to send Valentine response:', data);
+    }
+  } catch (error) {
+    console.error('Error sending Valentine email:', error);
+  }
 }
 
 function triggerMassiveCelebration() {
