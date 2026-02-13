@@ -2723,317 +2723,201 @@ function addCreativeRomanticFrame(ctx, canvas, filter) {
 
 // ==================== FILTER EFFECTS ====================
 
-// Filter 1: Soft Dream Glow - Magical, dreamy, romantic
+// ==================== ENHANCED MODERN FILTER EFFECTS ====================
+
+// Filter 1: Soft Dream Glow - ENHANCED Modern Dreamy Look
 function applySoftDreamGlowEffect(ctx, canvas) {
   const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
   const data = imageData.data;
   
-  // Apply warm highlights and subtle glow
+  // Apply vibrant dreamy effect with pink-purple tones
   for (let i = 0; i < data.length; i += 4) {
     const r = data[i];
     const g = data[i + 1];
     const b = data[i + 2];
     
-    // Warm highlights with subtle glow
-    data[i] = Math.min(255, r * 1.12 + 20);       // Soft red boost
-    data[i + 1] = Math.min(255, g * 1.08 + 15);   // Gentle green
-    data[i + 2] = Math.min(255, b * 0.98 + 10);   // Slight blue reduction
+    // Enhanced pink-purple dreamy tones (more vibrant)
+    data[i] = Math.min(255, r * 1.18 + 35);       // Stronger pink boost
+    data[i + 1] = Math.min(255, g * 1.12 + 25);   // Enhanced warmth
+    data[i + 2] = Math.min(255, b * 1.05 + 20);   // Slight blue for depth
     
-    // Dreamy soft effect
+    // Soft glow effect with brightness boost
     const brightness = (data[i] + data[i + 1] + data[i + 2]) / 3;
-    data[i] = Math.min(255, data[i] * 0.90 + brightness * 0.10 + 15);
-    data[i + 1] = Math.min(255, data[i + 1] * 0.92 + brightness * 0.08 + 10);
-    data[i + 2] = Math.min(255, data[i + 2] * 0.94 + brightness * 0.06 + 8);
+    data[i] = Math.min(255, data[i] * 0.88 + brightness * 0.12 + 25);
+    data[i + 1] = Math.min(255, data[i + 1] * 0.90 + brightness * 0.10 + 18);
+    data[i + 2] = Math.min(255, data[i + 2] * 0.92 + brightness * 0.08 + 15);
   }
   
   ctx.putImageData(imageData, 0, 0);
   
-  // Add slight vignette
-  const centerX = canvas.width / 2;
-  const centerY = canvas.height / 2;
-  const maxRadius = Math.max(canvas.width, canvas.height) * 0.8;
-  
-  const vignette = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, maxRadius);
-  vignette.addColorStop(0, 'rgba(255, 245, 250, 0)');
-  vignette.addColorStop(0.7, 'rgba(255, 220, 235, 0.08)');
-  vignette.addColorStop(1, 'rgba(255, 192, 203, 0.15)');
-  
-  ctx.fillStyle = vignette;
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-}
-
-// Filter 2: Golden Hour Romance - Warm, radiant, intimate
-function applyGoldenHourEffect(ctx, canvas) {
-  const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-  const data = imageData.data;
-  
-  // Apply golden warmth
-  for (let i = 0; i < data.length; i += 4) {
-    const r = data[i];
-    const g = data[i + 1];
-    const b = data[i + 2];
-    
-    // Golden warmth and brightness
-    data[i] = Math.min(255, r * 1.20 + 30);       // Strong warm red
-    data[i + 1] = Math.min(255, g * 1.15 + 25);   // Golden yellow
-    data[i + 2] = Math.min(255, b * 0.85 + 5);    // Reduce blue for warmth
-    
-    // Gentle contrast boost
-    const brightness = (data[i] + data[i + 1] + data[i + 2]) / 3;
-    const contrast = 1.1;
-    data[i] = Math.min(255, (data[i] - brightness) * contrast + brightness);
-    data[i + 1] = Math.min(255, (data[i + 1] - brightness) * contrast + brightness);
-    data[i + 2] = Math.min(255, (data[i + 2] - brightness) * contrast + brightness);
-  }
-  
-  ctx.putImageData(imageData, 0, 0);
-  
-  // Add golden glow overlay
+  // Add vibrant pink vignette with stronger effect
   const centerX = canvas.width / 2;
   const centerY = canvas.height / 2;
   const maxRadius = Math.max(canvas.width, canvas.height) * 0.75;
   
+  const vignette = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, maxRadius);
+  vignette.addColorStop(0, 'rgba(255, 192, 203, 0.1)');
+  vignette.addColorStop(0.6, 'rgba(255, 105, 180, 0.15)');
+  vignette.addColorStop(1, 'rgba(255, 20, 147, 0.25)');
+  
+  ctx.fillStyle = vignette;
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  
+  // Add sparkle overlay for dreamy effect
+  ctx.fillStyle = 'rgba(255, 255, 255, 0.08)';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
+
+// Filter 2: Polaroid Love Note - ENHANCED Vibrant Retro
+function applyPolaroidEffect(ctx, canvas) {
+  const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  const data = imageData.data;
+  
+  // Apply modern vintage look with enhanced colors
+  for (let i = 0; i < data.length; i += 4) {
+    const r = data[i];
+    const g = data[i + 1];
+    const b = data[i + 2];
+    
+    // Vibrant retro colors (not too desaturated)
+    const avg = (r + g + b) / 3;
+    data[i] = Math.min(255, r * 1.10 + avg * 0.05 + 20);      // Warm reds
+    data[i + 1] = Math.min(255, g * 1.05 + avg * 0.05 + 15);  // Balanced
+    data[i + 2] = Math.min(255, b * 0.90 + avg * 0.10 + 10);  // Less blue
+    
+    // Boost contrast for modern look
+    const contrast = 1.15;
+    const brightness = (data[i] + data[i + 1] + data[i + 2]) / 3;
+    data[i] = Math.min(255, (data[i] - brightness) * contrast + brightness + 5);
+    data[i + 1] = Math.min(255, (data[i + 1] - brightness) * contrast + brightness + 5);
+    data[i + 2] = Math.min(255, (data[i + 2] - brightness) * contrast + brightness + 5);
+  }
+  
+  ctx.putImageData(imageData, 0, 0);
+  
+  // Add warm vintage glow
+  const centerX = canvas.width / 2;
+  const centerY = canvas.height / 2;
+  const maxRadius = Math.max(canvas.width, canvas.height) * 0.7;
+  
   const glow = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, maxRadius);
-  glow.addColorStop(0, 'rgba(255, 215, 0, 0.05)');
-  glow.addColorStop(0.5, 'rgba(255, 200, 100, 0.08)');
-  glow.addColorStop(1, 'rgba(255, 150, 50, 0.12)');
+  glow.addColorStop(0, 'rgba(255, 240, 200, 0.05)');
+  glow.addColorStop(0.6, 'rgba(255, 200, 150, 0.08)');
+  glow.addColorStop(1, 'rgba(255, 180, 100, 0.12)');
   
   ctx.fillStyle = glow;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
-// Filter 3: Polaroid Love Note - Cute, personal, nostalgic
-function applyPolaroidEffect(ctx, canvas) {
-  const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-  const data = imageData.data;
-  
-  // Apply slight softness and vintage feel
-  for (let i = 0; i < data.length; i += 4) {
-    const r = data[i];
-    const g = data[i + 1];
-    const b = data[i + 2];
-    
-    // Slight desaturation and soft tones
-    const avg = (r + g + b) / 3;
-    data[i] = Math.min(255, r * 0.85 + avg * 0.15 + 10);
-    data[i + 1] = Math.min(255, g * 0.85 + avg * 0.15 + 10);
-    data[i + 2] = Math.min(255, b * 0.85 + avg * 0.15 + 10);
-  }
-  
-  ctx.putImageData(imageData, 0, 0);
-}
-
-// Filter 4: Romantic Movie Poster - Cinematic & unforgettable
+// Filter 3: Romantic Movie Poster - ENHANCED Cinematic Look
 function applyMoviePosterEffect(ctx, canvas) {
   const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
   const data = imageData.data;
   
-  // Film-style color grading with enhanced contrast
+  // Apply cinematic color grading (teal & orange Hollywood look)
   for (let i = 0; i < data.length; i += 4) {
     const r = data[i];
     const g = data[i + 1];
     const b = data[i + 2];
     
-    // Cinematic color grading
-    data[i] = Math.min(255, r * 1.15 + 10);       // Boost reds
-    data[i + 1] = Math.min(255, g * 1.08);        // Slightly boost greens
-    data[i + 2] = Math.min(255, b * 1.12 + 15);   // Boost blues for depth
+    // Hollywood teal & orange color grading
+    const brightness = (r + g + b) / 3;
     
-    // Increased contrast
-    const brightness = (data[i] + data[i + 1] + data[i + 2]) / 3;
+    if (brightness > 128) {
+      // Highlights: warm orange/golden
+      data[i] = Math.min(255, r * 1.20 + 25);       // Strong orange in highlights
+      data[i + 1] = Math.min(255, g * 1.12 + 15);   // Golden warmth
+      data[i + 2] = Math.min(255, b * 0.85);        // Reduced blue
+    } else {
+      // Shadows: cool teal/blue
+      data[i] = Math.min(255, r * 1.05);            // Slight red
+      data[i + 1] = Math.min(255, g * 1.08 + 10);   // Teal in shadows
+      data[i + 2] = Math.min(255, b * 1.15 + 15);   // Strong blue/teal
+    }
+    
+    // High contrast for cinematic look
     const contrast = 1.25;
-    data[i] = Math.min(255, Math.max(0, (data[i] - brightness) * contrast + brightness));
-    data[i + 1] = Math.min(255, Math.max(0, (data[i + 1] - brightness) * contrast + brightness));
-    data[i + 2] = Math.min(255, Math.max(0, (data[i + 2] - brightness) * contrast + brightness));
+    const newBrightness = (data[i] + data[i + 1] + data[i + 2]) / 3;
+    data[i] = Math.min(255, Math.max(0, (data[i] - newBrightness) * contrast + newBrightness));
+    data[i + 1] = Math.min(255, Math.max(0, (data[i + 1] - newBrightness) * contrast + newBrightness));
+    data[i + 2] = Math.min(255, Math.max(0, (data[i + 2] - newBrightness) * contrast + newBrightness));
   }
   
   ctx.putImageData(imageData, 0, 0);
   
-  // Add cinematic vignette
+  // Add cinematic vignette (darker edges)
+  const centerX = canvas.width / 2;
+  const centerY = canvas.height / 2;
+  const maxRadius = Math.max(canvas.width, canvas.height) * 0.65;
+  
+  const vignette = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, maxRadius);
+  vignette.addColorStop(0, 'rgba(0, 0, 0, 0)');
+  vignette.addColorStop(0.5, 'rgba(0, 0, 0, 0.15)');
+  vignette.addColorStop(1, 'rgba(0, 0, 0, 0.35)');
+  
+  ctx.fillStyle = vignette;
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
+
+// Filter 4: Kodak Black & White - CLASSIC B&W Film Look
+function applyKodakVintageEffect(ctx, canvas) {
+  const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  const data = imageData.data;
+  
+  // Apply classic black and white conversion
+  for (let i = 0; i < data.length; i += 4) {
+    const r = data[i];
+    const g = data[i + 1];
+    const b = data[i + 2];
+    
+    // Classic B&W conversion (weighted for better tonality)
+    // Red channel = 0.299, Green = 0.587, Blue = 0.114
+    let gray = r * 0.299 + g * 0.587 + b * 0.114;
+    
+    // Add slight contrast boost for film look
+    const contrast = 1.15;
+    gray = ((gray - 128) * contrast + 128);
+    
+    // Lifted blacks (classic film characteristic)
+    gray = Math.min(255, Math.max(15, gray + 10));
+    
+    // Apply to all channels for B&W
+    data[i] = gray;
+    data[i + 1] = gray;
+    data[i + 2] = gray;
+  }
+  
+  ctx.putImageData(imageData, 0, 0);
+  
+  // Add subtle film grain texture
+  const grain = ctx.createImageData(canvas.width, canvas.height);
+  const grainData = grain.data;
+  
+  for (let i = 0; i < grainData.length; i += 4) {
+    const noise = (Math.random() - 0.5) * 15; // Subtle grain
+    grainData[i] = 128 + noise;
+    grainData[i + 1] = 128 + noise;
+    grainData[i + 2] = 128 + noise;
+    grainData[i + 3] = 15; // Low opacity
+  }
+  
+  ctx.globalCompositeOperation = 'overlay';
+  ctx.putImageData(grain, 0, 0);
+  ctx.globalCompositeOperation = 'source-over';
+  
+  // Add classic film vignette (darker edges)
   const centerX = canvas.width / 2;
   const centerY = canvas.height / 2;
   const maxRadius = Math.max(canvas.width, canvas.height) * 0.7;
   
   const vignette = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, maxRadius);
   vignette.addColorStop(0, 'rgba(0, 0, 0, 0)');
-  vignette.addColorStop(0.6, 'rgba(0, 0, 0, 0.15)');
-  vignette.addColorStop(1, 'rgba(0, 0, 0, 0.4)');
+  vignette.addColorStop(0.6, 'rgba(0, 0, 0, 0.12)');
+  vignette.addColorStop(1, 'rgba(0, 0, 0, 0.28)');
   
   ctx.fillStyle = vignette;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
-
-// Add romantic frame with caption based on filter
-function addRomanticFrameWithCaption(ctx, canvas, filter) {
-  const width = canvas.width;
-  const height = canvas.height;
-  
-  // Caption options for each filter
-  const captions = {
-    'dream': [
-      "This moment feels like destiny ✨",
-      "Where you are is where my heart belongs ❤️",
-      "A memory wrapped in love."
-    ],
-    'golden': [
-      "You are my favorite kind of forever 💛",
-      "With you, everything feels golden.",
-      "Every love story is beautiful, but ours is my favorite."
-    ],
-    'polaroid': [
-      "Proof of a very special 'Yes' 💖",
-      "Captured with love.",
-      "Our little forever moment."
-    ],
-    'movie': [
-      "A Love Story - Starring Us ❤️",
-      "Two hearts. One beautiful story.",
-      "And so, our story begins…"
-    ],
-    'kodak': [
-      "In Bunny's arms, Anku found forever 💕",
-      "Two souls, one timeless love story",
-      "Bunny & Anku - Where love began ✨"
-    ]
-  };
-  
-  // Select random caption for the filter
-  const filterCaptions = captions[filter] || captions['dream'];
-  const selectedCaption = filterCaptions[Math.floor(Math.random() * filterCaptions.length)];
-  
-  // Draw frame based on filter style
-  if (filter === 'polaroid') {
-    // Polaroid-style white frame
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
-    const frameWidth = 40;
-    const bottomHeight = 100;
-    
-    // Top frame
-    ctx.fillRect(0, 0, width, frameWidth);
-    // Left frame
-    ctx.fillRect(0, 0, frameWidth, height);
-    // Right frame
-    ctx.fillRect(width - frameWidth, 0, frameWidth, height);
-    // Bottom frame (larger for Polaroid style)
-    ctx.fillRect(0, height - bottomHeight, width, bottomHeight);
-    
-    // Handwritten style caption
-    ctx.font = 'italic 28px "Comic Sans MS", cursive';
-    ctx.textAlign = 'center';
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.8)';
-    ctx.fillText(selectedCaption, width / 2, height - 50);
-    
-  } else if (filter === 'movie') {
-    // Movie poster style
-    // Top black bar
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.85)';
-    ctx.fillRect(0, 0, width, 120);
-    
-    // Bottom black bar
-    ctx.fillRect(0, height - 120, width, 120);
-    
-    // Title text (top)
-    ctx.font = 'bold 48px "Helvetica Neue", Arial';
-    ctx.textAlign = 'center';
-    ctx.fillStyle = '#FFD700';
-    ctx.fillText("A Love Story", width / 2, 70);
-    
-    // Caption text (bottom)
-    ctx.font = 'italic 32px Georgia, serif';
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
-    ctx.fillText(selectedCaption, width / 2, height - 65);
-    
-  } else if (filter === 'kodak') {
-    // Kodak vintage film style - classic film border
-    // Outer vintage frame
-    ctx.fillStyle = 'rgba(139, 69, 19, 0.3)';
-    ctx.fillRect(0, 0, width, 50);
-    ctx.fillRect(0, height - 50, width, 50);
-    ctx.fillRect(0, 0, 50, height);
-    ctx.fillRect(width - 50, 0, 50, height);
-    
-    // Inner border
-    ctx.strokeStyle = 'rgba(255, 240, 220, 0.6)';
-    ctx.lineWidth = 6;
-    ctx.strokeRect(55, 55, width - 110, height - 110);
-    
-    // Top vintage text
-    ctx.font = 'italic bold 45px "Courier New", monospace';
-    ctx.textAlign = 'center';
-    ctx.shadowColor = 'rgba(0, 0, 0, 0.7)';
-    ctx.shadowBlur = 8;
-    ctx.fillStyle = 'rgba(255, 240, 220, 0.95)';
-    ctx.fillText("💕 KODAK MOMENT 💕", width / 2, 85);
-    ctx.shadowBlur = 0;
-    
-    // Caption at bottom
-    ctx.font = 'italic 32px Georgia, serif';
-    ctx.shadowColor = 'rgba(0, 0, 0, 0.7)';
-    ctx.shadowBlur = 10;
-    ctx.fillStyle = 'rgba(255, 240, 220, 0.95)';
-    ctx.fillText(selectedCaption, width / 2, height - 75);
-    ctx.shadowBlur = 0;
-  } else {
-    // Dream and Golden filters - elegant gradient frame
-    const borderGradient = ctx.createLinearGradient(0, 0, width, height);
-    if (filter === 'golden') {
-      borderGradient.addColorStop(0, 'rgba(255, 215, 0, 0.8)');
-      borderGradient.addColorStop(0.5, 'rgba(255, 200, 100, 0.8)');
-      borderGradient.addColorStop(1, 'rgba(255, 215, 0, 0.8)');
-    } else {
-      borderGradient.addColorStop(0, 'rgba(255, 192, 203, 0.8)');
-      borderGradient.addColorStop(0.5, 'rgba(255, 182, 193, 0.8)');
-      borderGradient.addColorStop(1, 'rgba(255, 192, 203, 0.8)');
-    }
-    
-    // Outer frame
-    ctx.strokeStyle = borderGradient;
-    ctx.lineWidth = 20;
-    ctx.strokeRect(10, 10, width - 20, height - 20);
-    
-    // Inner frame
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.6)';
-    ctx.lineWidth = 8;
-    ctx.strokeRect(35, 35, width - 70, height - 70);
-    
-    // Top title
-    ctx.font = 'bold 55px "Brush Script MT", cursive';
-    ctx.textAlign = 'center';
-    ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
-    ctx.shadowBlur = 10;
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
-    ctx.fillText("💕 Our Love Forever 💕", width / 2, 80);
-    ctx.shadowBlur = 0;
-    
-    // Caption at bottom
-    ctx.font = 'italic bold 30px Georgia, serif';
-    ctx.shadowColor = 'rgba(0, 0, 0, 0.6)';
-    ctx.shadowBlur = 8;
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
-    ctx.fillText(selectedCaption, width / 2, height - 60);
-    ctx.shadowBlur = 0;
-  }
-  
-  // Add date (always included)
-  ctx.font = 'bold 28px Arial';
-  ctx.textAlign = 'center';
-  ctx.shadowColor = 'rgba(0, 0, 0, 0.6)';
-  ctx.shadowBlur = 8;
-  ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
-  
-  if (filter === 'polaroid') {
-    ctx.fillText("Valentine's Day 2026", width / 2, height - 20);
-  } else if (filter === 'movie') {
-    ctx.fillText("FEBRUARY 14, 2026", width / 2, height - 25);
-  } else if (filter === 'kodak') {
-    ctx.fillStyle = 'rgba(255, 240, 220, 0.95)';
-    ctx.fillText("🎞️ FEBRUARY 14, 2026 🎞️", width / 2, height - 30);
-  } else {
-    ctx.fillText("💖 Valentine's Day 2026 💖", width / 2, height - 20);
-  }
-  ctx.shadowBlur = 0;
-}
-
 // Filter 1: Romantic Vibe - Dreamy rose gold with soft pink tones
 function applyRomanticVibeEffect(ctx, canvas) {
   // Get image data
