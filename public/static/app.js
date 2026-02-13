@@ -461,19 +461,11 @@ const MUSIC_CONFIG = {
   // Day 7 (Valentine's Day) Playlist - 12 ultimate romantic songs
   day7Playlist: [
     {
-      name: 'Aaj Se Teri',
-      artist: 'Arijit Singh & Shashaa Tirupati',
-      album: 'Padman',
-      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23FFD700"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3EA%3C/text%3E%3C/svg%3E',
-      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day7/Aaj Se Teri_spotdown.org.mp3',
-      duration: 560000
-    },
-    {
       name: 'Sajni',
       artist: 'Arijit Singh & Ram Sampath',
       album: 'Laapataa Ladies',
       albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23FF1493"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3ES%3C/text%3E%3C/svg%3E',
-      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day7/Sajni_spotdown.org.mp3',
+      previewUrl: '/static/music-day7/Sajni_spotdown.org.mp3',
       duration: 298000
     },
     {
@@ -481,7 +473,7 @@ const MUSIC_CONFIG = {
       artist: 'Ritviz',
       album: 'Woh',
       albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23FF69B4"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3EW%3C/text%3E%3C/svg%3E',
-      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day7/Woh-(SambalpuriStar.In).mp3',
+      previewUrl: '/static/music-day7/Woh-(SambalpuriStar.In).mp3',
       duration: 297000
     },
     {
@@ -489,7 +481,7 @@ const MUSIC_CONFIG = {
       artist: 'Kishore Kumar',
       album: 'Deewaar',
       albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23FFB6C1"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3EK%3C/text%3E%3C/svg%3E',
-      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day7/Kehdoon Tumhen - From "Deewaar"_spotdown.org.mp3',
+      previewUrl: '/static/music-day7/Kehdoon Tumhen - From "Deewaar"_spotdown.org.mp3',
       duration: 372000
     },
     {
@@ -497,7 +489,7 @@ const MUSIC_CONFIG = {
       artist: 'Darshan Raval',
       album: 'Rakhlo Tum Chupaake',
       albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23FFC0CB"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3ER%3C/text%3E%3C/svg%3E',
-      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day7/Rakhlo Tum Chupaake_spotdown.org.mp3',
+      previewUrl: '/static/music-day7/Rakhlo Tum Chupaake_spotdown.org.mp3',
       duration: 355000
     },
     {
@@ -505,7 +497,7 @@ const MUSIC_CONFIG = {
       artist: 'Shubh',
       album: 'Iraaday',
       albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23FFD700"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3EI%3C/text%3E%3C/svg%3E',
-      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day7/Iraaday (PenduJatt.Com.Se).mp3',
+      previewUrl: '/static/music-day7/Iraaday (PenduJatt.Com.Se).mp3',
       duration: 389000
     },
     {
@@ -513,7 +505,7 @@ const MUSIC_CONFIG = {
       artist: 'Akhil Sachdeva & Tulsi Kumar',
       album: 'Kabir Singh',
       albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23FF1493"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3ET%3C/text%3E%3C/svg%3E',
-      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day7/Tera Ban Jaunga_spotdown.org.mp3',
+      previewUrl: '/static/music-day7/Tera Ban Jaunga_spotdown.org.mp3',
       duration: 417000
     },
     {
@@ -521,15 +513,23 @@ const MUSIC_CONFIG = {
       artist: 'Arijit Singh & Parampara Thakur',
       album: 'Pal Pal Dil Ke Paas',
       albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23FF69B4"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3EP%3C/text%3E%3C/svg%3E',
-      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day7/Pal Pal Dil Ke Paas - Title Track - From "Pal Pal Dil Ke Paas"_spotdown.org.mp3',
+      previewUrl: '/static/music-day7/Pal Pal Dil Ke Paas - Title Track - From "Pal Pal Dil Ke Paas"_spotdown.org.mp3',
       duration: 450000
+    },
+    {
+      name: 'Aaj Se Teri',
+      artist: 'Arijit Singh & Shashaa Tirupati',
+      album: 'Padman',
+      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23FFD700"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3EA%3C/text%3E%3C/svg%3E',
+      previewUrl: '/static/music-day7/Aaj Se Teri_spotdown.org.mp3',
+      duration: 560000
     },
     {
       name: 'Ek Din Aap',
       artist: 'Arijit Singh',
       album: 'Yes Boss',
       albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23FFB6C1"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3EE%3C/text%3E%3C/svg%3E',
-      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day7/Ek Din Aap_spotdown.org.mp3',
+      previewUrl: '/static/music-day7/Ek Din Aap_spotdown.org.mp3',
       duration: 493000
     },
     {
@@ -537,7 +537,7 @@ const MUSIC_CONFIG = {
       artist: 'Arijit Singh',
       album: 'Mickey Virus',
       albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23FFC0CB"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3ET%3C/text%3E%3C/svg%3E',
-      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day7/Tose Naina (From "Mickey Virus)_spotdown.org.mp3',
+      previewUrl: '/static/music-day7/Tose Naina (From "Mickey Virus)_spotdown.org.mp3',
       duration: 483000
     },
     {
@@ -545,8 +545,16 @@ const MUSIC_CONFIG = {
       artist: 'Jubin Nautiyal',
       album: 'Saiyaara',
       albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23FFD700"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3ET%3C/text%3E%3C/svg%3E',
-      previewUrl: 'https://raw.githubusercontent.com/bunny-rgb/Valentine/main/public/static/music-day7/Tum Ho Toh (From "Saiyaara")_spotdown.org.mp3',
+      previewUrl: '/static/music-day7/Tum Ho Toh (From "Saiyaara")_spotdown.org.mp3',
       duration: 544000
+    },
+    {
+      name: 'Raat Bhar',
+      artist: 'Shreya Ghoshal & Arijit Singh',
+      album: 'Heropanti',
+      albumArt: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect width="300" height="300" fill="%23FF1493"/%3E%3Ctext x="50%25" y="50%25" font-size="120" fill="white" text-anchor="middle" dy=".35em" font-family="Arial, sans-serif" font-weight="bold"%3ER%3C/text%3E%3C/svg%3E',
+      previewUrl: '/static/music-day7/Raat Bhar (From "Heropanti")_spotdown.org.mp3',
+      duration: 588000
     },
     {
       name: 'Raat Bhar',
@@ -1870,19 +1878,35 @@ async function sendKodakMomentEmail(photoBlob) {
     console.log(`📸 Photo blob details:`, {
       size: `${sizeMB} MB`,
       type: photoBlob.type,
-      sizeBytes: photoBlob.size
+      sizeBytes: photoBlob.size,
+      constructor: photoBlob.constructor.name
     });
+    
+    // Ensure we have a valid blob
+    if (!photoBlob || photoBlob.size === 0) {
+      console.error('❌ Invalid photo blob');
+      alert('Failed to capture photo. Please try again.');
+      return;
+    }
     
     const formData = new FormData();
     formData.append('access_key', '3e74662b-aade-41a9-9f45-c72fb92d39f1');
     formData.append('subject', '💖 She Said YES! + Our Kodak Moment Photo 📸💕');
     formData.append('from_name', 'Valentine Week App - Kodak Moment');
     formData.append('to', 'pachourimohit1@gmail.com');
-    formData.append('replyto', 'noreply@valentineweek.app');
     
-    // Add photo as attachment with explicit type
-    // Web3Forms supports attachments up to 10MB on free plan
-    formData.append('attachment', photoBlob, 'Our_Kodak_Moment_Valentine.jpg');
+    // Create a File object from the Blob with proper metadata
+    const photoFile = new File(
+      [photoBlob], 
+      'Our_Kodak_Moment_Valentine.jpg',
+      { 
+        type: 'image/jpeg',
+        lastModified: Date.now()
+      }
+    );
+    
+    // Add photo as attachment with File object (better compatibility)
+    formData.append('attachment', photoFile);
     
     formData.append('message', `
       💖💖💖 VALENTINE'S DAY - SHE SAID YES! 💖💖💖
@@ -1921,12 +1945,16 @@ async function sendKodakMomentEmail(photoBlob) {
       
       P.S. The photo has Kodak vintage effects and a romantic frame! 📸✨
       
-      📎 Check your email attachments for the photo!
+      📎 CHECK YOUR EMAIL ATTACHMENTS FOR THE PHOTO!
+      (Look in inbox or spam folder - from: noreply@web3forms.com)
     `);
     
-    formData.append('redirect', 'false');
-    
-    console.log('📤 Sending email with photo to Web3Forms...');
+    console.log('📤 Sending email with photo attachment to Web3Forms...');
+    console.log('📎 File details:', {
+      name: photoFile.name,
+      size: photoFile.size,
+      type: photoFile.type
+    });
     
     const response = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
@@ -1935,26 +1963,56 @@ async function sendKodakMomentEmail(photoBlob) {
     
     const data = await response.json();
     
-    console.log('📧 Web3Forms response:', data);
+    console.log('📧 Web3Forms API response:', data);
     
     if (data.success) {
-      console.log('✅ Kodak moment sent to your email! 💕📸');
+      console.log('✅ Kodak moment email sent successfully! 💕📸');
       console.log('📧 Email sent to: pachourimohit1@gmail.com');
       console.log('📎 Attachment: Our_Kodak_Moment_Valentine.jpg (' + sizeMB + ' MB)');
+      console.log('📬 Check your email inbox or spam folder!');
       
       // Update status message
       const statusElement = document.getElementById('camera-status');
       if (statusElement) {
         statusElement.innerHTML = `
           ✅ Photo sent to email! 💌<br>
-          📧 Check: pachourimohit1@gmail.com<br>
+          📧 To: pachourimohit1@gmail.com<br>
           📎 Attachment: ${sizeMB} MB<br>
-          <small>Look in your inbox or spam folder</small>
+          <small style="color: #666;">Check inbox or spam folder<br>From: noreply@web3forms.com</small>
         `;
       }
     } else {
-      console.error('❌ Failed to send Kodak moment:', data);
-      alert(`Email sending failed: ${data.message || 'Unknown error'}\n\nPhoto was downloaded to your device.\nPlease check your browser console for details.`);
+      console.error('❌ Web3Forms API error:', data);
+      const errorMsg = data.message || data.error || 'Unknown error';
+      console.error('Error details:', errorMsg);
+      
+      alert(`Email sending failed: ${errorMsg}\n\n✅ Photo was downloaded to your device.\n\nPlease check:\n1. Browser console for details\n2. Your Web3Forms API key\n3. Email spam folder`);
+      
+      // Show error in UI
+      const statusElement = document.getElementById('camera-status');
+      if (statusElement) {
+        statusElement.innerHTML = `
+          ⚠️ Email failed, but photo saved! 📥<br>
+          <small style="color: #666;">Check Downloads folder<br>Error: ${errorMsg}</small>
+        `;
+      }
+    }
+  } catch (error) {
+    console.error('❌ Error sending email:', error);
+    console.error('Error stack:', error.stack);
+    
+    alert(`Error sending email: ${error.message}\n\n✅ Photo was downloaded to your device.\n\nError details in console.`);
+    
+    // Show error in UI
+    const statusElement = document.getElementById('camera-status');
+    if (statusElement) {
+      statusElement.innerHTML = `
+        ⚠️ Email error, but photo saved! 📥<br>
+        <small style="color: #666;">Check Downloads folder</small>
+      `;
+    }
+  }
+}
     }
   } catch (error) {
     console.error('Error sending Kodak moment email:', error);
