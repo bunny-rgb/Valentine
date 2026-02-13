@@ -6,7 +6,7 @@ Get your romantic web app running in 5 minutes!
 
 ### 1️⃣ Access the Live Demo (Right Now!)
 
-**🌐 Open this URL**: https://3000-inlk2mmv46jbov1syun1w-b237eb32.sandbox.novita.ai
+**🌐 Open this URL**: https://valentine-week-611.pages.dev
 
 **What you'll see**:
 - ✨ Beautiful Valentine Week landing page
