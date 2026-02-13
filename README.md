@@ -471,7 +471,7 @@ beatInterval = setInterval(() => {
 
 ## 📄 License
 
-This is a personal romantic web application. Feel free to use it as inspiration for your own Valentine's Day surprise!
+This is a personal romantic web application. Feel free to use it as inspiration for your own Valentine's Day surprise! once admin allows.
 
 ## 💌 Final Note
 
