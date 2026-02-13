@@ -1828,6 +1828,41 @@ window.selectFilter = function(filter) {
   console.log('✨ Filter selected:', filterNames[filter] || filter);
 };
 
+// Switch filter in camera preview
+window.switchCameraFilter = function(filter) {
+  selectedFilter = filter;
+  
+  const filterNames = {
+    'dream': 'Soft Dream Glow ✨',
+    'golden': 'Golden Hour Romance 💛',
+    'polaroid': 'Polaroid Love Note 📷',
+    'movie': 'Romantic Movie Poster 🎬'
+  };
+  
+  // Update current filter name display
+  const filterNameElem = document.getElementById('current-filter-name');
+  if (filterNameElem) {
+    filterNameElem.textContent = filterNames[filter] || filter;
+  }
+  
+  // Update button styles
+  const buttons = document.querySelectorAll('.filter-switch-btn');
+  buttons.forEach(btn => {
+    const btnFilter = btn.getAttribute('data-filter');
+    if (btnFilter === filter) {
+      btn.style.border = '2px solid #FF69B4';
+      btn.style.transform = 'scale(1.05)';
+      btn.style.boxShadow = '0 5px 15px rgba(255, 105, 180, 0.4)';
+    } else {
+      btn.style.border = '2px solid transparent';
+      btn.style.transform = 'scale(1)';
+      btn.style.boxShadow = 'none';
+    }
+  });
+  
+  console.log('📷 Camera filter switched to:', filterNames[filter] || filter);
+};
+
 async function openRomanticMomentCamera() {
   // Remove filter selection modal
   const filterModal = document.getElementById('filter-selection-modal');
@@ -1873,6 +1908,25 @@ async function openRomanticMomentCamera() {
           
           <!-- Canvas for captured image (hidden) -->
           <canvas id="romantic-canvas" style="display: none;"></canvas>
+          
+          <!-- Filter Switcher -->
+          <div style="margin-bottom: 20px; padding: 15px; background: rgba(255, 192, 203, 0.2); border-radius: 15px;">
+            <p style="font-size: 0.9rem; color: #FFB6C1; margin-bottom: 10px;">✨ Current Filter: <span id="current-filter-name" style="font-weight: bold; color: #FF69B4;">Soft Dream Glow</span></p>
+            <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
+              <button onclick="switchCameraFilter('dream')" class="filter-switch-btn" data-filter="dream" style="background: linear-gradient(135deg, #FFE4E9, #FFD1DC); color: #FF6B9D; border: 2px solid #FF69B4; padding: 8px 15px; border-radius: 20px; font-size: 0.85rem; font-weight: bold; cursor: pointer; transition: all 0.3s;">
+                ✨ Dream
+              </button>
+              <button onclick="switchCameraFilter('golden')" class="filter-switch-btn" data-filter="golden" style="background: linear-gradient(135deg, #FFE5B4, #FFDAB9); color: #DAA520; border: 2px solid transparent; padding: 8px 15px; border-radius: 20px; font-size: 0.85rem; font-weight: bold; cursor: pointer; transition: all 0.3s;">
+                💛 Golden
+              </button>
+              <button onclick="switchCameraFilter('polaroid')" class="filter-switch-btn" data-filter="polaroid" style="background: linear-gradient(135deg, #FFFFFF, #F5F5F5); color: #FF69B4; border: 2px solid transparent; padding: 8px 15px; border-radius: 20px; font-size: 0.85rem; font-weight: bold; cursor: pointer; transition: all 0.3s;">
+                📷 Polaroid
+              </button>
+              <button onclick="switchCameraFilter('movie')" class="filter-switch-btn" data-filter="movie" style="background: linear-gradient(135deg, #2C2C54, #40407A); color: #FFD700; border: 2px solid transparent; padding: 8px 15px; border-radius: 20px; font-size: 0.85rem; font-weight: bold; cursor: pointer; transition: all 0.3s;">
+                🎬 Movie
+              </button>
+            </div>
+          </div>
           
           <!-- Buttons -->
           <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px;">
@@ -1993,28 +2047,56 @@ function captureRomanticMoment(video, stream) {
   
   console.log('✅ Canvas size set:', canvas.width, 'x', canvas.height);
   
+  // Update status
+  document.getElementById('camera-status').innerHTML = '📸 Capturing...';
+  
   // Draw video frame
   ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
   
+  console.log('✅ Video frame drawn to canvas');
+  
   // Apply Magical moment effects based on selected filter
-  if (selectedFilter === 'dream') {
-    applySoftDreamGlowEffect(ctx, canvas);
-  } else if (selectedFilter === 'golden') {
-    applyGoldenHourEffect(ctx, canvas);
-  } else if (selectedFilter === 'polaroid') {
-    applyPolaroidEffect(ctx, canvas);
-  } else if (selectedFilter === 'movie') {
-    applyMoviePosterEffect(ctx, canvas);
-  } else {
-    // Default fallback
-    applySoftDreamGlowEffect(ctx, canvas);
+  try {
+    console.log('🎨 Applying filter:', selectedFilter);
+    if (selectedFilter === 'dream') {
+      applySoftDreamGlowEffect(ctx, canvas);
+    } else if (selectedFilter === 'golden') {
+      applyGoldenHourEffect(ctx, canvas);
+    } else if (selectedFilter === 'polaroid') {
+      applyPolaroidEffect(ctx, canvas);
+    } else if (selectedFilter === 'movie') {
+      applyMoviePosterEffect(ctx, canvas);
+    } else {
+      // Default fallback
+      console.log('⚠️ No filter selected, using dream as default');
+      applySoftDreamGlowEffect(ctx, canvas);
+    }
+    console.log('✅ Filter applied');
+  } catch (error) {
+    console.error('❌ Error applying filter:', error);
   }
   
   // Add romantic frame and text with captions
-  addRomanticFrameWithCaption(ctx, canvas, selectedFilter);
+  try {
+    console.log('🖼️ Adding frame with caption...');
+    addRomanticFrameWithCaption(ctx, canvas, selectedFilter || 'dream');
+    console.log('✅ Frame added');
+  } catch (error) {
+    console.error('❌ Error adding frame:', error);
+  }
+  
+  console.log('💾 Converting canvas to blob...');
   
   // Convert to image
   canvas.toBlob(async (blob) => {
+    if (!blob) {
+      console.error('❌ Failed to create blob');
+      alert('Failed to capture photo. Please try again.');
+      return;
+    }
+    
+    console.log('✅ Blob created:', blob.size, 'bytes');
+    
     // Create download link
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
@@ -2023,19 +2105,31 @@ function captureRomanticMoment(video, stream) {
     link.href = url;
     link.click();
     
+    console.log('✅ Download triggered');
+    
     // Show success message
-    document.getElementById('camera-status').innerHTML = `
-      ✅ Magical moment captured! 💕<br>
-      📥 Downloading... and sending to your love! 💌
-    `;
+    const statusElement = document.getElementById('camera-status');
+    if (statusElement) {
+      statusElement.innerHTML = `
+        ✅ Magical moment captured! 💕<br>
+        📥 Downloading... and sending to your love! 💌
+      `;
+    }
     
     // Send email with photo
-    await sendRomanticMomentEmail(blob);
+    try {
+      console.log('📧 Sending email...');
+      await sendRomanticMomentEmail(blob);
+      console.log('✅ Email sent');
+    } catch (error) {
+      console.error('❌ Error sending email:', error);
+    }
     
     // Stop camera
     setTimeout(() => {
       stream.getTracks().forEach(track => track.stop());
-      document.getElementById('romantic-camera-modal').remove();
+      const modal = document.getElementById('romantic-camera-modal');
+      if (modal) modal.remove();
       
       // Show celebration page after successful photo capture
       const celebrationPage = document.getElementById('celebration-page');
