@@ -2374,27 +2374,39 @@ function captureRomanticMoment(video, stream) {
     if (statusElement) {
       statusElement.innerHTML = `
         ✅ Captured with ${getFilterName(selectedFilter)}! 💕<br>
-        📥 Downloading... and sending to your love! 💌
+        📥 Photo saved! Sending email... 💌
       `;
     }
     
-    // Send email with photo
-    try {
-      console.log('📧 Sending email...');
-      await sendRomanticMomentEmail(blob, selectedFilter);
-      console.log('✅ Email sent successfully');
-    } catch (error) {
-      console.error('❌ Email send failed:', error);
-    }
-    
-    // Show celebration after a moment
+    // Close camera and show celebration IMMEDIATELY
     setTimeout(() => {
+      // Stop camera
+      stopFilterPreview();
+      if (stream) {
+        stream.getTracks().forEach(track => track.stop());
+      }
+      
+      // Remove camera modal
+      const cameraModal = document.getElementById('romantic-camera-modal');
+      if (cameraModal) {
+        cameraModal.remove();
+      }
+      
+      // Show celebration page
       const celebrationPage = document.getElementById('celebration-page');
       if (celebrationPage) {
         celebrationPage.style.display = 'block';
         celebrationPage.scrollIntoView({ behavior: 'smooth' });
       }
-    }, 2000);
+    }, 1000);
+    
+    // Send email in background (don't wait for it)
+    sendRomanticMomentEmail(blob, selectedFilter).then(() => {
+      console.log('✅ Email sent successfully');
+    }).catch(error => {
+      console.error('❌ Email send failed (non-blocking):', error);
+      // Don't show alert - just log it
+    });
     
   }, 'image/jpeg', 0.95);
 }
@@ -3218,8 +3230,7 @@ async function sendRomanticMomentEmail(photoBlob) {
     // Ensure we have a valid blob
     if (!photoBlob || photoBlob.size === 0) {
       console.error('❌ Invalid photo blob');
-      alert('Failed to capture photo. Please try again.');
-      return;
+      throw new Error('Invalid photo blob');
     }
     
     const formData = new FormData();
@@ -3319,31 +3330,15 @@ async function sendRomanticMomentEmail(photoBlob) {
       const errorMsg = data.message || data.error || 'Unknown error';
       console.error('Error details:', errorMsg);
       
-      alert(`Email sending failed: ${errorMsg}\n\n✅ Photo was downloaded to your device.\n\nPlease check:\n1. Browser console for details\n2. Your Web3Forms API key\n3. Email spam folder`);
-      
-      // Show error in UI
-      const statusElement = document.getElementById('camera-status');
-      if (statusElement) {
-        statusElement.innerHTML = `
-          ⚠️ Email failed, but photo saved! 📥<br>
-          <small style="color: #666;">Check Downloads folder<br>Error: ${errorMsg}</small>
-        `;
-      }
+      // Don't block with alert - just log
+      console.warn('⚠️ Email failed but photo was downloaded');
     }
   } catch (error) {
     console.error('❌ Error sending email:', error);
     console.error('Error stack:', error.stack);
     
-    alert(`Error sending email: ${error.message}\n\n✅ Photo was downloaded to your device.\n\nError details in console.`);
-    
-    // Show error in UI
-    const statusElement = document.getElementById('camera-status');
-    if (statusElement) {
-      statusElement.innerHTML = `
-        ⚠️ Email error, but photo saved! 📥<br>
-        <small style="color: #666;">Check Downloads folder</small>
-      `;
-    }
+    // Don't block with alert - just log
+    console.warn('⚠️ Email error but photo was saved');
   }
 }
 
